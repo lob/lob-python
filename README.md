@@ -6,6 +6,17 @@ This is the python wrapper for the lob.com API.
 This wrapper works in the object oriented style, that is, to make calls you have to call the method on a class and the
 return types are python objects. To get a `dict` on any object, you can call the `to_dict()` method of the object.
 
+Installation
+============
+
+You can use `pip` or `easy_install` for installing the package.
+
+```
+pip install lob-python
+easy_install lob-python
+```
+
+
 Usage
 ======
 
