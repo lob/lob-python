@@ -30,7 +30,7 @@ print lob.Address.delete(id = lob.Address.list(count = 1)[0].id).to_dict()
 # Address Verification
 print lob.AddressVerify.verify(name = 'Siddharth Saha', email = 'sidchilling@gmail.com',
         address_line1 = '220 William T Morrissey', address_city = 'Boston', 
-        address_state = 'MA', address_zip = '02125').to_dict()
+        address_state = 'MA', address_zip = '02125', address_country = 'USA').to_dict()
 
 # List Settings
 print lob.Setting.list()
@@ -93,3 +93,21 @@ print lob.Job.create(name = 'Siddharth Second Job', to = lob.Address.list(count 
         objects = objects, from_address = from_address,
         packaging_id = lob.Packaging.list()[0].id,
         service_id = lob.Service.list()[0].id).to_dict()
+
+# List all Postcards
+print lob.Postcard.list()
+# Can also post offset and count
+print lob.Postcard.list(offset = 2, count = 1)[0].to_dict()
+
+# Can fetch a postcard based on ID
+print lob.Postcard.get(id = lob.Postcard.list(count = 1)[0].id)
+
+# Creating a postcard - specify either message / back
+print lob.Postcard.create(name = 'Siddharth Test Postcard', to = lob.Address.list(count = 1)[0].id,
+        message = 'This is a standard test message', front = 'https://www.lob.com/postcardfront.pdf',
+        from_address = lob.Address.list(count = 1, offset = 4)[0].id).to_dict()
+# Can specify back and address with parameters
+print lob.Postcard.create(name = 'Siddharth New Test Postcard', 
+        to = lob.Address.list(count = 1)[0].id, front = 'https://www.lob.com/postcardfront.pdf',
+        back = 'https://www.lob.com/postcardback.pdf',
+        from_address = from_address).to_dict()
