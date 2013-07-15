@@ -6,7 +6,7 @@ __author__ = 'Siddharth Saha (sidchilling@gmail.com)'
 # Imports
 import logging
 import importer
-from structures.exceptions import *
+from exceptions import *
 
 json = importer.import_json()
 _httplib, httplib = importer.import_requests()
