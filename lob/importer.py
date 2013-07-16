@@ -34,6 +34,5 @@ def import_requests():
         import requests
         return ('requests', requests)
     except ImportError:
-        raise ImportError('Lob requires either Google App Engine urlfetch or \
-                requests package')
+        raise ImportError('Lob requires the requests package')
 
