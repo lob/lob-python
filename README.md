@@ -148,7 +148,8 @@ Works on the `Object` class.
 lob.Object.list() # Returns a list of Object objects
 lob.Object.list(count = 4, offset = 2) # Can specify count and offset
 lob.Object.delete(id = '<your-object-id>') # Delete an object via it's ID
-lob.Object.create(name = 'Siddharth Saha', file = 'https://www.lob.com/goblue.pdf', setting_id = '<setting-id>', quantity = 1) # Will create an object and return its instance
+lob.Object.create(name = 'Siddharth Saha', file = 'https://www.lob.com/goblue.pdf', 
+                         setting_id = '<setting-id>', quantity = 1) # Will create an object and return its instance
 ```
 
 ## Jobs
@@ -167,17 +168,31 @@ lob.Job.get(id = '<job-id>') # Can find a Job based on its ID - Returns a Job in
 Will return a `Job` instance if creation is successful
 
 ```python
-print lob.Job.create(name = 'Siddharth First Job', to = lob.Address.list(count = 1)[0].id, objects = lob.Object.list()[0].id, from_address = lob.Address.list(count = 1, offset = 5)[0].id).to_dict()
+print lob.Job.create(name = 'Siddharth First Job', to = lob.Address.list(count = 1)[0].id, 
+                     objects = lob.Object.list()[0].id, 
+                     from_address = lob.Address.list(count = 1, offset = 5)[0].id).to_dict()
 ```
 
 As in the above call, you can see `to` and `from_address` are `Address` IDs and `objects` is a `Object` ID. You can specify these differently as well - passsing complete address parameters. Also, `objects` can be a list specifiying multiple `object` IDs or `object` parameters as well. The following code block will show each of these possibilities.
 
 ```python
-objects = [lob.Object.list()[0].id, {'name' : 'Siddharth Job Object', 'file' : 'https://www.lob.com/goblue.pdf', 'setting_id' : lob.Setting.list()[0].id, 'quantity' : 1}] # The objects list can contain both object id as well as parameters
+objects = [lob.Object.list()[0].id, {'name' : 'Siddharth Job Object', 
+                                     'file' : 'https://www.lob.com/goblue.pdf', 
+                                     'setting_id' : lob.Setting.list()[0].id, 
+                                     'quantity' : 1}] # The objects list can contain both object id as well as parameters
 
-from_addrsss = {'name' : 'Siddharth Saha', 'address_line1' : '220 William T Morrissey', 'address_line2' : 'Sunset Town', 'address_city' : 'Boston', 'address_state' : 'MA', 'address_country' : 'USA', 'address_zip' : '02125'}
+from_addrsss = {'name' : 'Siddharth Saha', 
+                'address_line1' : '220 William T Morrissey', 
+                'address_line2' : 'Sunset Town', 
+                'address_city' : 'Boston', 
+                'address_state' : 'MA', 
+                'address_country' : 'USA', 
+                'address_zip' : '02125'}
 
-print lob.Job.create(name = 'Siddharth Second Job', to = lob.Address.list(count = 1)[0].id, objects = objects, from_address = from_address, packaging_id = lob.Packaging.list()[0].id, service_id = lob.Service.list()[0].id).to_dict()
+print lob.Job.create(name = 'Siddharth Second Job', to = lob.Address.list(count = 1)[0].id, 
+                            objects = objects, from_address = from_address, 
+                            packaging_id = lob.Packaging.list()[0].id, 
+                            service_id = lob.Service.list()[0].id).to_dict()
 ```
 
 The above code block also shows optional parameters that can be passed
@@ -197,8 +212,13 @@ You must either specify the `message` argument or the `back` argument (but not b
 
 ```python
 # Specifying message
-print lob.Postcard.create(name = 'Siddharth Test Postcard', to = lob.Address.list(count = 1)[0].id, message = 'This is a standard test message', front = 'https://www.lob.com/postcardfront.pdf', from_address = lob.Address.list(count = 1, offset = 4)[0].id).to_dict()
+print lob.Postcard.create(name = 'Siddharth Test Postcard', to = lob.Address.list(count = 1)[0].id, 
+                           message = 'This is a standard test message', 
+                           front = 'https://www.lob.com/postcardfront.pdf', 
+                           from_address = lob.Address.list(count = 1, offset = 4)[0].id).to_dict()
 
 # Specifying back and address as parameters (using from_address defined earlier in Job creation)
-print lob.Postcard.create(name = 'Siddharth New Test Postcard', to = lob.Address.list(count = 1)[0].id, front = 'https://www.lob.com/postcardfront.pdf', back = 'https://www.lob.com/postcardback.pdf', from_address = from_address)
+print lob.Postcard.create(name = 'Siddharth New Test Postcard', to = lob.Address.list(count = 1)[0].id, 
+                          front = 'https://www.lob.com/postcardfront.pdf', 
+                          back = 'https://www.lob.com/postcardback.pdf', from_address = from_address)
 ```
