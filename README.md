@@ -38,8 +38,8 @@ Addresses work with the `Address` class and the objects returned are of this cla
 
 ```python
 address = lob.Address.create(name='Siddharth Saha', address_line1='104, Printing Boulevard',
-                             address_city='Boston', address_state='MA', address_country='USA',
-                             address_city='12345')
+                             address_city='Boston', address_state='MA', address_country='US',
+                             address_zip='12345')
 print address.to_dict()
 ```
 
@@ -48,7 +48,7 @@ You can pass optional parameters as well while creating an address
 ```python
 print lob.Address.create(name='Siddharth Saha', address_line1='104, Printing Boulevard',
                          address_line2='Sunset Town', email='sidchilling@gmail.com',
-                         address_city='Boston', address_state='MA', address_country='USA',
+                         address_city='Boston', address_state='MA', address_country='US',
                          address_zip='12345').to_dict()
 ```
 
@@ -92,7 +92,7 @@ get the `dict` representation of a `LobObject` as well.
 ```python
 verify = lob.AddressVerify.verify(name='Siddharth Saha', email='sidchilling@gmail.com',
                                   address_line1='220 William T Morrissey', address_city='Boston',
-                                  address_state='MA', address_zip='02125', address_country='USA')
+                                  address_state='MA', address_zip='02125', address_country='US')
 
 print verify.to_dict()
 ```
@@ -186,7 +186,7 @@ from_addrsss = {'name' : 'Siddharth Saha',
                 'address_line2' : 'Sunset Town', 
                 'address_city' : 'Boston', 
                 'address_state' : 'MA', 
-                'address_country' : 'USA', 
+                'address_country' : 'US', 
                 'address_zip' : '02125'}
 
 print lob.Job.create(name = 'Siddharth Second Job', to = lob.Address.list(count = 1)[0].id, 
