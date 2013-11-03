@@ -18,6 +18,13 @@ pip install lob-python
 easy_install lob-python
 ```
 
+Testing
+=======
+
+Install all requirements with `pip install -r requirements.txt`.
+
+You can run all tests with the command `nosetests` in the main directory.
+
 Usage
 ======
 
