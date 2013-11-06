@@ -8,7 +8,7 @@ lob.api_key = 'test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc'
 
 def test_address():
     address = lob.Address.create(name = 'Siddharth Saha', address_line1 = '104, Printing Boulevard',
-        address_city = 'Boston', address_state = 'MA', address_country = 'USA',
+        address_city = 'Boston', address_state = 'MA', address_country = 'US',
         address_zip = '12345')
     print address.to_dict()
 
@@ -17,7 +17,7 @@ def test_address_other_parameters():
     """Can also pass other parameters while creating an address"""
     address = lob.Address.create(name = 'Siddharth Saha', address_line1 = '104, Printing Boulevard',
         address_line2 = 'Sunset Town', email = 'sidchilling@gmail.com', 
-        address_city = 'Boston', address_state = 'MA', address_country = 'USA',
+        address_city = 'Boston', address_state = 'MA', address_country = 'US',
         address_zip = '12345')
     print address.to_dict()
 
@@ -42,7 +42,7 @@ def test_delete_address():
 def test_address_verification():
     print lob.AddressVerify.verify(name = 'Siddharth Saha', email = 'sidchilling@gmail.com',
         address_line1 = '220 William T Morrissey', address_city = 'Boston', 
-        address_state = 'MA', address_zip = '02125', address_country = 'USA').to_dict()
+        address_state = 'MA', address_zip = '02125', address_country = 'US').to_dict()
 
 
 def test_settings():
@@ -113,7 +113,7 @@ def test_create_job_with_multiple_objects():
         'address_line2' : 'Sunset Town',
         'address_city' : 'Boston',
         'address_state' : 'MA',
-        'address_country' : 'USA',
+        'address_country' : 'US',
         'address_zip' : '02125'
     }
 
@@ -146,7 +146,7 @@ def test_create_postcard_parameters():
         'address_line2' : 'Sunset Town',
         'address_city' : 'Boston',
         'address_state' : 'MA',
-        'address_country' : 'USA',
+        'address_country' : 'US',
         'address_zip' : '02125'
     }
 
