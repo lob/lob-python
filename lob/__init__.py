@@ -9,7 +9,7 @@ import importer
 from exceptions import (
     APIError, APIConnectionError,
     InvalidRequestError, AuthenticationError
-)
+    )
 
 json = importer.import_json()
 _httplib, httplib = importer.import_requests()
@@ -77,7 +77,9 @@ def make_lob_object(response):
         'setting': Setting,
         'object': Object,
         'job': Job,
-        'postcard': Postcard
+        'postcard': Postcard,
+        'bank_account': BankAccount,
+        'check': Check
     }
 
     if not response:
@@ -233,7 +235,6 @@ class Object(ListableObject, GettableObject,
 
 
 class CreatableFormatObject(LobObject):
-
     @classmethod
     def format_data(cls, data, param_string):
         res = {}
@@ -308,3 +309,69 @@ class Postcard(ListableObject, GettableObject, CreatableFormatObject):
         data.update(**kwargs)
         return cls.make_request(method='POST', url_suffix=cls._base_url,
                                 data=data)
+
+
+class BankAccount(ListableObject, GettableObject, CreatableFormatObject):
+    # Represents a bank account
+
+    _base_url = 'bank_accounts'
+
+    @classmethod
+    def create(cls, routing_number, account_number,
+               bank_address, account_address, bank_code=None, **kwargs):
+
+        data = {
+            'routing_number': routing_number,
+            'account_number': account_number
+        }
+
+        if isinstance(bank_address, dict):
+            data.update(cls.format_data(data=bank_address, param_string='bank_address'))
+        else:
+            data['bank_address'] = bank_address
+
+        if isinstance(account_address, dict):
+            data.update(cls.format_data(data=account_address, param_string='account_address'))
+        else:
+            data['account_address'] = account_address
+
+        if bank_code:
+            data['bank_code'] = bank_code
+
+        data.update(**kwargs)
+        return cls.make_request(method='POST', url_suffix=cls._base_url, data=data)
+
+
+class Check(ListableObject, GettableObject, CreatableFormatObject):
+    # Represents a Check
+
+    _base_url = 'checks'
+
+    @classmethod
+    def create(cls, bank_account, to, amount, name=None, check_number=None,
+               message=None, memo=None, **kwargs):
+
+        data = {
+            'bank_account': bank_account,
+            'amount': amount,
+        }
+
+        if isinstance(to, dict):
+            data.update(cls.format_data(data=to, param_string='to'))
+        else:
+            data['to'] = to
+
+        if name:
+            data['name'] = name
+
+        if check_number:
+            data['check_number'] = check_number
+
+        if message:
+            data['message'] = message
+
+        if memo:
+            data['memo'] = memo
+
+        data.update(**kwargs)
+        return cls.make_request(method='POST', url_suffix=cls._base_url, data=data)
