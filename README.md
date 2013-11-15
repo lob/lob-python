@@ -290,7 +290,7 @@ print lob.Check.create(
     bank_account=lob.BankAccount.list(count=1)[0].id,
     to=to_address,
     amount=1000.00,
-    name='Paul Payer',
+    name='Demo Check',
     check_number=None,
     message='Hi Ralph. Thanks for your work. - Paul',
     memo='Services rendered.'

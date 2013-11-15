@@ -196,12 +196,12 @@ def test_create_check():
         bank_account=lob.BankAccount.list(count=1)[0].id,
         to=to_address,
         amount=1000.00,
-        name='Paul Payer',
+        name='Demo Check',
         check_number=None,
-        message='Hi Ralph. Thanks for your work.',
+        message='Hi Ralph. Thanks for your work. - Paul',
         memo='Services rendered.'
     ).to_dict()
 
 
 def test_find_check():
-    print lob.BankAccount.get(id=lob.BankAccount.list(count=1)[0].id)
+    print lob.Check.get(id=lob.Check.list(count=1)[0].id)
