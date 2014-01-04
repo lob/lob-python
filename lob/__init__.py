@@ -36,10 +36,10 @@ class LobRequestor(object):
     def __init__(self):
         self._api_key = api_key
 
-    def _make_requests_request(self, method, url_suffix, data):
+    def _make_requests_request(self, method, url_suffix, data, files={}):
         full_url = '%s%s' % (self._api_base_url, url_suffix)
 
-        r = self._method_fn_map.get(method)(url=full_url, data=data,
+        r = self._method_fn_map.get(method)(url=full_url, data=data, files=files
                                             auth=(self._api_key, ''))
         content = json.loads(r.content)
         error = content.get('error', content.get('errors', []))  # if any error
@@ -61,9 +61,9 @@ class LobRequestor(object):
             raise APIError(error=error, http_body=r.text,
                            http_status=r.status_code, json_body=content)
 
-    def make_request(self, method, url_suffix, data={}):
+    def make_request(self, method, url_suffix, data={}, files={}):
         if _httplib == 'requests':
-            return self._make_requests_request(method=method, data=data,
+            return self._make_requests_request(method=method, data=data, files=files,
                                                url_suffix=url_suffix)
 
 
@@ -287,7 +287,7 @@ class Postcard(ListableObject, GettableObject, CreatableFormatObject):
     _base_url = 'postcards'
 
     @classmethod
-    def create(cls, name, to, message=None, back=None,
+    def create(cls, name, to, message=None, back=None, front=None,
                from_address=None, **kwargs):
 
         data = {
@@ -299,15 +299,31 @@ class Postcard(ListableObject, GettableObject, CreatableFormatObject):
             data['to'] = to
         if message:
             data['message'] = message
+
+        files = {}
+        import types   # move to top of file
         if back:
-            data['back'] = back
+            # if we get a string then pass in 'data'
+            # otherwise assume it's a file-like thing to go in 'files'
+            if type(back) in types.StringTypes:
+                data['back'] = back
+            else:
+                files['back'] = back
+        if front:
+            # if we get a string then pass in 'data'
+            # otherwise assume it's a file-like thing to go in 'files'
+            if type(front) in types.StringTypes:
+                data['front'] = front
+            else:
+                files['front'] = front
+
         if isinstance(from_address, dict):
             data.update(cls.format_data(data=from_address,
                                         param_string='from'))
         else:
             data['from'] = from_address
         data.update(**kwargs)
-        return cls.make_request(method='POST', url_suffix=cls._base_url,
+        return cls.make_request(method='POST', url_suffix=cls._base_url, files=files,
                                 data=data)
 
 
