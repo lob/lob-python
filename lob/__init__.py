@@ -144,7 +144,7 @@ class LobObject(object):
     def make_request(cls, method, url_suffix, data={}, files={}):
         requestor = LobRequestor()
         resp = requestor.make_request(method=method, url_suffix=url_suffix,
-                                      data=data, files={})
+                                      data=data, files=files)
         return make_lob_object(response=resp)
 
 
