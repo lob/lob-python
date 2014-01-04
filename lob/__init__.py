@@ -39,7 +39,7 @@ class LobRequestor(object):
     def _make_requests_request(self, method, url_suffix, data, files={}):
         full_url = '%s%s' % (self._api_base_url, url_suffix)
 
-        r = self._method_fn_map.get(method)(url=full_url, data=data, files=files
+        r = self._method_fn_map.get(method)(url=full_url, data=data, files=files,
                                             auth=(self._api_key, ''))
         content = json.loads(r.content)
         error = content.get('error', content.get('errors', []))  # if any error
