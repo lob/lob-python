@@ -178,7 +178,7 @@ lob.Job.get(id='job_52c74737ab41484090df') # Can find a Job based on its ID - Re
 Will return a `Job` instance if creation is successful
 
 ```python
-print lob.Job.create(name='Joe's First Job', to='adr_fa1b063697e25611',
+print lob.Job.create(name='Joe First Job', to='adr_fa1b063697e25611',
                      objects=lob.Object.list()[0].id,
                      from_address=lob.Address.list(count=1, offset=5)[0].id).to_dict()
 ```
@@ -186,9 +186,9 @@ print lob.Job.create(name='Joe's First Job', to='adr_fa1b063697e25611',
 As in the above call, you can see `to` and `from_address` are `Address` IDs and `objects` is a `Object` ID. You can specify these differently as well - passsing complete address parameters. Also, `objects` can be a list specifiying multiple `object` IDs or `object` parameters as well. The following code block will show each of these possibilities.
 
 ```python
-objects = [lob.Object.list()[0].id, {'name' : 'My Resume Job Object',
+object = [{'name' : 'My Resume Job Object',
                                      'file' : 'https://www.lob.com/goblue.pdf',
-                                     'setting_id' : lob.Setting.list()[0].id,
+                                     'setting_id' : '101',
                                      'quantity' : 1}] # The objects list can contain both object id as well as parameters
 
 from_address = {'name' : 'Joe Smith',
@@ -199,7 +199,7 @@ from_address = {'name' : 'Joe Smith',
                 'address_country' : 'US',
                 'address_zip' : '02125'}
 
-print lob.Job.create(name='Joe's Second Job', to='adr_fa1b063697e25611',
+print lob.Job.create(name='Joe Second Job', to='adr_fa1b063697e25611',
                             objects=objects, from_address='adr_fa1b063697e25611',
                             packaging_id='7').to_dict()
 ```
