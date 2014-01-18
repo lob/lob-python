@@ -44,7 +44,7 @@ Addresses work with the `Address` class and the objects returned are of this cla
 ### Create a new address
 
 ```python
-address = lob.Address.create(name='Siddharth Saha', address_line1='104, Printing Boulevard',
+address = lob.Address.create(name='Joe Smith', address_line1='104, Printing Boulevard',
                              address_city='Boston', address_state='MA', address_country='US',
                              address_zip='12345')
 print address.to_dict()
@@ -53,7 +53,7 @@ print address.to_dict()
 You can pass optional parameters as well while creating an address
 
 ```python
-print lob.Address.create(name='Siddharth Saha', address_line1='104, Printing Boulevard',
+print lob.Address.create(name='Joe Smith', address_line1='104, Printing Boulevard',
                          address_line2='Sunset Town', email='sidchilling@gmail.com',
                          address_city='Boston', address_state='MA', address_country='US',
                          address_zip='12345').to_dict()
@@ -75,10 +75,13 @@ lob.Address.list(count=5, offset=2)
 
 ### Find an Address
 
-You can query an address with its `ID` and you will get an `Address` object
+Returns an `Address` object
 
 ```python
-print lob.Address.get(id='<your-address-id>').to_dict()
+# You can query an address with its `ID`
+print lob.Address.get(id='adr_d46c8c8b67f826d5').to_dict()
+
+# or another way
 print lob.Address.get(id=lob.Address.list(count=1)[0].id).to_dict()
 ```
 
@@ -87,7 +90,7 @@ print lob.Address.get(id=lob.Address.list(count=1)[0].id).to_dict()
 You can delete an address with its `ID`
 
 ```python
-lob.Address.delete(id='<your-address-id>')
+lob.Address.delete(id='adr_d46c8c8b67f826d5')
 ```
 
 ## Address Verification
@@ -97,7 +100,7 @@ the super-class of all other classes. You can of course do a `to_dict()` and
 get the `dict` representation of a `LobObject` as well.
 
 ```python
-verify = lob.AddressVerify.verify(name='Siddharth Saha', email='sidchilling@gmail.com',
+verify = lob.AddressVerify.verify(name='Joe Smith', email='sidchilling@gmail.com',
                                   address_line1='220 William T Morrissey', address_city='Boston',
                                   address_state='MA', address_zip='02125', address_country='US')
 
@@ -154,9 +157,9 @@ Works on the `Object` class.
 ```python
 lob.Object.list() # Returns a list of Object objects
 lob.Object.list(count=4, offset=2) # Can specify count and offset
-lob.Object.delete(id='<your-object-id>') # Delete an object via it's ID
-lob.Object.create(name='Siddharth Saha', file='https://www.lob.com/goblue.pdf',
-                         setting_id='<setting-id>', quantity=1) # Will create an object and return its instance
+lob.Object.delete(id='obj_145e602887e61dfd') # Delete an object via it's ID
+lob.Object.create(name='Joe Smith', file='https://www.lob.com/goblue.pdf',
+                         setting_id='100', quantity=1) # Will create an object and return its instance
 ```
 
 ## Jobs
@@ -167,7 +170,7 @@ Works on the `Job` class.
 lob.Job.list() # Returns a list of Job objects
 lob.Job.list(count=5, offset=1) # Can specify count and offset as well
 lob.Job.list(count=5) # Can specify either offset or count as well
-lob.Job.get(id='<job-id>') # Can find a Job based on its ID - Returns a Job instance
+lob.Job.get(id='job_52c74737ab41484090df') # Can find a Job based on its ID - Returns a Job instance
 ```
 
 ### Creating Jobs
@@ -175,7 +178,7 @@ lob.Job.get(id='<job-id>') # Can find a Job based on its ID - Returns a Job inst
 Will return a `Job` instance if creation is successful
 
 ```python
-print lob.Job.create(name='Siddharth First Job', to=lob.Address.list(count=1)[0].id,
+print lob.Job.create(name='Joe's First Job', to='adr_fa1b063697e25611',
                      objects=lob.Object.list()[0].id,
                      from_address=lob.Address.list(count=1, offset=5)[0].id).to_dict()
 ```
@@ -183,12 +186,12 @@ print lob.Job.create(name='Siddharth First Job', to=lob.Address.list(count=1)[0]
 As in the above call, you can see `to` and `from_address` are `Address` IDs and `objects` is a `Object` ID. You can specify these differently as well - passsing complete address parameters. Also, `objects` can be a list specifiying multiple `object` IDs or `object` parameters as well. The following code block will show each of these possibilities.
 
 ```python
-objects = [lob.Object.list()[0].id, {'name' : 'Siddharth Job Object',
+objects = [lob.Object.list()[0].id, {'name' : 'My Resume Job Object',
                                      'file' : 'https://www.lob.com/goblue.pdf',
                                      'setting_id' : lob.Setting.list()[0].id,
                                      'quantity' : 1}] # The objects list can contain both object id as well as parameters
 
-from_address = {'name' : 'Siddharth Saha',
+from_address = {'name' : 'Joe Smith',
                 'address_line1' : '220 William T Morrissey',
                 'address_line2' : 'Sunset Town',
                 'address_city' : 'Boston',
@@ -196,10 +199,9 @@ from_address = {'name' : 'Siddharth Saha',
                 'address_country' : 'US',
                 'address_zip' : '02125'}
 
-print lob.Job.create(name='Siddharth Second Job', to=lob.Address.list(count=1)[0].id,
-                            objects=objects, from_address=from_address,
-                            packaging_id=lob.Packaging.list()[0].id,
-                            service_id=lob.Service.list()[0].id).to_dict()
+print lob.Job.create(name='Joe's Second Job', to='adr_fa1b063697e25611',
+                            objects=objects, from_address='adr_fa1b063697e25611',
+                            packaging_id='7').to_dict()
 ```
 
 The above code block also shows optional parameters that can be passed
@@ -222,15 +224,31 @@ You must either specify the `message` argument or the `back` argument (but not b
 print lob.Postcard.create(name='Siddharth Test Postcard', to=lob.Address.list(count=1)[0].id,
                            message='This is a standard test message',
                            front='https://www.lob.com/postcardfront.pdf',
-                           from_address=lob.Address.list(count=1, offset=4)[0].id).to_dict()
+                           from_address=from_address)
 
 # Specifying back and address as parameters (using from_address defined earlier in Job creation)
 print lob.Postcard.create(name='Siddharth New Test Postcard', to=lob.Address.list(count=1)[0].id,
                           front='https://www.lob.com/postcardfront.pdf',
                           back='https://www.lob.com/postcardback.pdf', from_address=from_address)
+
+# create a postcard using a local file
+lob.Postcard.create(name='MY Test Postcard', to={'name' : 'Bon Jovi',
+                'address_line1' : '220 William T Morrissey',
+                'address_line2' : 'Sunset Town',
+                'address_city' : 'Boston',
+                'address_state' : 'MA',
+                'address_country' : 'US',
+                'address_zip' : '02125'},
+                           message='This is a standard test message',
+                           front=open('test.pdf','rb'),
+                           from_address={'name' : 'Michelle Obama',
+                'address_line1' : '220 William T Morrissey',
+                'address_line2' : 'Sunset Town',
+                'address_city' : 'Boston',
+                'address_state' : 'MA',
+                'address_country' : 'US',
+                'address_zip' : '02125'}).to_dict()
 ```
-
-
 ## Bank Account
 
 Works on the `BankAccount` class.
