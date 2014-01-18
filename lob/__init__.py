@@ -62,6 +62,7 @@ class LobRequestor(object):
                            http_status=r.status_code, json_body=content)
 
     def make_request(self, method, url_suffix, data={}, files={}):
+
         if _httplib == 'requests':
             return self._make_requests_request(method=method, data=data, files=files,
                                                url_suffix=url_suffix)
@@ -141,10 +142,10 @@ class LobObject(object):
         return d
 
     @classmethod
-    def make_request(cls, method, url_suffix, data={}):
+    def make_request(cls, method, url_suffix, data={}, files={}):
         requestor = LobRequestor()
         resp = requestor.make_request(method=method, url_suffix=url_suffix,
-                                      data=data)
+                                      data=data, files=files)
         return make_lob_object(response=resp)
 
 
@@ -188,7 +189,7 @@ class CreatableObject(LobObject):
     @classmethod
     def create(cls, **kwargs):
         return cls.make_request(method='POST', url_suffix=cls._base_url,
-                                data=kwargs)
+                                data=kwargs, files={})
 
 
 class Service(ListableObject):
@@ -293,6 +294,8 @@ class Postcard(ListableObject, GettableObject, CreatableFormatObject):
         data = {
             'name': name
         }
+
+        files = {}
         if isinstance(to, dict):
             data.update(cls.format_data(data=to, param_string='to'))
         else:
@@ -300,7 +303,7 @@ class Postcard(ListableObject, GettableObject, CreatableFormatObject):
         if message:
             data['message'] = message
 
-        files = {}
+
         import types   # move to top of file
         if back:
             # if we get a string then pass in 'data'
@@ -323,8 +326,9 @@ class Postcard(ListableObject, GettableObject, CreatableFormatObject):
         else:
             data['from'] = from_address
         data.update(**kwargs)
-        return cls.make_request(method='POST', url_suffix=cls._base_url, files=files,
-                                data=data)
+
+        return cls.make_request(method='POST', url_suffix=cls._base_url,
+                                data=data, files=files)
 
 
 class BankAccount(ListableObject, GettableObject, CreatableFormatObject):
