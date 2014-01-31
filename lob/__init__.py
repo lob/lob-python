@@ -184,7 +184,7 @@ class RemovableObject(LobObject):
 
 
 class CreatableObject(LobObject):
-    # Represents objects which can be creared
+    # Represents objects which can be created
 
     @classmethod
     def create(cls, **kwargs):
