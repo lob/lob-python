@@ -5,7 +5,7 @@ except ImportError:
 
 setup(
         name = 'lob-python',
-        version = '1.0',
+        version = '1.1',
         author = 'Siddharth Saha',
         author_email = 'sidchilling@gmail.com',
         packages = ['lob'],
