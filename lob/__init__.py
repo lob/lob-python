@@ -285,6 +285,8 @@ class Job(ListableObject, GettableObject, CreatableFormatObject):
                                         param_string='from'))
         else:
             data['from'] = from_address
+
+        files = {}
         if isinstance(objects, list):
             index = 1
             for obj in objects:
@@ -292,14 +294,19 @@ class Job(ListableObject, GettableObject, CreatableFormatObject):
                     query = 'object%s' % (index)
                     data.update(cls.format_data(data=obj,
                                                 param_string=query))
+                    
+                    if not type(obj['file']) in types.StringTypes:
+                        files[query + '[file]'] = obj['file']
+                        data.pop(query + '[file]', None)
                 else:
                     data['object%s' % (index)] = obj
                 index = index + 1
         else:
             data['object1'] = objects
+
         data.update(kwargs)
         return cls.make_request(method='POST', url_suffix=cls._base_url,
-                                data=data)
+                                data=data, files=files)
 
 
 class Postcard(ListableObject, GettableObject, CreatableFormatObject):

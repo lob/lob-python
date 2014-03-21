@@ -102,6 +102,16 @@ def test_create_job():
                          objects=lob.Object.list()[0].id, from_address=lob.Address.list(count=1,
                                                                                         offset=5)[0].id).to_dict()
 
+def test_create_job_with_local_file():
+    obj = [{
+        'name': 'Lcoal File',
+        'file': open('tests/test.pdf', 'rb'),
+        'setting_id': 100,
+        'quantity': 1
+    }]
+
+    print lob.Job.create(name='Test', objects=obj, to=lob.Address.list(count=1)[0].id, from_address=lob.Address.list(count=1)[0].id)
+
 def test_create_job_with_multiple_objects():
     # Can specify address as parameters instead of ID and can have multiple objects (both id and parameters)
     objects = [lob.Object.list()[0].id, {

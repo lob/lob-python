@@ -188,7 +188,7 @@ print lob.Job.create(name='Joe First Job', to='adr_fa1b063697e25611',
 As in the above call, you can see `to` and `from_address` are `Address` IDs and `objects` is a `Object` ID. You can specify these differently as well - passsing complete address parameters. Also, `objects` can be a list specifiying multiple `object` IDs or `object` parameters as well. The following code block will show each of these possibilities.
 
 ```python
-object = [{'name' : 'My Resume Job Object',
+obj = [{'name' : 'My Resume Job Object',
                                      'file' : 'https://www.lob.com/goblue.pdf',
                                      'setting_id' : '101',
                                      'quantity' : 1}] # The objects list can contain both object id as well as parameters
@@ -202,7 +202,28 @@ from_address = {'name' : 'Joe Smith',
                 'address_zip' : '02125'}
 
 print lob.Job.create(name='Joe Second Job', to='adr_fa1b063697e25611',
-                            objects=objects, from_address='adr_fa1b063697e25611',
+                            objects=obj, from_address='adr_fa1b063697e25611',
+                            packaging_id='7').to_dict()
+```
+
+You can also pass a local file object when reating a job.
+
+```python
+local_obj = [{'name' : 'My Local File Object',
+                                     'file' : '/path/to/local/file',
+                                     'setting_id' : '100',
+                                     'quantity' : 1}]
+
+from_address = {'name' : 'Joe Smith',
+                'address_line1' : '220 William T Morrissey',
+                'address_line2' : 'Sunset Town',
+                'address_city' : 'Boston',
+                'address_state' : 'MA',
+                'address_country' : 'US',
+                'address_zip' : '02125'}
+
+print lob.Job.create(name='Joe Local File Job', to='adr_fa1b063697e25611',
+                            objects=local_obj, from_address='adr_fa1b063697e25611',
                             packaging_id='7').to_dict()
 ```
 
