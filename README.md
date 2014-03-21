@@ -160,6 +160,8 @@ lob.Object.list(count=4, offset=2) # Can specify count and offset
 lob.Object.delete(id='obj_145e602887e61dfd') # Delete an object via it's ID
 lob.Object.create(name='Joe Smith', file='https://www.lob.com/goblue.pdf',
                          setting_id='100', quantity=1) # Will create an object and return its instance
+lob.Object.create(name='Local File Object', file=open('/path/to/local/file', 'rb'),
+                         setting_id='100', quantity=1) # Will create an object with a local file and return its instance
 ```
 
 ## Jobs

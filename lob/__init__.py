@@ -6,6 +6,7 @@ __author__ = 'Siddharth Saha (sidchilling@gmail.com)'
 # Imports
 import logging
 import importer
+import types
 from exceptions import (
     APIError, APIConnectionError,
     InvalidRequestError, AuthenticationError
@@ -234,6 +235,25 @@ class Object(ListableObject, GettableObject,
 
     _base_url = 'objects'
 
+    @classmethod
+    def create(cls, name, file, setting_id, quantity=1, double_sided=0, full_bleed=0, **kwargs):
+        data = {
+            'name': name,
+            'setting_id': setting_id,
+            'quantity': quantity,
+            'double_sided': double_sided,
+            'full_bleed': full_bleed
+        }
+
+        files = {}
+
+        if type(file) in types.StringTypes:
+            data['file'] = file
+        else:
+            files['file'] = file
+
+        return cls.make_request(method='POST', url_suffix=cls._base_url,
+            data=data, files=files)
 
 class CreatableFormatObject(LobObject):
     @classmethod
@@ -303,8 +323,6 @@ class Postcard(ListableObject, GettableObject, CreatableFormatObject):
         if message:
             data['message'] = message
 
-
-        import types   # move to top of file
         if back:
             # if we get a string then pass in 'data'
             # otherwise assume it's a file-like thing to go in 'files'
