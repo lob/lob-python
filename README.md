@@ -205,6 +205,7 @@ print lob.Job.create(name='Joe Second Job', to='adr_fa1b063697e25611',
                             objects=obj, from_address='adr_fa1b063697e25611',
                             packaging_id='7').to_dict()
 ```
+The above code block also shows optional parameters that can be passed
 
 You can also pass a local file object when reating a job.
 
@@ -226,8 +227,6 @@ print lob.Job.create(name='Joe Local File Job', to='adr_fa1b063697e25611',
                             objects=local_obj, from_address='adr_fa1b063697e25611',
                             packaging_id='7').to_dict()
 ```
-
-The above code block also shows optional parameters that can be passed
 
 ## Postcard
 
