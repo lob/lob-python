@@ -12,8 +12,8 @@ Installation
 You can use `pip` or `easy_install` for installing the package.
 
 ```
-pip install lob-python
-easy_install lob-python
+pip install lob
+easy_install lob
 ```
 
 Testing
