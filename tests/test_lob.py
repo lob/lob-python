@@ -79,11 +79,11 @@ def test_delete_object():
 
 def test_create_object():
     print lob.Object.create(name='Siddharth Object', file='https://www.lob.com/goblue.pdf',
-                            setting_id=lob.Setting.list()[0].id, quantity=1).to_dict()
+                            setting_id=100, quantity=1).to_dict()
 
 def test_create_object_with_local_file():
     print lob.Object.create(name='Local File Object', file=open('tests/test.pdf','rb'),
-                            setting_id=100, quantity = 1).to_dict()
+                            setting_id=100, quantity=1).to_dict()
 
 def test_job_list():
     print lob.Job.list()
@@ -114,10 +114,15 @@ def test_create_job_with_local_file():
 
 def test_create_job_with_multiple_objects():
     # Can specify address as parameters instead of ID and can have multiple objects (both id and parameters)
-    objects = [lob.Object.list()[0].id, {
-        'name': 'Siddharth Job Object',
+    objects = [{
+        'name': 'Job Object1',
         'file': 'https://www.lob.com/goblue.pdf',
-        'setting_id': lob.Setting.list()[0].id,
+        'setting_id': 100,
+        'quantity': 1
+    }, {
+        'name': 'Job Object2',
+        'file': 'https://www.lob.com/goblue.pdf',
+        'setting_id': 100,
         'quantity': 1
     }]
 
@@ -132,9 +137,7 @@ def test_create_job_with_multiple_objects():
     }
 
     print lob.Job.create(name='Siddharth Second Job', to=lob.Address.list(count=1)[0].id,
-                         objects=objects, from_address=from_address,
-                         packaging_id=lob.Packaging.list()[0].id,
-                         service_id=lob.Service.list()[0].id).to_dict()
+                         objects=objects, from_address=from_address).to_dict()
 
 
 def test_list_postcards():
