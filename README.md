@@ -1,5 +1,7 @@
-lob-python [![Build Status](https://travis-ci.org/lob/lob-python.png?branch=master)](https://travis-ci.org/lob/lob-python)
+Lob Python Wrapper
 ==========
+[![Build Status](https://travis-ci.org/lob/lob-python.png?branch=master)](https://travis-ci.org/lob/lob-python) [![PyPI version](https://badge.fury.io/py/lob.svg)](http://badge.fury.io/py/lob)
+
 
 This is the python wrapper for the lob.com API.
 
