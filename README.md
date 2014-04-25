@@ -1,6 +1,6 @@
 Lob Python Wrapper
 ==========
-[![Build Status](https://travis-ci.org/lob/lob-python.png?branch=master)](https://travis-ci.org/lob/lob-python) [![PyPI version](https://badge.fury.io/py/lob.svg)](http://badge.fury.io/py/lob) [![Downloads](https://pypip.in/d/lob/badge.png)](https://crate.io/packages/lob)
+[![Build Status](https://travis-ci.org/lob/lob-python.png?branch=master)](https://travis-ci.org/lob/lob-python) [![PyPI version](https://badge.fury.io/py/lob.svg)](http://badge.fury.io/py/lob) [![Downloads](https://pypip.in/d/lob/badge.png)](https://crate.io/packages/lob) [![Coverage Status](https://coveralls.io/repos/lob/lob-python/badge.png?branch=master)](https://coveralls.io/r/lob/lob-python?branch=master)
 
 
 This is the python wrapper for the lob.com API.
