@@ -72,7 +72,7 @@ class ListableAPIResource(APIResource):
   def list(cls, **params):
     requestor = api_requestor.APIRequestor()
     response = requestor.request('get', cls.url, params)
-    return lob_format(response['data'])
+    return lob_format(response)
 
 class DeleteableAPIResource(APIResource):
   @classmethod
@@ -81,6 +81,18 @@ class DeleteableAPIResource(APIResource):
     response = requestor.request('delete', '%s/%s' % (cls.url, id))
     return lob_format(response)
 
-class Address(ListableAPIResource, DeleteableAPIResource):
+class CreateableAPIResource(APIResource):
+  @classmethod
+  def create(cls, **params):
+    requestor = api_requestor.APIRequestor()
+    response = requestor.request('post', cls.url, params)
+    return lob_format(response)
+
+class Address(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
   url = '/addresses'
-  pass
+
+class BankAccount(ListableAPIResource, DeleteableAPIResource):
+  url = '/bank_accounts'
+
+class Object(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
+  url = '/objects'

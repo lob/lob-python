@@ -26,8 +26,19 @@ class APIRequestor(object):
       return self.parse_response(
           requests.get(lob.api_base + url, auth=(self.api_key, ''), params=params)
       )
-    if method == 'delete':
+    elif method == 'delete':
       return self.parse_response(
         requests.delete(lob.api_base + url, auth=(self.api_key, ''))
+      )
+    elif method == 'post':
+      data = {}
+      files = {}
+      for k,v in params.iteritems():
+        if isinstance(v, file):
+          files[k] = v
+        else:
+          data[k] = v
+      return self.parse_response(
+        requests.post(lob.api_base + url, auth=(self.api_key, ''), data=data, files=files)
       )
 
