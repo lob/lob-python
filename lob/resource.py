@@ -91,7 +91,7 @@ class CreateableAPIResource(APIResource):
 class Address(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
   url = '/addresses'
 
-class BankAccount(ListableAPIResource, DeleteableAPIResource):
+class BankAccount(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
   url = '/bank_accounts'
 
 class Object(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):

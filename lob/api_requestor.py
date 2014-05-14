@@ -1,6 +1,7 @@
 import requests
 import lob
 import json
+import resource
 from lob import error
 
 class APIRequestor(object):
@@ -33,11 +34,24 @@ class APIRequestor(object):
     elif method == 'post':
       data = {}
       files = {}
+      explodedParams = {}
+
       for k,v in params.iteritems():
+        if isinstance(v, dict) and not isinstance(v, resource.LobObject):
+          for k2,v2 in v.iteritems():
+            explodedParams[k + '[' + k2 + ']'] = v2
+        else:
+          explodedParams[k] = v
+
+      for k,v in explodedParams.iteritems():
         if isinstance(v, file):
           files[k] = v
         else:
-          data[k] = v
+          if isinstance(v, resource.LobObject):
+            data[k] = v.id
+          else:
+            data[k] = v
+
       return self.parse_response(
         requests.post(lob.api_base + url, auth=(self.api_key, ''), data=data, files=files)
       )
