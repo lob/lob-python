@@ -207,7 +207,7 @@ print lob.Job.create(name='Joe Second Job', to='adr_fa1b063697e25611',
 ```
 The above code block also shows optional parameters that can be passed
 
-You can also pass a local file object when reating a job.
+You can also pass a local file object when creating a job.
 
 ```python
 local_obj = [{'name' : 'My Local File Object',
