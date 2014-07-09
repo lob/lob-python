@@ -175,6 +175,32 @@ def test_create_postcard_parameters():
                               from_address=from_address).to_dict()
 
 
+def test_create_postcard_parameters_local_file():
+    from_address = {
+        'name': 'Siddharth Saha',
+        'address_line1': '220 William T Morrissey',
+        'address_line2': 'Sunset Town',
+        'address_city': 'Boston',
+        'address_state': 'MA',
+        'address_country': 'US',
+        'address_zip': '02125'
+    }
+
+    import requests
+    import StringIO
+
+    front_pdf_url = 'https://www.lob.com/postcardfront.pdf'
+    back_pdf_url = 'https://www.lob.com/postcardback.pdf'
+    back_content = requests.get(back_pdf_url).content
+    local_back_file = StringIO.StringIO(back_content)
+
+    print lob.Postcard.create(name='Siddharth New Test Postcard',
+                              to=lob.Address.list(count=1)[0].id,
+                              front=front_pdf_url,
+                              back=local_back_file,  # now from local
+                              from_address=from_address).to_dict()
+
+
 def test_list_bank_accounts():
     print lob.BankAccount.list()
 

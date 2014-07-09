@@ -239,7 +239,8 @@ lob.Postcard.list(count=5, offset=3) # Can also pass count and offset
 
 ### Creating a postcard
 
-You must either specify the `message` argument or the `back` argument (but not both). Both `to` and `from_address` addresses can contain Address ID or Address parameters (as in creation of Job).
+You must either specify the `message` argument or the `back` argument (but not both). Both `to` and `from_address` addresses can contain Address ID or Address parameters (as in creation of Job).  The `front` and `back` arguments
+can each either be a URL or a Python file-like object (for uploading local files or in-memory file buffers).
 
 ```python
 # Specifying message
@@ -247,6 +248,12 @@ print lob.Postcard.create(name='Siddharth Test Postcard', to=lob.Address.list(co
                            message='This is a standard test message',
                            front='https://www.lob.com/postcardfront.pdf',
                            from_address=from_address)
+
+# Specifying front as a local file
+print lob.Postcard.create(name='Siddharth Test Postcard', to=lob.Address.list(count=1)[0].id, 
+                           message='This is a standard test message', 
+                           front=open('localdir/postcardfront.pdf','rb'), 
+                           from_address=lob.Address.list(count=1, offset=4)[0].id).to_dict()
 
 # Specifying back and address as parameters (using from_address defined earlier in Job creation)
 print lob.Postcard.create(name='Siddharth New Test Postcard', to=lob.Address.list(count=1)[0].id,
