@@ -21,4 +21,7 @@ log = logging.getLogger('lob')
 api_key = None
 
 # Resources
-from lob.resource import (Address,BankAccount,Object)
+from lob.resource import (Address,BankAccount,Object,Check,Postcard,Job,
+  Service,Setting,State,Country,Verification)
+
+from lob.version import VERSION

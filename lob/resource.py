@@ -96,3 +96,27 @@ class BankAccount(ListableAPIResource, DeleteableAPIResource, CreateableAPIResou
 
 class Object(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
   url = '/objects'
+
+class Check(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
+  url = '/checks'
+
+class Postcard(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
+  url = '/postcards'
+
+class Job(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
+  url = '/jobs'
+
+class Service(ListableAPIResource):
+  url = '/services'
+
+class Setting(ListableAPIResource):
+  url = '/settings'
+
+class State(ListableAPIResource):
+  url = '/states'
+
+class Country(ListableAPIResource):
+  url = '/countries'
+
+class Verification(CreateableAPIResource):
+  url = '/verify'
