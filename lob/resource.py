@@ -1,5 +1,9 @@
 from lob import api_requestor
 import json
+from exceptions import (
+    APIError, APIConnectionError,
+    InvalidRequestError, AuthenticationError
+    )
 
 def lob_format(resp):
   types = {'address': Address, 'object': Object}
