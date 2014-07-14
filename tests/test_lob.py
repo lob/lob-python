@@ -7,19 +7,19 @@ lob.api_key = 'test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc'
 # Create an address
 
 def test_address():
-    address = lob.Address.create(name='Siddharth Saha', address_line1='104, Printing Boulevard',
+    address = lob.Address.create(name='Lob', address_line1='104, Printing Boulevard',
                                  address_city='Boston', address_state='MA', address_country='US',
                                  address_zip='12345')
-    print address.to_dict()
+    print address
 
 
 def test_address_other_parameters():
     """Can also pass other parameters while creating an address"""
-    address = lob.Address.create(name='Siddharth Saha', address_line1='104, Printing Boulevard',
-                                 address_line2='Sunset Town', email='sidchilling@gmail.com',
+    address = lob.Address.create(name='Lob', address_line1='104, Printing Boulevard',
+                                 address_line2='Sunset Town', email='support@lob.com',
                                  address_city='Boston', address_state='MA', address_country='US',
                                  address_zip='12345')
-    print address.to_dict()
+    print address
 
 
 def test_list_addresses():

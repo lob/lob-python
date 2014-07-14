@@ -2,8 +2,7 @@ from lob import api_requestor
 import json
 
 def lob_format(resp):
-  types = {'address': Address}
-
+  types = {'address': Address, 'object': Object}
   if isinstance(resp, list):
     return [lob_format(i) for i in resp]
   elif isinstance(resp, dict) and not isinstance(resp, LobObject):
@@ -105,6 +104,19 @@ class Postcard(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource
 
 class Job(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
   url = '/jobs'
+  @classmethod
+  def create(cls, **params):
+    if not isinstance(params['objects'], list):
+      params['objects'] = [params['objects']]
+    i = 1
+    for obj in params['objects']:
+      params['object' + str(i)] = obj
+      i = i + 1
+    params.pop('objects', None)
+    return super(Job, cls).create(**params)
+
+class Packaging(ListableAPIResource):
+  url='/packagings'
 
 class Service(ListableAPIResource):
   url = '/services'
