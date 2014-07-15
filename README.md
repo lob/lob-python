@@ -173,6 +173,9 @@ lob.Object.create(
     setting_id='100',
     quantity=1
 )
+
+# Delete an object via it's ID
+lob.Object.delete(<id>)
 ```
 
 ## Jobs
@@ -265,48 +268,97 @@ lob.Job.create(
 )
 ```
 
-## Postcard
-
-Works on the `Postcard` class.
+## Postcards
 
 ```python
-lob.Postcard.list() # Returns a list of Postcard objects
-lob.Postcard.list(count=5, offset=3) # Can also pass count and offset
-```
+# Returns a list of Postcard objects
+lob.Postcard.list()
 
-### Creating a postcard
+# Can specify count and offset as well
+lob.Postcard.list(count=5, offset=1)
 
-You must either specify the `message` argument or the `back` argument (but not both). Both `to` and `from_address` addresses can contain Address ID or Address parameters (as in creation of Job).
+#Retrieve a specific postcard by id
+lob.Postcard.retrieve(<id>)
 
-```python
-# Specifying message
-print lob.Postcard.create(name='Siddharth Test Postcard', to=lob.Address.list(count=1)[0].id,
-                           message='This is a standard test message',
-                           front='https://www.lob.com/postcardfront.pdf',
-                           from_address=from_address)
+#Create Job Using IDs for Address
+lob.Postcard.create(
+    to_address=<address_id>,
+    from_address=<address_id>,
+    front = 'https://www.lob.com/test.pdf',
+    back = 'https://www.lob.com/test.pdf'
+)
 
-# Specifying back and address as parameters (using from_address defined earlier in Job creation)
-print lob.Postcard.create(name='Siddharth New Test Postcard', to=lob.Address.list(count=1)[0].id,
-                          front='https://www.lob.com/postcardfront.pdf',
-                          back='https://www.lob.com/postcardback.pdf', from_address=from_address)
+#Create Job Using Inline Address
+lob.Postcard.create(
+    to_address = {
+        'name': 'Lob',
+        'address_line1': '185 Berry Street',
+        'address_line2': 'Suite 1510',
+        'address_city': 'San Francisco',
+        'address_state': 'CA',
+        'address_zip': '94107',
+        'address_country': 'US'
+    },
+    from_address = {
+        'name': 'Lob',
+        'address_line1': '185 Berry Street',
+        'address_line2': 'Suite 1510',
+        'address_city': 'San Francisco',
+        'address_state': 'CA',
+        'address_zip': '94107',
+        'address_country': 'US'
+    },
+    front = 'https://www.lob.com/test.pdf',
+    back = 'https://www.lob.com/test.pdf'
+)
 
-# create a postcard using a local file
-lob.Postcard.create(name='MY Test Postcard', to={'name' : 'Bon Jovi',
-                'address_line1' : '220 William T Morrissey',
-                'address_line2' : 'Sunset Town',
-                'address_city' : 'Boston',
-                'address_state' : 'MA',
-                'address_country' : 'US',
-                'address_zip' : '02125'},
-                           message='This is a standard test message',
-                           front=open('test.pdf','rb'),
-                           from_address={'name' : 'Michelle Obama',
-                'address_line1' : '220 William T Morrissey',
-                'address_line2' : 'Sunset Town',
-                'address_city' : 'Boston',
-                'address_state' : 'MA',
-                'address_country' : 'US',
-                'address_zip' : '02125'}).to_dict()
+#Create Job Using Inline Address and Local File
+lob.Postcard.create(
+    to_address = {
+        'name': 'Lob',
+        'address_line1': '185 Berry Street',
+        'address_line2': 'Suite 1510',
+        'address_city': 'San Francisco',
+        'address_state': 'CA',
+        'address_zip': '94107',
+        'address_country': 'US'
+    },
+    from_address = {
+        'name': 'Lob',
+        'address_line1': '185 Berry Street',
+        'address_line2': 'Suite 1510',
+        'address_city': 'San Francisco',
+        'address_state': 'CA',
+        'address_zip': '94107',
+        'address_country': 'US'
+    },
+    front = open('/path/to/local/file', 'rb'),
+    back = open('/path/to/local/file', 'rb')
+)
+
+#Create Postcard with Message Instead of Back
+lob.Postcard.create(
+    to_address = {
+        'name': 'Lob',
+        'address_line1': '185 Berry Street',
+        'address_line2': 'Suite 1510',
+        'address_city': 'San Francisco',
+        'address_state': 'CA',
+        'address_zip': '94107',
+        'address_country': 'US'
+    },
+    from_address = {
+        'name': 'Lob',
+        'address_line1': '185 Berry Street',
+        'address_line2': 'Suite 1510',
+        'address_city': 'San Francisco',
+        'address_state': 'CA',
+        'address_zip': '94107',
+        'address_country': 'US'
+    },
+    front = open('/path/to/local/file', 'rb'),
+    message = 'Hello this is the message!'
+)
 ```
 ## Bank Account
 
