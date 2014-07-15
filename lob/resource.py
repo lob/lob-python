@@ -3,18 +3,21 @@ import json
 
 def lob_format(resp):
     types = {
-            'address': Address,
-            'bank_account': BankAccount,
-            'check': Check,
-            'job': Job,
-            'object': Object,
-            'postcard': Postcard
-            }
-    if isinstance(resp, list):
-        return [lob_format(i) for i in resp]
-    elif isinstance(resp, dict) and not isinstance(resp, LobObject):
+        'address': Address,
+        'bank_account': BankAccount,
+        'check': Check,
+        'job': Job,
+        'object': Object,
+        'postcard': Postcard
+    }
+
+    #Recursively Set Objects for Lists
+    if isinstance(resp, dict) and 'object' in resp and resp['object'] == 'list':
+        resp['data'] = [lob_format(i) for i in resp['data']]
+        return LobObject.construct_from(resp)
+    if isinstance(resp, dict) and not isinstance(resp, LobObject):
         resp = resp.copy()
-        klass_name = resp.get('object')
+        klass_name = resp['object']
         if isinstance(klass_name, basestring):
             klass = types.get(klass_name, LobObject)
         else:
