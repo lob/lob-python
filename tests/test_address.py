@@ -10,51 +10,59 @@ class TestAddressFunctions(unittest.TestCase):
 
     def test_list_addresses(self):
         addresses = lob.Address.list()
-        self.assertEqual(addresses)
-#
-#    def test_bad_address(self):
-#        self.assertRaises(lob.error.InvalidRequestError, lob.Address.create)
-#
-#    def test_address(self):
-#        address = lob.Address.create(name='Lob', address_line1='104, Printing Boulevard',
-#                address_city='Boston', address_state='MA', address_country='US',
-#                address_zip='12345')
-#        print address
-#
-#
-#    def test_address_other_parameters(self):
-#        """Can also pass other parameters while creating an address"""
-#        address = lob.Address.create(name='Lob', address_line1='104, Printing Boulevard',
-#                address_line2='Sunset Town', email='support@lob.com',
-#                address_city='Boston', address_state='MA', address_country='US',
-#                address_zip='12345')
-#        print address
-#
-#
-#    def test_list_addresses(self):
-#        print lob.Address.list()
-#
-#
-#    def test_list_addresses_count_offset(self):
-#        # Can also pass count and offset
-#        print lob.Address.list(count=5, offset=2)
-#
-#
-#    def test_find_address(self):
-#        print lob.Address.retrieve(id=lob.Address.list(count=1).data[0].id)
-#
-#
-#    def test_delete_address(self):
-#        print lob.Address.delete(id=lob.Address.list(count=1).data[0].id)
-#
-#
-#    def test_address_verification(self):
-#        print lob.Verification.create(name='Lob',
-#                email='support@lob.com',
-#                address_line1='220 William T Morrissey',
-#                address_city='Boston',
-#                address_state='MA',
-#                address_zip='02125',
-#                address_country='US'
-#                )
-#
+        self.assertTrue(isinstance(addresses.data[0], lob.Address))
+        self.assertEqual(addresses.object, 'list')
+
+    def test_list_addresses_limit(self):
+        addresses = lob.Address.list(count=2)
+        self.assertTrue(isinstance(addresses.data[0], lob.Address))
+        self.assertEqual(len(addresses.data), 2)
+
+    def test_list_address_fail(self):
+        self.assertRaises(lob.error.InvalidRequestError, lob.Address.list, count=1000)
+
+    def test_create_address(self):
+        address = lob.Address.create(
+            name='Lob',
+            address_line1='185 Berry Street',
+            address_line2='Suite 1510',
+            address_city='San Francisco',
+            address_zip='94017',
+            address_state='CA',
+            address_country='US'
+        )
+
+        self.assertTrue(isinstance(address, lob.Address))
+        self.assertEqual(address.name, 'Lob')
+
+    def test_create_addresss_fail(self):
+        self.assertRaises(lob.error.InvalidRequestError, lob.Address.create)
+
+    def test_retrieve_address(self):
+        address = lob.Address.retrieve(id=lob.Address.list().data[0].id)
+        self.assertTrue(isinstance(address, lob.Address))
+
+    def test_retrieve_address_fail(self):
+        self.assertRaises(lob.error.InvalidRequestError, lob.Address.retrieve, id='test')
+
+
+    def test_delete_address(self):
+        addr = lob.Address.list().data[0].id
+        delAddr = lob.Address.delete(id=addr)
+        self.assertEqual(addr, delAddr.id)
+
+
+    def test_address_verification(self):
+        addr = lob.Verification.create(name='Lob',
+            email='support@lob.com',
+            address_line1='220 William T Morrissey',
+            address_city='Boston',
+            address_state='MA',
+            address_zip='02125',
+            address_country='US'
+        )
+        print addr
+
+        self.assertEqual(addr.address.address_line1, '220 WILLIAM T MORRISSEY BLVD')
+
+

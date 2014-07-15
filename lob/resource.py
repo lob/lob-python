@@ -17,9 +17,8 @@ def lob_format(resp):
         return LobObject.construct_from(resp)
     if isinstance(resp, dict) and not isinstance(resp, LobObject):
         resp = resp.copy()
-        klass_name = resp['object']
-        if isinstance(klass_name, basestring):
-            klass = types.get(klass_name, LobObject)
+        if 'object' in resp and isinstance(resp['object'], basestring):
+            klass = types.get(resp['object'], LobObject)
         else:
             klass = LobObject
         return klass.construct_from(resp)
