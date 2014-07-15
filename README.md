@@ -44,19 +44,30 @@ Addresses work with the `Address` class and the objects returned are of this cla
 ### Create a new address
 
 ```python
-address = lob.Address.create(name='Joe Smith', address_line1='104, Printing Boulevard',
-                             address_city='Boston', address_state='MA', address_country='US',
-                             address_zip='12345')
-print address.to_dict()
+lob.Address.create(
+    name='Joe Smith', 
+    address_line1='104, Printing Boulevard',
+    address_city='Boston', 
+    address_state='MA', 
+    address_country='US',
+    address_zip='12345'
+)
 ```
 
 You can pass optional parameters as well while creating an address
 
 ```python
-print lob.Address.create(name='Joe Smith', address_line1='104, Printing Boulevard',
-                         address_line2='Sunset Town', email='sidchilling@gmail.com',
-                         address_city='Boston', address_state='MA', address_country='US',
-                         address_zip='12345').to_dict()
+lob.Address.create(
+    name='Joe Smith', 
+    email='support@lob.com',
+    phone='555-555-5555',
+    address_line1='104, Printing Boulevard',
+    address_line2='Sunset Town', email='sidchilling@gmail.com',
+    address_city='Boston', 
+    address_state='MA', 
+    address_country='US',
+    address_zip='12345'
+)
 ```
 
 ### List Addresses
@@ -79,10 +90,10 @@ Returns an `Address` object
 
 ```python
 # You can query an address with its `ID`
-print lob.Address.get(id='adr_d46c8c8b67f826d5').to_dict()
+lob.Address.retrieve(id='adr_d46c8c8b67f826d5')
 
-# or another way
-print lob.Address.get(id=lob.Address.list(count=1)[0].id).to_dict()
+#or another way
+lob.Address.retrieve('adr_d46c8c8b67f826d5')
 ```
 
 ### Delete an Address
@@ -91,6 +102,9 @@ You can delete an address with its `ID`
 
 ```python
 lob.Address.delete(id='adr_d46c8c8b67f826d5')
+
+#or another way
+lob.Address.delete('adr_d46c8c8b67f826d5')
 ```
 
 ## Address Verification
@@ -100,13 +114,16 @@ the super-class of all other classes. You can of course do a `to_dict()` and
 get the `dict` representation of a `LobObject` as well.
 
 ```python
-verify = lob.AddressVerify.verify(name='Joe Smith', email='sidchilling@gmail.com',
-                                  address_line1='220 William T Morrissey', address_city='Boston',
-                                  address_state='MA', address_zip='02125', address_country='US')
-
-print verify.to_dict()
+lob.Verification.create(
+    name='Lob',
+    address_line1='185 Berry Street',
+    address_line2='Suite 1510',
+    address_city='San Francisco',
+    address_state='CA',
+    address_zip='94107',
+    address_country='US
+)
 ```
-
 ## Setting
 
 Works on the `Setting` class.
