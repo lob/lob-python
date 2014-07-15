@@ -39,8 +39,6 @@ lob.api_key = 'your-api-key'
 
 ## Addresses
 
-### Create a new address
-
 ```python
 #List addresses
 lob.Address.list()
@@ -112,9 +110,7 @@ This will output:
   "message": "Default address: The address you entered was found but more information is needed (such as an apartment, suite, or box number) to match to a specific address."
 }
 ```
-## Setting
-
-### List all Settings
+## Settings
 
 ```python
 #List All Settings
@@ -134,9 +130,7 @@ print lob.Setting.retrieve(100)
 lob.Service.list()
 ```
 
-## Packaging
-
-### List all packagings
+## Packagings
 
 ```python
 #List All Packagings
@@ -299,7 +293,7 @@ lob.Postcard.create(
     back = 'https://www.lob.com/test.pdf'
 )
 
-#Create Job Using Inline Address
+#Create Postcard Using Inline Addresses
 lob.Postcard.create(
     to_address = {
         'name': 'Lob',
@@ -323,7 +317,7 @@ lob.Postcard.create(
     back = 'https://www.lob.com/test.pdf'
 )
 
-#Create Job Using Inline Address and Local File
+#Create Postcard Using Inline Addresses and Local File
 lob.Postcard.create(
     to_address = {
         'name': 'Lob',
@@ -371,7 +365,7 @@ lob.Postcard.create(
     message = 'Hello this is the message!'
 )
 ```
-## Bank Account
+## Bank Accounts
 
 ```python
 # Returns a list of BankAccount objects
@@ -418,50 +412,41 @@ lob.BankAccount.create(
 lob.BankAccount.delete(<id>) 
 ```
 
-## Check
-
-Works on the `Check` class.
+## Checks
 
 ```python
-lob.Check.list() # Returns a list of Check objects
-lob.Check.list(count=5, offset=3) # Can also pass count and offset
-lob.Check.get(id='<check-id>') # Can find a check based on its ID - Returns a Check instance.
+# Returns a list of Check objects
+lob.Check.list()
+
+# Can specify count and offset as well
+lob.Check.list(count=5, offset=1) 
+
+#Retrieve a specific Check by id
+lob.Check.retrieve(<id>)
+
+#Create Check with Address Id 
+lob.Check.create(
+    name = 'Check Test',
+    to_address = <address_id>,
+    bank_account = <bank_account_id>,
+    amount = 1000,
+    memo = 'Services Rendered'
+)
+
+#Create Check with Inline Address
+lob.Check.create(
+    name = 'Check Test',
+    to_address = {
+        'name': 'Lob',
+        'address_line1': '185 Berry Street',
+        'address_line2': 'Suite 1510',
+        'address_city': 'San Francisco',
+        'address_state': 'CA',
+        'address_zip': '94107',
+        'address_country': 'US'
+    },
+    bank_account = <bank_account_id>,
+    amount = 1000,
+    memo = 'Services Rendered'
+)
 ```
-
-### Creating a check
-
-```python
-to_address = {
-    'name': 'Ralph Receiver',
-    'address_line1': '1234 E Grant St',
-    'address_line2': None,
-    'address_city': 'Tucson',
-    'address_state': 'AZ',
-    'address_country': 'US',
-    'address_zip': '85712'
-}
-
-print lob.Check.create(
-    bank_account=lob.BankAccount.list(count=1)[0].id,
-    to=to_address,
-    amount=1000.00,
-    name='Demo Check',
-    check_number=None,
-    message='Hi Ralph. Thanks for your work. - Paul',
-    memo='Services rendered.'
-).to_dict()
-```
-
-`name` (optional): Description name for the check. E.g. 'Demo Check'
-
-`check_number` (optional): Checks will default starting at 10000 and increment accordingly.
-
-`bank_account` (required): Must be a bank account ID.
-
-`to` (required): Must either be an address ID or an array with correct address parameters. If an array is used, an address will be created for you and returned with an ID.
-
-`amount` (required): The payment amount to be sent.
-
-`message` (optional): Max of 400 characters to be included on the top of the check.
-
-`memo` (optional): Max of 40 characters to be included on the memo line of the check.
