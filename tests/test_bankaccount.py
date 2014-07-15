@@ -21,6 +21,8 @@ class BankAccountFunctions(unittest.TestCase):
     def test_list_bankAccounts_fail(self):
         self.assertRaises(lob.error.InvalidRequestError, lob.BankAccount.list, count=1000)
 
+    def test_create_bankAccount_fail(self):
+        self.assertRaises(lob.error.InvalidRequestError, lob.BankAccount.create)
 
     def test_create_bankAccount(self):
         bankAccount = lob.BankAccount.create(

@@ -103,7 +103,7 @@ class BankAccount(ListableAPIResource, DeleteableAPIResource, CreateableAPIResou
 class Object(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
     url = '/objects'
 
-class Check(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
+class Check(ListableAPIResource, CreateableAPIResource):
     url = '/checks'
 
 class Postcard(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
