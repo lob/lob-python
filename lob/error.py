@@ -1,20 +1,20 @@
 class LobError(Exception):
 
-  def __init__(self, message=None, http_body=None, http_status=None,
-                json_body=None):
-    super(LobError, self).__init__(message)
-    self.http_body = http_body
-    self.http_status = http_status
-    self.json_body = json_body
+    def __init__(self, message=None, http_body=None, http_status=None,
+        json_body=None):
+        super(LobError, self).__init__(message)
+        self.http_body = http_body
+        self.http_status = http_status
+        self.json_body = json_body
 
 class APIError(LobError):
-  pass
+    pass
 
 class APIConnectionError(LobError):
-  pass
+    pass
 
 class AuthenticationError(LobError):
-  pass
+    pass
 
 class InvalidRequestError(LobError):
-  pass
+    pass

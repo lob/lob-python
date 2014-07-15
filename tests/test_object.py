@@ -5,7 +5,7 @@ lob.api_key = 'test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc'
 
 class ObjectFunctions(unittest.TestCase):
     def setUp(self):
-      lob.api_key = 'test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc'
+        lob.api_key = 'test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc'
 
     def test_list_objects(self):
         print lob.Object.list()
@@ -25,9 +25,9 @@ class ObjectFunctions(unittest.TestCase):
 
     def test_create_object(self):
         print lob.Object.create(name='Test Object', file='https://www.lob.com/test.pdf',
-                                setting_id=201, quantity=1)
+                setting_id=201, quantity=1)
 
-    def test_create_object_with_local_file(self):
-        print lob.Object.create(name='Local File Object', file=open('tests/test.pdf','rb'),
-                                setting_id=100, quantity=1)
+        def test_create_object_with_local_file(self):
+            print lob.Object.create(name='Local File Object', file=open('tests/test.pdf','rb'),
+                    setting_id=100, quantity=1)
 

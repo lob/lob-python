@@ -6,24 +6,24 @@ import lob
 
 class TestAddressFunctions(unittest.TestCase):
     def setUp(self):
-      lob.api_key = 'test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc'
+        lob.api_key = 'test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc'
 
     def test_bad_address(self):
-      self.assertRaises(lob.error.InvalidRequestError, lob.Address.create)
+        self.assertRaises(lob.error.InvalidRequestError, lob.Address.create)
 
     def test_address(self):
         address = lob.Address.create(name='Lob', address_line1='104, Printing Boulevard',
-                                    address_city='Boston', address_state='MA', address_country='US',
-                                    address_zip='12345')
+                address_city='Boston', address_state='MA', address_country='US',
+                address_zip='12345')
         print address
 
 
     def test_address_other_parameters(self):
         """Can also pass other parameters while creating an address"""
         address = lob.Address.create(name='Lob', address_line1='104, Printing Boulevard',
-                                    address_line2='Sunset Town', email='support@lob.com',
-                                    address_city='Boston', address_state='MA', address_country='US',
-                                    address_zip='12345')
+                address_line2='Sunset Town', email='support@lob.com',
+                address_city='Boston', address_state='MA', address_country='US',
+                address_zip='12345')
         print address
 
 
@@ -46,11 +46,11 @@ class TestAddressFunctions(unittest.TestCase):
 
     def test_address_verification(self):
         print lob.Verification.create(name='Lob',
-                                    email='support@lob.com',
-                                    address_line1='220 William T Morrissey',
-                                    address_city='Boston',
-                                    address_state='MA',
-                                    address_zip='02125',
-                                    address_country='US'
-                                    )
+                email='support@lob.com',
+                address_line1='220 William T Morrissey',
+                address_city='Boston',
+                address_state='MA',
+                address_zip='02125',
+                address_country='US'
+                )
 
