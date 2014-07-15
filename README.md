@@ -39,82 +39,56 @@ lob.api_key = 'your-api-key'
 
 ## Addresses
 
-Addresses work with the `Address` class and the objects returned are of this class.
-
 ### Create a new address
 
 ```python
+#List addresses
+lob.Address.list()
+
+#List Addresses with Count and Offset
+lob.Address.list(count=5, offset=2)
+
+# You can query an address with its `ID`
+lob.Address.retrieve(id=<id>)
+
+#or another way
+lob.Address.retrieve(<id>)
+
+#Basic Address Create
 lob.Address.create(
-    name='Joe Smith', 
+    name='Joe Smith',
     address_line1='104, Printing Boulevard',
-    address_city='Boston', 
-    address_state='MA', 
+    address_city='Boston',
+    address_state='MA',
     address_country='US',
     address_zip='12345'
 )
-```
 
-You can pass optional parameters as well while creating an address
-
-```python
+#Create Address with Optional Parameters
 lob.Address.create(
-    name='Joe Smith', 
+    name='Joe Smith',
     email='support@lob.com',
     phone='555-555-5555',
     address_line1='104, Printing Boulevard',
     address_line2='Sunset Town', email='sidchilling@gmail.com',
-    address_city='Boston', 
-    address_state='MA', 
+    address_city='Boston',
+    address_state='MA',
     address_country='US',
     address_zip='12345'
 )
-```
 
-### List Addresses
-
-Will return a `list` of `Address` objects
-
-```python
-lob.Address.list()
-```
-
-You can also pass `count` and `offset` parameters (or either one of them)
-
-```python
-lob.Address.list(count=5, offset=2)
-```
-
-### Find an Address
-
-Returns an `Address` object
-
-```python
-# You can query an address with its `ID`
-lob.Address.retrieve(id='adr_d46c8c8b67f826d5')
+#Delete an address
+lob.Address.delete(<id>)
 
 #or another way
-lob.Address.retrieve('adr_d46c8c8b67f826d5')
-```
-
-### Delete an Address
-
-You can delete an address with its `ID`
-
-```python
-lob.Address.delete(id='adr_d46c8c8b67f826d5')
-
-#or another way
-lob.Address.delete('adr_d46c8c8b67f826d5')
+lob.Address.delete(<id>)
 ```
 
 ## Address Verification
 
-You can verify an Address - this API will call return a `LobObject` which is
-the super-class of all other classes. You can of course do a `to_dict()` and
-get the `dict` representation of a `LobObject` as well.
-
 ```python
-lob.Verification.create(
+#You can verify an address using the following code:
+print lob.Verification.create(
     name='Lob',
     address_line1='185 Berry Street',
     address_line2='Suite 1510',
@@ -124,125 +98,171 @@ lob.Verification.create(
     address_country='US
 )
 ```
+This will output:
+```bash
+{
+  "address": {
+    "address_city": "SAN FRANCISCO",
+    "address_country": "US",
+    "address_line1": "185 BERRY ST STE 1510",
+    "address_line2": "",
+    "address_state": "CA",
+    "address_zip": "94107-5705"
+  },
+  "message": "Default address: The address you entered was found but more information is needed (such as an apartment, suite, or box number) to match to a specific address."
+}
+```
 ## Setting
-
-Works on the `Setting` class.
 
 ### List all Settings
 
-This will return a `list` of `Setting` objects.
-
 ```python
-print lob.Setting.list()
-```
+#List All Settings
+lob.Setting.list()
 
-### Find a Setting
+#Retrieve a Setting
+print lob.Setting.retrieve(id=100)
 
-```python
-print lob.Setting.get(id='<setting-id>').to_dict()
-print lob.Setting.get(id=lob.Setting.list()[0].id).to_dict()
+#or another way
+print lob.Setting.retrieve(100)
 ```
 
 ## Services
 
-Works on the `Service` class.
-
-### List all Services
-
-Returns a `list` of `Service` objects
-
 ```python
-print lob.Service.list()
+#List All Services
+lob.Service.list()
 ```
 
 ## Packaging
 
-Works on the `Packaging` class.
-
 ### List all packagings
 
-Returns a `list` of `Packaging` objects
-
 ```python
-print lob.Packaging.list()
+#List All Packagings
+lob.Packaging.list()
 ```
 
 ## Objects
 
-Works on the `Object` class.
-
 ```python
-lob.Object.list() # Returns a list of Object objects
-lob.Object.list(count=4, offset=2) # Can specify count and offset
-lob.Object.delete(id='obj_145e602887e61dfd') # Delete an object via it's ID
-lob.Object.create(name='Joe Smith', file='https://www.lob.com/goblue.pdf',
-                         setting_id='100', quantity=1) # Will create an object and return its instance
-lob.Object.create(name='Local File Object', file=open('/path/to/local/file', 'rb'),
-                         setting_id='100', quantity=1) # Will create an object with a local file and return its instance
+# Returns a list of Object objects
+lob.Object.list()
+
+# Can specify count and offset
+lob.Object.list(count=4, offset=2)
+
+#Retrieve a specifc object
+lob.Object.retrieve(<id>)
+
+# Delete an object via it's ID
+lob.Object.delete(<id>)
+
+#Create an Object using a URL
+lob.Object.create(
+    name='Joe Smith',
+    file='https://www.lob.com/test.pdf',
+    setting_id='201',
+    quantity=1
+)
+
+#Create an Object using a local file
+lob.Object.create(
+    name='Local File Object',
+    file=open('/path/to/local/file', 'rb'),
+    setting_id='100',
+    quantity=1
+)
 ```
 
 ## Jobs
 
-Works on the `Job` class.
-
 ```python
-lob.Job.list() # Returns a list of Job objects
-lob.Job.list(count=5, offset=1) # Can specify count and offset as well
-lob.Job.list(count=5) # Can specify either offset or count as well
-lob.Job.get(id='job_52c74737ab41484090df') # Can find a Job based on its ID - Returns a Job instance
-```
+# Returns a list of Job objects
+lob.Job.list()
 
-### Creating Jobs
+# Can specify count and offset as well
+lob.Job.list(count=5, offset=1)
 
-Will return a `Job` instance if creation is successful
+#Retrieve a specific job by id
+lob.Job.retrieve(<id>)
 
-```python
-print lob.Job.create(name='Joe First Job', to='adr_fa1b063697e25611',
-                     objects=lob.Object.list()[0].id,
-                     from_address=lob.Address.list(count=1, offset=5)[0].id).to_dict()
-```
+#Create Job Using IDs for Address and Object
+lob.Job.create(
+    name='Joe First Job',
+    to_address=<address_id>,
+    from_address=<address_id>,
+    objects = <object_id>
+)
 
-As in the above call, you can see `to` and `from_address` are `Address` IDs and `objects` is a `Object` ID. You can specify these differently as well - passsing complete address parameters. Also, `objects` can be a list specifiying multiple `object` IDs or `object` parameters as well. The following code block will show each of these possibilities.
+#Create a Job Using Lob Python Objects
+addresses = lob.Address.list(count=2).data
+to_addr = addresses[0]
+from_addr = addresses[1]
+obj = lob.Object.list(count=1).data[0]
+lob.Job.create(
+    to_address = to_addr,
+    from_address = from_addr,
+    objects = obj
+)
 
-```python
-obj = [{'name' : 'My Resume Job Object',
-                                     'file' : 'https://www.lob.com/goblue.pdf',
-                                     'setting_id' : '101',
-                                     'quantity' : 1}] # The objects list can contain both object id as well as parameters
+#Create Job Using Inline Address and Object
+lob.Job.create(
+    to_address = {
+        'name': 'Lob',
+        'address_line1': '185 Berry Street',
+        'address_line2': 'Suite 1510',
+        'address_city': 'San Francisco',
+        'address_state': 'CA',
+        'address_zip': '94107',
+        'address_country': 'US'
+    },
+    from_address = {
+        'name': 'Lob',
+        'address_line1': '185 Berry Street',
+        'address_line2': 'Suite 1510',
+        'address_city': 'San Francisco',
+        'address_state': 'CA',
+        'address_zip': '94107',
+        'address_country': 'US'
+    },
+    objects = {
+        'name': 'Test Object',
+        'file': 'https://www.lob.com/test.pdf',
+        'setting_id': '201'
+    }
+)
 
-from_address = {'name' : 'Joe Smith',
-                'address_line1' : '220 William T Morrissey',
-                'address_line2' : 'Sunset Town',
-                'address_city' : 'Boston',
-                'address_state' : 'MA',
-                'address_country' : 'US',
-                'address_zip' : '02125'}
-
-print lob.Job.create(name='Joe Second Job', to='adr_fa1b063697e25611',
-                            objects=obj, from_address='adr_fa1b063697e25611',
-                            packaging_id='7').to_dict()
-```
-The above code block also shows optional parameters that can be passed
-
-You can also pass a local file object when reating a job.
-
-```python
-local_obj = [{'name' : 'My Local File Object',
-                                     'file' : '/path/to/local/file',
-                                     'setting_id' : '100',
-                                     'quantity' : 1}]
-
-from_address = {'name' : 'Joe Smith',
-                'address_line1' : '220 William T Morrissey',
-                'address_line2' : 'Sunset Town',
-                'address_city' : 'Boston',
-                'address_state' : 'MA',
-                'address_country' : 'US',
-                'address_zip' : '02125'}
-
-print lob.Job.create(name='Joe Local File Job', to='adr_fa1b063697e25611',
-                            objects=local_obj, from_address='adr_fa1b063697e25611',
-                            packaging_id='7').to_dict()
+#Create a Multi-Object Job
+lob.Job.create(
+    to_address = {
+        'name': 'Lob',
+        'address_line1': '185 Berry Street',
+        'address_line2': 'Suite 1510',
+        'address_city': 'San Francisco',
+        'address_state': 'CA',
+        'address_zip': '94107',
+        'address_country': 'US'
+    },
+    from_address = {
+        'name': 'Lob',
+        'address_line1': '185 Berry Street',
+        'address_line2': 'Suite 1510',
+        'address_city': 'San Francisco',
+        'address_state': 'CA',
+        'address_zip': '94107',
+        'address_country': 'US'
+    },
+    objects = [{
+        'name': 'Test Object 1',
+        'file': 'https://www.lob.com/test.pdf',
+        'setting_id': '201'
+    }, {
+        'name': 'Test Object 2',
+        'file': 'https://www.lob.com/test.pdf',
+        'setting_id': '201'
+    }]
+)
 ```
 
 ## Postcard
