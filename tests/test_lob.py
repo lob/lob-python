@@ -3,6 +3,8 @@ import lob
 # Setting the API key
 
 class TestLob(unittest.TestCase):
+    def setUp(self):
+        lob.api_key = 'asdf'
 
 def test_find_address():
     print lob.Address.get(id=lob.Address.list(count=1)[0].id).to_dict()
