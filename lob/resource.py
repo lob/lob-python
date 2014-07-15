@@ -1,4 +1,5 @@
 from lob import api_requestor
+from lob import error
 import json
 
 def lob_format(resp):
@@ -11,6 +12,14 @@ def lob_format(resp):
         'postcard': Postcard
     }
 
+    #Change Keys for To/From
+    if isinstance(resp, dict) and 'to' in resp:
+        resp['to_address'] = resp['to']
+        resp.pop('to', None)
+    if isinstance(resp, dict) and 'from' in resp:
+        resp['from_address'] = resp['from']
+        resp.pop('from', None)
+
     #Recursively Set Objects for Lists
     if isinstance(resp, dict) and 'object' in resp and resp['object'] == 'list':
         resp['data'] = [lob_format(i) for i in resp['data']]
@@ -21,6 +30,11 @@ def lob_format(resp):
             klass = types.get(resp['object'], LobObject)
         else:
             klass = LobObject
+
+        #Check For Arrays
+        for key in resp:
+            if isinstance(resp[key], list):
+                resp[key] = [lob_format(i) for i in resp[key]]
         return klass.construct_from(resp)
     else:
         return resp
@@ -100,19 +114,22 @@ class Address(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource)
 class BankAccount(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
     url = '/bank_accounts'
 
-class Object(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
-    url = '/objects'
-
 class Check(ListableAPIResource, CreateableAPIResource):
     url = '/checks'
 
-class Postcard(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
-    url = '/postcards'
+class Country(ListableAPIResource):
+    url = '/countries'
 
-class Job(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
+class Job(ListableAPIResource, CreateableAPIResource):
     url = '/jobs'
     @classmethod
     def create(cls, **params):
+        if 'from_address' not in params or 'to_address' not in params or 'objects' not in params:
+            raise error.InvalidRequestError('from_address, to_address, and objects are required')
+        params['from'] = params['from_address']
+        params.pop('from_address')
+        params['to'] = params['to_address']
+        params.pop('to_address')
         if not isinstance(params['objects'], list):
             params['objects'] = [params['objects']]
         i = 1
@@ -121,6 +138,12 @@ class Job(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
             i = i + 1
         params.pop('objects', None)
         return super(Job, cls).create(**params)
+
+class Object(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
+    url = '/objects'
+
+class Postcard(ListableAPIResource, CreateableAPIResource):
+    url = '/postcards'
 
 class Packaging(ListableAPIResource):
     url='/packagings'
@@ -133,9 +156,6 @@ class Setting(ListableAPIResource):
 
 class State(ListableAPIResource):
     url = '/states'
-
-class Country(ListableAPIResource):
-    url = '/countries'
 
 class Verification(CreateableAPIResource):
     url = '/verify'
