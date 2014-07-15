@@ -57,7 +57,7 @@ class LobObject(dict):
         try:
             return self[k]
         except KeyError, err:
-            raise AttributeError(k)
+            raise AttributeError(k) #pragma: no cover
 
     def __setattr__(self, k, v):
         self[k] = v
@@ -68,8 +68,8 @@ class LobObject(dict):
         if isinstance(self.get('object'), basestring):
             ident_parts.append(self.get('object'))
 
-        if isinstance(self.get('id'), basestring):
-            ident_parts.append('id=%s' % (self.get('id'),))
+        if isinstance(self.get('id'), basestring): #pragma: no cover
+            ident_parts.append('id=%s' % (self.get('id'),)) #pragma: no cover
 
         unicode_repr = '<%s at %s> JSON: %s' % (
             ' '.join(ident_parts), hex(id(self)), str(self))

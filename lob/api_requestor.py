@@ -20,7 +20,7 @@ class APIRequestor(object):
                 resp.content, resp.status_code, resp)
         else:
             raise error.APIError(payload['errors'][0]['message'],
-                resp.content, resp.status_code, resp)
+                    resp.content, resp.status_code, resp) #pragma: no cover
 
     def request(self, method, url, params=None):
         if method == 'get':
