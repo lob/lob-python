@@ -280,10 +280,21 @@ lob.Postcard.list(count=5, offset=1)
 #Retrieve a specific postcard by id
 lob.Postcard.retrieve(<id>)
 
-#Create Job Using IDs for Address
+#Create a Postcard Using IDs for Address
 lob.Postcard.create(
     to_address=<address_id>,
     from_address=<address_id>,
+    front = 'https://www.lob.com/test.pdf',
+    back = 'https://www.lob.com/test.pdf'
+)
+
+#Create a Postcard Using Lob Python Objects
+addresses = lob.Address.list(count=2).data
+to_addr = addresses[0]
+from_addr = addresses[1]
+lob.Postcard.create(
+    to_address = to_addr,
+    from_address = from_addr,
     front = 'https://www.lob.com/test.pdf',
     back = 'https://www.lob.com/test.pdf'
 )
@@ -362,35 +373,50 @@ lob.Postcard.create(
 ```
 ## Bank Account
 
-Works on the `BankAccount` class.
-
 ```python
-lob.BankAccount.list() # Returns a list of BankAccount objects
-lob.BankAccount.list(count=5, offset=3) # Can also pass count and offset
-lob.BankAccount.get(id='<bank-account-id>') # Can find a bank account based on its ID - Returns a BankAccount instance.
+# Returns a list of BankAccount objects
+lob.BankAccount.list()
+
+# Can specify count and offset as well
+lob.BankAccount.list(count=5, offset=1) 
+
+#Retrieve a specific BankAccount by id
+lob.BankAccount.retrieve(<id>) 
+
+#Create Bank Account Using Address Ids
+lob.BankAccount.create(
+    routing_number = '123456789',
+    account_number = '1234564789',
+    bank_address = <address_id>,
+    account_address = <address_id>
+)
+
+#Create Bank Account with Inline Addresses
+lob.BankAccount.create(
+    routing_number = '123456789',
+    account_number = '1234564789',
+    bank_address = {
+        'name': 'Bank Address',
+        'address_line1': '123 Wall Street',
+        'address_city': 'San Francisco',
+        'address_state': 'CA',
+        'address_zip': '94158',
+        'address_country': 'US'
+    },
+    account_address = {
+        'name': 'Lob',
+        'address_line1': '185 Berry Street',
+        'address_line2': 'Suite 1510',
+        'address_city': 'San Francisco',
+        'address_state': 'CA',
+        'address_zip': '94107',
+        'address_country': 'US'
+    }
+)
+
+#Delete a specific BankAccount by id
+lob.BankAccount.delete(<id>) 
 ```
-
-### Creating a bank account
-
-```python
-print lob.BankAccount.create(
-    routing_number='122100024',
-    account_number='123456789',
-    bank_address=lob.Address.list(count=1, offset=4)[0].id,
-    account_address=lob.Address.list(count=1)[0].id,
-    bank_code=None).to_dict()
-```
-
-`routing_number` (required): The bank's routing number
-
-`account_number` (required): The account number at the bank
-
-`bank_address` (required): The bank branch address. Must either be an address ID or an array with correct address parameters. If an array is used, an address will be created for you and returned with an ID.
-
-`account_address` (required): The address associated with your account. Must either be an address ID or an array with correct address parameters. If an array is used, an address will be created for you and returned with an ID.
-
-`bank_code` (optional): The bank code that is printed on your checks. Added for extra security. You can usually find this near the bank address on the check.
-
 
 ## Check
 
