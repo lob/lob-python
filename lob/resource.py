@@ -116,6 +116,14 @@ class BankAccount(ListableAPIResource, DeleteableAPIResource, CreateableAPIResou
 
 class Check(ListableAPIResource, CreateableAPIResource):
     url = '/checks'
+    @classmethod
+    def create(cls, **params):
+        if isinstance(params, dict):
+            if 'to_address' in params:
+                params['to'] = params['to_address']
+                params.pop('to_address')
+        return super(Check, cls).create(**params)
+
 
 class Country(ListableAPIResource):
     url = '/countries'
@@ -144,6 +152,17 @@ class Object(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
 
 class Postcard(ListableAPIResource, CreateableAPIResource):
     url = '/postcards'
+    @classmethod
+    def create(cls, **params):
+        if isinstance(params, dict):
+            if 'from_address' in params:
+                params['from'] = params['from_address']
+                params.pop('from_address')
+            if 'to_address' in params:
+                params['to'] = params['to_address']
+                params.pop('to_address')
+        return super(Postcard, cls).create(**params)
+
 
 class Packaging(ListableAPIResource):
     url='/packagings'

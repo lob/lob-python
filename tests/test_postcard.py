@@ -6,47 +6,84 @@ lob.api_key = 'test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc'
 class PostcardFunctions(unittest.TestCase):
     def setUp(self):
         lob.api_key = 'test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc'
+        self.addr = lob.Address.list(count=1).data[0]
 
     def test_list_postcards(self):
-        print lob.Postcard.list()
+        postcards = lob.Postcard.list()
+        self.assertTrue(isinstance(postcards.data[0], lob.Postcard))
+        self.assertEqual(postcards.object, 'list')
 
+    def test_list_postcards_limit(self):
+        postcards = lob.Postcard.list(count=2)
+        self.assertTrue(isinstance(postcards.data[0], lob.Postcard))
+        self.assertEqual(len(postcards.data), 2)
 
-    def test_list_postcards_offset_count(self):
-        print lob.Postcard.list(offset=2, count=1).data[0]
-
-
-    def test_find_postcard(self):
-        print lob.Postcard.retrieve(id=lob.Postcard.list(count=1).data[0].id)
-
+    def test_list_postcards_fail(self):
+        self.assertRaises(lob.error.InvalidRequestError, lob.Postcard.list, count=1000)
 
     def test_create_postcard(self):
-        print lob.Postcard.create(name='Lob Test Postcard', to=lob.Address.list(count=1).data[0].id,
-                message='This is a standard test message', front='https://www.lob.com/test.pdf',
-                from_address=lob.Address.list(count=1, offset=4).data[0].id)
+        postcard = lob.Postcard.create(
+            to_address = self.addr.id,
+            from_address = self.addr.id,
+            front = 'https://www.lob.com/test.pdf',
+            back = 'https://www.lob.com/test.pdf'
+        )
+        self.assertEqual(postcard.to_address.id, self.addr.id)
+        self.assertEqual(postcard.from_address.id, self.addr.id)
+        self.assertTrue(isinstance(postcard, lob.Postcard))
 
 
-    def test_create_postcard_parameters(self):
-        from_address = {
-                'name': 'Lob',
+    def test_create_postcard_lob_obj(self):
+        postcard = lob.Postcard.create(
+            to_address = self.addr,
+            from_address = self.addr,
+            front = 'https://www.lob.com/test.pdf',
+            back = 'https://www.lob.com/test.pdf'
+        )
+        self.assertEqual(postcard.to_address.id, self.addr.id)
+        self.assertEqual(postcard.from_address.id, self.addr.id)
+        self.assertTrue(isinstance(postcard, lob.Postcard))
+
+    def test_create_postcard_inline(self):
+        postcard = lob.Postcard.create(
+            to_address = {
+                'name': 'Lob1',
                 'address_line1': '185 Berry Street',
-                'address_line2': '',
+                'address_line2': 'Suite 1510',
                 'address_city': 'San Francisco',
-                'address_state': 'CA',
-                'address_country': 'US',
-                'address_zip': '94107'
-                }
+                'address_zip': '94107',
+                'address_state': 'CA'
+            },
+            from_address = {
+                'name': 'Lob2',
+                'address_line1': '185 Berry Street',
+                'address_line2': 'Suite 1510',
+                'address_city': 'San Francisco',
+                'address_zip': '94107',
+                'address_state': 'CA'
+            },
+            front = 'https://www.lob.com/test.pdf',
+            message = 'Hello'
+        )
+        self.assertEqual(postcard.to_address.name, 'Lob1')
+        self.assertEqual(postcard.from_address.name, 'Lob2')
+        self.assertTrue(isinstance(postcard, lob.Postcard))
 
-        print lob.Postcard.create(name='Lob New Test Postcard',
-                to=lob.Address.list(count=1).data[0].id, front='https://www.lob.com/test.pdf',
-                back='https://www.lob.com/test.pdf',
-                from_address=from_address)
+    def test_create_postcard_local_file(self):
+        postcard = lob.Postcard.create(
+            to_address = self.addr.id,
+            from_address = self.addr.id,
+            front = open('tests/pc.pdf', 'rb'),
+            back = open('tests/pc.pdf', 'rb')
+        )
+        self.assertTrue(isinstance(postcard, lob.Postcard))
 
-    def test_create_lob_object_pc(self):
-        addr = lob.Address.create(name='peter',
-            address_line1='124 Test',
-            address_city='San Francisco',
-            address_state='CA',
-            address_zip='94107')
+    def test_create_postcard_fail(self):
+        self.assertRaises(lob.error.InvalidRequestError, lob.Postcard.create)
 
-        pc = lob.Postcard.create(to=addr, front='https://www.lob.com/test.pdf', message="hello")
+    def test_retrieve_postcard(self):
+        postcard = lob.Postcard.retrieve(id=lob.Postcard.list().data[0].id)
+        self.assertTrue(isinstance(postcard, lob.Postcard))
 
+    def test_retrieve_postcard_fail(self):
+        self.assertRaises(lob.error.InvalidRequestError, lob.Postcard.retrieve, id='test')

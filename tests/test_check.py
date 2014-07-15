@@ -25,33 +25,33 @@ class CheckFunctions(unittest.TestCase):
         check = lob.Check.create(
             name = 'Test Check',
             bank_account = self.ba.id,
-            to = self.addr.id,
+            to_address = self.addr.id,
             amount = 1000,
             memo = 'Test Check'
         )
 
         self.assertTrue(isinstance(check, lob.Check))
         self.assertEqual(check.bank_account.id, self.ba.id)
-        self.assertEqual(check.to.id, self.addr.id)
+        self.assertEqual(check.to_address.id, self.addr.id)
 
     def test_create_check_lob_obj(self):
         check = lob.Check.create(
             name = 'Test Check',
             bank_account = self.ba,
-            to = self.addr,
+            to_address = self.addr,
             amount = 1000,
             memo = 'Test Check'
         )
 
         self.assertTrue(isinstance(check, lob.Check))
         self.assertEqual(check.bank_account.id, self.ba.id)
-        self.assertEqual(check.to.id, self.addr.id)
+        self.assertEqual(check.to_address.id, self.addr.id)
 
     def test_create_check_inline(self):
         check = lob.Check.create(
             name = 'Test Check',
             bank_account = self.ba,
-            to= {
+            to_address = {
                 'name': 'Lob',
                 'address_line1': '185 Berry Street',
                 'address_line2': 'Suite 1510',
@@ -65,7 +65,7 @@ class CheckFunctions(unittest.TestCase):
 
         self.assertTrue(isinstance(check, lob.Check))
         self.assertEqual(check.bank_account.id, self.ba.id)
-        self.assertEqual(check.to.name, 'Lob')
+        self.assertEqual(check.to_address.name, 'Lob')
 
     def test_create_check_fail(self):
         self.assertRaises(lob.error.InvalidRequestError, lob.Check.create)
