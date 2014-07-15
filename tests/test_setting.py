@@ -7,10 +7,15 @@ class SettingFunctions(unittest.TestCase):
         lob.api_key = 'test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc'
 
     def test_settings(self):
-        print lob.Setting.list()
+        settings = lob.Setting.list()
+        self.assertEqual(settings.object, 'list')
 
 
     def test_find_setting(self):
-        print lob.Setting.retrieve(id=lob.Setting.list().data[0].id)
+        setting = lob.Setting.retrieve(id=100)
+        self.assertEqual(setting.id, '100')
+
+    def test_find_setting_fail(self):
+        self.assertRaises(lob.error.InvalidRequestError, lob.Setting.retrieve, id='test')
 
 

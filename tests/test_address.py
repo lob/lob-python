@@ -61,8 +61,6 @@ class TestAddressFunctions(unittest.TestCase):
             address_zip='02125',
             address_country='US'
         )
-        print addr
 
         self.assertEqual(addr.address.address_line1, '220 WILLIAM T MORRISSEY BLVD')
-
 
