@@ -1,17 +1,25 @@
 try:
     from setuptools import setup
 except ImportError:
-    from distutils.core import setup
+    from disutils.core import setup
 
-setup(
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'lob'))
+from version import VERSION
+
+setup (
         name = 'lob',
-        version = '1.0',
+        version = VERSION,
         author = 'Lob',
         author_email = 'support@lob.com',
         packages = ['lob'],
-        url = 'https://pypi.python.org/pypi/lob',
+        description = 'Lob Python Bindings',
+        url = 'https://www.lob.com',
         license = 'MIT',
         install_requires = [
-            "requests"
+            'requests'
+            ],
+        test_suite = 'nose.collector',
+        test_requires = [
+            'Nose'
             ]
-    )
+        )
