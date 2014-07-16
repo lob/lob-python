@@ -1,6 +1,5 @@
 nose
 flake8
 requests
-unittest
 coverage
 coveralls
