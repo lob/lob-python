@@ -1,27 +1,8 @@
-# Lob Python Library
-
-__version__ = '1.0'
-__author__ = 'Siddharth Saha (sidchilling@gmail.com)'
-
-# Imports
-import logging
-import importer
-import types
-from exceptions import (
-    APIError, APIConnectionError,
-    InvalidRequestError, AuthenticationError
-    )
-
-json = importer.import_json()
-_httplib, httplib = importer.import_requests()
-
-log = logging.getLogger('lob')
-
-# Could be set globally
 api_key = None
+api_base = 'https://api.lob.com/v1'
 
-# Resources
-from lob.resource import (Address,BankAccount,Object,Check,Postcard,Job,Packaging,
-  Service,Setting,State,Country,Verification)
+#Resources
+from lob.resource import (Address, BankAccount, Check, Country, Job,
+    Object, Packaging, Postcard, Service, Setting, State, Verification)
 
 from lob.version import VERSION
