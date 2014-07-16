@@ -68,7 +68,7 @@ lob.Address.create(
     email='support@lob.com',
     phone='555-555-5555',
     address_line1='104, Printing Boulevard',
-    address_line2='Sunset Town', email='sidchilling@gmail.com',
+    address_line2='Sunset Town',
     address_city='Boston',
     address_state='MA',
     address_country='US',
