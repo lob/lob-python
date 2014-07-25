@@ -40,6 +40,10 @@ class ObjectFunctions(unittest.TestCase):
 
         self.assertTrue(isinstance(object, lob.Object))
         self.assertEqual(object.name, 'Test Object Inline')
+        self.assertRaises(AttributeError, lambda: object.nonexistent_key)
+        
+        object.name = "something new"
+        self.assertEqual(object.name, "something new")
 
     def test_create_object_fail(self):
         self.assertRaises(lob.error.InvalidRequestError, lob.Object.create)
