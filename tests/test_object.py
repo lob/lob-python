@@ -40,6 +40,7 @@ class ObjectFunctions(unittest.TestCase):
 
         self.assertTrue(isinstance(object, lob.Object))
         self.assertEqual(object.name, 'Test Object Inline')
+        self.assertRaises(KeyError, lambda: object.nonexistent_key)
 
     def test_create_object_fail(self):
         self.assertRaises(lob.error.InvalidRequestError, lob.Object.create)
