@@ -6,7 +6,7 @@ from lob import error
 
 class APIRequestor(object):
     def __init__(self, key=None):
-        self.api_key = lob.api_key
+        self.api_key = key or lob.api_key
 
     def parse_response(self, resp):
         payload = json.loads(resp.content)
