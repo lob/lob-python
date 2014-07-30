@@ -114,6 +114,16 @@ class Address(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource)
 
 class Area(ListableAPIResource, CreateableAPIResource):
     url = '/areas'
+    @classmethod
+    def create(cls, **params):
+        if isinstance(params, dict):
+            if 'routes' in params:
+                if isinstance(params['routes'], LobObject):
+                    routes = []
+                    for r in params['routes'].data[0]['routes']:
+                        routes.append(params['routes'].data[0]['zip_code'] + '-' + r["route"])
+                    params['routes'] = routes
+        return super(Area, cls).create(**params)
 
 class BankAccount(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
     url = '/bank_accounts'
