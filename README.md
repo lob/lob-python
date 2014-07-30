@@ -133,15 +133,27 @@ lob.Area.retrieve(id=<id>)
 #or another way
 lob.Area.retrieve(<id>)
 
-#Basic Area Create
+#Basic Area Create with Zip Codes
 lob.Area.create(
     name='Lob',
     front = 'https://www.lob.com/areafront.pdf',
     back = 'https://www.lob.com/areaback.pdf',
-    routes = '94158',
+    routes = ['94158','60031'],
     target_type = 'all',
     full_bleed = '1'
 )
+
+#Basic Area Create with Routes Object
+var routes = lob.Route.list(zip_codes=[94158,60031])
+lob.Area.create(
+    name='Lob',
+    front = 'https://www.lob.com/areafront.pdf',
+    back = 'https://www.lob.com/areaback.pdf',
+    routes = routes,
+    target_type = 'all',
+    full_bleed = '1'
+)
+
 
 #Create Area with Optional Parameters
 lob.Area.create(
