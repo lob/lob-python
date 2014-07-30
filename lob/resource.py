@@ -5,6 +5,7 @@ import json
 def lob_format(resp):
     types = {
         'address': Address,
+        'area': Area,
         'bank_account': BankAccount,
         'check': Check,
         'job': Job,
@@ -111,6 +112,9 @@ class CreateableAPIResource(APIResource):
 class Address(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
     url = '/addresses'
 
+class Area(ListableAPIResource, CreateableAPIResource):
+    url = '/areas'
+
 class BankAccount(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
     url = '/bank_accounts'
 
@@ -166,6 +170,9 @@ class Postcard(ListableAPIResource, CreateableAPIResource):
 
 class Packaging(ListableAPIResource):
     url='/packagings'
+
+class Route(ListableAPIResource):
+    url='/routes'
 
 class Service(ListableAPIResource):
     url = '/services'

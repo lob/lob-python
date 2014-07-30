@@ -69,8 +69,8 @@ class JobFunctions(unittest.TestCase):
                 'setting_id': '201'
             }
         )
-        self.assertEqual(job.to_address.name, 'LOB1')
-        self.assertEqual(job.from_address.name, 'LOB2')
+        self.assertEqual(job.to_address.name, 'Lob1')
+        self.assertEqual(job.from_address.name, 'Lob2')
         self.assertEqual(job.objects[0].name, 'Object1')
         self.assertTrue(isinstance(job, lob.Job))
 
