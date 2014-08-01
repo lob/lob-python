@@ -31,6 +31,18 @@ class AreaFunctions(unittest.TestCase):
         )
         self.assertTrue(isinstance(area, lob.Area))
 
+
+    def test_create_area_local_file(self):
+        area = lob.Area.create(
+            name = 'area_local_file',
+            front = open('tests/areafront.pdf', 'rb'),
+            back = open('tests/areaback.pdf', 'rb'),
+            routes = self.route,
+            target_type = 'all',
+            full_bleed = '1'
+        )
+        self.assertTrue(isinstance(area, lob.Area))
+
     def test_create_area_fail(self):
         self.assertRaises(lob.error.InvalidRequestError, lob.Area.create)
 
