@@ -5,6 +5,7 @@ import json
 def lob_format(resp):
     types = {
         'address': Address,
+        'area': Area,
         'bank_account': BankAccount,
         'check': Check,
         'job': Job,
@@ -111,6 +112,19 @@ class CreateableAPIResource(APIResource):
 class Address(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
     url = '/addresses'
 
+class Area(ListableAPIResource, CreateableAPIResource):
+    url = '/areas'
+    @classmethod
+    def create(cls, **params):
+        if isinstance(params, dict):
+            if 'routes' in params:
+                if isinstance(params['routes'], LobObject):
+                    routes = []
+                    for r in params['routes'].data[0]['routes']:
+                        routes.append(params['routes'].data[0]['zip_code'] + '-' + r["route"])
+                    params['routes'] = routes
+        return super(Area, cls).create(**params)
+
 class BankAccount(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
     url = '/bank_accounts'
 
@@ -166,6 +180,9 @@ class Postcard(ListableAPIResource, CreateableAPIResource):
 
 class Packaging(ListableAPIResource):
     url='/packagings'
+
+class Route(ListableAPIResource):
+    url='/routes'
 
 class Service(ListableAPIResource):
     url = '/services'

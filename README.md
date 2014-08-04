@@ -110,6 +110,59 @@ This will output:
   "message": "Default address: The address you entered was found but more information is needed (such as an apartment, suite, or box number) to match to a specific address."
 }
 ```
+
+## Routes
+
+```python
+#Retrieve routes for given zip codes
+lob.Route.list(zip_codes=[94158,60031])
+```
+
+## Areas
+
+```python
+#List areas
+lob.Area.list()
+
+#List Areas with Count and Offset
+lob.Area.list(count=5, offset=2)
+
+# You can query an area with its `ID`
+lob.Area.retrieve(id=<id>)
+
+#or another way
+lob.Area.retrieve(<id>)
+
+#Basic Area Create with Zip Codes
+lob.Area.create(
+    name='Lob',
+    front = 'https://www.lob.com/areafront.pdf',
+    back = 'https://www.lob.com/areaback.pdf',
+    routes = ['94158','60031'],
+    target_type = 'all',
+    full_bleed = '1'
+)
+
+#Basic Area Create with Routes Object
+var routes = lob.Route.list(zip_codes=[94158,60031])
+lob.Area.create(
+    name='Lob',
+    front = 'https://www.lob.com/areafront.pdf',
+    back = 'https://www.lob.com/areaback.pdf',
+    routes = routes,
+    target_type = 'all',
+    full_bleed = '1'
+)
+
+
+#Create Area with Optional Parameters
+lob.Area.create(
+    front = 'https://www.lob.com/areafront.pdf',
+    back = 'https://www.lob.com/areaback.pdf',
+    routes = '94158',
+)
+```
+
 ## Settings
 
 ```python
@@ -372,10 +425,10 @@ lob.Postcard.create(
 lob.BankAccount.list()
 
 # Can specify count and offset as well
-lob.BankAccount.list(count=5, offset=1) 
+lob.BankAccount.list(count=5, offset=1)
 
 #Retrieve a specific BankAccount by id
-lob.BankAccount.retrieve(<id>) 
+lob.BankAccount.retrieve(<id>)
 
 #Create Bank Account Using Address Ids
 lob.BankAccount.create(
@@ -409,7 +462,7 @@ lob.BankAccount.create(
 )
 
 #Delete a specific BankAccount by id
-lob.BankAccount.delete(<id>) 
+lob.BankAccount.delete(<id>)
 ```
 
 ## Checks
@@ -419,12 +472,12 @@ lob.BankAccount.delete(<id>)
 lob.Check.list()
 
 # Can specify count and offset as well
-lob.Check.list(count=5, offset=1) 
+lob.Check.list(count=5, offset=1)
 
 #Retrieve a specific Check by id
 lob.Check.retrieve(<id>)
 
-#Create Check with Address Id 
+#Create Check with Address Id
 lob.Check.create(
     name = 'Check Test',
     to_address = <address_id>,

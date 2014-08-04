@@ -69,8 +69,8 @@ class JobFunctions(unittest.TestCase):
                 'setting_id': '201'
             }
         )
-        self.assertEqual(job.to_address.name, 'LOB1')
-        self.assertEqual(job.from_address.name, 'LOB2')
+        self.assertEqual(job.to_address.name, 'Lob1')
+        self.assertEqual(job.from_address.name, 'Lob2')
         self.assertEqual(job.objects[0].name, 'Object1')
         self.assertTrue(isinstance(job, lob.Job))
 
@@ -78,12 +78,18 @@ class JobFunctions(unittest.TestCase):
         job = lob.Job.create(
             to_address = self.addr.id,
             from_address = self.addr.id,
-            objects = [self.obj.id, self.obj.id]
+            objects = [
+                {
+                    'name': 'Test Job',
+                    'file': open('tests/pc.pdf', 'rb'),
+                    'setting_id': 201,
+                    'quantity': 2
+                }
+            ]
         )
         self.assertEqual(job.to_address.id, self.addr.id)
         self.assertEqual(job.from_address.id, self.addr.id)
-        self.assertEqual(job.objects[0].id, self.obj.id)
-        self.assertEqual(job.objects[1].id, self.obj.id)
+        self.assertEqual(job.objects[0].quantity, 2)
         self.assertTrue(isinstance(job, lob.Job))
 
     def test_create_job_local_file(self):
