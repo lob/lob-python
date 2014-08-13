@@ -210,7 +210,8 @@ lob.Object.create(
     name='Joe Smith',
     file='https://www.lob.com/test.pdf',
     setting_id='201',
-    quantity=1
+    quantity=1,
+    double_sided=1
 )
 
 #Create an Object using a local file
@@ -218,7 +219,8 @@ lob.Object.create(
     name='Local File Object',
     file=open('/path/to/local/file', 'rb'),
     setting_id='100',
-    quantity=1
+    quantity=1,
+    double_sided=0
 )
 
 # Delete an object via it's ID
