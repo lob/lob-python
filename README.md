@@ -28,6 +28,9 @@ You can run all tests with the command `nosetests` in the main directory.
 Usage
 ======
 
+We've provided an example script you can run in examples/ that has examples of
+how to use the lob-python wrapper with some of our core endpoints.
+
 ## Intialization and Configuration
 
 To initialize the wrapper, import `lob` and set the `api_key`
