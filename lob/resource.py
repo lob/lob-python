@@ -84,7 +84,7 @@ class APIResource(LobObject):
     @classmethod
     def retrieve(cls, id, **params):
         requestor = api_requestor.APIRequestor()
-        response = requestor.request('get', '%s/%s' % (cls.url, id), params)
+        response = requestor.request('get', '%s/%s' % (cls.endpoint, id), params)
         return lob_format(response)
 
 # API Operations
@@ -92,28 +92,28 @@ class ListableAPIResource(APIResource):
     @classmethod
     def list(cls, **params):
         requestor = api_requestor.APIRequestor()
-        response = requestor.request('get', cls.url, params)
+        response = requestor.request('get', cls.endpoint, params)
         return lob_format(response)
 
 class DeleteableAPIResource(APIResource):
     @classmethod
     def delete(cls, id):
         requestor = api_requestor.APIRequestor()
-        response = requestor.request('delete', '%s/%s' % (cls.url, id))
+        response = requestor.request('delete', '%s/%s' % (cls.endpoint, id))
         return lob_format(response)
 
 class CreateableAPIResource(APIResource):
     @classmethod
     def create(cls, **params):
         requestor = api_requestor.APIRequestor()
-        response = requestor.request('post', cls.url, params)
+        response = requestor.request('post', cls.endpoint, params)
         return lob_format(response)
 
 class Address(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
-    url = '/addresses'
+    endpoint = '/addresses'
 
 class Area(ListableAPIResource, CreateableAPIResource):
-    url = '/areas'
+    endpoint = '/areas'
     @classmethod
     def create(cls, **params):
         if isinstance(params, dict):
@@ -126,10 +126,10 @@ class Area(ListableAPIResource, CreateableAPIResource):
         return super(Area, cls).create(**params)
 
 class BankAccount(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
-    url = '/bank_accounts'
+    endpoint = '/bank_accounts'
 
 class Check(ListableAPIResource, CreateableAPIResource):
-    url = '/checks'
+    endpoint = '/checks'
     @classmethod
     def create(cls, **params):
         if isinstance(params, dict):
@@ -140,10 +140,10 @@ class Check(ListableAPIResource, CreateableAPIResource):
 
 
 class Country(ListableAPIResource):
-    url = '/countries'
+    endpoint = '/countries'
 
 class Job(ListableAPIResource, CreateableAPIResource):
-    url = '/jobs'
+    endpoint = '/jobs'
     @classmethod
     def create(cls, **params):
         if 'from_address' not in params or 'to_address' not in params or 'objects' not in params:
@@ -162,10 +162,10 @@ class Job(ListableAPIResource, CreateableAPIResource):
         return super(Job, cls).create(**params)
 
 class Object(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
-    url = '/objects'
+    endpoint = '/objects'
 
 class Postcard(ListableAPIResource, CreateableAPIResource):
-    url = '/postcards'
+    endpoint = '/postcards'
     @classmethod
     def create(cls, **params):
         if isinstance(params, dict):
@@ -179,19 +179,19 @@ class Postcard(ListableAPIResource, CreateableAPIResource):
 
 
 class Packaging(ListableAPIResource):
-    url='/packagings'
+    endpoint = '/packagings'
 
 class Route(ListableAPIResource):
-    url='/routes'
+    endpoint = '/routes'
 
 class Service(ListableAPIResource):
-    url = '/services'
+    endpoint = '/services'
 
 class Setting(ListableAPIResource):
-    url = '/settings'
+    endpoint = '/settings'
 
 class State(ListableAPIResource):
-    url = '/states'
+    endpoint = '/states'
 
 class Verification(CreateableAPIResource):
-    url = '/verify'
+    endpoint = '/verify'
