@@ -33,7 +33,7 @@ class APIRequestor(object):
             )
         elif method == 'post':
             data = {}
-            files = {}
+            files = params.pop('files', {})
             explodedParams = {}
 
             for k,v in params.iteritems():
