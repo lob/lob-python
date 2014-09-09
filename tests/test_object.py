@@ -1,3 +1,4 @@
+from StringIO import StringIO
 import unittest
 import lob
 # Setting the API key
@@ -31,6 +32,16 @@ class ObjectFunctions(unittest.TestCase):
         self.assertTrue(isinstance(object, lob.Object))
         self.assertEqual(object.name, 'Test Object')
 
+    def test_create_object_stringio(self):
+        object = lob.Object.create(
+            name = 'Test Object StringIO',
+            file = StringIO(open('tests/pc.pdf', 'rb').read()),
+            setting_id = 201
+        )
+
+        self.assertTrue(isinstance(object, lob.Object))
+        self.assertEqual(object.name, 'Test Object StringIO')
+
     def test_create_object_local(self):
         object = lob.Object.create(
             name = 'Test Object Inline',
@@ -44,6 +55,16 @@ class ObjectFunctions(unittest.TestCase):
         
         object.name = "something new"
         self.assertEqual(object.name, "something new")
+
+    def test_create_directly_specify_files(self):
+        object = lob.Object.create(
+            name = 'Test Object Direct Specify',
+            files = {'file': open('tests/pc.pdf', 'rb').read()},
+            setting_id = 201
+        )
+
+        self.assertTrue(isinstance(object, lob.Object))
+        self.assertEqual(object.name, 'Test Object Direct Specify')
 
     def test_create_object_fail(self):
         self.assertRaises(lob.error.InvalidRequestError, lob.Object.create)
