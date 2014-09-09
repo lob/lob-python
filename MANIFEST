@@ -1,4 +1,5 @@
 setup.py
+VERSION
 lob/__init__.py
 lob/importer.py
 lob/exceptions.py
