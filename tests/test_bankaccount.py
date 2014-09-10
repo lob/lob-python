@@ -26,7 +26,7 @@ class BankAccountFunctions(unittest.TestCase):
 
     def test_create_bankAccount(self):
         bankAccount = lob.BankAccount.create(
-            routing_number='123456789',
+            routing_number='122100024',
             account_number='123456789',
             bank_address=self.addr.id,
             account_address=self.addr.id
@@ -36,7 +36,7 @@ class BankAccountFunctions(unittest.TestCase):
 
     def test_create_bankAccount_lob_obj(self):
         bankAccount = lob.BankAccount.create(
-            routing_number='123456789',
+            routing_number='122100024',
             account_number='123456789',
             bank_address=self.addr,
             account_address=self.addr
@@ -46,7 +46,7 @@ class BankAccountFunctions(unittest.TestCase):
 
     def test_create_bankAccount_inline(self):
         bankAccount = lob.BankAccount.create(
-            routing_number='123456789',
+            routing_number='122100024',
             account_number='123456789',
             bank_address= {
                 'name': 'Lob1',
