@@ -4,6 +4,17 @@ import json
 import resource
 from lob import error
 
+
+def _is_file_like(obj):
+    """
+    Checks if an object is file-like enough to be sent to requests.
+
+    In particular, file, StringIO and cStringIO objects are file-like.
+    Refs http://stackoverflow.com/questions/3450857/python-determining-if-an-object-is-file-like
+    """
+    return hasattr(obj, 'read') and hasattr(obj, 'seek')
+
+
 class APIRequestor(object):
     def __init__(self, key=None):
         self.api_key = key or lob.api_key
@@ -33,7 +44,7 @@ class APIRequestor(object):
             )
         elif method == 'post':
             data = {}
-            files = {}
+            files = params.pop('files', {})
             explodedParams = {}
 
             for k,v in params.iteritems():
@@ -44,7 +55,7 @@ class APIRequestor(object):
                     explodedParams[k] = v
 
             for k,v in explodedParams.iteritems():
-                if isinstance(v, file):
+                if _is_file_like(v):
                     files[k] = v
                 else:
                     if isinstance(v, resource.LobObject):

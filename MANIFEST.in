@@ -1,0 +1,2 @@
+include VERSION setup.py
+recursive-include lob *.py

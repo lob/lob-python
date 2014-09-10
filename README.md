@@ -226,6 +226,16 @@ lob.Object.create(
     double_sided=0
 )
 
+#Create an Object using a file-like object.
+from StringIO import StringIO
+lob.Object.create(
+    name='File-Like Object',
+    file=StringIO(compute_pdf_data()),
+    setting_id='100',
+    quantity=1,
+    double_sided=0
+)
+
 # Delete an object via it's ID
 lob.Object.delete(<id>)
 ```
