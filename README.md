@@ -518,3 +518,9 @@ lob.Check.create(
     memo = 'Services Rendered'
 )
 ```
+
+## Creating a PDF
+
+We recommed using [python-pdfkit](https://github.com/JazzCore/python-pdfkit) to generate PDFs using HTML input. This depends on having [wkhtmltopdf](http://wkhtmltopdf.org/) installed.
+
+You can find an example [here](examples/create_pdf.py)
