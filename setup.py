@@ -5,13 +5,9 @@ try:
 except ImportError:
     from disutils.core import setup
 
-
-with open(os.path.join(os.path.split(__file__)[0], 'VERSION'), 'r') as f:
-    version = f.read().strip()
-
 setup (
         name = 'lob',
-        version = version,
+        version = '2.4',
         author = 'Lob',
         author_email = 'support@lob.com',
         packages = ['lob'],
