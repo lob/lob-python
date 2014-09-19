@@ -31,6 +31,22 @@ Usage
 We've provided an example script you can run in examples/ that has examples of
 how to use the lob-python wrapper with some of our core endpoints.
 
+Supported Image Types
+--------
+The lob.com API supports the following image types:
+
+- PDF
+- PNG
+- JPEG
+
+For more information on prepping the images please see the [Lob documentation](https://lob.com/docs#prepping)
+
+## Creating a PDF
+
+We recommed using [python-pdfkit](https://github.com/JazzCore/python-pdfkit) to generate PDFs using HTML input. This depends on having [wkhtmltopdf](http://wkhtmltopdf.org/) installed.
+
+You can find an example [here](examples/create_pdf.py)
+
 ## Intialization and Configuration
 
 To initialize the wrapper, import `lob` and set the `api_key`
@@ -519,8 +535,4 @@ lob.Check.create(
 )
 ```
 
-## Creating a PDF
 
-We recommed using [python-pdfkit](https://github.com/JazzCore/python-pdfkit) to generate PDFs using HTML input. This depends on having [wkhtmltopdf](http://wkhtmltopdf.org/) installed.
-
-You can find an example [here](examples/create_pdf.py)
