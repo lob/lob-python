@@ -3,7 +3,7 @@ import lob
 import json
 import resource
 from lob import error
-
+from version import VERSION
 
 def _is_file_like(obj):
     """
@@ -34,13 +34,19 @@ class APIRequestor(object):
                     resp.content, resp.status_code, resp) #pragma: no cover
 
     def request(self, method, url, params=None):
+        headers = {
+            'User-Agent': 'Lob/v1 PythonBindings/%s' % VERSION
+        }
+
+        print headers
+
         if method == 'get':
             return self.parse_response(
-                requests.get(lob.api_base + url, auth=(self.api_key, ''), params=params)
+                requests.get(lob.api_base + url, auth=(self.api_key, ''), params=params, headers=headers)
             )
         elif method == 'delete':
             return self.parse_response(
-                requests.delete(lob.api_base + url, auth=(self.api_key, ''))
+                requests.delete(lob.api_base + url, auth=(self.api_key, ''), headers=headers)
             )
         elif method == 'post':
             data = {}
@@ -64,6 +70,6 @@ class APIRequestor(object):
                         data[k] = v
 
             return self.parse_response(
-                requests.post(lob.api_base + url, auth=(self.api_key, ''), data=data, files=files)
+                requests.post(lob.api_base + url, auth=(self.api_key, ''), data=data, files=files, headers=headers)
             )
 
