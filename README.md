@@ -1,12 +1,20 @@
-# Lob Python Wrapper
+# lob-python
 
 [![Build Status](https://travis-ci.org/lob/lob-python.svg?branch=master)](https://travis-ci.org/lob/lob-python) [![PyPI version](https://badge.fury.io/py/lob.svg)](http://badge.fury.io/py/lob) [![Downloads](https://pypip.in/d/lob/badge.png)](https://crate.io/packages/lob) [![Coverage Status](https://coveralls.io/repos/lob/lob-python/badge.png?branch=master)](https://coveralls.io/r/lob/lob-python?branch=master) [![Dependency Status](https://gemnasium.com/lob/lob-python.svg)](https://gemnasium.com/lob/lob-python)
-
 
 This is the python wrapper for the lob.com API.
 
 This wrapper works in the object oriented style, that is, to make calls you have to call the method on a class and the
 return types are python objects. To get a `dict` on any object, you can call the `to_dict()` method of the object.
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Supported Image Types](#supported-image-types)
+- [Initialization and Configuration](#initialization-and-configuration)
+- [API Reference](#api-reference)
+- [Testing](#testing)
 
 ## Installation
 
@@ -16,7 +24,6 @@ You can use `pip` or `easy_install` for installing the package.
 pip install lob
 easy_install lob
 ```
-
 
 ## Usage
 
@@ -38,7 +45,7 @@ We recommed using [python-pdfkit](https://github.com/JazzCore/python-pdfkit) to 
 
 You can find an example [here](examples/create_pdf.py)
 
-## Intialization and Configuration
+## Initialization and Configuration
 
 To initialize the wrapper, import `lob` and set the `api_key`
 
@@ -46,6 +53,8 @@ To initialize the wrapper, import `lob` and set the `api_key`
 import lob
 lob.api_key = 'your-api-key'
 ```
+
+## API Reference
 
 ## Simple Print Service
 
