@@ -98,6 +98,9 @@ lob.api_key = 'your-api-key'
     - [lob.Area.retrieve](#lobarearetrieve)
   - [lob.Route](#lobroute)
     - [lob.Route.retrieve](#lobrouteretrieve)
+- [Address Verification](#address-verification)
+  - [lob.Verification](#lobverification)
+    - [lob.Verification.create](#lobverificationcreate)
 
 ## Simple Print Service
 
