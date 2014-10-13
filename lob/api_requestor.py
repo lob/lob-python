@@ -30,8 +30,8 @@ class APIRequestor(object):
             raise error.InvalidRequestError(payload['errors'][0]['message'],
                 resp.content, resp.status_code, resp)
         else:
-            raise error.APIError(payload['errors'][0]['message'],
-                    resp.content, resp.status_code, resp) #pragma: no cover
+            #pragma: no cover
+            raise error.APIError(payload['errors'][0]['message'], resp.content, resp.status_code, resp) # pragma: no cover
 
     def request(self, method, url, params=None):
         headers = {

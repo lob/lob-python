@@ -69,8 +69,8 @@ class LobObject(dict):
         if isinstance(self.get('object'), basestring):
             ident_parts.append(self.get('object'))
 
-        if isinstance(self.get('id'), basestring): #pragma: no cover
-            ident_parts.append('id=%s' % (self.get('id'),)) #pragma: no cover
+        if isinstance(self.get('id'), basestring):
+            ident_parts.append('id=%s' % (self.get('id'),))
 
         unicode_repr = '<%s at %s> JSON: %s' % (
             ' '.join(ident_parts), hex(id(self)), str(self))
