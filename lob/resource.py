@@ -8,9 +8,11 @@ def lob_format(resp):
         'area': Area,
         'bank_account': BankAccount,
         'check': Check,
+        'country': Country,
         'job': Job,
         'object': Object,
-        'postcard': Postcard
+        'postcard': Postcard,
+        'state': State
     }
 
     #Change Keys for To/From
