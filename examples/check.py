@@ -4,12 +4,12 @@ lob.api_key = "test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc" # Replace this API key 
 # Creating an Address Object
 
 example_address = lob.Address.create(
-    name='Joe Smith',
-    address_line1='104, Printing Boulevard',
-    address_city='Boston',
-    address_state='MA',
-    address_country='US',
-    address_zip='12345'
+    name = 'Joe Smith',
+    address_line1 = '104, Printing Boulevard',
+    address_city = 'Boston',
+    address_state = 'MA',
+    address_country = 'US',
+    address_zip = '12345'
 )
 print "\n"
 print "Address Response"
