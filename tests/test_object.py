@@ -25,7 +25,7 @@ class ObjectFunctions(unittest.TestCase):
     def test_create_object_remote(self):
         object = lob.Object.create(
             name = 'Test Object',
-            file = 'https://www.lob.com/test.pdf',
+            file = 'https://assets.lob.com/test.pdf',
             setting_id = 201
         )
 

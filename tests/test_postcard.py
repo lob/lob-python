@@ -25,8 +25,8 @@ class PostcardFunctions(unittest.TestCase):
         postcard = lob.Postcard.create(
             to_address = self.addr.id,
             from_address = self.addr.id,
-            front = 'https://www.lob.com/test.pdf',
-            back = 'https://www.lob.com/test.pdf'
+            front = 'https://assets.lob.com/test.pdf',
+            back = 'https://assets.lob.com/test.pdf'
         )
         self.assertEqual(postcard.to_address.id, self.addr.id)
         self.assertEqual(postcard.from_address.id, self.addr.id)
@@ -37,8 +37,8 @@ class PostcardFunctions(unittest.TestCase):
         postcard = lob.Postcard.create(
             to_address = self.addr,
             from_address = self.addr,
-            front = 'https://www.lob.com/test.pdf',
-            back = 'https://www.lob.com/test.pdf'
+            front = 'https://assets.lob.com/test.pdf',
+            back = 'https://assets.lob.com/test.pdf'
         )
         self.assertEqual(postcard.to_address.id, self.addr.id)
         self.assertEqual(postcard.from_address.id, self.addr.id)
@@ -62,7 +62,7 @@ class PostcardFunctions(unittest.TestCase):
                 'address_zip': '94107',
                 'address_state': 'CA'
             },
-            front = 'https://www.lob.com/test.pdf',
+            front = 'https://assets.lob.com/test.pdf',
             message = 'Hello'
         )
         self.assertEqual(postcard.to_address.name, 'Lob1')
