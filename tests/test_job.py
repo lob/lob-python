@@ -65,7 +65,7 @@ class JobFunctions(unittest.TestCase):
             },
             objects = {
                 'name': 'Object1',
-                'file': 'https://www.lob.com/test.pdf',
+                'file': 'https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf',
                 'setting_id': '201'
             }
         )
