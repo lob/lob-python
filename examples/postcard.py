@@ -26,8 +26,8 @@ print "\n"
 example_postcard = lob.Postcard.create(
     to_address = example_address,
     from_address = example_address,
-    front = 'https://www.lob.com/test.pdf',
-    back = 'https://www.lob.com/test.pdf'
+    front = 'https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf',
+    back = 'https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf'
 )
 
 print "Postcard Response"

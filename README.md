@@ -167,7 +167,7 @@ lob.Job.create(
     },
     objects = {
         'name': 'Test Object',
-        'file': 'https://www.lob.com/test.pdf',
+        'file': 'https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf',
         'setting_id': '201'
     }
 )
@@ -194,11 +194,11 @@ lob.Job.create(
     },
     objects = [{
         'name': 'Test Object 1',
-        'file': 'https://www.lob.com/test.pdf',
+        'file': 'https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf',
         'setting_id': '201'
     }, {
         'name': 'Test Object 2',
-        'file': 'https://www.lob.com/test.pdf',
+        'file': 'https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf',
         'setting_id': '201'
     }]
 )
@@ -285,7 +285,7 @@ lob.Object.retrieve(<id>)
 #Create an Object using a URL
 lob.Object.create(
     name='Joe Smith',
-    file='https://www.lob.com/test.pdf',
+    file='https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf',
     setting_id='201',
     quantity=1,
     double_sided=1
@@ -381,8 +381,8 @@ lob.Postcard.retrieve(<id>)
 lob.Postcard.create(
     to_address=<address_id>,
     from_address=<address_id>,
-    front = 'https://www.lob.com/test.pdf',
-    back = 'https://www.lob.com/test.pdf'
+    front = 'https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf',
+    back = 'https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf'
 )
 
 #Create a Postcard Using Lob Python Objects
@@ -392,8 +392,8 @@ from_addr = addresses[1]
 lob.Postcard.create(
     to_address = to_addr,
     from_address = from_addr,
-    front = 'https://www.lob.com/test.pdf',
-    back = 'https://www.lob.com/test.pdf'
+    front = 'https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf',
+    back = 'https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf'
 )
 
 #Create Postcard Using Inline Addresses
@@ -416,8 +416,8 @@ lob.Postcard.create(
         'address_zip': '94107',
         'address_country': 'US'
     },
-    front = 'https://www.lob.com/test.pdf',
-    back = 'https://www.lob.com/test.pdf'
+    front = 'https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf',
+    back = 'https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf'
 )
 
 #Create Postcard Using Inline Addresses and Local File
@@ -610,8 +610,8 @@ lob.Area.retrieve(<id>)
 #Basic Area Create with Zip Codes
 lob.Area.create(
     name='Lob',
-    front = 'https://www.lob.com/areafront.pdf',
-    back = 'https://www.lob.com/areaback.pdf',
+    front = 'https://s3-us-west-2.amazonaws.com/lob-assets/areafront.pdf',
+    back = 'https://s3-us-west-2.amazonaws.com/lob-assets/areaback.pdf',
     routes = ['94158','60031'],
     target_type = 'all',
     full_bleed = '1'
@@ -621,8 +621,8 @@ lob.Area.create(
 var routes = lob.Route.list(zip_codes=[94158,60031])
 lob.Area.create(
     name='Lob',
-    front = 'https://www.lob.com/areafront.pdf',
-    back = 'https://www.lob.com/areaback.pdf',
+    front = 'https://s3-us-west-2.amazonaws.com/lob-assets/areafront.pdf',
+    back = 'https://s3-us-west-2.amazonaws.com/lob-assets/areaback.pdf',
     routes = routes,
     target_type = 'all',
     full_bleed = '1'
@@ -630,8 +630,8 @@ lob.Area.create(
 
 #Create Area with Optional Parameters
 lob.Area.create(
-    front = 'https://www.lob.com/areafront.pdf',
-    back = 'https://www.lob.com/areaback.pdf',
+    front = 'https://s3-us-west-2.amazonaws.com/lob-assets/areafront.pdf',
+    back = 'https://s3-us-west-2.amazonaws.com/lob-assets/areaback.pdf',
     routes = '94158',
 )
 ```

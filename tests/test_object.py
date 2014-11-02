@@ -25,7 +25,7 @@ class ObjectFunctions(unittest.TestCase):
     def test_create_object_remote(self):
         object = lob.Object.create(
             name = 'Test Object',
-            file = 'https://www.lob.com/test.pdf',
+            file = 'https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf',
             setting_id = 201
         )
 
@@ -52,7 +52,7 @@ class ObjectFunctions(unittest.TestCase):
         self.assertTrue(isinstance(object, lob.Object))
         self.assertEqual(object.name, 'Test Object Inline')
         self.assertRaises(AttributeError, lambda: object.nonexistent_key)
-        
+
         object.name = "something new"
         self.assertEqual(object.name, "something new")
 
