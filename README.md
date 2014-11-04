@@ -659,7 +659,7 @@ print lob.Verification.create(
     address_city='San Francisco',
     address_state='CA',
     address_zip='94107',
-    address_country='US
+    address_country='US'
 )
 ```
 This will output:
