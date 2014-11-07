@@ -38,8 +38,6 @@ class APIRequestor(object):
             'User-Agent': 'Lob/v1 PythonBindings/%s' % VERSION
         }
 
-        print headers
-
         if method == 'get':
             return self.parse_response(
                 requests.get(lob.api_base + url, auth=(self.api_key, ''), params=params, headers=headers)
