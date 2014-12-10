@@ -7,7 +7,7 @@ body = """
     <html>
         <body>
             <div style="text-align: center; color: blue;" />
-                <img src="https://s3-us-west-2.amazonaws.com/lob-assets/LobLogoBlueTrans.png" />
+                <img src="https://s3-us-west-2.amazonaws.com/lob-assets/lob_small.png" />
                 <h1>Print with Lob</h1>
             </div>
         </body>
