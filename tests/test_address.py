@@ -53,8 +53,7 @@ class TestAddressFunctions(unittest.TestCase):
 
 
     def test_address_verification(self):
-        addr = lob.Verification.create(name='Lob',
-            email='support@lob.com',
+        addr = lob.Verification.create(
             address_line1='220 William T Morrissey',
             address_city='Boston',
             address_state='MA',
