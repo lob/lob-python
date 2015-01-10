@@ -26,7 +26,7 @@ class ObjectFunctions(unittest.TestCase):
         object = lob.Object.create(
             name = 'Test Object',
             file = 'https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf',
-            setting_id = 201
+            setting = 201
         )
 
         self.assertTrue(isinstance(object, lob.Object))
@@ -36,7 +36,7 @@ class ObjectFunctions(unittest.TestCase):
         object = lob.Object.create(
             name = 'Test Object StringIO',
             file = StringIO(open('tests/pc.pdf', 'rb').read()),
-            setting_id = 201
+            setting = 201
         )
 
         self.assertTrue(isinstance(object, lob.Object))
@@ -46,7 +46,7 @@ class ObjectFunctions(unittest.TestCase):
         object = lob.Object.create(
             name = 'Test Object Inline',
             file = open('tests/pc.pdf', 'rb'),
-            setting_id = 201
+            setting = 201
         )
 
         self.assertTrue(isinstance(object, lob.Object))
@@ -60,7 +60,7 @@ class ObjectFunctions(unittest.TestCase):
         object = lob.Object.create(
             name = 'Test Object Direct Specify',
             files = {'file': open('tests/pc.pdf', 'rb').read()},
-            setting_id = 201
+            setting = 201
         )
 
         self.assertTrue(isinstance(object, lob.Object))

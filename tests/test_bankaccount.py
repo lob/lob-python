@@ -29,7 +29,8 @@ class BankAccountFunctions(unittest.TestCase):
             routing_number='122100024',
             account_number='123456789',
             bank_address=self.addr.id,
-            account_address=self.addr.id
+            account_address=self.addr.id,
+            signatory='John Doe'
         )
         self.assertTrue(isinstance(bankAccount, lob.BankAccount))
         self.assertEqual(bankAccount.bank_address.id, self.addr.id)
@@ -39,7 +40,8 @@ class BankAccountFunctions(unittest.TestCase):
             routing_number='122100024',
             account_number='123456789',
             bank_address=self.addr,
-            account_address=self.addr
+            account_address=self.addr,
+            signatory='John Doe'
         )
         self.assertTrue(isinstance(bankAccount, lob.BankAccount))
         self.assertEqual(bankAccount.bank_address.id, self.addr.id)
@@ -63,7 +65,8 @@ class BankAccountFunctions(unittest.TestCase):
                 'address_city': 'San Francisco',
                 'address_zip': '94107',
                 'address_state': 'CA'
-            }
+            },
+            signatory='John Doe'
         )
         self.assertTrue(isinstance(bankAccount, lob.BankAccount))
         self.assertEquals(bankAccount.bank_address.name, 'Lob1')
