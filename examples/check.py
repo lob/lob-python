@@ -24,7 +24,7 @@ print "\n"
 # Creating a Bank Account using the previously created account_address
 
 example_bank_account = lob.BankAccount.create(
-    routing_number = '123456789',
+    routing_number = '122100024',
     account_number = '1234564789',
     bank_address = {
         'name': 'Bank Address',

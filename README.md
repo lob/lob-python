@@ -52,6 +52,9 @@ To initialize the wrapper, import `lob` and set the `api_key`
 ```python
 import lob
 lob.api_key = 'your-api-key'
+
+// set an api version (optional)
+lob.api_version = 'api-version'
 ```
 
 ## API Reference
