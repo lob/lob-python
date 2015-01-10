@@ -66,7 +66,7 @@ class JobFunctions(unittest.TestCase):
             objects = {
                 'name': 'Object1',
                 'file': 'https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf',
-                'setting_id': '201'
+                'setting': '201'
             }
         )
         self.assertEqual(job.to_address.name, 'Lob1')
@@ -82,7 +82,7 @@ class JobFunctions(unittest.TestCase):
                 {
                     'name': 'Test Job',
                     'file': open('tests/pc.pdf', 'rb'),
-                    'setting_id': 201,
+                    'setting': 201,
                     'quantity': 2
                 }
             ]
@@ -99,7 +99,7 @@ class JobFunctions(unittest.TestCase):
             objects = {
                 'name': 'Test Job',
                 'file': open('tests/pc.pdf', 'rb'),
-                'setting_id': 201
+                'setting': 201
             }
         )
         self.assertEqual(job.objects[0].name, 'Test Job')
