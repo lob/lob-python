@@ -11,3 +11,6 @@ class TestLob(unittest.TestCase):
 
     def test_set_version(self):
         self.assertEqual(lob.api_version, 'apiVersion')
+
+    def tearDown(self):
+        del lob.api_version

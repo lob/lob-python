@@ -62,7 +62,7 @@ class PostcardFunctions(unittest.TestCase):
                 'address_zip': '94107',
                 'address_state': 'CA'
             },
-            front = 'https://www.lob.com/test.pdf',
+            front = 'https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf',
             message = 'Hello'
         )
         self.assertEqual(postcard.to_address.name, 'Lob1')
