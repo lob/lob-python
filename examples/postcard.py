@@ -24,6 +24,7 @@ print "\n"
 # Creating a Postcard
 
 example_postcard = lob.Postcard.create(
+    name = 'Test Postcard',
     to_address = example_address,
     from_address = example_address,
     front = 'https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf',
