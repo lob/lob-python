@@ -43,6 +43,7 @@ print "\n"
 # Creating a Job using the previously created address and object
 
 example_job = lob.Job.create(
+    name = 'Test Job',
     to_address = example_address,
     from_address = example_address,
     objects = example_object,
