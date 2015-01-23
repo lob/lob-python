@@ -68,6 +68,10 @@ lob.api_version = 'api-version'
     - [lob.Address.list](#lobaddresslist)
     - [lob.Address.retrieve](#lobaddressretrieve)
     - [lob.Address.delete](#lobaddressdelete)
+  - [lob.Country](#lobcountry)
+    - [lob.Country.list](#lobcountrylist)
+  - [lob.State](#lobstate)
+    - [lob.State.list()](#lobstatelist)
   - [lob.Object](#lobobject)
     - [lob.Object.create](#lobobjectcreate)
     - [lob.Object.list](#lobobjectlist)
@@ -261,6 +265,22 @@ lob.Address.delete(<id>)
 
 #or another way
 lob.Address.delete(<id>)
+```
+
+### lob.Country
+
+#### lob.Country.list
+```python
+  # Returns a list of Country objects
+  lob.Country.list()
+```
+
+### lob.State
+
+#### lob.State.list
+```python
+  # Returns a list of State objects
+  lob.State.list()
 ```
 
 ### lob.Object
