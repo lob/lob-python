@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/lob/lob-python.svg?branch=master)](https://travis-ci.org/lob/lob-python) [![PyPI version](https://badge.fury.io/py/lob.svg)](http://badge.fury.io/py/lob) [![Downloads](https://pypip.in/download/lob/badge.svg)](https://pypi.python.org/pypi/lob/) [![Coverage Status](https://coveralls.io/repos/lob/lob-python/badge.svg?branch=master)](https://coveralls.io/r/lob/lob-python?branch=master) [![Dependency Status](https://gemnasium.com/lob/lob-python.svg)](https://gemnasium.com/lob/lob-python)
 
-This is the python wrapper for the lob.com API.
+This is the python wrapper for the Lob.com API.
 
 This wrapper works in the object oriented style, that is, to make calls you have to call the method on a class and the
 return types are python objects. To get a `dict` on any object, you can call the `to_dict()` method of the object.
@@ -31,13 +31,13 @@ We've provided an example script you can run in examples/ that has examples of
 how to use the lob-python wrapper with some of our core endpoints.
 
 ## Supported Image Types
-The lob.com API supports the following image types:
+The Lob.com API supports the following image types:
 
 - PDF
 - PNG
 - JPEG
 
-For more information on prepping the images please see the [Lob documentation](https://lob.com/docs#prepping)
+For more information on prepping the images please see the [Lob documentation](https://lob.com/docs/python#prepping).
 
 #### Creating a PDF
 
@@ -80,8 +80,6 @@ lob.api_version = 'api-version'
   - [lob.Setting](#lobsetting)
     - [lob.Setting.list](#lobsettinglist)
     - [lob.Setting.retrieve](#lobsettingretrieve)
-  - [lob.Packaging](#lobpackaging)
-    - [lob.Packaging.list](#lobpackaginglist)
   - [lob.services](#lobservice)
     - [lob.services.list](#lobservicelist)
 - [Simple Postcard Service](#simple-postcard-service)
@@ -175,7 +173,7 @@ lob.Job.create(
     objects = {
         'name': 'Test Object',
         'file': 'https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf',
-        'setting_id': '201'
+        'setting': '201'
     }
 )
 
@@ -202,11 +200,11 @@ lob.Job.create(
     objects = [{
         'name': 'Test Object 1',
         'file': 'https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf',
-        'setting_id': '201'
+        'setting': '201'
     }, {
         'name': 'Test Object 2',
         'file': 'https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf',
-        'setting_id': '201'
+        'setting': '201'
     }]
 )
 ```
@@ -309,7 +307,7 @@ lob.Object.retrieve(<id>)
 lob.Object.create(
     name='Joe Smith',
     file='https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf',
-    setting_id='201',
+    setting='201',
     quantity=1,
     double_sided=1
 )
@@ -318,7 +316,7 @@ lob.Object.create(
 lob.Object.create(
     name='Local File Object',
     file=open('/path/to/local/file', 'rb'),
-    setting_id='100',
+    setting='100',
     quantity=1,
     double_sided=0
 )
@@ -328,7 +326,7 @@ from StringIO import StringIO
 lob.Object.create(
     name='File-Like Object',
     file=StringIO(compute_pdf_data()),
-    setting_id='100',
+    setting='100',
     quantity=1,
     double_sided=0
 )
@@ -358,15 +356,6 @@ print lob.Setting.retrieve(id=100)
 
 #or another way
 print lob.Setting.retrieve(100)
-```
-
-### lob.Packaging
-
-#### lob.Packaging.list
-
-```python
-#List All Packagings
-lob.Packaging.list()
 ```
 
 ### lob.Service
@@ -567,6 +556,7 @@ lob.BankAccount.retrieve(<id>)
 lob.BankAccount.create(
     routing_number = '123456789',
     account_number = '1234564789',
+    signatory = 'John Doe',
     bank_address = <address_id>,
     account_address = <address_id>
 )
@@ -575,6 +565,7 @@ lob.BankAccount.create(
 lob.BankAccount.create(
     routing_number = '123456789',
     account_number = '1234564789',
+    signatory = 'John Doe',
     bank_address = {
         'name': 'Bank Address',
         'address_line1': '123 Wall Street',
