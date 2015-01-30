@@ -26,7 +26,7 @@ print "\n"
 example_object = lob.Object.create(
     name = 'Example Object',
     file = 'https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf',
-    setting_id = '201',
+    setting = '201',
     quantity = 1,
     double_sided = 1
 )
