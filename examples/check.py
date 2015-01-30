@@ -26,6 +26,7 @@ print "\n"
 example_bank_account = lob.BankAccount.create(
     routing_number = '122100024',
     account_number = '1234564789',
+    signatory = 'John Doe',
     bank_address = {
         'name': 'Bank Address',
         'address_line1': '123 Wall Street',
