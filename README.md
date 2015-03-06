@@ -509,7 +509,8 @@ lob.Check.create(
     to_address = <address_id>,
     bank_account = <bank_account_id>,
     amount = 1000,
-    memo = 'Services Rendered'
+    memo = 'Services Rendered',
+    logo = 'https://s3-us-west-2.amazonaws.com/lob-assets/lob_check_logo.png'
 )
 
 #Create Check with Inline Address
@@ -526,7 +527,8 @@ lob.Check.create(
     },
     bank_account = <bank_account_id>,
     amount = 1000,
-    memo = 'Services Rendered'
+    memo = 'Services Rendered',
+    logo = 'https://s3-us-west-2.amazonaws.com/lob-assets/lob_check_logo.png'
 )
 ```
 

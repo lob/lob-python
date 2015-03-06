@@ -62,7 +62,8 @@ example_check = lob.Check.create(
     },
     bank_account = example_bank_account,
     amount = 1000,
-    memo = 'Services Rendered'
+    memo = 'Services Rendered',
+    logo = 'https://s3-us-west-2.amazonaws.com/lob-assets/lob_check_logo.png'
 )
 
 print "Check Response"
