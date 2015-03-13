@@ -45,6 +45,12 @@ We recommed using [python-pdfkit](https://github.com/JazzCore/python-pdfkit) to 
 
 You can find an example [here](examples/create_pdf.py)
 
+## HTML Support
+
+The Lob.com API also supports HTML strings in leiu of a file of the above type. See below for examples of submitting with HTML strings.
+
+For templates and more information regarding HTML, please see the [Lob documentation](https://lob.com/docs/python#html-fonts). 
+
 ## Initialization and Configuration
 
 To initialize the wrapper, import `lob` and set the `api_key`
@@ -321,6 +327,15 @@ lob.Object.create(
     double_sided=0
 )
 
+#Create an Object using HTML
+lob.Object.create(
+    name='Local File Object',
+    file='<html style="margin: 130px; font-size: 50;">HTML here</html>',
+    setting='100',
+    quantity=1,
+    double_sided=0
+)
+
 #Create an Object using a file-like object.
 from StringIO import StringIO
 lob.Object.create(
@@ -454,6 +469,14 @@ lob.Postcard.create(
     },
     front = open('/path/to/local/file', 'rb'),
     back = open('/path/to/local/file', 'rb')
+)
+
+#Create a Postcard Using HTML
+lob.Postcard.create(
+    to_address=<address_id>,
+    from_address=<address_id>,
+    front = '<html style="margin: 130px; font-size: 50;">Front HTML</html>',
+    back = '<html style="margin: 130px; font-size: 50;">Back HTML</html>'
 )
 
 #Create Postcard with Message Instead of Back
@@ -640,6 +663,16 @@ lob.Area.create(
     front = 'https://s3-us-west-2.amazonaws.com/lob-assets/areafront.pdf',
     back = 'https://s3-us-west-2.amazonaws.com/lob-assets/areaback.pdf',
     routes = routes,
+    target_type = 'all',
+    full_bleed = '1'
+)
+
+#Basic Area Create with HTML
+lob.Area.create(
+    name='Lob',
+    front = '<html style="margin: 130px; font-size: 50;">Front HTML</html>',
+    back = '<html style="margin: 130px; font-size: 50;">Back HTML</html>',
+    routes = ['94158','60031'],
     target_type = 'all',
     full_bleed = '1'
 )
