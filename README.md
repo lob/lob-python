@@ -47,7 +47,7 @@ You can find an example [here](examples/create_pdf.py)
 
 ## HTML Support
 
-The Lob.com API also supports HTML strings in leiu of a file of the above type. See below for examples of submitting with HTML strings.
+The Lob.com API also supports HTML strings in lieu of a file of the above type. See below for examples of submitting with HTML strings.
 
 For templates and more information regarding HTML, please see the [Lob documentation](https://lob.com/docs/python#html-fonts). 
 
