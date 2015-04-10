@@ -29,9 +29,8 @@ class APIRequestor(object):
         elif resp.status_code in [404, 422]:
             raise error.InvalidRequestError(payload['errors'][0]['message'],
                 resp.content, resp.status_code, resp)
-        else:
-            #pragma: no cover
-            raise error.APIError(payload['errors'][0]['message'], resp.content, resp.status_code, resp) # pragma: no cover
+        else: #pragma: no cover
+            raise error.APIError(payload['errors'][0]['message'], resp.content, resp.status_code, resp)
 
     def request(self, method, url, params=None):
         headers = {
