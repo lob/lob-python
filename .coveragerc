@@ -1,2 +1,6 @@
 [report]
-exclude_lines = def __repr__
+exclude_lines =
+  # Have to re-enable the standard pragma
+  pragma: no cover
+
+  def __repr__
