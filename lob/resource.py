@@ -111,6 +111,13 @@ class CreateableAPIResource(APIResource):
         response = requestor.request('post', cls.endpoint, params)
         return lob_format(response)
 
+class VerifiableAPIResource(APIResource):
+    @classmethod
+    def verify(cls, id, **params):
+        requestor = api_requestor.APIRequestor()
+        response = requestor.request('post', '%s/%s/verify' % (cls.endpoint, id), params)
+        return lob_format(response)
+
 class Address(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
     endpoint = '/addresses'
 
@@ -127,7 +134,7 @@ class Area(ListableAPIResource, CreateableAPIResource):
                     params['routes'] = routes
         return super(Area, cls).create(**params)
 
-class BankAccount(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
+class BankAccount(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource, VerifiableAPIResource):
     endpoint = '/bank_accounts'
 
 class Check(ListableAPIResource, CreateableAPIResource):

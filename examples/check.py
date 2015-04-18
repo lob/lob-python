@@ -47,7 +47,23 @@ print "\n"
 print "======================================================="
 print "\n"
 
-# Creating a Check using the previously created bank account
+# Verifying a Bank Account with the microdeposit amounts
+
+example_bank_account = lob.BankAccount.verify(
+    id = example_bank_account.id,
+    amounts = [23, 77]
+)
+
+print "Bank Account Verify Response"
+print "\n"
+print "======================================================="
+print "\n"
+print example_bank_account
+print "\n"
+print "======================================================="
+print "\n"
+
+# Creating a Check using the previously created and verified bank account
 
 example_check = lob.Check.create(
     name = 'Example Check',

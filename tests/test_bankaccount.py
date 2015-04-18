@@ -79,9 +79,32 @@ class BankAccountFunctions(unittest.TestCase):
     def test_retrieve_bankAccount_fail(self):
         self.assertRaises(lob.error.InvalidRequestError, lob.BankAccount.retrieve, id='test')
 
-
     def test_delete_bankAccount(self):
         ba = lob.BankAccount.list().data[0].id
         delBa = lob.BankAccount.delete(id=ba)
         self.assertEqual(ba, delBa.id)
 
+    def test_verify_bankAccount(self):
+        ba = lob.BankAccount.create(
+            routing_number='122100024',
+            account_number='223456789',
+            bank_address= {
+                'name': 'Lob1',
+                'address_line1': '185 Berry Street',
+                'address_line2': 'Suite 1510',
+                'address_city': 'San Francisco',
+                'address_zip': '94107',
+                'address_state': 'CA'
+            },
+            account_address= {
+                'name': 'Lob2',
+                'address_line1': '185 Berry Street',
+                'address_line2': 'Suite 1510',
+                'address_city': 'San Francisco',
+                'address_zip': '94107',
+                'address_state': 'CA'
+            },
+            signatory='John Doe'
+        )
+        verBa = lob.BankAccount.verify(id=ba.id, amounts=[25, 75])
+        self.assertTrue(verBa.verified)

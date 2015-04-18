@@ -7,6 +7,8 @@ class CheckFunctions(unittest.TestCase):
         lob.api_key = 'test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc'
         self.addr = lob.Address.list(count=1).data[0]
         self.ba = lob.BankAccount.list(count=1).data[0]
+        if self.ba.verified == False:
+            lob.BankAccount.verify(id=self.ba.id, amounts=[20,80])
 
     def test_list_checks(self):
         checks = lob.Check.list()
