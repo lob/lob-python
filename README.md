@@ -69,7 +69,7 @@ We've provided various examples for you to try out [here](https://github.com/lob
 - [Introduction](https://lob.com/docs/python#introduction)
 - [Versioning](https://lob.com/docs/python#version)
 - [Image Prepping](https://lob.com/docs/python#prepping)
-- Simple Print Service
+- **Simple Print Service**
   - [Jobs](https://lob.com/docs/python#jobs)
     - [Create a Job](https://lob.com/docs/python#jobs_create)
     - [Retrieve a Job](https://lob.com/docs/python#jobs_retrieve)
@@ -89,12 +89,12 @@ We've provided various examples for you to try out [here](https://github.com/lob
     - [List all Settings](https://lob.com/docs/python#settings_list)
   - [Services](https://lob.com/docs/python#services)
     - [List all Services](https://lob.com/docs/python#services_list)
-- Simple Postcard Service
+- **Simple Postcard Service**
   - [Postcards](https://lob.com/docs/python#postcards)
     - [Create a Postcard](https://lob.com/docs/python#postcards_create)
     - [Retrieve a Postcard](https://lob.com/docs/python#postcards_retrieve)
     - [List all Postcards](https://lob.com/docs/python#postcards_list)
-- Simple Check Service
+- **Simple Check Service**
   - [Checks](https://lob.com/docs/python#checks)
     - [Create a Check](https://lob.com/docs/python#checks_create)
     - [Retrieve a Check](https://lob.com/docs/python#checks_retrieve)
@@ -105,7 +105,7 @@ We've provided various examples for you to try out [here](https://github.com/lob
     - [List all Bank Accounts](https://lob.com/docs/python#bankaccounts_list)
     - [Verify a Bank Account](https://lob.com/docs/python#bankaccounts_verify)
     - [Delete a Bank Account](https://lob.com/docs/python#bankaccounts_delete)
-- Simple Area Mail
+- **Simple Area Mail**
   - [Areas](https://lob.com/docs/python#areas)
     - [Create an Area Mailing](https://lob.com/docs/python#areas_create)
     - [Retrieve an Area Mailing](https://lob.com/docs/python#areas_retrieve)
@@ -113,15 +113,15 @@ We've provided various examples for you to try out [here](https://github.com/lob
   - [Routes](https://lob.com/docs/python#routes)
     - [Retrieve a Zip Code](https://lob.com/docs/python#routes_retrieve)
     - [List all Zip Codes](https://lob.com/docs/python#routes_list)
-- Simple Address Verification
+- **Simple Address Verification**
   - [Verify](https://lob.com/docs/python#verify)
     - [Verify an Address](https://lob.com/docs/python#verify_create)
-- Resources
+- **Resources**
   - [Countries](https://lob.com/docs/python#countries)
     - [List all Countries](https://lob.com/docs/python#countries_list)
   - [States](https://lob.com/docs/python#states)
     - [List all States](https://lob.com/docs/python#states_list)
-- Appendix
+- **Appendix**
   - [SPS Templates](https://lob.com/docs/python#sps-templates)
   - [Custom Fonts with HTML](https://lob.com/docs/python#html-fonts)
   - [Postcard HTML Examples](https://lob.com/docs/python#postcard-examples)
