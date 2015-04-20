@@ -18,7 +18,6 @@ return types are python objects. To get a `dict` on any object, you can call the
   - [Usage](#usage)
 - [Examples](#examples)
 - [API Documentation](#api-documentation)
-- [Contributing](#contributing)
 - [Testing](#testing)
 
 ## Getting Started
@@ -58,7 +57,7 @@ lob.api_version = 'api-version'
 
 ### Usage
 
-We've provided an example script you can run in examples/ that has examples ohow to use the lob-python wrapper with some of our core endpoints.
+We've provided an example script you can run in examples/ that has examples of how to use the lob-python wrapper with some of our core endpoints.
 
 ## Examples
 
