@@ -10,6 +10,7 @@ def lob_format(resp):
         'check': Check,
         'country': Country,
         'job': Job,
+        'letter' : Letter,
         'object': Object,
         'postcard': Postcard,
         'state': State
@@ -169,6 +170,19 @@ class Job(ListableAPIResource, CreateableAPIResource):
             i = i + 1
         params.pop('objects', None)
         return super(Job, cls).create(**params)
+
+class Letter(ListableAPIResource, CreateableAPIResource):
+    endpoint = '/letters'
+    @classmethod
+    def create(cls, **params):
+        if isinstance(params, dict):
+            if 'from_address' in params:
+                params['from'] = params['from_address']
+                params.pop('from_address')
+            if 'to_address' in params:
+                params['to'] = params['to_address']
+                params.pop('to_address')
+        return super(Letter, cls).create(**params)
 
 class Object(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
     endpoint = '/objects'
