@@ -24,9 +24,10 @@ return types are python objects. To get a `dict` on any object, you can call the
 
 Here's a general overview of the Lob services available, click through to read more.
 
-- [Simple Print Service](https://lob.com/services/sps)
 - [Simple Postcard Service](https://lob.com/services/postcards)
-- [Simple Check Service](https://lob.com/services/postcards)
+- [Simple Letter Service](https://lob.com/services/letters)
+- [Simple Check Service](https://lob.com/services/checks)
+- [Simple Print Service](https://lob.com/services/sps)
 - [Simple Area Mail](https://lob.com/services/sam)
 - [Address Verification](https://lob.com/verification/address)
 
@@ -68,31 +69,24 @@ We've provided various examples for you to try out [here](https://github.com/lob
 - [Introduction](https://lob.com/docs/python#introduction)
 - [Versioning](https://lob.com/docs/python#version)
 - [Image Prepping](https://lob.com/docs/python#prepping)
-- **Simple Print Service**
-  - [Jobs](https://lob.com/docs/python#jobs)
-    - [Create a Job](https://lob.com/docs/python#jobs_create)
-    - [Retrieve a Job](https://lob.com/docs/python#jobs_retrieve)
-    - [List all Jobs](https://lob.com/docs/python#jobs_list)
-  - [Addresses](https://lob.com/docs/python#addresses)
+- **Addresses**
+  - [Address Book](https://lob.com/docs/python#addresses)
     - [Create an Address](https://lob.com/docs/python#addresses_create)
     - [Retrieve an Address](https://lob.com/docs/python#addresses_retrieve)
     - [Delete an Address](https://lob.com/docs/python#addresses_delete)
     - [List all Addresses](https://lob.com/docs/python#addresses_list)
-  - [Objects](https://lob.com/docs/python#objects)
-    - [Create an Object](https://lob.com/docs/python#objects_create)
-    - [Retrieve an Object](https://lob.com/docs/python#objects_retrieve)
-    - [Delete an Object](https://lob.com/docs/python#objects_delete)
-    - [List all Objects](https://lob.com/docs/python#objects_list)
-  - [Settings](https://lob.com/docs/python#settings)
-    - [Retrieve a Setting](https://lob.com/docs/python#settings_retrieve)
-    - [List all Settings](https://lob.com/docs/python#settings_list)
-  - [Services](https://lob.com/docs/python#services)
-    - [List all Services](https://lob.com/docs/python#services_list)
+  - [Simple Address Verification](https://lob.com/docs/python#verify)
+    - [Verify an Address](https://lob.com/docs/python#verify_create)
 - **Simple Postcard Service**
   - [Postcards](https://lob.com/docs/python#postcards)
     - [Create a Postcard](https://lob.com/docs/python#postcards_create)
     - [Retrieve a Postcard](https://lob.com/docs/python#postcards_retrieve)
     - [List all Postcards](https://lob.com/docs/python#postcards_list)
+- **Simple Letter Service**
+  - [Letters](https://lob.com/docs/python#letters)
+    - [Create a Letter](https://lob.com/docs/python#letters_create)
+    - [Retrieve a Letter](https://lob.com/docs/python#letters_retrieve)
+    - [List all Letters](https://lob.com/docs/python#letters_list)
 - **Simple Check Service**
   - [Checks](https://lob.com/docs/python#checks)
     - [Create a Check](https://lob.com/docs/python#checks_create)
@@ -104,6 +98,19 @@ We've provided various examples for you to try out [here](https://github.com/lob
     - [List all Bank Accounts](https://lob.com/docs/python#bankaccounts_list)
     - [Verify a Bank Account](https://lob.com/docs/python#bankaccounts_verify)
     - [Delete a Bank Account](https://lob.com/docs/python#bankaccounts_delete)
+- **Simple Print Service**
+  - [Jobs](https://lob.com/docs/python#jobs)
+    - [Create a Job](https://lob.com/docs/python#jobs_create)
+    - [Retrieve a Job](https://lob.com/docs/python#jobs_retrieve)
+    - [List all Jobs](https://lob.com/docs/python#jobs_list)
+  - [Objects](https://lob.com/docs/python#objects)
+    - [Create an Object](https://lob.com/docs/python#objects_create)
+    - [Retrieve an Object](https://lob.com/docs/python#objects_retrieve)
+    - [Delete an Object](https://lob.com/docs/python#objects_delete)
+    - [List all Objects](https://lob.com/docs/python#objects_list)
+  - [Settings](https://lob.com/docs/python#settings)
+    - [Retrieve a Setting](https://lob.com/docs/python#settings_retrieve)
+    - [List all Settings](https://lob.com/docs/python#settings_list)
 - **Simple Area Mail**
   - [Areas](https://lob.com/docs/python#areas)
     - [Create an Area Mailing](https://lob.com/docs/python#areas_create)
@@ -112,9 +119,6 @@ We've provided various examples for you to try out [here](https://github.com/lob
   - [Routes](https://lob.com/docs/python#routes)
     - [Retrieve a Zip Code](https://lob.com/docs/python#routes_retrieve)
     - [List all Zip Codes](https://lob.com/docs/python#routes_list)
-- **Simple Address Verification**
-  - [Verify](https://lob.com/docs/python#verify)
-    - [Verify an Address](https://lob.com/docs/python#verify_create)
 - **Resources**
   - [Countries](https://lob.com/docs/python#countries)
     - [List all Countries](https://lob.com/docs/python#countries_list)
