@@ -64,14 +64,17 @@ class JobFunctions(unittest.TestCase):
                 'address_state': 'CA'
             },
             objects = {
-                'name': 'Object1',
-                'file': 'https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf',
+                'description': 'Object1',
+                'file': '<h1>{{name}}</h1>',
+                'data': {
+                    'name': 'Peter'
+                },
                 'setting': '201'
             }
         )
         self.assertEqual(job.to_address.name, 'Lob1')
         self.assertEqual(job.from_address.name, 'Lob2')
-        self.assertEqual(job.objects[0].name, 'Object1')
+        self.assertEqual(job.objects[0].description, 'Object1')
         self.assertTrue(isinstance(job, lob.Job))
 
     def test_create_job_multi_object(self):
@@ -80,8 +83,11 @@ class JobFunctions(unittest.TestCase):
             from_address = self.addr.id,
             objects = [
                 {
-                    'name': 'Test Job',
-                    'file': open('tests/pc.pdf', 'rb'),
+                    'description': 'Test Job',
+                    'file': '<h1>{{name}}</h1>',
+                    'data': {
+                        'name': 'Peter'
+                    },
                     'setting': 201,
                     'quantity': 2
                 }
@@ -97,12 +103,12 @@ class JobFunctions(unittest.TestCase):
             to_address = self.addr.id,
             from_address = self.addr.id,
             objects = {
-                'name': 'Test Job',
+                'description': 'Test Job',
                 'file': open('tests/pc.pdf', 'rb'),
                 'setting': 201
             }
         )
-        self.assertEqual(job.objects[0].name, 'Test Job')
+        self.assertEqual(job.objects[0].description, 'Test Job')
         self.assertTrue(isinstance(job, lob.Job))
 
     def test_create_job_fail(self):

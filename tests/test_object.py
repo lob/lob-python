@@ -24,47 +24,47 @@ class ObjectFunctions(unittest.TestCase):
 
     def test_create_object_remote(self):
         object = lob.Object.create(
-            name = 'Test Object',
-            file = 'https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf',
+            description = 'Test Object',
+            file = 'https://lob.com/postcardfront.pdf',
             setting = 201
         )
 
         self.assertTrue(isinstance(object, lob.Object))
-        self.assertEqual(object.name, 'Test Object')
+        self.assertEqual(object.description, 'Test Object')
 
     def test_create_object_stringio(self):
         object = lob.Object.create(
-            name = 'Test Object StringIO',
+            description = 'Test Object StringIO',
             file = StringIO(open('tests/pc.pdf', 'rb').read()),
             setting = 201
         )
 
         self.assertTrue(isinstance(object, lob.Object))
-        self.assertEqual(object.name, 'Test Object StringIO')
+        self.assertEqual(object.description, 'Test Object StringIO')
 
     def test_create_object_local(self):
         object = lob.Object.create(
-            name = 'Test Object Inline',
+            description = 'Test Object Inline',
             file = open('tests/pc.pdf', 'rb'),
             setting = 201
         )
 
         self.assertTrue(isinstance(object, lob.Object))
-        self.assertEqual(object.name, 'Test Object Inline')
+        self.assertEqual(object.description, 'Test Object Inline')
         self.assertRaises(AttributeError, lambda: object.nonexistent_key)
 
-        object.name = "something new"
-        self.assertEqual(object.name, "something new")
+        object.description = "something new"
+        self.assertEqual(object.description, "something new")
 
     def test_create_directly_specify_files(self):
         object = lob.Object.create(
-            name = 'Test Object Direct Specify',
+            description = 'Test Object Direct Specify',
             files = {'file': open('tests/pc.pdf', 'rb').read()},
             setting = 201
         )
 
         self.assertTrue(isinstance(object, lob.Object))
-        self.assertEqual(object.name, 'Test Object Direct Specify')
+        self.assertEqual(object.description, 'Test Object Direct Specify')
 
     def test_create_object_fail(self):
         self.assertRaises(lob.error.InvalidRequestError, lob.Object.create)

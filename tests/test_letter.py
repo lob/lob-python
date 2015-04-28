@@ -27,7 +27,11 @@ class LetterFunctions(unittest.TestCase):
                 'address_state': 'MA'
             },
             to_address = self.addr.id,
-            file = 'https://lob.com/goblue.pdf'
+            file = '<h1>{{name}}</h1>',
+            data = {
+                'name': 'Peter'
+            },
+            color = True
         )
         self.assertEqual(letter.to_address.id, self.addr.id)
         self.assertTrue(isinstance(letter, lob.Letter))

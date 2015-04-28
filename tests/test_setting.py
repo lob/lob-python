@@ -12,8 +12,8 @@ class SettingFunctions(unittest.TestCase):
 
 
     def test_find_setting(self):
-        setting = lob.Setting.retrieve(id=100)
-        self.assertEqual(setting.id, '100')
+        setting = lob.Setting.retrieve(id=200)
+        self.assertEqual(setting.id, '200')
 
     def test_find_setting_fail(self):
         self.assertRaises(lob.error.InvalidRequestError, lob.Setting.retrieve, id='test')

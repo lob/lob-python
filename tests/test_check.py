@@ -25,7 +25,7 @@ class CheckFunctions(unittest.TestCase):
 
     def test_create_check(self):
         check = lob.Check.create(
-            name = 'Test Check',
+            description = 'Test Check',
             bank_account = self.ba.id,
             to_address = self.addr.id,
             amount = 1000,
@@ -38,7 +38,7 @@ class CheckFunctions(unittest.TestCase):
 
     def test_create_check_lob_obj(self):
         check = lob.Check.create(
-            name = 'Test Check',
+            description = 'Test Check',
             bank_account = self.ba,
             to_address = self.addr,
             amount = 1000,
@@ -51,7 +51,7 @@ class CheckFunctions(unittest.TestCase):
 
     def test_create_check_inline(self):
         check = lob.Check.create(
-            name = 'Test Check',
+            description = 'Test Check',
             bank_account = self.ba,
             to_address = {
                 'name': 'Lob',
