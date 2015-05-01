@@ -5,6 +5,10 @@ lob.api_key = "test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc" # Replace this API key 
 
 example_address = lob.Address.create(
     name = 'Joe Smith',
+    description = 'Joe - Home',
+    metadata = {
+        'group': 'Members'
+    },
     address_line1 = '104, Printing Boulevard',
     address_city = 'Boston',
     address_state = 'MA',
@@ -24,6 +28,7 @@ print "\n"
 # Creating a Bank Account using the previously created account_address
 
 example_bank_account = lob.BankAccount.create(
+    description = 'Example bank account',
     routing_number = '122100024',
     account_number = '1234564789',
     signatory = 'John Doe',
@@ -66,7 +71,10 @@ print "\n"
 # Creating a Check using the previously created and verified bank account
 
 example_check = lob.Check.create(
-    name = 'Example Check',
+    description = 'Example Check',
+    metadata = {
+        'FY': '2015'
+    },
     to_address = {
         'name': 'Lob',
         'address_line1': '185 Berry Street',
@@ -79,6 +87,21 @@ example_check = lob.Check.create(
     bank_account = example_bank_account,
     amount = 1000,
     memo = 'Services Rendered',
+    file = """
+      <html>
+        <head>
+          <style>
+            @font-face {
+              font-family: 'Loved by the King';
+              src: url('https://s3-us-west-2.amazonaws.com/lob-assets/LovedbytheKing.ttf');
+            }
+          </style>
+        </head>
+        <body><h1>Demo check for {{name}}</h1></body>
+      </html>""",
+    data = {
+        'name': example_address.name
+    },
     logo = 'https://s3-us-west-2.amazonaws.com/lob-assets/lob_check_logo.png'
 )
 
