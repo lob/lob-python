@@ -11,8 +11,8 @@ class AreaFunctions(unittest.TestCase):
     def test_create_area_with_zip(self):
         area = lob.Area.create(
             description = 'area_test_zip',
-            front = 'https://s3-us-west-2.amazonaws.com/lob-assets/areafront.pdf',
-            back = 'https://s3-us-west-2.amazonaws.com/lob-assets/areaback.pdf',
+            front = '<h1>Hi</h1>',
+            back = '<h1>Goodbye</h1>',
             routes = ['94158','60031'],
             target_type = 'all'
         )
@@ -22,8 +22,8 @@ class AreaFunctions(unittest.TestCase):
     def test_create_area_with_route(self):
         area = lob.Area.create(
             description = 'area_test_route',
-            front = 'https://s3-us-west-2.amazonaws.com/lob-assets/areafront.pdf',
-            back = 'https://s3-us-west-2.amazonaws.com/lob-assets/areaback.pdf',
+            front = '<h1>Hi</h1>',
+            back = '<h1>Goodbye</h1>',
             routes = self.route,
             target_type = 'all'
         )

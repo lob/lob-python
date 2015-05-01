@@ -21,10 +21,9 @@ pdfkit.from_string(body, 'out.pdf', {
 })
 
 example_object = lob.Object.create(
-    name='Example Object',
+    description='Example Object',
     file=open('out.pdf', 'rb'),
-    setting_id=201,
-    full_bleed=1
+    setting_id=201
 )
 
 print "Check out the created PDF here: " + example_object.url
