@@ -24,13 +24,13 @@ class APIRequestor(object):
         if resp.status_code == 200:
             return payload
         elif resp.status_code == 401:
-            raise error.AuthenticationError(payload['errors'][0]['message'],
+            raise error.AuthenticationError(payload['error']['message'],
                 resp.content, resp.status_code, resp)
         elif resp.status_code in [404, 422]:
-            raise error.InvalidRequestError(payload['errors'][0]['message'],
+            raise error.InvalidRequestError(payload['error']['message'],
                 resp.content, resp.status_code, resp)
         else: # pragma: no cover
-            raise error.APIError(payload['errors'][0]['message'], resp.content, resp.status_code, resp)
+            raise error.APIError(payload['error']['message'], resp.content, resp.status_code, resp)
 
 
     def request(self, method, url, params=None):
@@ -68,7 +68,11 @@ class APIRequestor(object):
                     if isinstance(v, resource.LobObject):
                         data[k] = v.id
                     else:
-                        data[k] = v
+                        if isinstance(v, dict):
+                            for k2, v2 in v.iteritems():
+                                data[k + '[' + k2 + ']'] = v2
+                        else:
+                            data[k] = v
 
             return self.parse_response(
                 requests.post(lob.api_base + url, auth=(self.api_key, ''), data=data, files=files, headers=headers)

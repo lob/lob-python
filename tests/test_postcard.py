@@ -25,8 +25,12 @@ class PostcardFunctions(unittest.TestCase):
         postcard = lob.Postcard.create(
             to_address = self.addr.id,
             from_address = self.addr.id,
-            front = 'https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf',
-            back = 'https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf'
+            front = '<h1>{{front_name}}</h1>',
+            back = '<h1>{{back_name}}</h1>',
+            data = {
+                'front_name': 'Peter',
+                'back_name': 'Otto'
+            }
         )
         self.assertEqual(postcard.to_address.id, self.addr.id)
         self.assertEqual(postcard.from_address.id, self.addr.id)
@@ -37,8 +41,12 @@ class PostcardFunctions(unittest.TestCase):
         postcard = lob.Postcard.create(
             to_address = self.addr,
             from_address = self.addr,
-            front = 'https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf',
-            back = 'https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf'
+            front = '<h1>{{front_name}}</h1>',
+            back = '<h1>{{back_name}}</h1>',
+            data = {
+                'front_name': 'Peter',
+                'back_name': 'Otto'
+            }
         )
         self.assertEqual(postcard.to_address.id, self.addr.id)
         self.assertEqual(postcard.from_address.id, self.addr.id)
@@ -62,7 +70,10 @@ class PostcardFunctions(unittest.TestCase):
                 'address_zip': '94107',
                 'address_state': 'CA'
             },
-            front = 'https://s3-us-west-2.amazonaws.com/lob-assets/test.pdf',
+            front = '<h1>{{front_name}}</h1>',
+            data = {
+                'front_name': 'Peter'
+            },
             message = 'Hello'
         )
         self.assertEqual(postcard.to_address.name, 'Lob1')

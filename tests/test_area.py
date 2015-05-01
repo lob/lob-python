@@ -10,36 +10,33 @@ class AreaFunctions(unittest.TestCase):
 
     def test_create_area_with_zip(self):
         area = lob.Area.create(
-            name = 'area_test_zip',
+            description = 'area_test_zip',
             front = 'https://s3-us-west-2.amazonaws.com/lob-assets/areafront.pdf',
             back = 'https://s3-us-west-2.amazonaws.com/lob-assets/areaback.pdf',
             routes = ['94158','60031'],
-            target_type = 'all',
-            full_bleed = '1'
+            target_type = 'all'
         )
         self.assertTrue(isinstance(area, lob.Area))
 
 
     def test_create_area_with_route(self):
         area = lob.Area.create(
-            name = 'area_test_route',
+            description = 'area_test_route',
             front = 'https://s3-us-west-2.amazonaws.com/lob-assets/areafront.pdf',
             back = 'https://s3-us-west-2.amazonaws.com/lob-assets/areaback.pdf',
             routes = self.route,
-            target_type = 'all',
-            full_bleed = '1'
+            target_type = 'all'
         )
         self.assertTrue(isinstance(area, lob.Area))
 
 
     def test_create_area_local_file(self):
         area = lob.Area.create(
-            name = 'area_local_file',
+            description = 'area_local_file',
             front = open('tests/areafront.pdf', 'rb'),
             back = open('tests/areaback.pdf', 'rb'),
             routes = self.route,
-            target_type = 'all',
-            full_bleed = '1'
+            target_type = 'all'
         )
         self.assertTrue(isinstance(area, lob.Area))
 
