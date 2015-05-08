@@ -4,8 +4,6 @@ import sys
 
 lob.api_key = 'test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc'
 
-skipFirstLine  = True
-
 try:
     sys.argv[1]
 except IndexError:
