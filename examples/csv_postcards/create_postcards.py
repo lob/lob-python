@@ -7,10 +7,10 @@ lob.api_key = 'test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc'
 skipFirstLine  = True
 
 try:
-  sys.argv[1]
+    sys.argv[1]
 except IndexError:
-  print "Please provide an input CSV file as an argument."
-  sys.exit()
+    print "Please provide an input CSV file as an argument."
+    sys.exit()
 
 with open('postcard_front.html', 'r') as frontHtmlFile:
     frontHtml = frontHtmlFile.read()
