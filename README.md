@@ -1,8 +1,8 @@
 # lob-python
 
-[![Build Status](https://travis-ci.org/lob/lob-python.svg?branch=master)](https://travis-ci.org/lob/lob-python) 
-[![PyPI version](https://badge.fury.io/py/lob.svg)](http://badge.fury.io/py/lob) [![Downloads](https://pypip.in/download/lob/badge.svg)](https://pypi.python.org/pypi/lob/) 
-[![Coverage Status](https://coveralls.io/repos/lob/lob-python/badge.svg?branch=master)](https://coveralls.io/r/lob/lob-python?branch=master) 
+[![Build Status](https://travis-ci.org/lob/lob-python.svg?branch=master)](https://travis-ci.org/lob/lob-python)
+[![PyPI version](https://badge.fury.io/py/lob.svg)](http://badge.fury.io/py/lob) [![Downloads](https://pypip.in/download/lob/badge.svg)](https://pypi.python.org/pypi/lob/)
+[![Coverage Status](https://coveralls.io/repos/lob/lob-python/badge.svg?branch=master)](https://coveralls.io/r/lob/lob-python?branch=master)
 [![Dependency Status](https://gemnasium.com/lob/lob-python.svg)](https://gemnasium.com/lob/lob-python)
 
 This is the python wrapper for the Lob.com API. See full Lob.com documentation [here](https://lob.com/docs/python).
@@ -63,6 +63,11 @@ We've provided an example script you can run in examples/ that has examples of h
 ## Examples
 
 We've provided various examples for you to try out [here](https://github.com/lob/lob-python/tree/master/examples).
+
+There are simple scripts to demonstrate how to create all the core Lob objects (checks, letters, postcards. etc.) As well as more complex examples that utilize other libraries and external files:
+
+- [Verifying Addresses in a CSV](https://github.com/lob/lob-python/tree/master/examples/csv_address_verification)
+- [Creating Dynamic Postcards with HTML and Data](https://github.com/lob/lob-python/tree/master/examples/csv_postcards)
 
 ## API Documentation
 
