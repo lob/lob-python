@@ -1,6 +1,11 @@
+from __future__ import unicode_literals
+
+import json
+
 from lob import api_requestor
 from lob import error
-import json
+from lob.compat import string_type
+
 
 def lob_format(resp):
     types = {
@@ -30,7 +35,7 @@ def lob_format(resp):
         return LobObject.construct_from(resp)
     if isinstance(resp, dict) and not isinstance(resp, LobObject):
         resp = resp.copy()
-        if 'object' in resp and isinstance(resp['object'], basestring):
+        if 'object' in resp and isinstance(resp['object'], string_type):
             klass = types.get(resp['object'], LobObject)
         else:
             klass = LobObject
@@ -53,14 +58,14 @@ class LobObject(dict):
     @classmethod
     def construct_from(cls, values):
         instance = cls(values.get('id'))
-        for k, v in values.iteritems():
+        for k, v in values.items():
             instance[k] = lob_format(v)
         return instance
 
     def __getattr__(self, k):
         try:
             return self[k]
-        except KeyError, err:
+        except KeyError:
             raise AttributeError(k) #pragma: no cover
 
     def __setattr__(self, k, v):
@@ -69,10 +74,10 @@ class LobObject(dict):
     def __repr__(self):
         ident_parts = [type(self).__name__]
 
-        if isinstance(self.get('object'), basestring):
+        if isinstance(self.get('object'), string_type):
             ident_parts.append(self.get('object'))
 
-        if isinstance(self.get('id'), basestring):
+        if isinstance(self.get('id'), string_type):
             ident_parts.append('id=%s' % (self.get('id'),))
 
         unicode_repr = '<%s at %s> JSON: %s' % (
