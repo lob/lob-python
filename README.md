@@ -7,8 +7,7 @@
 
 This is the python wrapper for the Lob.com API. See full Lob.com documentation [here](https://lob.com/docs/python).
 
-This wrapper works in the object oriented style, that is, to make calls you have to call the method on a class and the
-return types are python objects. To get a `dict` on any object, you can call the `to_dict()` method of the object.
+This wrapper supports Python 2.6, 2.7, and 3.4 and works in the object oriented style. That is, to make calls you have to call the method on a class and the return types are python objects. To get a `dict` on any object, you can call the `to_dict()` method of the object.
 
 ## Table of Contents
 
