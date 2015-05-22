@@ -1,8 +1,10 @@
-from StringIO import StringIO
 import unittest
+
 import lob
+from lob.compat import BytesIO
 # Setting the API key
 lob.api_key = 'test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc'
+
 
 class ObjectFunctions(unittest.TestCase):
     def setUp(self):
@@ -34,13 +36,13 @@ class ObjectFunctions(unittest.TestCase):
 
     def test_create_object_stringio(self):
         object = lob.Object.create(
-            description = 'Test Object StringIO',
-            file = StringIO(open('tests/pc.pdf', 'rb').read()),
+            description = 'Test Object BytesIO',
+            file = BytesIO(open('tests/pc.pdf', 'rb').read()),
             setting = 201
         )
 
         self.assertTrue(isinstance(object, lob.Object))
-        self.assertEqual(object.description, 'Test Object StringIO')
+        self.assertEqual(object.description, 'Test Object BytesIO')
 
     def test_create_object_local(self):
         object = lob.Object.create(

@@ -1,9 +1,11 @@
+from __future__ import unicode_literals
+
 import requests
+
 import lob
-import json
-import resource
 from lob import error
-from version import VERSION
+from lob.version import VERSION
+
 
 def _is_file_like(obj):
     """
@@ -20,7 +22,7 @@ class APIRequestor(object):
         self.api_key = key or lob.api_key
 
     def parse_response(self, resp):
-        payload = json.loads(resp.content)
+        payload = resp.json()
         if resp.status_code == 200:
             return payload
         elif resp.status_code == 401:
@@ -54,22 +56,22 @@ class APIRequestor(object):
             files = params.pop('files', {})
             explodedParams = {}
 
-            for k,v in params.iteritems():
-                if isinstance(v, dict) and not isinstance(v, resource.LobObject):
-                    for k2,v2 in v.iteritems():
+            for k,v in params.items():
+                if isinstance(v, dict) and not isinstance(v, lob.resource.LobObject):
+                    for k2,v2 in v.items():
                         explodedParams[k + '[' + k2 + ']'] = v2
                 else:
                     explodedParams[k] = v
 
-            for k,v in explodedParams.iteritems():
+            for k,v in explodedParams.items():
                 if _is_file_like(v):
                     files[k] = v
                 else:
-                    if isinstance(v, resource.LobObject):
+                    if isinstance(v, lob.resource.LobObject):
                         data[k] = v.id
                     else:
                         if isinstance(v, dict):
-                            for k2, v2 in v.iteritems():
+                            for k2, v2 in v.items():
                                 data[k + '[' + k2 + ']'] = v2
                         else:
                             data[k] = v
@@ -77,4 +79,3 @@ class APIRequestor(object):
             return self.parse_response(
                 requests.post(lob.api_base + url, auth=(self.api_key, ''), data=data, files=files, headers=headers)
             )
-

@@ -1,3 +1,6 @@
+from __future__ import unicode_literals
+
+
 class LobError(Exception):
 
     def __init__(self, message=None, http_body=None, http_status=None,
