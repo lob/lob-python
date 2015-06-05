@@ -1,3 +1,6 @@
+import sys, os
+sys.path.insert(0, os.path.abspath(__file__+'../../../..'))
+
 import lob
 import csv
 import sys
@@ -10,9 +13,9 @@ except IndexError:
     print "Please provide an input CSV file as an argument."
     sys.exit()
 
-with open('postcard_front.html', 'r') as frontHtmlFile:
+with open(os.path.dirname(__file__) + '/postcard_front.html', 'r') as frontHtmlFile:
     frontHtml = frontHtmlFile.read()
-    with open('postcard_back.html', 'r') as backHtmlFile:
+    with open(os.path.dirname(__file__) + '/postcard_back.html', 'r') as backHtmlFile:
         backHtml = backHtmlFile.read()
         with open(sys.argv[1]) as f:
             for row in csv.reader(f):
