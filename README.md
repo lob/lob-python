@@ -5,7 +5,7 @@
 [![Coverage Status](https://coveralls.io/repos/lob/lob-python/badge.svg?branch=master)](https://coveralls.io/r/lob/lob-python?branch=master)
 [![Dependency Status](https://gemnasium.com/lob/lob-python.svg)](https://gemnasium.com/lob/lob-python)
 
-This is the python wrapper for the Lob.com API. See full Lob.com documentation [here](https://lob.com/docs/python).
+This is the python wrapper for the Lob.com API. See full Lob.com documentation [here](https://lob.com/docs/python). For best results, be sure that you're using [the latest version](https://lob.com/docs/python#version) of the Lob API and the latest version of the python wrapper.
 
 This wrapper supports Python 2.6, 2.7, 3.2, 3.3, and 3.4 and works in the object oriented style. That is, to make calls you have to call the method on a class and the return types are python objects. To get a `dict` on any object, you can call the `to_dict()` method of the object.
 
@@ -73,7 +73,8 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
 
 - [Introduction](https://lob.com/docs/python#introduction)
 - [Versioning](https://lob.com/docs/python#version)
-- [Image Prepping](https://lob.com/docs/python#prepping)
+- [Errors](https://lob.com/docs/python#errors)
+- [Metadata](https://lob.com/docs/python#metadata)
 - **Addresses**
   - [Address Book](https://lob.com/docs/python#addresses)
     - [Create an Address](https://lob.com/docs/python#addresses_create)
@@ -106,6 +107,7 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
 - **Simple Print Service**
   - [Jobs](https://lob.com/docs/python#jobs)
     - [Create a Job](https://lob.com/docs/python#jobs_create)
+    - [Create a MultiObject Job](https://lob.com/docs/python#jobs_multi)
     - [Retrieve a Job](https://lob.com/docs/python#jobs_retrieve)
     - [List all Jobs](https://lob.com/docs/python#jobs_list)
   - [Objects](https://lob.com/docs/python#objects)
@@ -130,11 +132,9 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
   - [States](https://lob.com/docs/python#states)
     - [List all States](https://lob.com/docs/python#states_list)
 - **Appendix**
+  - [HTML Examples](https://lob.com/docs/python#html-examples)
+  - [Image Prepping](https://lob.com/docs/python#prepping)
   - [SPS Templates](https://lob.com/docs/python#sps-templates)
-  - [Custom Fonts with HTML](https://lob.com/docs/python#html-fonts)
-  - [Postcard HTML Examples](https://lob.com/docs/python#postcard-examples)
-  - [Area HTML Examples](https://lob.com/docs/python#area-examples)
-  - [Letter HTML Examples](https://lob.com/docs/python#letter-examples)
 
 ## Testing
 
