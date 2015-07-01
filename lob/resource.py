@@ -99,6 +99,10 @@ class APIResource(LobObject):
 class ListableAPIResource(APIResource):
     @classmethod
     def list(cls, **params):
+        for key in params.keys():
+            if isinstance(params[key], list):
+                params[str(key) + '[]'] = params[key]
+                del params[key]
         requestor = api_requestor.APIRequestor()
         response = requestor.request('get', cls.endpoint, params)
         return lob_format(response)

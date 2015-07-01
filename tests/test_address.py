@@ -13,6 +13,12 @@ class TestAddressFunctions(unittest.TestCase):
         self.assertTrue(isinstance(addresses.data[0], lob.Address))
         self.assertEqual(addresses.object, 'list')
 
+    def test_list_addresses_total_count(self):
+        addresses = lob.Address.list(include=['total_count'])
+        self.assertTrue(isinstance(addresses.data[0], lob.Address))
+        self.assertEqual(addresses.object, 'list')
+        self.assertTrue(addresses['total_count'])
+
     def test_list_addresses_limit(self):
         addresses = lob.Address.list(count=2)
         self.assertTrue(isinstance(addresses.data[0], lob.Address))
@@ -62,4 +68,3 @@ class TestAddressFunctions(unittest.TestCase):
         )
 
         self.assertEqual(addr.address.address_line1, '220 WILLIAM T MORRISSEY BLVD')
-
