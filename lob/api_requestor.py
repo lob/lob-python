@@ -25,14 +25,16 @@ class APIRequestor(object):
         payload = resp.json()
         if resp.status_code == 200:
             return payload
-        elif resp.status_code == 401:
-            raise error.AuthenticationError(payload['error']['message'],
+
+        error_message = payload.get('error', {}).get('message')
+        if resp.status_code == 401:
+            raise error.AuthenticationError(error_message,
                 resp.content, resp.status_code, resp)
         elif resp.status_code in [404, 422]:
-            raise error.InvalidRequestError(payload['error']['message'],
+            raise error.InvalidRequestError(error_message,
                 resp.content, resp.status_code, resp)
         else: # pragma: no cover
-            raise error.APIError(payload['error']['message'], resp.content, resp.status_code, resp)
+            raise error.APIError(error_message, resp.content, resp.status_code, resp)
 
 
     def request(self, method, url, params=None):
