@@ -32,9 +32,9 @@ inputFile = open(sys.argv[1], 'rU')
 csvInput = csv.reader(inputFile)
 
 # Create output files
-errors = open('errors.csv', 'w')
-verified = open('verified.csv', 'w')
-success = open('success.csv', 'w')
+errors = open(os.path.dirname(os.path.abspath(__file__)) + '/errors.csv', 'w')
+verified = open(os.path.dirname(os.path.abspath(__file__)) + '/verified.csv', 'w')
+success = open(os.path.dirname(os.path.abspath(__file__)) + '/success.csv', 'w')
 
 # Loop through input CSV rows
 for idx, row in enumerate(csvInput):
@@ -89,7 +89,7 @@ for idx, row in enumerate(csvInput):
               'address_state': 'CA',
               'address_zip': '94107',
           },
-          file = open('letter_template.html', 'r').read(),
+          file = open(os.path.dirname(os.path.abspath(__file__)) + '/letter_template.html', 'r').read(),
           data = {
               'date': datetime.datetime.now().strftime("%m/%d/%Y"),
               'name': row[name],
@@ -116,4 +116,3 @@ errors.close()
 verified.close()
 success.close()
 print "\n"
-

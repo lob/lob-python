@@ -30,8 +30,8 @@ inputFile = open(sys.argv[1], 'rU')
 csvInput = csv.reader(inputFile)
 
 # Create output files
-errors = open('errors.csv', 'w')
-verified = open('verified.csv', 'w')
+errors = open(os.path.dirname(os.path.abspath(__file__)) + '/errors.csv', 'w')
+verified = open(os.path.dirname(os.path.abspath(__file__)) + '/verified.csv', 'w')
 
 # Loop through input CSV rows
 for idx, row in enumerate(csvInput):
