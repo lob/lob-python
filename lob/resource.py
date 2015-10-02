@@ -99,8 +99,12 @@ class APIResource(LobObject):
 class ListableAPIResource(APIResource):
     @classmethod
     def list(cls, **params):
-        for key in params.keys():
-            if isinstance(params[key], list):
+        for key, value in params.items():
+            if isinstance(params[key], dict):
+                for subKey in value:
+                    params[str(key) + '[' + subKey + ']'] = value[subKey]
+                del params[key]
+            elif isinstance(params[key], list):
                 params[str(key) + '[]'] = params[key]
                 del params[key]
         requestor = api_requestor.APIRequestor()

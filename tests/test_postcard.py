@@ -18,6 +18,11 @@ class PostcardFunctions(unittest.TestCase):
         self.assertTrue(isinstance(postcards.data[0], lob.Postcard))
         self.assertEqual(len(postcards.data), 2)
 
+    def test_list_postcards_metadata(self):
+        postcards = lob.Postcard.list(metadata={ 'campagin': 'LOB2015' })
+        self.assertTrue(isinstance(postcards.data[0], lob.Postcard))
+        self.assertEqual(len(postcards.data), 1)
+
     def test_list_postcards_fail(self):
         self.assertRaises(lob.error.InvalidRequestError, lob.Postcard.list, count=1000)
 
