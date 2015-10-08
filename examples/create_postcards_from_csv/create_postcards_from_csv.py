@@ -13,9 +13,9 @@ except IndexError:
     print "Please provide an input CSV file as an argument."
     sys.exit()
 
-with open(os.path.dirname(os.path.abspath(__file__)) + '/postcard_front.html', 'r') as frontHtmlFile:
+with open(os.path.dirname(os.path.abspath(__file__)) + '/postcard_front.html', 'rb') as frontHtmlFile:
     frontHtml = frontHtmlFile.read()
-    with open(os.path.dirname(os.path.abspath(__file__)) + '/postcard_back.html', 'r') as backHtmlFile:
+    with open(os.path.dirname(os.path.abspath(__file__)) + '/postcard_back.html', 'rb') as backHtmlFile:
         backHtml = backHtmlFile.read()
         with open(sys.argv[1]) as f:
             for row in csv.reader(f):
