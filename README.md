@@ -23,12 +23,12 @@ This wrapper supports Python 2.6, 2.7, 3.2, 3.3, and 3.4 and works in the object
 
 Here's a general overview of the Lob services available, click through to read more.
 
-- [Simple Postcard Service](https://lob.com/services/postcards)
-- [Simple Letter Service](https://lob.com/services/letters)
-- [Simple Check Service](https://lob.com/services/checks)
-- [Simple Print Service](https://lob.com/services/sps)
-- [Simple Area Mail](https://lob.com/services/sam)
-- [Address Verification](https://lob.com/verification/address)
+- [Postcards API](https://lob.com/services/postcards)
+- [Letters API](https://lob.com/services/letters)
+- [Checks API](https://lob.com/services/checks)
+- [Prints API](https://lob.com/services/sps)
+- [Area Mail API](https://lob.com/services/sam)
+- [Address Verification API](https://lob.com/verification/address)
 
 ### Registration
 
@@ -74,6 +74,7 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
 - [Introduction](https://lob.com/docs/python#introduction)
 - [Versioning](https://lob.com/docs/python#version)
 - [Errors](https://lob.com/docs/python#errors)
+- [Rate Limiting](https://lob.com/docs/python#rate-limits)
 - [Metadata](https://lob.com/docs/python#metadata)
 - **Addresses**
   - [Address Book](https://lob.com/docs/python#addresses)
@@ -81,19 +82,19 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
     - [Retrieve an Address](https://lob.com/docs/python#addresses_retrieve)
     - [Delete an Address](https://lob.com/docs/python#addresses_delete)
     - [List all Addresses](https://lob.com/docs/python#addresses_list)
-  - [Simple Address Verification](https://lob.com/docs/python#verify)
+  - [Address Verification API](https://lob.com/docs/python#verify)
     - [Verify an Address](https://lob.com/docs/python#verify_create)
-- **Simple Postcard Service**
+- **Postcards API**
   - [Postcards](https://lob.com/docs/python#postcards)
     - [Create a Postcard](https://lob.com/docs/python#postcards_create)
     - [Retrieve a Postcard](https://lob.com/docs/python#postcards_retrieve)
     - [List all Postcards](https://lob.com/docs/python#postcards_list)
-- **Simple Letter Service**
+- **Letters API**
   - [Letters](https://lob.com/docs/python#letters)
     - [Create a Letter](https://lob.com/docs/python#letters_create)
     - [Retrieve a Letter](https://lob.com/docs/python#letters_retrieve)
     - [List all Letters](https://lob.com/docs/python#letters_list)
-- **Simple Check Service**
+- **Checks API**
   - [Checks](https://lob.com/docs/python#checks)
     - [Create a Check](https://lob.com/docs/python#checks_create)
     - [Retrieve a Check](https://lob.com/docs/python#checks_retrieve)
@@ -101,10 +102,10 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
   - [Bank Accounts](https://lob.com/docs/python#bank-accounts)
     - [Create a Bank Account](https://lob.com/docs/python#bankaccounts_create)
     - [Retrieve a Bank Account](https://lob.com/docs/python#bankaccounts_retrieve)
-    - [List all Bank Accounts](https://lob.com/docs/python#bankaccounts_list)
-    - [Verify a Bank Account](https://lob.com/docs/python#bankaccounts_verify)
     - [Delete a Bank Account](https://lob.com/docs/python#bankaccounts_delete)
-- **Simple Print Service**
+    - [Verify a Bank Account](https://lob.com/docs/python#bankaccounts_verify)
+    - [List all Bank Accounts](https://lob.com/docs/python#bankaccounts_list)
+- **Prints API**
   - [Jobs](https://lob.com/docs/python#jobs)
     - [Create a Job](https://lob.com/docs/python#jobs_create)
     - [Create a MultiObject Job](https://lob.com/docs/python#jobs_multi)
@@ -118,7 +119,7 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
   - [Settings](https://lob.com/docs/python#settings)
     - [Retrieve a Setting](https://lob.com/docs/python#settings_retrieve)
     - [List all Settings](https://lob.com/docs/python#settings_list)
-- **Simple Area Mail**
+- **Area Mail API**
   - [Areas](https://lob.com/docs/python#areas)
     - [Create an Area Mailing](https://lob.com/docs/python#areas_create)
     - [Retrieve an Area Mailing](https://lob.com/docs/python#areas_retrieve)
@@ -132,9 +133,10 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
   - [States](https://lob.com/docs/python#states)
     - [List all States](https://lob.com/docs/python#states_list)
 - **Appendix**
+  - [API Changelog](https://lob.com/docs/python#changelog)
   - [HTML Examples](https://lob.com/docs/python#html-examples)
   - [Image Prepping](https://lob.com/docs/python#prepping)
-  - [SPS Templates](https://lob.com/docs/python#sps-templates)
+  - [Prints API Templates](https://lob.com/docs/python#prints-templates)
 
 ## Testing
 
