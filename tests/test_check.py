@@ -28,6 +28,7 @@ class CheckFunctions(unittest.TestCase):
             description = 'Test Check',
             bank_account = self.ba.id,
             to_address = self.addr.id,
+            from_address = self.addr.id,
             amount = 1000,
             memo = 'Test Check'
         )
@@ -35,25 +36,21 @@ class CheckFunctions(unittest.TestCase):
         self.assertTrue(isinstance(check, lob.Check))
         self.assertEqual(check.bank_account.id, self.ba.id)
         self.assertEqual(check.to_address.id, self.addr.id)
-
-    def test_create_check_lob_obj(self):
-        check = lob.Check.create(
-            description = 'Test Check',
-            bank_account = self.ba,
-            to_address = self.addr,
-            amount = 1000,
-            memo = 'Test Check'
-        )
-
-        self.assertTrue(isinstance(check, lob.Check))
-        self.assertEqual(check.bank_account.id, self.ba.id)
-        self.assertEqual(check.to_address.id, self.addr.id)
+        self.assertEqual(check.from_address.id, self.addr.id)
 
     def test_create_check_inline(self):
         check = lob.Check.create(
             description = 'Test Check',
             bank_account = self.ba,
             to_address = {
+                'name': 'Lob',
+                'address_line1': '185 Berry Street',
+                'address_line2': 'Suite 1510',
+                'address_city': 'San Francisco',
+                'address_zip': '94107',
+                'address_state': 'CA'
+            },
+            from_address = {
                 'name': 'Lob',
                 'address_line1': '185 Berry Street',
                 'address_line2': 'Suite 1510',
@@ -68,6 +65,7 @@ class CheckFunctions(unittest.TestCase):
         self.assertTrue(isinstance(check, lob.Check))
         self.assertEqual(check.bank_account.id, self.ba.id)
         self.assertEqual(check.to_address.name, 'Lob')
+        self.assertEqual(check.from_address.name, 'Lob')
 
     def test_create_check_fail(self):
         self.assertRaises(lob.error.InvalidRequestError, lob.Check.create)

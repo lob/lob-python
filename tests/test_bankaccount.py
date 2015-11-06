@@ -28,49 +28,9 @@ class BankAccountFunctions(unittest.TestCase):
         bankAccount = lob.BankAccount.create(
             routing_number='122100024',
             account_number='123456789',
-            bank_address=self.addr.id,
-            account_address=self.addr.id,
             signatory='John Doe'
         )
         self.assertTrue(isinstance(bankAccount, lob.BankAccount))
-        self.assertEqual(bankAccount.bank_address.id, self.addr.id)
-
-    def test_create_bankAccount_lob_obj(self):
-        bankAccount = lob.BankAccount.create(
-            routing_number='122100024',
-            account_number='123456789',
-            bank_address=self.addr,
-            account_address=self.addr,
-            signatory='John Doe'
-        )
-        self.assertTrue(isinstance(bankAccount, lob.BankAccount))
-        self.assertEqual(bankAccount.bank_address.id, self.addr.id)
-
-    def test_create_bankAccount_inline(self):
-        bankAccount = lob.BankAccount.create(
-            routing_number='122100024',
-            account_number='123456789',
-            bank_address= {
-                'name': 'Lob1',
-                'address_line1': '185 Berry Street',
-                'address_line2': 'Suite 1510',
-                'address_city': 'San Francisco',
-                'address_zip': '94107',
-                'address_state': 'CA'
-            },
-            account_address= {
-                'name': 'Lob2',
-                'address_line1': '185 Berry Street',
-                'address_line2': 'Suite 1510',
-                'address_city': 'San Francisco',
-                'address_zip': '94107',
-                'address_state': 'CA'
-            },
-            signatory='John Doe'
-        )
-        self.assertTrue(isinstance(bankAccount, lob.BankAccount))
-        self.assertEquals(bankAccount.bank_address.name, 'Lob1')
-        self.assertEquals(bankAccount.account_address.name, 'Lob2')
 
     def test_retrieve_bankAccount(self):
         bankAccount = lob.BankAccount.retrieve(id=lob.BankAccount.list().data[0].id)
@@ -88,22 +48,6 @@ class BankAccountFunctions(unittest.TestCase):
         ba = lob.BankAccount.create(
             routing_number='122100024',
             account_number='223456789',
-            bank_address= {
-                'name': 'Lob1',
-                'address_line1': '185 Berry Street',
-                'address_line2': 'Suite 1510',
-                'address_city': 'San Francisco',
-                'address_zip': '94107',
-                'address_state': 'CA'
-            },
-            account_address= {
-                'name': 'Lob2',
-                'address_line1': '185 Berry Street',
-                'address_line2': 'Suite 1510',
-                'address_city': 'San Francisco',
-                'address_zip': '94107',
-                'address_state': 'CA'
-            },
             signatory='John Doe'
         )
         verBa = lob.BankAccount.verify(id=ba.id, amounts=[25, 75])
