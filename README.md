@@ -72,6 +72,7 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
 ## API Documentation
 
 - [Introduction](https://lob.com/docs/python#introduction)
+- [Authentication](https://lob.com/docs/python#auth)
 - [Versioning](https://lob.com/docs/python#version)
 - [Errors](https://lob.com/docs/python#errors)
 - [Rate Limiting](https://lob.com/docs/python#rate-limits)

@@ -159,6 +159,9 @@ class Check(ListableAPIResource, CreateableAPIResource):
             if 'to_address' in params:
                 params['to'] = params['to_address']
                 params.pop('to_address')
+            if 'from_address' in params:
+                params['from'] = params['from_address']
+                params.pop('from_address')
         return super(Check, cls).create(**params)
 
 

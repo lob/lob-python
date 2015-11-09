@@ -34,16 +34,7 @@ example_bank_account = lob.BankAccount.create(
     description = 'Example bank account',
     routing_number = '122100024',
     account_number = '1234564789',
-    signatory = 'John Doe',
-    bank_address = {
-        'name': 'Bank Address',
-        'address_line1': '123 Wall Street',
-        'address_city': 'San Francisco',
-        'address_state': 'CA',
-        'address_zip': '94158',
-        'address_country': 'US'
-    },
-    account_address = example_address
+    signatory = 'John Doe'
 )
 
 print "Bank Account Response"
@@ -78,7 +69,8 @@ example_check = lob.Check.create(
     metadata = {
         'FY': '2015'
     },
-    to_address = {
+    to_address = example_address,
+    from_address = {
         'name': 'Lob',
         'address_line1': '185 Berry Street',
         'address_line2': 'Suite 1510',
