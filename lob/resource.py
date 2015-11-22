@@ -223,9 +223,6 @@ class Packaging(ListableAPIResource):
 class Route(ListableAPIResource):
     endpoint = '/routes'
 
-class Service(ListableAPIResource):
-    endpoint = '/services'
-
 class Setting(ListableAPIResource):
     endpoint = '/settings'
 
