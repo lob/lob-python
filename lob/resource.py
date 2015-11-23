@@ -216,10 +216,6 @@ class Postcard(ListableAPIResource, CreateableAPIResource):
                 params.pop('to_address')
         return super(Postcard, cls).create(**params)
 
-
-class Packaging(ListableAPIResource):
-    endpoint = '/packagings'
-
 class Route(ListableAPIResource):
     endpoint = '/routes'
 
