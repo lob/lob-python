@@ -26,8 +26,7 @@ Here's a general overview of the Lob services available, click through to read m
 - [Postcards API](https://lob.com/services/postcards)
 - [Letters API](https://lob.com/services/letters)
 - [Checks API](https://lob.com/services/checks)
-- [Prints API](https://lob.com/services/sps)
-- [Area Mail API](https://lob.com/services/sam)
+- [Area Mail API](https://lob.com/services/area)
 - [Address Verification API](https://lob.com/verification/address)
 
 ### Registration
@@ -106,20 +105,6 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
     - [Delete a Bank Account](https://lob.com/docs/python#bankaccounts_delete)
     - [Verify a Bank Account](https://lob.com/docs/python#bankaccounts_verify)
     - [List all Bank Accounts](https://lob.com/docs/python#bankaccounts_list)
-- **Prints API**
-  - [Jobs](https://lob.com/docs/python#jobs)
-    - [Create a Job](https://lob.com/docs/python#jobs_create)
-    - [Create a MultiObject Job](https://lob.com/docs/python#jobs_multi)
-    - [Retrieve a Job](https://lob.com/docs/python#jobs_retrieve)
-    - [List all Jobs](https://lob.com/docs/python#jobs_list)
-  - [Objects](https://lob.com/docs/python#objects)
-    - [Create an Object](https://lob.com/docs/python#objects_create)
-    - [Retrieve an Object](https://lob.com/docs/python#objects_retrieve)
-    - [Delete an Object](https://lob.com/docs/python#objects_delete)
-    - [List all Objects](https://lob.com/docs/python#objects_list)
-  - [Settings](https://lob.com/docs/python#settings)
-    - [Retrieve a Setting](https://lob.com/docs/python#settings_retrieve)
-    - [List all Settings](https://lob.com/docs/python#settings_list)
 - **Area Mail API**
   - [Areas](https://lob.com/docs/python#areas)
     - [Create an Area Mailing](https://lob.com/docs/python#areas_create)
@@ -137,7 +122,6 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
   - [API Changelog](https://lob.com/docs/python#changelog)
   - [HTML Examples](https://lob.com/docs/python#html-examples)
   - [Image Prepping](https://lob.com/docs/python#prepping)
-  - [Prints API Templates](https://lob.com/docs/python#prints-templates)
 
 ## Testing
 
