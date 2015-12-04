@@ -82,7 +82,7 @@ example_check = lob.Check.create(
     bank_account = example_bank_account,
     amount = 1000,
     memo = 'Services Rendered',
-    file = """
+    check_bottom = """
       <html>
         <head>
           <style>
