@@ -37,7 +37,7 @@ with open(os.path.dirname(os.path.abspath(__file__)) + '/postcard_front.html', '
                         'address_zip': '94185',
                         'address_country': 'US'
                     },
-                    setting = 1002,
+                    size: '6x11',
                     front = frontHtml,
                     back = backHtml,
                     data = {
