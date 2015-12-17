@@ -4,7 +4,7 @@ import unittest
 
 class CheckFunctions(unittest.TestCase):
     def setUp(self):
-        lob.api_key = 'test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc'
+        lob.api_key = 'test_fc26575412e92e22a926bc96c857f375f8b'
         self.addr = lob.Address.list(count=1).data[0]
         self.ba = lob.BankAccount.list(count=1).data[0]
         if self.ba.verified == False:
