@@ -5,7 +5,7 @@ import lob
 import csv
 import sys
 
-lob.api_key = 'test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc'
+lob.api_key = 'test_fc26575412e92e22a926bc96c857f375f8b'
 
 try:
     sys.argv[1]
@@ -37,7 +37,7 @@ with open(os.path.dirname(os.path.abspath(__file__)) + '/postcard_front.html', '
                         'address_zip': '94185',
                         'address_country': 'US'
                     },
-                    setting = 1002,
+                    size: '6x11',
                     front = frontHtml,
                     back = backHtml,
                     data = {
