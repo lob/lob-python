@@ -151,7 +151,7 @@ class Area(ListableAPIResource, CreateableAPIResource):
 class BankAccount(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource, VerifiableAPIResource):
     endpoint = '/bank_accounts'
 
-class Check(ListableAPIResource, CreateableAPIResource):
+class Check(ListableAPIResource, CreateableAPIResource, DeleteableAPIResource):
     endpoint = '/checks'
     @classmethod
     def create(cls, **params):
