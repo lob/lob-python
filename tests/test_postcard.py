@@ -4,7 +4,7 @@ import lob
 class PostcardFunctions(unittest.TestCase):
     def setUp(self):
         lob.api_key = 'test_fc26575412e92e22a926bc96c857f375f8b'
-        self.addr = lob.Address.list(count=1).data[0]
+        self.addr = lob.Address.list(limit=1).data[0]
 
     def test_list_postcards(self):
         postcards = lob.Postcard.list()
@@ -12,7 +12,7 @@ class PostcardFunctions(unittest.TestCase):
         self.assertEqual(postcards.object, 'list')
 
     def test_list_postcards_limit(self):
-        postcards = lob.Postcard.list(count=2)
+        postcards = lob.Postcard.list(limit=2)
         self.assertTrue(isinstance(postcards.data[0], lob.Postcard))
         self.assertEqual(len(postcards.data), 2)
 
@@ -22,7 +22,7 @@ class PostcardFunctions(unittest.TestCase):
         self.assertEqual(len(postcards.data), 1)
 
     def test_list_postcards_fail(self):
-        self.assertRaises(lob.error.InvalidRequestError, lob.Postcard.list, count=1000)
+        self.assertRaises(lob.error.InvalidRequestError, lob.Postcard.list, limit=1000)
 
     def test_create_postcard(self):
         postcard = lob.Postcard.create(

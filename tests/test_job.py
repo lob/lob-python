@@ -4,8 +4,8 @@ import lob
 class JobFunctions(unittest.TestCase):
     def setUp(self):
         lob.api_key = 'test_fc26575412e92e22a926bc96c857f375f8b'
-        self.obj = lob.Object.list(count=1).data[0]
-        self.addr = lob.Address.list(count=1).data[0]
+        self.obj = lob.Object.list(limit=1).data[0]
+        self.addr = lob.Address.list(limit=1).data[0]
 
     def test_list_jobs(self):
         jobs = lob.Job.list()
@@ -13,12 +13,12 @@ class JobFunctions(unittest.TestCase):
         self.assertEqual(jobs.object, 'list')
 
     def test_list_jobs_limit(self):
-        jobs = lob.Job.list(count=2)
+        jobs = lob.Job.list(limit=2)
         self.assertTrue(isinstance(jobs.data[0], lob.Job))
         self.assertEqual(len(jobs.data), 2)
 
     def test_list_jobs_fail(self):
-        self.assertRaises(lob.error.InvalidRequestError, lob.Job.list, count=1000)
+        self.assertRaises(lob.error.InvalidRequestError, lob.Job.list, limit=1000)
 
     def test_create_job(self):
         job = lob.Job.create(

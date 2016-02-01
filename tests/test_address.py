@@ -1,8 +1,5 @@
 import unittest
 import lob
-# Setting the API key
-
-# Create an address
 
 class TestAddressFunctions(unittest.TestCase):
     def setUp(self):
@@ -20,12 +17,12 @@ class TestAddressFunctions(unittest.TestCase):
         self.assertTrue(addresses['total_count'])
 
     def test_list_addresses_limit(self):
-        addresses = lob.Address.list(count=2)
+        addresses = lob.Address.list(limit=2)
         self.assertTrue(isinstance(addresses.data[0], lob.Address))
         self.assertEqual(len(addresses.data), 2)
 
     def test_list_address_fail(self):
-        self.assertRaises(lob.error.InvalidRequestError, lob.Address.list, count=1000)
+        self.assertRaises(lob.error.InvalidRequestError, lob.Address.list, limit=1000)
 
     def test_create_address(self):
         address = lob.Address.create(

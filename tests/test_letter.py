@@ -4,7 +4,7 @@ import lob
 class LetterFunctions(unittest.TestCase):
     def setUp(self):
         lob.api_key = 'test_fc26575412e92e22a926bc96c857f375f8b'
-        self.addr = lob.Address.list(count=1).data[0]
+        self.addr = lob.Address.list(limit=1).data[0]
 
     def test_list_letters(self):
         letters = lob.Letter.list()

@@ -6,7 +6,7 @@ from lob.compat import BytesIO
 class ObjectFunctions(unittest.TestCase):
     def setUp(self):
         lob.api_key = 'test_fc26575412e92e22a926bc96c857f375f8b'
-        self.obj = lob.Object.list(count=1).data[0]
+        self.obj = lob.Object.list(limit=1).data[0]
 
     def test_list_objects(self):
         objects = lob.Object.list()
@@ -14,12 +14,12 @@ class ObjectFunctions(unittest.TestCase):
         self.assertEqual(objects.object, 'list')
 
     def test_list_objects_limit(self):
-        objects = lob.Object.list(count=2)
+        objects = lob.Object.list(limit=2)
         self.assertTrue(isinstance(objects.data[0], lob.Object))
         self.assertEqual(len(objects.data), 2)
 
     def test_list_objects_fail(self):
-        self.assertRaises(lob.error.InvalidRequestError, lob.Object.list, count=1000)
+        self.assertRaises(lob.error.InvalidRequestError, lob.Object.list, limit=1000)
 
     def test_create_object_remote(self):
         object = lob.Object.create(

@@ -47,12 +47,12 @@ class AreaFunctions(unittest.TestCase):
         self.assertEqual(areas.object, 'list')
 
     def test_list_areas_limit(self):
-        areas = lob.Area.list(count=2)
+        areas = lob.Area.list(limit=2)
         self.assertTrue(isinstance(areas.data[0], lob.Area))
         self.assertEqual(len(areas.data), 2)
 
     def test_list_area_fail(self):
-        self.assertRaises(lob.error.InvalidRequestError, lob.Area.list, count=1000)
+        self.assertRaises(lob.error.InvalidRequestError, lob.Area.list, limit=1000)
 
     def test_retrieve_area(self):
         area = lob.Area.retrieve(id=lob.Area.list().data[0].id)
