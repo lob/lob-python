@@ -22,6 +22,10 @@ class APIRequestor(object):
         self.api_key = key or lob.api_key
 
     def parse_response(self, resp):
+        if resp.status_code == 504:
+            raise error.APIConnectionError(resp.content or resp.reason, # pragma: no cover
+                resp.content, resp.status_code, resp)
+
         payload = resp.json()
         if resp.status_code == 200:
             return payload
