@@ -34,6 +34,7 @@ example_bank_account = lob.BankAccount.create(
     description = 'Example bank account',
     routing_number = '122100024',
     account_number = '1234564789',
+    account_type = 'company',
     signatory = 'John Doe'
 )
 
