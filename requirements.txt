@@ -1,5 +1,5 @@
 nose
 flake8
-requests
+requests<2.11
 coverage<4
 coveralls
