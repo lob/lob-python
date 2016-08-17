@@ -37,3 +37,7 @@ nosetests.xml
 
 # Sphinx documentation
 docs/_build/
+
+#Generated Files
+examples/**/success.csv
+examples/**/errors.csv
