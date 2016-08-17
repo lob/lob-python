@@ -1,7 +1,7 @@
 # lob-python
 
 [![Build Status](https://travis-ci.org/lob/lob-python.svg?branch=master)](https://travis-ci.org/lob/lob-python)
-[![PyPI version](https://badge.fury.io/py/lob.svg)](http://badge.fury.io/py/lob) [![Downloads](https://pypip.in/download/lob/badge.svg)](https://pypi.python.org/pypi/lob/)
+[![PyPI version](https://badge.fury.io/py/lob.svg)](http://badge.fury.io/py/lob)
 [![Coverage Status](https://coveralls.io/repos/lob/lob-python/badge.svg?branch=master)](https://coveralls.io/r/lob/lob-python?branch=master)
 [![Dependency Status](https://gemnasium.com/lob/lob-python.svg)](https://gemnasium.com/lob/lob-python)
 
