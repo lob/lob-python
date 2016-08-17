@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+    <title>Lob.com Sample Check</title>
+    <style>
+      *, *:before, *:after {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+
+      body {
+        width: 8.5in;
+        height: 11in;
+        margin: 0;
+        padding: 0;
+      }
+
+      .text {
+        position: relative;
+        left: 20px;
+        top: 20px;
+        width: 6in;
+        font-family: 'Open Sans';
+        font-size: 30px;
+      }
+
+      #ink-free-area {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 8.5in;
+        height: 3.625in;
+      }
+
+      #page-content {
+        position: relative;
+        width: 8.125in;
+        height: 7.1875in;
+        left: 0.1875in;
+        top: 3.625in;
+      }
+
+      @font-face {
+        font-family: 'Loved by the King';
+        src: url('https://s3-us-west-2.amazonaws.com/lob-assets/LovedbytheKing.ttf');
+      }
+    </style>
+  </head>
+  <body>
+    <div id="ink-free-area"></div>
+    <div id="page-content">
+      <h3>Thank you {{name}} for working with us!</h3>
+    </div>
+  </body>
+</html>

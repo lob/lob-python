@@ -50,6 +50,7 @@ success_csv_fields = [
     'address_state',
     'address_zip'
 ]
+
 errors_csv_fields = ['error']
 
 # create the output directory,
