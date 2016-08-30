@@ -12,12 +12,12 @@ cd examples/
 
 ### Create letters from CSV
 
-An example showing how to validate and clean addresses from a CSV spreadsheet full of shipping addresses using Lob's [Address Verification API](https://lob.com/verification/address) and then using the cleaned, valid addresses to dynamically create sample billing letters with variable data using Lob's [Letter API](https://lob.com/services/letters).
+An example showing how to dynamically create sample billing letters with variable data using Lob's [Letter API](https://lob.com/services/letters).
 
 In order to run the program enter:
 
 ```
-cd verify_and_create_letters_from_csv/
+cd create_letters_from_csv/
 python letter.py input.csv
 ```
 
