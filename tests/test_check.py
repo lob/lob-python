@@ -5,9 +5,13 @@ class CheckFunctions(unittest.TestCase):
     def setUp(self):
         lob.api_key = 'test_fc26575412e92e22a926bc96c857f375f8b'
         self.addr = lob.Address.list(limit=1).data[0]
-        self.ba = lob.BankAccount.list(limit=1).data[0]
-        if self.ba.verified == False:
-            lob.BankAccount.verify(id=self.ba.id, amounts=[20,80])
+        self.ba = lob.BankAccount.create(
+            routing_number = '122100024',
+            account_number = '123456789',
+            account_type = 'company',
+            signatory = 'John Doe'
+        )
+        lob.BankAccount.verify(id=self.ba.id, amounts=[20, 80])
 
     def test_list_checks(self):
         checks = lob.Check.list()
