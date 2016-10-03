@@ -14,9 +14,7 @@ def lob_format(resp):
         'bank_account': BankAccount,
         'check': Check,
         'country': Country,
-        'job': Job,
         'letter' : Letter,
-        'object': Object,
         'postcard': Postcard,
         'state': State
     }
@@ -168,25 +166,6 @@ class Check(ListableAPIResource, CreateableAPIResource, DeleteableAPIResource):
 class Country(ListableAPIResource):
     endpoint = '/countries'
 
-class Job(ListableAPIResource, CreateableAPIResource):
-    endpoint = '/jobs'
-    @classmethod
-    def create(cls, **params):
-        if 'from_address' not in params or 'to_address' not in params or 'objects' not in params:
-            raise error.InvalidRequestError('from_address, to_address, and objects are required')
-        params['from'] = params['from_address']
-        params.pop('from_address')
-        params['to'] = params['to_address']
-        params.pop('to_address')
-        if not isinstance(params['objects'], list):
-            params['objects'] = [params['objects']]
-        i = 1
-        for obj in params['objects']:
-            params['object' + str(i)] = obj
-            i = i + 1
-        params.pop('objects', None)
-        return super(Job, cls).create(**params)
-
 class Letter(ListableAPIResource, CreateableAPIResource):
     endpoint = '/letters'
     @classmethod
@@ -199,9 +178,6 @@ class Letter(ListableAPIResource, CreateableAPIResource):
                 params['to'] = params['to_address']
                 params.pop('to_address')
         return super(Letter, cls).create(**params)
-
-class Object(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
-    endpoint = '/objects'
 
 class Postcard(ListableAPIResource, CreateableAPIResource):
     endpoint = '/postcards'
@@ -218,9 +194,6 @@ class Postcard(ListableAPIResource, CreateableAPIResource):
 
 class Route(ListableAPIResource):
     endpoint = '/routes'
-
-class Setting(ListableAPIResource):
-    endpoint = '/settings'
 
 class State(ListableAPIResource):
     endpoint = '/states'
