@@ -64,7 +64,7 @@ We've provided various examples for you to try out [here](https://github.com/lob
 
 There are simple scripts to demonstrate how to create all the core Lob objects (checks, letters, postcards. etc.) As well as more complex examples that utilize other libraries and external files:
 
-- [Verifying and Creating Letters from CSV](https://github.com/lob/lob-python/tree/master/examples#create-letters-from-csv)
+- [Creating Letters from CSV](https://github.com/lob/lob-python/tree/master/examples#create-letters-from-csv)
 - [Verifying Addresses in a CSV](https://github.com/lob/lob-python/tree/master/examples#verify-addresses-from-csv)
 - [Creating Dynamic Postcards with HTML and Data](https://github.com/lob/lob-python/tree/master/examples#create-postcards-from-csv)
 
