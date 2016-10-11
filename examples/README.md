@@ -38,7 +38,7 @@ An example showing how to validate and cleanse a CSV spreadsheet full of shippin
 
 ```
 cd verify_addresses_from_csv/
-python verify_addresses_from_csv.py input.csv
+python verify.py input.csv
 ```
 
 ### Create a check
