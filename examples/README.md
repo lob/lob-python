@@ -32,6 +32,17 @@ cd create_postcards_from_csv/
 python create_postcards_from_csv.py input.csv
 ```
 
+### Create checks from CSV
+
+An example showing how to dynamically create checks from a CSV with variable data using Lob's [Check API](https://lob.com/services/checks).
+
+In order to run the program enter:
+
+```
+cd create_check_from_csv/
+python check.py input.csv
+```
+
 ### Verify addresses from CSV
 
 An example showing how to validate and cleanse a CSV spreadsheet full of shipping addresses using Lob's [Address Verification API](https://lob.com/verification/address).
