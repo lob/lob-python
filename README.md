@@ -74,6 +74,7 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
 - [Versioning](https://lob.com/docs/python#version)
 - [Errors](https://lob.com/docs/python#errors)
 - [Rate Limiting](https://lob.com/docs/python#rate-limits)
+- [Webhooks](https://lob.com/docs/python#webhooks)
 - [Metadata](https://lob.com/docs/python#metadata)
 - [Asset URLs](https://lob.com/docs/python#urls)
 - **Addresses**
@@ -128,6 +129,7 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
 - **Appendix**
   - [API Changelog](https://lob.com/docs/python#changelog)
   - [The Tracking Event Object](https://lob.com/docs/python#tracking_event_object)
+  - [Events](https://lob.com/docs/python#events)
   - [HTML Examples](https://lob.com/docs/python#html-examples)
   - [Image Prepping](https://lob.com/docs/python#prepping)
 
