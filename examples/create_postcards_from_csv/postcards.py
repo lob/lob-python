@@ -25,7 +25,7 @@ try:
         address_state='CA',
         address_zip='94107'
     )
-except Exception, e:
+except Exception as e:
     print('Error: ' + str(e))
     print('Failed to create from_address.')
     sys.exit(1)
@@ -63,7 +63,7 @@ timestamp = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
 try:
     output_dir = os.path.join(output_dir, timestamp)
     os.mkdir(output_dir)
-except Exception, e:
+except Exception as e:
     print('Error: ' + str(e))
     print('Failed to create output directory. Aborting all sends.')
     sys.exit(1)
@@ -120,7 +120,7 @@ try:
                         'mileage':          row['mileage']
                     }
                 )
-            except Exception, e:
+            except Exception as e:
                 error_row = {'error': e}
                 error_row.update(row)
                 errors_csv.writerow(error_row)
@@ -148,7 +148,7 @@ try:
                 sys.stdout.write('\n')
                 sys.stdout.flush()
 
-except Exception, e:
+except Exception as e:
     print('Error: ' + str(e))
     sys.exit(1)
 
