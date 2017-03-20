@@ -92,6 +92,16 @@ class PostcardFunctions(unittest.TestCase):
         )
         self.assertTrue(isinstance(postcard, lob.Postcard))
 
+    def test_delete_postcard(self):
+        postcard = lob.Postcard.create(
+            to_address = self.addr.id,
+            from_address = self.addr.id,
+            front = open('tests/pc.pdf', 'rb'),
+            back = open('tests/pc.pdf', 'rb')
+        )
+        deleted_response = lob.Postcard.delete(postcard.id);
+        self.assertTrue(deleted_response.deleted)
+
     def test_create_postcard_fail(self):
         self.assertRaises(lob.error.InvalidRequestError, lob.Postcard.create)
 
