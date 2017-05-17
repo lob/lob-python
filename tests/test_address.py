@@ -48,20 +48,7 @@ class TestAddressFunctions(unittest.TestCase):
     def test_retrieve_address_fail(self):
         self.assertRaises(lob.error.InvalidRequestError, lob.Address.retrieve, id='test')
 
-
     def test_delete_address(self):
         addr = lob.Address.list().data[0].id
         delAddr = lob.Address.delete(id=addr)
         self.assertEqual(addr, delAddr.id)
-
-
-    def test_address_verification(self):
-        addr = lob.Verification.create(
-            address_line1='220 William T Morrissey',
-            address_city='Boston',
-            address_state='MA',
-            address_zip='02125',
-            address_country='US'
-        )
-
-        self.assertEqual(addr.address.address_line1, '220 WILLIAM T MORRISSEY BLVD')

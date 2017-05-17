@@ -27,7 +27,7 @@ Here's a general overview of the Lob services available, click through to read m
 - [Letters API](https://lob.com/services/letters)
 - [Checks API](https://lob.com/services/checks)
 - [Area Mail API](https://lob.com/services/area)
-- [Address Verification API](https://lob.com/verification/address)
+- [Address Verification API](https://lob.com/services/verifications)
 
 ### Registration
 
@@ -84,8 +84,13 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
     - [Retrieve an Address](https://lob.com/docs/python#addresses_retrieve)
     - [Delete an Address](https://lob.com/docs/python#addresses_delete)
     - [List all Addresses](https://lob.com/docs/python#addresses_list)
-  - [Address Verification API](https://lob.com/docs/python#verify)
-    - [Verify an Address](https://lob.com/docs/python#verify_create)
+- **US Verification API**
+  - [US Verification API](https://lob.com/docs/python#us_verifications)
+    - [The US Verification Object](https://lob.com/docs/python#us_verifications_object)
+    - [Verify a US Address](https://lob.com/docs/python#us_verifications_create)
+- **Int'l Verification API**
+  - [International Verifications](https://lob.com/docs/python#intl_verifications)
+    - [Verify an International Address](https://lob.com/docs/python#intl_verifications_create)
 - **Postcards API**
   - [Postcards](https://lob.com/docs/python#postcards)
     - [The Postcard Object](https://lob.com/docs/python#postcards_object)
@@ -132,6 +137,7 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
   - [Events](https://lob.com/docs/python#events)
   - [HTML Examples](https://lob.com/docs/python#html-examples)
   - [Image Prepping](https://lob.com/docs/python#prepping)
+  - [US Verification Details](https://lob.com/docs/python#us_verification_details)
 
 ## Testing
 

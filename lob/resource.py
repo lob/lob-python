@@ -198,5 +198,8 @@ class Route(ListableAPIResource):
 class State(ListableAPIResource):
     endpoint = '/states'
 
-class Verification(CreateableAPIResource):
-    endpoint = '/verify'
+class USVerification(CreateableAPIResource):
+    endpoint = '/us_verifications'
+
+class IntlVerification(CreateableAPIResource):
+    endpoint = '/intl_verifications'
