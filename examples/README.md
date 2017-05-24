@@ -43,9 +43,9 @@ cd create_check_from_csv/
 python check.py input.csv
 ```
 
-### Verify addresses from CSV
+### Verify US Addresses from CSV
 
-An example showing how to validate and cleanse a CSV spreadsheet full of shipping addresses using Lob's [Address Verification API](https://lob.com/verification/address).
+An example showing how to validate and cleanse a CSV spreadsheet full of shipping addresses using Lob's [US Verification API](https://lob.com/services/verifications).
 
 ```
 cd verify_addresses_from_csv/
@@ -55,11 +55,6 @@ python verify.py input.csv
 ### Create a check
 ```
 python check.py
-```
-
-### Create a job
-```
-python job.py
 ```
 
 ### Create a letter

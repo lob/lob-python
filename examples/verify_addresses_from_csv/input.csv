@@ -1,4 +1,4 @@
-address1,address2,city,state,postcode
+primary_line,secondary_line,city,state,zip_code
 185 Berry St,,San Francisco,CA,94107
 6575 W Rialto,,fresno,CA,93723
 537 Fillmore Street, Apt #2,San Francicso,ca,94117
