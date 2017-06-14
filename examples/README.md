@@ -12,7 +12,7 @@ cd examples/
 
 ### Create letters from CSV
 
-An example showing how to dynamically create sample billing letters with variable data using Lob's [Letter API](https://lob.com/services/letters).
+An example showing how to dynamically create sample billing letters with merge variables using Lob's [Letter API](https://lob.com/services/letters).
 
 In order to run the program, enter:
 
@@ -23,7 +23,7 @@ python letters.py input.csv
 
 ### Create postcards from CSV
 
-An example showing how to dynamically create postcards from a CSV using HTML, a custom font, variable data, and Lob's [Postcard API](https://lob.com/services/postcards).
+An example showing how to dynamically create postcards from a CSV using HTML, a custom font, merge variables, and Lob's [Postcard API](https://lob.com/services/postcards).
 
 In order to run the program enter:
 
@@ -34,7 +34,7 @@ python create_postcards_from_csv.py input.csv
 
 ### Create checks from CSV
 
-An example showing how to dynamically create checks from a CSV with variable data using Lob's [Check API](https://lob.com/services/checks).
+An example showing how to dynamically create checks from a CSV with merge variables using Lob's [Check API](https://lob.com/services/checks).
 
 In order to run the program enter:
 

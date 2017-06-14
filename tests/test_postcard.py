@@ -30,7 +30,7 @@ class PostcardFunctions(unittest.TestCase):
             from_address = self.addr.id,
             front = '<h1>{{front_name}}</h1>',
             back = '<h1>{{back_name}}</h1>',
-            data = {
+            merge_variables = {
                 'front_name': 'Peter',
                 'back_name': 'Otto'
             }
@@ -46,7 +46,7 @@ class PostcardFunctions(unittest.TestCase):
             from_address = self.addr,
             front = '<h1>{{front_name}}</h1>',
             back = '<h1>{{back_name}}</h1>',
-            data = {
+            merge_variables = {
                 'front_name': 'Peter',
                 'back_name': 'Otto'
             }
@@ -74,7 +74,7 @@ class PostcardFunctions(unittest.TestCase):
                 'address_state': 'CA'
             },
             front = '<h1>{{front_name}}</h1>',
-            data = {
+            merge_variables = {
                 'front_name': 'Peter'
             },
             message = 'Hello'

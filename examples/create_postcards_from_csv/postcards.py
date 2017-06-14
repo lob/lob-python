@@ -112,7 +112,7 @@ try:
                     size='6x11',
                     front=front_html,
                     back=back_html,
-                    data={
+                    merge_variables={
                         'background_image': row['background_image'],
                         'background_color': row['background_color'],
                         'name':             row['name'],

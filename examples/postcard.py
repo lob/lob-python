@@ -50,7 +50,7 @@ example_postcard = lob.Postcard.create(
         </head>
         <body><h1>Hi {{name}}</h1></body>
       </html>""",
-    data = {
+    merge_variables = {
         'name': example_address.name
     },
     message = "Welcome to the club!"

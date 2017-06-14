@@ -138,7 +138,7 @@ try:
                     amount=row['amount'],
                     memo='Service payment',
                     check_bottom=check_html,
-                    data={
+                    merge_variables={
                         'name': row['name'],
                     },
                     logo=CHECK_LOGO

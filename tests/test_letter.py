@@ -26,7 +26,7 @@ class LetterFunctions(unittest.TestCase):
             },
             to_address = self.addr.id,
             file = '<h1>{{name}}</h1>',
-            data = {
+            merge_variables = {
                 'name': 'Peter'
             },
             color = True

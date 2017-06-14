@@ -59,7 +59,7 @@ example_letter = lob.Letter.create(
         </head>
         <body><h1>Special offer for {{company}}</h1></body>
       </html>""",
-    data = {
+    merge_variables = {
         'company': 'ACME'
     },
     color = True
