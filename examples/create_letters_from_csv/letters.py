@@ -114,7 +114,7 @@ try:
                     },
                     from_address=from_address.id,
                     file=letter_html,
-                    data={
+                    merge_variables={
                         'date':   datetime.datetime.now().strftime("%m/%d/%Y"),
                         'name':   row['name'],
                         'amount': row['amount']

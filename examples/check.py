@@ -96,7 +96,7 @@ example_check = lob.Check.create(
         </head>
         <body><h1>Demo check for {{name}}</h1></body>
       </html>""",
-    data = {
+    merge_variables = {
         'name': example_address.name
     },
     logo = 'https://s3-us-west-2.amazonaws.com/lob-assets/lob_check_logo.png'

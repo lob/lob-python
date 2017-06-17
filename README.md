@@ -66,7 +66,7 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
 
 - [Creating Letters from CSV](https://github.com/lob/lob-python/tree/master/examples#create-letters-from-csv)
 - [Verifying Addresses in a CSV](https://github.com/lob/lob-python/tree/master/examples#verify-addresses-from-csv)
-- [Creating Dynamic Postcards with HTML and Data](https://github.com/lob/lob-python/tree/master/examples#create-postcards-from-csv)
+- [Creating Dynamic Postcards with HTML and Merge Variables](https://github.com/lob/lob-python/tree/master/examples#create-postcards-from-csv)
 
 ## API Documentation
 
