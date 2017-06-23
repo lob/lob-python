@@ -70,6 +70,18 @@ class CheckFunctions(unittest.TestCase):
         self.assertEqual(check.to_address.name, 'Lob')
         self.assertEqual(check.from_address.name, 'Lob')
 
+    def test_delete_postcard(self):
+        check = lob.Check.create(
+            description = 'Test Check',
+            bank_account = self.ba.id,
+            to_address = self.addr.id,
+            from_address = self.addr.id,
+            amount = 1000,
+            memo = 'Test Check'
+        )
+        deleted_response = lob.Check.delete(check.id);
+        self.assertTrue(deleted_response.deleted)
+
     def test_create_check_fail(self):
         self.assertRaises(lob.error.InvalidRequestError, lob.Check.create)
 

@@ -42,3 +42,6 @@ docs/_build/
 examples/**/success.csv
 examples/**/errors.csv
 examples/**/verified.csv
+
+# Editor files
+*.sublime-*

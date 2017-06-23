@@ -166,7 +166,7 @@ class Check(ListableAPIResource, CreateableAPIResource, DeleteableAPIResource):
 class Country(ListableAPIResource):
     endpoint = '/countries'
 
-class Letter(ListableAPIResource, CreateableAPIResource):
+class Letter(ListableAPIResource, CreateableAPIResource, DeleteableAPIResource):
     endpoint = '/letters'
     @classmethod
     def create(cls, **params):
@@ -179,7 +179,7 @@ class Letter(ListableAPIResource, CreateableAPIResource):
                 params.pop('to_address')
         return super(Letter, cls).create(**params)
 
-class Postcard(ListableAPIResource, CreateableAPIResource):
+class Postcard(ListableAPIResource, CreateableAPIResource, DeleteableAPIResource):
     endpoint = '/postcards'
     @classmethod
     def create(cls, **params):
