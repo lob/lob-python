@@ -29,6 +29,8 @@ Here's a general overview of the Lob services available, click through to read m
 - [Area Mail API](https://lob.com/services/area)
 - [Address Verification API](https://lob.com/services/verifications)
 
+Please read through the official [API Documentation](#api-documentation) to get a complete sense of what to expect from each endpoint.
+
 ### Registration
 
 First, you will need to first create an account at [Lob.com](https://dashboard.lob.com/#/register) and obtain your Test and Live API Keys.
@@ -62,11 +64,7 @@ We've provided an example script you can run in examples/ that has examples of h
 
 We've provided various examples for you to try out [here](https://github.com/lob/lob-python/tree/master/examples).
 
-There are simple scripts to demonstrate how to create all the core Lob objects (checks, letters, postcards. etc.) As well as more complex examples that utilize other libraries and external files:
-
-- [Creating Letters from CSV](https://github.com/lob/lob-python/tree/master/examples#create-letters-from-csv)
-- [Verifying Addresses in a CSV](https://github.com/lob/lob-python/tree/master/examples#verify-addresses-from-csv)
-- [Creating Dynamic Postcards with HTML and Merge Variables](https://github.com/lob/lob-python/tree/master/examples#create-postcards-from-csv)
+There are simple scripts to demonstrate how to create all the core Lob objects (checks, letters, postcards. etc.) as well as more complex examples that utilize other libraries and external files.
 
 ## API Documentation
 
@@ -75,7 +73,10 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
 - [Errors](https://lob.com/docs/python#errors)
 - [Rate Limiting](https://lob.com/docs/python#rate-limits)
 - [Webhooks](https://lob.com/docs/python#webhooks)
+- [Cancellation Windows](https://lob.com/docs/python#cancellation)
+- [Scheduled Mailings](https://lob.com/docs/python#scheduled)
 - [Metadata](https://lob.com/docs/python#metadata)
+- [HTML Templates](https://lob.com/docs/python#templates)
 - [Asset URLs](https://lob.com/docs/python#urls)
 - **Addresses**
   - [Address Book](https://lob.com/docs/python#addresses)
@@ -96,18 +97,21 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
     - [The Postcard Object](https://lob.com/docs/python#postcards_object)
     - [Create a Postcard](https://lob.com/docs/python#postcards_create)
     - [Retrieve a Postcard](https://lob.com/docs/python#postcards_retrieve)
+    - [Cancel a Postcard](https://lob.com/docs/python#postcards_delete)
     - [List all Postcards](https://lob.com/docs/python#postcards_list)
 - **Letters API**
   - [Letters](https://lob.com/docs/python#letters)
     - [The Letter Object](https://lob.com/docs/python#letters_object)
     - [Create a Letter](https://lob.com/docs/python#letters_create)
     - [Retrieve a Letter](https://lob.com/docs/python#letters_retrieve)
+    - [Cancel a Letter](https://lob.com/docs/python#letters_delete)
     - [List all Letters](https://lob.com/docs/python#letters_list)
 - **Checks API**
   - [Checks](https://lob.com/docs/python#checks)
     - [The Check Object](https://lob.com/docs/python#checks_object)
     - [Create a Check](https://lob.com/docs/python#checks_create)
     - [Retrieve a Check](https://lob.com/docs/python#checks_retrieve)
+    - [Cancel a Check](https://lob.com/docs/python#checks_delete)
     - [List all Checks](https://lob.com/docs/python#checks_list)
   - [Bank Accounts](https://lob.com/docs/python#bank-accounts)
     - [The Bank Account Object](https://lob.com/docs/python#bankaccounts_object)
