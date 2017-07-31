@@ -97,7 +97,7 @@ class APIResource(LobObject):
 class ListableAPIResource(APIResource):
     @classmethod
     def list(cls, **params):
-        for key, value in params.items():
+        for key, value in params.copy().items():
             if isinstance(params[key], dict):
                 for subKey in value:
                     params[str(key) + '[' + subKey + ']'] = value[subKey]
