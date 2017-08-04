@@ -201,5 +201,8 @@ class State(ListableAPIResource):
 class USVerification(CreateableAPIResource):
     endpoint = '/us_verifications'
 
+class USZipLookup(CreateableAPIResource):
+    endpoint = '/us_zip_lookups'
+
 class IntlVerification(CreateableAPIResource):
     endpoint = '/intl_verifications'
