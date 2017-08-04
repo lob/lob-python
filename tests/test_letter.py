@@ -1,8 +1,11 @@
 import unittest
 import lob
+import uuid
 
 class LetterFunctions(unittest.TestCase):
+    
     def setUp(self):
+        self.idempotency_key = uuid.uuid4()
         lob.api_key = 'test_fc26575412e92e22a926bc96c857f375f8b'
         self.addr = lob.Address.list(limit=1).data[0]
 
@@ -24,6 +27,9 @@ class LetterFunctions(unittest.TestCase):
                 'address_zip': '01001',
                 'address_state': 'MA'
             },
+            headers ={
+                'idempotency-key': self.idempotency_key
+            },
             to_address = self.addr.id,
             file = '<h1>{{name}}</h1>',
             merge_variables = {
@@ -31,9 +37,28 @@ class LetterFunctions(unittest.TestCase):
             },
             color = True
         )
+        dup_letter = lob.Letter.create(
+            from_address = {
+                'name': 'Antoinette Reynolds',
+                'address_line1': '1859 Kinney St',
+                'address_city': 'Agawam',
+                'address_zip': '01001',
+                'address_state': 'MA'
+            },
+            headers ={
+                'idempotency-key': self.idempotency_key
+            },
+            to_address = self.addr.id,
+            file = '<h1>{{name}}</h1>',
+            merge_variables = {
+                'name': 'Peter'
+            },
+            color = True
+        )
+        self.assertEqual(letter.id, dup_letter.id)
         self.assertEqual(letter.to_address.id, self.addr.id)
-        self.assertTrue(isinstance(letter, lob.Letter))
-
+        self.assertTrue(isinstance(self.letter, lob.Letter))
+        
     def test_delete_letter(self):
         letter = lob.Letter.create(
             from_address = {

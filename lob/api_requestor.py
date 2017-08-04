@@ -44,6 +44,10 @@ class APIRequestor(object):
             'User-Agent': 'Lob/v1 PythonBindings/%s' % VERSION
         }
 
+        if hasattr(params, 'headers'):
+            headers.update(params.headers)
+            del params['headers']
+
         if hasattr(lob, 'api_version'):
             headers['Lob-Version'] = lob.api_version
 
@@ -59,6 +63,8 @@ class APIRequestor(object):
             data = {}
             files = params.pop('files', {})
             explodedParams = {}
+
+            print(params)
 
             for k,v in params.items():
                 if isinstance(v, dict) and not isinstance(v, lob.resource.LobObject):
