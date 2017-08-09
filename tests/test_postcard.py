@@ -39,6 +39,28 @@ class PostcardFunctions(unittest.TestCase):
         self.assertEqual(postcard.from_address.id, self.addr.id)
         self.assertTrue(isinstance(postcard, lob.Postcard))
 
+    def test_create_idempotent_postcards(self):
+        idempotency_key = "Test_Idempotency_Key"
+        postcard_one = lob.Postcard.create(
+            to_address = self.addr.id,
+            front = '<h1>Front</h1>',
+            back = '<h1>Back</h1>',
+            headers = {
+                'Idempotency-Key': idempotency_key
+            }
+        )
+
+        postcard_two = lob.Postcard.create(
+            to_address = self.addr.id,
+            front = '<h1>Front</h1>',
+            back = '<h1>Back</h1>',
+            headers = {
+                'Idempotency-Key': idempotency_key
+            }
+        )
+
+        self.assertEqual(postcard_one.id, postcard_two.id)
+        self.assertTrue(isinstance(postcard_one, lob.Postcard))
 
     def test_create_postcard_lob_obj(self):
         postcard = lob.Postcard.create(

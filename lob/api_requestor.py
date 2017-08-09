@@ -47,6 +47,10 @@ class APIRequestor(object):
         if hasattr(lob, 'api_version'):
             headers['Lob-Version'] = lob.api_version
 
+        if params and 'headers' in params:
+            headers.update(params['headers'])
+            del params['headers']
+
         if method == 'get':
             return self.parse_response(
                 requests.get(lob.api_base + url, auth=(self.api_key, ''), params=params, headers=headers)
