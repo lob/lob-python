@@ -67,8 +67,8 @@ class CheckFunctions(unittest.TestCase):
 
         self.assertTrue(isinstance(check, lob.Check))
         self.assertEqual(check.bank_account.id, self.ba.id)
-        self.assertEqual(check.to_address.name, 'Lob')
-        self.assertEqual(check.from_address.name, 'Lob')
+        self.assertEqual(check.to_address.name, 'LOB')
+        self.assertEqual(check.from_address.name, 'LOB')
 
     def test_delete_postcard(self):
         check = lob.Check.create(

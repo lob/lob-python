@@ -101,8 +101,8 @@ class PostcardFunctions(unittest.TestCase):
             },
             message = 'Hello'
         )
-        self.assertEqual(postcard.to_address.name, 'Lob1')
-        self.assertEqual(postcard.from_address.name, 'Lob2')
+        self.assertEqual(postcard.to_address.name, 'LOB1')
+        self.assertEqual(postcard.from_address.name, 'LOB2')
         self.assertTrue(isinstance(postcard, lob.Postcard))
 
     def test_create_postcard_local_file(self):
