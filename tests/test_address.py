@@ -36,7 +36,7 @@ class TestAddressFunctions(unittest.TestCase):
         )
 
         self.assertTrue(isinstance(address, lob.Address))
-        self.assertEqual(address.name, 'Lob')
+        self.assertEqual(address.name, 'LOB')
 
     def test_create_addresss_fail(self):
         self.assertRaises(lob.error.InvalidRequestError, lob.Address.create)
