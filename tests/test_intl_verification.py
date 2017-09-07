@@ -8,11 +8,11 @@ class TestIntlVerificationFunctions(unittest.TestCase):
     def test_intl_verification(self):
         try:
             addr = lob.IntlVerification.create(
-                address_line1='370 Water St',
-                address_city='Summerside',
-                address_state='Prince Edward Island',
-                address_zip='C1N 1C4',
-                address_country='CA'
+                primary_line='370 Water St',
+                city='Summerside',
+                state='Prince Edward Island',
+                postal_code='C1N 1C4',
+                country='CA'
             )
         except Exception as e:
             self.assertEqual(e.http_status, 403)
