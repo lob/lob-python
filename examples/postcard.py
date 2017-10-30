@@ -53,7 +53,7 @@ example_postcard = lob.Postcard.create(
     merge_variables = {
         'name': example_address.name
     },
-    message = "Welcome to the club!"
+    back = "<h1>Welcome to the club!</h1>"
 )
 
 print "Postcard Response"
