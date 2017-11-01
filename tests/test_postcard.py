@@ -96,10 +96,11 @@ class PostcardFunctions(unittest.TestCase):
                 'address_state': 'CA'
             },
             front = '<h1>{{front_name}}</h1>',
+            back = '<h1>{{back_name}}</h1>',
             merge_variables = {
-                'front_name': 'Peter'
-            },
-            message = 'Hello'
+                'front_name': 'Peter',
+                'back_name': 'Otto'
+            }
         )
         self.assertEqual(postcard.to_address.name, 'LOB1')
         self.assertEqual(postcard.from_address.name, 'LOB2')

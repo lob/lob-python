@@ -13,10 +13,8 @@ def lob_format(resp):
         'area': Area,
         'bank_account': BankAccount,
         'check': Check,
-        'country': Country,
         'letter' : Letter,
-        'postcard': Postcard,
-        'state': State
+        'postcard': Postcard
     }
 
     #Change Keys for To/From
@@ -162,10 +160,6 @@ class Check(ListableAPIResource, CreateableAPIResource, DeleteableAPIResource):
                 params.pop('from_address')
         return super(Check, cls).create(**params)
 
-
-class Country(ListableAPIResource):
-    endpoint = '/countries'
-
 class Letter(ListableAPIResource, CreateableAPIResource, DeleteableAPIResource):
     endpoint = '/letters'
     @classmethod
@@ -194,9 +188,6 @@ class Postcard(ListableAPIResource, CreateableAPIResource, DeleteableAPIResource
 
 class Route(ListableAPIResource):
     endpoint = '/routes'
-
-class State(ListableAPIResource):
-    endpoint = '/states'
 
 class USVerification(CreateableAPIResource):
     endpoint = '/us_verifications'
