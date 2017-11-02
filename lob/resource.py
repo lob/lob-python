@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 import json
 
 from lob import api_requestor
-from lob import error
 from lob.compat import string_type
 
 
@@ -13,11 +12,11 @@ def lob_format(resp):
         'area': Area,
         'bank_account': BankAccount,
         'check': Check,
-        'letter' : Letter,
+        'letter': Letter,
         'postcard': Postcard
     }
 
-    #Change Keys for To/From
+    # Change Keys for To/From
     if isinstance(resp, dict) and 'to' in resp:
         resp['to_address'] = resp['to']
         resp.pop('to', None)
@@ -25,7 +24,7 @@ def lob_format(resp):
         resp['from_address'] = resp['from']
         resp.pop('from', None)
 
-    #Recursively Set Objects for Lists
+    # Recursively Set Objects for Lists
     if isinstance(resp, dict) and 'object' in resp and resp['object'] == 'list':
         resp['data'] = [lob_format(i) for i in resp['data']]
         return LobObject.construct_from(resp)
@@ -36,13 +35,14 @@ def lob_format(resp):
         else:
             klass = LobObject
 
-        #Check For Arrays
+        # Check For Arrays
         for key in resp:
             if isinstance(resp[key], list):
                 resp[key] = [lob_format(i) for i in resp[key]]
         return klass.construct_from(resp)
     else:
         return resp
+
 
 class LobObject(dict):
 
@@ -62,7 +62,7 @@ class LobObject(dict):
         try:
             return self[k]
         except KeyError:
-            raise AttributeError(k) #pragma: no cover
+            raise AttributeError(k)  # pragma: no cover
 
     def __setattr__(self, k, v):
         self[k] = v
@@ -84,12 +84,14 @@ class LobObject(dict):
     def __str__(self):
         return json.dumps(self, sort_keys=True, indent=2)
 
+
 class APIResource(LobObject):
     @classmethod
     def retrieve(cls, id, **params):
         requestor = api_requestor.APIRequestor()
         response = requestor.request('get', '%s/%s' % (cls.endpoint, id), params)
         return lob_format(response)
+
 
 # API Operations
 class ListableAPIResource(APIResource):
@@ -107,12 +109,14 @@ class ListableAPIResource(APIResource):
         response = requestor.request('get', cls.endpoint, params)
         return lob_format(response)
 
+
 class DeleteableAPIResource(APIResource):
     @classmethod
     def delete(cls, id):
         requestor = api_requestor.APIRequestor()
         response = requestor.request('delete', '%s/%s' % (cls.endpoint, id))
         return lob_format(response)
+
 
 class CreateableAPIResource(APIResource):
     @classmethod
@@ -121,6 +125,7 @@ class CreateableAPIResource(APIResource):
         response = requestor.request('post', cls.endpoint, params)
         return lob_format(response)
 
+
 class VerifiableAPIResource(APIResource):
     @classmethod
     def verify(cls, id, **params):
@@ -128,11 +133,14 @@ class VerifiableAPIResource(APIResource):
         response = requestor.request('post', '%s/%s/verify' % (cls.endpoint, id), params)
         return lob_format(response)
 
+
 class Address(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
     endpoint = '/addresses'
 
+
 class Area(ListableAPIResource, CreateableAPIResource):
     endpoint = '/areas'
+
     @classmethod
     def create(cls, **params):
         if isinstance(params, dict):
@@ -144,11 +152,14 @@ class Area(ListableAPIResource, CreateableAPIResource):
                     params['routes'] = routes
         return super(Area, cls).create(**params)
 
+
 class BankAccount(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource, VerifiableAPIResource):
     endpoint = '/bank_accounts'
 
+
 class Check(ListableAPIResource, CreateableAPIResource, DeleteableAPIResource):
     endpoint = '/checks'
+
     @classmethod
     def create(cls, **params):
         if isinstance(params, dict):
@@ -160,8 +171,10 @@ class Check(ListableAPIResource, CreateableAPIResource, DeleteableAPIResource):
                 params.pop('from_address')
         return super(Check, cls).create(**params)
 
+
 class Letter(ListableAPIResource, CreateableAPIResource, DeleteableAPIResource):
     endpoint = '/letters'
+
     @classmethod
     def create(cls, **params):
         if isinstance(params, dict):
@@ -173,8 +186,10 @@ class Letter(ListableAPIResource, CreateableAPIResource, DeleteableAPIResource):
                 params.pop('to_address')
         return super(Letter, cls).create(**params)
 
+
 class Postcard(ListableAPIResource, CreateableAPIResource, DeleteableAPIResource):
     endpoint = '/postcards'
+
     @classmethod
     def create(cls, **params):
         if isinstance(params, dict):
@@ -186,14 +201,18 @@ class Postcard(ListableAPIResource, CreateableAPIResource, DeleteableAPIResource
                 params.pop('to_address')
         return super(Postcard, cls).create(**params)
 
+
 class Route(ListableAPIResource):
     endpoint = '/routes'
+
 
 class USVerification(CreateableAPIResource):
     endpoint = '/us_verifications'
 
+
 class USZipLookup(CreateableAPIResource):
     endpoint = '/us_zip_lookups'
+
 
 class IntlVerification(CreateableAPIResource):
     endpoint = '/intl_verifications'

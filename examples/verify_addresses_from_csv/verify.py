@@ -29,7 +29,7 @@ verifications_csv_fields = [
     'deliverability'
 ]
 
-#create the output directory,
+# create the output directory,
 output_dir = os.path.join('.',  'output')
 if not os.path.isdir(output_dir):
     os.mkdir(output_dir)
@@ -49,7 +49,7 @@ verifications_filename = os.path.join(output_dir, 'verifications.csv')
 
 try:
     with open(input_filename, 'r') as input, \
-        open(verifications_filename, 'w') as verifications:
+         open(verifications_filename, 'w') as verifications:
 
         input_csv = csv.DictReader(input)
 

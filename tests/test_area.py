@@ -1,6 +1,7 @@
 import unittest
 import lob
 
+
 class AreaFunctions(unittest.TestCase):
     def setUp(self):
         lob.api_key = 'test_fc26575412e92e22a926bc96c857f375f8b'
@@ -8,33 +9,31 @@ class AreaFunctions(unittest.TestCase):
 
     def test_create_area_with_zip(self):
         area = lob.Area.create(
-            description = 'area_test_zip',
-            front = '<h1>Hi</h1>',
-            back = '<h1>Goodbye</h1>',
-            routes = ['94158','60031'],
-            target_type = 'all'
+            description='area_test_zip',
+            front='<h1>Hi</h1>',
+            back='<h1>Goodbye</h1>',
+            routes=['94158', '60031'],
+            target_type='all'
         )
         self.assertTrue(isinstance(area, lob.Area))
-
 
     def test_create_area_with_route(self):
         area = lob.Area.create(
-            description = 'area_test_route',
-            front = '<h1>Hi</h1>',
-            back = '<h1>Goodbye</h1>',
-            routes = self.route,
-            target_type = 'all'
+            description='area_test_route',
+            front='<h1>Hi</h1>',
+            back='<h1>Goodbye</h1>',
+            routes=self.route,
+            target_type='all'
         )
         self.assertTrue(isinstance(area, lob.Area))
 
-
     def test_create_area_local_file(self):
         area = lob.Area.create(
-            description = 'area_local_file',
-            front = open('tests/areafront.pdf', 'rb'),
-            back = open('tests/areaback.pdf', 'rb'),
-            routes = self.route,
-            target_type = 'all'
+            description='area_local_file',
+            front=open('tests/areafront.pdf', 'rb'),
+            back=open('tests/areaback.pdf', 'rb'),
+            routes=self.route,
+            target_type='all'
         )
         self.assertTrue(isinstance(area, lob.Area))
 

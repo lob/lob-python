@@ -1,15 +1,16 @@
 import lob
 import unittest
 
+
 class CheckFunctions(unittest.TestCase):
     def setUp(self):
         lob.api_key = 'test_fc26575412e92e22a926bc96c857f375f8b'
         self.addr = lob.Address.list(limit=1).data[0]
         self.ba = lob.BankAccount.create(
-            routing_number = '122100024',
-            account_number = '123456789',
-            account_type = 'company',
-            signatory = 'John Doe'
+            routing_number='122100024',
+            account_number='123456789',
+            account_type='company',
+            signatory='John Doe'
         )
         lob.BankAccount.verify(id=self.ba.id, amounts=[20, 80])
 
@@ -28,12 +29,12 @@ class CheckFunctions(unittest.TestCase):
 
     def test_create_check(self):
         check = lob.Check.create(
-            description = 'Test Check',
-            bank_account = self.ba.id,
-            to_address = self.addr.id,
-            from_address = self.addr.id,
-            amount = 1000,
-            memo = 'Test Check'
+            description='Test Check',
+            bank_account=self.ba.id,
+            to_address=self.addr.id,
+            from_address=self.addr.id,
+            amount=1000,
+            memo='Test Check'
         )
 
         self.assertTrue(isinstance(check, lob.Check))
@@ -43,9 +44,9 @@ class CheckFunctions(unittest.TestCase):
 
     def test_create_check_inline(self):
         check = lob.Check.create(
-            description = 'Test Check',
-            bank_account = self.ba,
-            to_address = {
+            description='Test Check',
+            bank_account=self.ba,
+            to_address={
                 'name': 'Lob',
                 'address_line1': '185 Berry Street',
                 'address_line2': 'Suite 1510',
@@ -53,7 +54,7 @@ class CheckFunctions(unittest.TestCase):
                 'address_zip': '94107',
                 'address_state': 'CA'
             },
-            from_address = {
+            from_address={
                 'name': 'Lob',
                 'address_line1': '185 Berry Street',
                 'address_line2': 'Suite 1510',
@@ -61,8 +62,8 @@ class CheckFunctions(unittest.TestCase):
                 'address_zip': '94107',
                 'address_state': 'CA'
             },
-            amount = 1000,
-            memo = 'Test Check'
+            amount=1000,
+            memo='Test Check'
         )
 
         self.assertTrue(isinstance(check, lob.Check))
@@ -72,14 +73,14 @@ class CheckFunctions(unittest.TestCase):
 
     def test_delete_postcard(self):
         check = lob.Check.create(
-            description = 'Test Check',
-            bank_account = self.ba.id,
-            to_address = self.addr.id,
-            from_address = self.addr.id,
-            amount = 1000,
-            memo = 'Test Check'
+            description='Test Check',
+            bank_account=self.ba.id,
+            to_address=self.addr.id,
+            from_address=self.addr.id,
+            amount=1000,
+            memo='Test Check'
         )
-        deleted_response = lob.Check.delete(check.id);
+        deleted_response = lob.Check.delete(check.id)
         self.assertTrue(deleted_response.deleted)
 
     def test_create_check_fail(self):

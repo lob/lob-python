@@ -1,6 +1,7 @@
 import unittest
 import lob
 
+
 class BankAccountFunctions(unittest.TestCase):
     def setUp(self):
         lob.api_key = 'test_fc26575412e92e22a926bc96c857f375f8b'
@@ -26,7 +27,7 @@ class BankAccountFunctions(unittest.TestCase):
         bankAccount = lob.BankAccount.create(
             routing_number='122100024',
             account_number='123456789',
-            account_type = 'company',
+            account_type='company',
             signatory='John Doe'
         )
         self.assertTrue(isinstance(bankAccount, lob.BankAccount))
@@ -47,7 +48,7 @@ class BankAccountFunctions(unittest.TestCase):
         ba = lob.BankAccount.create(
             routing_number='122100024',
             account_number='223456789',
-            account_type = 'company',
+            account_type='company',
             signatory='John Doe'
         )
         verBa = lob.BankAccount.verify(id=ba.id, amounts=[25, 75])

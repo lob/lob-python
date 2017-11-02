@@ -1,22 +1,24 @@
-import sys, os
+import sys
+import os
+import lob
 sys.path.insert(0, os.path.abspath(__file__+'../../..'))
 
-import lob
-lob.api_key = "test_fc26575412e92e22a926bc96c857f375f8b" # Replace this API key with your own.
+# Replace this API key with your own.
+lob.api_key = "test_fc26575412e92e22a926bc96c857f375f8b"
 
 # Creating an Address Object
 
 example_address = lob.Address.create(
-    name = 'Julia Sanchez',
-    description = 'Julia - Home',
-    metadata = {
+    name='Julia Sanchez',
+    description='Julia - Home',
+    metadata={
         'department': 'marketing'
     },
-    address_line1 = '104 Printing Boulevard',
-    address_city = 'Boston',
-    address_state = 'MA',
-    address_country = 'US',
-    address_zip = '12345'
+    address_line1='104 Printing Boulevard',
+    address_city='Boston',
+    address_state='MA',
+    address_country='US',
+    address_zip='12345'
 )
 
 print "\n"
@@ -32,11 +34,11 @@ print "\n"
 # Creating a Letter
 
 example_letter = lob.Letter.create(
-    description = 'Test Letter',
-    metadata = {
+    description='Test Letter',
+    metadata={
         'campaign': 'enterprise offer'
     },
-    to_address = {
+    to_address={
         'name': 'Antoinette Reynolds',
         'address_line1': '1859 Kinney St',
         'address_city': 'Agawam',
@@ -46,8 +48,8 @@ example_letter = lob.Letter.create(
             'customer_type': 'enterprise'
         }
     },
-    from_address = example_address,
-    file = """
+    from_address=example_address,
+    file="""
       <html>
         <head>
           <style>
@@ -59,10 +61,10 @@ example_letter = lob.Letter.create(
         </head>
         <body><h1>Special offer for {{company}}</h1></body>
       </html>""",
-    merge_variables = {
+    merge_variables={
         'company': 'ACME'
     },
-    color = True
+    color=True
 )
 
 print "Letter Response"
