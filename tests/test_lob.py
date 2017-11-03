@@ -1,6 +1,7 @@
 import unittest
 import lob
 
+
 class TestLob(unittest.TestCase):
     def setUp(self):
         lob.api_key = 'asdf'

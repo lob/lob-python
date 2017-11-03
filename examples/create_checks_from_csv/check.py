@@ -45,7 +45,10 @@ except Exception as e:
     sys.exit(1)
 
 try:
-    example_bank_account = lob.BankAccount.verify(id=bank_account.id, amounts=[23, 77])
+    example_bank_account = lob.BankAccount.verify(
+        id=bank_account.id,
+        amounts=[23, 77]
+    )
 except Exception as e:
     print('Error: ' + str(e))
     print('Failed to verify bank account.')

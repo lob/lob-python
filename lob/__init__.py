@@ -1,8 +1,8 @@
-api_key = None
-api_base = 'https://api.lob.com/v1'
-
-#Resources
-from lob.resource import (Address, Area, BankAccount, Check,
-        Letter, Postcard, Route, USVerification, USZipLookup, IntlVerification)
+# Resources
+from lob.resource import (Address, Area, BankAccount, Check, Letter, Postcard,
+                          Route, USVerification, USZipLookup, IntlVerification)
 
 from lob.version import VERSION
+
+api_key = None
+api_base = 'https://api.lob.com/v1'

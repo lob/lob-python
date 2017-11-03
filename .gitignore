@@ -45,3 +45,6 @@ examples/**/verified.csv
 
 # Editor files
 *.sublime-*
+
+# macOS
+.DS_Store

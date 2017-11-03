@@ -1,22 +1,24 @@
-import sys, os
+import sys
+import os
+import lob
 sys.path.insert(0, os.path.abspath(__file__+'../../..'))
 
-import lob
-lob.api_key = "test_fc26575412e92e22a926bc96c857f375f8b" # Replace this API key with your own.
+# Replace this API key with your own.
+lob.api_key = "test_fc26575412e92e22a926bc96c857f375f8b"
 
 # Creating an Address Object
 
 example_address = lob.Address.create(
-    name = 'Joe Smith',
-    description = 'Joe - Home',
-    metadata = {
+    name='Joe Smith',
+    description='Joe - Home',
+    metadata={
         'group': 'Members'
     },
-    address_line1 = '104, Printing Boulevard',
-    address_city = 'Boston',
-    address_state = 'MA',
-    address_country = 'US',
-    address_zip = '12345'
+    address_line1='104, Printing Boulevard',
+    address_city='Boston',
+    address_state='MA',
+    address_country='US',
+    address_zip='12345'
 )
 
 print "\n"
@@ -32,11 +34,11 @@ print "\n"
 # Creating a Bank Account using the previously created account_address
 
 example_bank_account = lob.BankAccount.create(
-    description = 'Example bank account',
-    routing_number = '122100024',
-    account_number = '1234564789',
-    account_type = 'company',
-    signatory = 'John Doe'
+    description='Example bank account',
+    routing_number='122100024',
+    account_number='1234564789',
+    account_type='company',
+    signatory='John Doe'
 )
 
 print "Bank Account Response"
@@ -51,8 +53,8 @@ print "\n"
 # Verifying a Bank Account with the microdeposit amounts
 
 example_bank_account = lob.BankAccount.verify(
-    id = example_bank_account.id,
-    amounts = [23, 77]
+    id=example_bank_account.id,
+    amounts=[23, 77]
 )
 
 print "Bank Account Verify Response"
@@ -67,12 +69,12 @@ print "\n"
 # Creating a Check using the previously created and verified bank account
 
 example_check = lob.Check.create(
-    description = 'Example Check',
-    metadata = {
+    description='Example Check',
+    metadata={
         'FY': '2015'
     },
-    to_address = example_address,
-    from_address = {
+    to_address=example_address,
+    from_address={
         'name': 'Lob',
         'address_line1': '185 Berry Street',
         'address_line2': 'Suite 1510',
@@ -81,10 +83,10 @@ example_check = lob.Check.create(
         'address_zip': '94107',
         'address_country': 'US'
     },
-    bank_account = example_bank_account,
-    amount = 1000,
-    memo = 'Services Rendered',
-    check_bottom = """
+    bank_account=example_bank_account,
+    amount=1000,
+    memo='Services Rendered',
+    check_bottom="""
       <html>
         <head>
           <style>
@@ -96,10 +98,10 @@ example_check = lob.Check.create(
         </head>
         <body><h1>Demo check for {{name}}</h1></body>
       </html>""",
-    merge_variables = {
+    merge_variables={
         'name': example_address.name
     },
-    logo = 'https://s3-us-west-2.amazonaws.com/lob-assets/lob_check_logo.png'
+    logo='https://s3-us-west-2.amazonaws.com/lob-assets/lob_check_logo.png'
 )
 
 print "Check Response"

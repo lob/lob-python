@@ -23,21 +23,20 @@ class APIRequestor(object):
 
     def parse_response(self, resp):
         if resp.status_code == 504:
-            raise error.APIConnectionError(resp.content or resp.reason, # pragma: no cover
-                resp.content, resp.status_code, resp)
+            raise error.APIConnectionError(resp.content or resp.reason,  # pragma: no cover
+                                           resp.content, resp.status_code, resp)
 
         payload = resp.json()
         if resp.status_code == 200:
             return payload
         elif resp.status_code == 401:
             raise error.AuthenticationError(payload['error']['message'],
-                resp.content, resp.status_code, resp)
+                                            resp.content, resp.status_code, resp)
         elif resp.status_code in [404, 422]:
             raise error.InvalidRequestError(payload['error']['message'],
-                resp.content, resp.status_code, resp)
-        else: # pragma: no cover
+                                            resp.content, resp.status_code, resp)
+        else:  # pragma: no cover
             raise error.APIError(payload['error']['message'], resp.content, resp.status_code, resp)
-
 
     def request(self, method, url, params=None):
         headers = {
@@ -64,14 +63,14 @@ class APIRequestor(object):
             files = params.pop('files', {})
             explodedParams = {}
 
-            for k,v in params.items():
+            for k, v in params.items():
                 if isinstance(v, dict) and not isinstance(v, lob.resource.LobObject):
-                    for k2,v2 in v.items():
+                    for k2, v2 in v.items():
                         explodedParams[k + '[' + k2 + ']'] = v2
                 else:
                     explodedParams[k] = v
 
-            for k,v in explodedParams.items():
+            for k, v in explodedParams.items():
                 if _is_file_like(v):
                     files[k] = v
                 else:

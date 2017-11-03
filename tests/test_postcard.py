@@ -1,6 +1,7 @@
 import unittest
 import lob
 
+
 class PostcardFunctions(unittest.TestCase):
     def setUp(self):
         lob.api_key = 'test_fc26575412e92e22a926bc96c857f375f8b'
@@ -17,7 +18,7 @@ class PostcardFunctions(unittest.TestCase):
         self.assertEqual(len(postcards.data), 2)
 
     def test_list_postcards_metadata(self):
-        postcards = lob.Postcard.list(metadata={ 'campagin': 'LOB2015' })
+        postcards = lob.Postcard.list(metadata={'campagin': 'LOB2015'})
         self.assertTrue(isinstance(postcards.data[0], lob.Postcard))
         self.assertEqual(len(postcards.data), 1)
 
@@ -26,11 +27,11 @@ class PostcardFunctions(unittest.TestCase):
 
     def test_create_postcard(self):
         postcard = lob.Postcard.create(
-            to_address = self.addr.id,
-            from_address = self.addr.id,
-            front = '<h1>{{front_name}}</h1>',
-            back = '<h1>{{back_name}}</h1>',
-            merge_variables = {
+            to_address=self.addr.id,
+            from_address=self.addr.id,
+            front='<h1>{{front_name}}</h1>',
+            back='<h1>{{back_name}}</h1>',
+            merge_variables={
                 'front_name': 'Peter',
                 'back_name': 'Otto'
             }
@@ -42,19 +43,19 @@ class PostcardFunctions(unittest.TestCase):
     def test_create_idempotent_postcards(self):
         idempotency_key = "Test_Idempotency_Key"
         postcard_one = lob.Postcard.create(
-            to_address = self.addr.id,
-            front = '<h1>Front</h1>',
-            back = '<h1>Back</h1>',
-            headers = {
+            to_address=self.addr.id,
+            front='<h1>Front</h1>',
+            back='<h1>Back</h1>',
+            headers={
                 'Idempotency-Key': idempotency_key
             }
         )
 
         postcard_two = lob.Postcard.create(
-            to_address = self.addr.id,
-            front = '<h1>Front</h1>',
-            back = '<h1>Back</h1>',
-            headers = {
+            to_address=self.addr.id,
+            front='<h1>Front</h1>',
+            back='<h1>Back</h1>',
+            headers={
                 'Idempotency-Key': idempotency_key
             }
         )
@@ -64,11 +65,11 @@ class PostcardFunctions(unittest.TestCase):
 
     def test_create_postcard_lob_obj(self):
         postcard = lob.Postcard.create(
-            to_address = self.addr,
-            from_address = self.addr,
-            front = '<h1>{{front_name}}</h1>',
-            back = '<h1>{{back_name}}</h1>',
-            merge_variables = {
+            to_address=self.addr,
+            from_address=self.addr,
+            front='<h1>{{front_name}}</h1>',
+            back='<h1>{{back_name}}</h1>',
+            merge_variables={
                 'front_name': 'Peter',
                 'back_name': 'Otto'
             }
@@ -79,7 +80,7 @@ class PostcardFunctions(unittest.TestCase):
 
     def test_create_postcard_inline(self):
         postcard = lob.Postcard.create(
-            to_address = {
+            to_address={
                 'name': 'Lob1',
                 'address_line1': '185 Berry Street',
                 'address_line2': 'Suite 1510',
@@ -87,7 +88,7 @@ class PostcardFunctions(unittest.TestCase):
                 'address_zip': '94107',
                 'address_state': 'CA'
             },
-            from_address = {
+            from_address={
                 'name': 'Lob2',
                 'address_line1': '185 Berry Street',
                 'address_line2': 'Suite 1510',
@@ -95,9 +96,9 @@ class PostcardFunctions(unittest.TestCase):
                 'address_zip': '94107',
                 'address_state': 'CA'
             },
-            front = '<h1>{{front_name}}</h1>',
-            back = '<h1>{{back_name}}</h1>',
-            merge_variables = {
+            front='<h1>{{front_name}}</h1>',
+            back='<h1>{{back_name}}</h1>',
+            merge_variables={
                 'front_name': 'Peter',
                 'back_name': 'Otto'
             }
@@ -108,21 +109,21 @@ class PostcardFunctions(unittest.TestCase):
 
     def test_create_postcard_local_file(self):
         postcard = lob.Postcard.create(
-            to_address = self.addr.id,
-            from_address = self.addr.id,
-            front = open('tests/pc.pdf', 'rb'),
-            back = open('tests/pc.pdf', 'rb')
+            to_address=self.addr.id,
+            from_address=self.addr.id,
+            front=open('tests/pc.pdf', 'rb'),
+            back=open('tests/pc.pdf', 'rb')
         )
         self.assertTrue(isinstance(postcard, lob.Postcard))
 
     def test_delete_postcard(self):
         postcard = lob.Postcard.create(
-            to_address = self.addr.id,
-            from_address = self.addr.id,
-            front = open('tests/pc.pdf', 'rb'),
-            back = open('tests/pc.pdf', 'rb')
+            to_address=self.addr.id,
+            from_address=self.addr.id,
+            front=open('tests/pc.pdf', 'rb'),
+            back=open('tests/pc.pdf', 'rb')
         )
-        deleted_response = lob.Postcard.delete(postcard.id);
+        deleted_response = lob.Postcard.delete(postcard.id)
         self.assertTrue(deleted_response.deleted)
 
     def test_create_postcard_fail(self):

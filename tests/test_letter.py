@@ -1,6 +1,7 @@
 import unittest
 import lob
 
+
 class LetterFunctions(unittest.TestCase):
     def setUp(self):
         lob.api_key = 'test_fc26575412e92e22a926bc96c857f375f8b'
@@ -17,38 +18,38 @@ class LetterFunctions(unittest.TestCase):
 
     def test_create_letter(self):
         letter = lob.Letter.create(
-            from_address = {
+            from_address={
                 'name': 'Antoinette Reynolds',
                 'address_line1': '1859 Kinney St',
                 'address_city': 'Agawam',
                 'address_zip': '01001',
                 'address_state': 'MA'
             },
-            to_address = self.addr.id,
-            file = '<h1>{{name}}</h1>',
-            merge_variables = {
+            to_address=self.addr.id,
+            file='<h1>{{name}}</h1>',
+            merge_variables={
                 'name': 'Peter'
             },
-            color = True
+            color=True
         )
         self.assertEqual(letter.to_address.id, self.addr.id)
         self.assertTrue(isinstance(letter, lob.Letter))
 
     def test_delete_letter(self):
         letter = lob.Letter.create(
-            from_address = {
+            from_address={
                 'name': 'Antoinette Reynolds',
                 'address_line1': '1859 Kinney St',
                 'address_city': 'Agawam',
                 'address_zip': '01001',
                 'address_state': 'MA'
             },
-            to_address = self.addr.id,
-            file = '<h1>{{name}}</h1>',
-            merge_variables = {
+            to_address=self.addr.id,
+            file='<h1>{{name}}</h1>',
+            merge_variables={
                 'name': 'Peter'
             },
-            color = True
+            color=True
         )
-        deleted_response = lob.Letter.delete(letter.id);
+        deleted_response = lob.Letter.delete(letter.id)
         self.assertTrue(deleted_response.deleted)
