@@ -77,11 +77,7 @@ class APIRequestor(object):
                     if isinstance(v, lob.resource.LobObject):
                         data[k] = v.id
                     else:
-                        if isinstance(v, dict):
-                            for k2, v2 in v.items():
-                                data[k + '[' + k2 + ']'] = v2
-                        else:
-                            data[k] = v
+                        data[k] = v
 
             return self.parse_response(
                 requests.post(lob.api_base + url, auth=(self.api_key, ''), data=data, files=files, headers=headers)

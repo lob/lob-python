@@ -64,9 +64,6 @@ class LobObject(dict):
         except KeyError:
             raise AttributeError(k)  # pragma: no cover
 
-    def __setattr__(self, k, v):
-        self[k] = v
-
     def __repr__(self):
         ident_parts = [type(self).__name__]
 
