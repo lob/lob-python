@@ -59,9 +59,14 @@ class APIRequestor(object):
                 requests.delete(lob.api_base + url, auth=(self.api_key, ''), headers=headers)
             )
         elif method == 'post':
+            query = {}
             data = {}
             files = params.pop('files', {})
             explodedParams = {}
+
+            if params and 'query' in params:
+                query.update(params['query'])
+                del params['query']
 
             for k, v in params.items():
                 if isinstance(v, dict) and not isinstance(v, lob.resource.LobObject):
@@ -80,5 +85,5 @@ class APIRequestor(object):
                         data[k] = v
 
             return self.parse_response(
-                requests.post(lob.api_base + url, auth=(self.api_key, ''), data=data, files=files, headers=headers)
+                requests.post(lob.api_base + url, auth=(self.api_key, ''), params=query, data=data, files=files, headers=headers)
             )
