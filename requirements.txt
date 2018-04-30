@@ -1,5 +1,0 @@
-nose
-flake8
-requests
-coverage
-coveralls

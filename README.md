@@ -134,12 +134,23 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
 
 ## Testing
 
-Install all requirements with `pip install -r requirements.txt`.
+lob-python uses [Pipenv](https://docs.pipenv.org/) to manage development environments and dependencies.
+
+You install all the development requirements by running
+
+```shell
+$ pipenv install --dev
+$ pipenv shell
+```
 
 You can run all tests with the command `LOB_API_KEY=YOUR_TEST_API_KEY nosetests` in the main directory.
 
+```shell
+$ nosetests
+```
+
 =======================
 
-Copyright &copy; 2013 Lob.com
+Copyright &copy; 2013-2018 Lob.com
 
 Released under the MIT License, which can be found in the repository in `LICENSE.txt`.

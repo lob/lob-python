@@ -5,10 +5,12 @@ python:
 - '3.5'
 - '3.6'
 - 'pypy'
+before_install:
+  - pip install pipenv
 install:
-  - pip install -r requirements.txt
+  - pipenv install --dev
 script:
-  - nosetests  --with-coverage --cover-package=lob
+  - pipenv run nosetests  --with-coverage --cover-package=lob
 after_success:
   - coveralls
 notifications:
