@@ -46,6 +46,9 @@ class APIRequestor(object):
         if hasattr(lob, 'api_version'):
             headers['Lob-Version'] = lob.api_version
 
+        if params and 'lob_version' in params:
+            headers['Lob-Version'] = params.pop('lob_version')
+
         if params and 'headers' in params:
             headers.update(params['headers'])
             del params['headers']

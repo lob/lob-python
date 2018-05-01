@@ -17,6 +17,18 @@ class TestUSVerificationFunctions(unittest.TestCase):
         self.assertEqual(addr.deliverability, 'deliverable')
         self.assertEqual(addr.primary_line, '1 TELEGRAPH HILL BLVD')
 
+    def test_us_verification_override_lob_version(self):
+        addr = lob.USVerification.create(
+            primary_line='deliverable',
+            city='San Francisco',
+            state='CA',
+            zip_code='94107',
+            lob_version='2018-03-30'
+        )
+
+        self.assertEqual(addr.deliverability, 'deliverable')
+        self.assertEqual(addr.primary_line, '1 TELEGRAPH HILL BLVD')
+
     def test_us_verification_format(self):
         addr = lob.USVerification.create(
             primary_line='deliverable',
