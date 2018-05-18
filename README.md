@@ -91,6 +91,10 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
     - [Verify a US Address](https://lob.com/docs/python#us_verifications_create)
     - [The US ZIP Lookup Object](https://lob.com/docs/python#us_zip_lookups_object)
     - [Lookup a US ZIP Code](https://lob.com/docs/python#us_zip_lookups_create)
+  - [US Autocompletion API](https://lob.com/docs/python#us_autocompletions)
+    - [The US Autocompletion Object](https://lob.com/docs/python#us_autocompletions_object)
+    - [Autocomplete a US Address](https://lob.com/docs/python#us_autocompletions_create)
+    - [The US Autocompletion Test Environment](https://lob.com/docs/python#us-autocompletions-test-environment)
 - **Int'l Verification API**
   - [International Verifications](https://lob.com/docs/python#intl_verifications)
     - [Verify an International Address](https://lob.com/docs/python#intl_verifications_create)
