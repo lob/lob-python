@@ -5,7 +5,7 @@ except ImportError:
 
 setup(
     name='lob',
-    version='3.3.0',
+    version='3.4.0',
     author='Lob',
     author_email='support@lob.com',
     packages=['lob'],
