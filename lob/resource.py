@@ -203,6 +203,10 @@ class Route(ListableAPIResource):
     endpoint = '/routes'
 
 
+class USAutocompletion(CreateableAPIResource):
+    endpoint = '/us_autocompletions'
+
+
 class USVerification(CreateableAPIResource):
     endpoint = '/us_verifications'
 

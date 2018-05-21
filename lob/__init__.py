@@ -1,6 +1,7 @@
 # Resources
 from lob.resource import (Address, Area, BankAccount, Check, Letter, Postcard,
-                          Route, USVerification, USZipLookup, IntlVerification)
+                          Route, USAutocompletion, USVerification, USZipLookup,
+                          IntlVerification)
 
 from lob.version import VERSION
 
