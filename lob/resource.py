@@ -9,7 +9,6 @@ from lob.compat import string_type
 def lob_format(resp):
     types = {
         'address': Address,
-        'area': Area,
         'bank_account': BankAccount,
         'check': Check,
         'letter': Letter,
@@ -135,21 +134,6 @@ class Address(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource)
     endpoint = '/addresses'
 
 
-class Area(ListableAPIResource, CreateableAPIResource):
-    endpoint = '/areas'
-
-    @classmethod
-    def create(cls, **params):
-        if isinstance(params, dict):
-            if 'routes' in params:
-                if isinstance(params['routes'], LobObject):
-                    routes = []
-                    for r in params['routes'].data[0]['routes']:
-                        routes.append(params['routes'].data[0]['zip_code'] + '-' + r["route"])
-                    params['routes'] = routes
-        return super(Area, cls).create(**params)
-
-
 class BankAccount(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource, VerifiableAPIResource):
     endpoint = '/bank_accounts'
 
@@ -197,10 +181,6 @@ class Postcard(ListableAPIResource, CreateableAPIResource, DeleteableAPIResource
                 params['to'] = params['to_address']
                 params.pop('to_address')
         return super(Postcard, cls).create(**params)
-
-
-class Route(ListableAPIResource):
-    endpoint = '/routes'
 
 
 class USAutocompletion(CreateableAPIResource):
