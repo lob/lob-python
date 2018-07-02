@@ -36,6 +36,9 @@ class BankAccountFunctions(unittest.TestCase):
         bankAccount = lob.BankAccount.retrieve(id=lob.BankAccount.list().data[0].id)
         self.assertTrue(isinstance(bankAccount, lob.BankAccount))
 
+    def test_print_bankAccount(self):
+        print(lob.BankAccount.retrieve(id=lob.BankAccount.list().data[0].id))
+
     def test_retrieve_bankAccount_fail(self):
         self.assertRaises(lob.error.InvalidRequestError, lob.BankAccount.retrieve, id='test')
 
