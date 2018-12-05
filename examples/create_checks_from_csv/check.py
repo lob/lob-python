@@ -54,7 +54,7 @@ except Exception as e:
     print('Failed to verify bank account.')
 
 # TODO: Add a logo to your check
-CHECK_LOGO = 'https://s3-us-west-2.amazonaws.com/lob-assets/lob_check_logo.png'
+CHECK_LOGO = 'https://s3-us-west-2.amazonaws.com/public.lob.com/assets/check_logo.png'
 
 ###########################################################
 

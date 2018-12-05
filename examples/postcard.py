@@ -46,7 +46,7 @@ example_postcard = lob.Postcard.create(
           <style>
             @font-face {
               font-family: 'Loved by the King';
-              src: url('https://s3-us-west-2.amazonaws.com/lob-assets/LovedbytheKing.ttf');
+              src: url('https://s3-us-west-2.amazonaws.com/public.lob.com/fonts/lovedByTheKing/LovedbytheKing.ttf');
             }
           </style>
         </head>
