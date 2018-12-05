@@ -92,7 +92,7 @@ example_check = lob.Check.create(
           <style>
             @font-face {
               font-family: 'Loved by the King';
-              src: url('https://s3-us-west-2.amazonaws.com/lob-assets/LovedbytheKing.ttf');
+              src: url('https://s3-us-west-2.amazonaws.com/public.lob.com/fonts/lovedByTheKing/LovedbytheKing.ttf');
             }
           </style>
         </head>
@@ -101,7 +101,7 @@ example_check = lob.Check.create(
     merge_variables={
         'name': example_address.name
     },
-    logo='https://s3-us-west-2.amazonaws.com/lob-assets/lob_check_logo.png'
+    logo='https://s3-us-west-2.amazonaws.com/public.lob.com/assets/check_logo.png'
 )
 
 print "Check Response"
