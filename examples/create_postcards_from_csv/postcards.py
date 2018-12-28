@@ -12,7 +12,7 @@ sys.path.insert(0, os.path.abspath(__file__+'../../..'))
 
 ###########################################################
 # TODO: Provide your API Key, keep this secure
-lob.api_key = ''
+lob.api_key = 'YOUR_API_KEY'
 
 # TODO: Create your from_address
 try:
