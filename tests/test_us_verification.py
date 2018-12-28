@@ -1,10 +1,11 @@
 import unittest
+import os
 import lob
 
 
 class TestUSVerificationFunctions(unittest.TestCase):
     def setUp(self):
-        lob.api_key = 'test_fc26575412e92e22a926bc96c857f375f8b'
+        lob.api_key = os.environ.get('LOB_API_KEY')
 
     def test_us_verification(self):
         addr = lob.USVerification.create(

@@ -136,7 +136,7 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
 
 Install all requirements with `pip install -r requirements.txt`.
 
-You can run all tests with the command `nosetests` in the main directory.
+You can run all tests with the command `LOB_API_KEY=YOUR_TEST_API_KEY nosetests` in the main directory.
 
 =======================
 
