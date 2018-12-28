@@ -11,7 +11,7 @@ import sys
 sys.path.insert(0, os.path.abspath(__file__+'../../../..'))
 
 # TODO: Provide your API key, keep this secure
-lob.api_key = 'test_fc26575412e92e22a926bc96c857f375f8b'
+lob.api_key = 'YOUR_API_KEY'
 
 # Input check
 if len(sys.argv) < 2:

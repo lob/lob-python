@@ -1,10 +1,11 @@
 import unittest
+import os
 import lob
 
 
 class TestIntlVerificationFunctions(unittest.TestCase):
     def setUp(self):
-        lob.api_key = 'test_fc26575412e92e22a926bc96c857f375f8b'
+        lob.api_key = os.environ.get('LOB_API_KEY')
 
     def test_intl_verification(self):
         try:

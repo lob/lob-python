@@ -1,10 +1,11 @@
 import lob
+import os
 import unittest
 
 
 class CheckFunctions(unittest.TestCase):
     def setUp(self):
-        lob.api_key = 'test_fc26575412e92e22a926bc96c857f375f8b'
+        lob.api_key = os.environ.get('LOB_API_KEY')
         self.addr = lob.Address.list(limit=1).data[0]
         self.ba = lob.BankAccount.create(
             routing_number='122100024',
