@@ -8,7 +8,11 @@ import sys
 try:
     import concurrent.futures
 except ImportError:
-    print("This script requires Python 3.2 or later")
+    print("""This script requires concurrent.futures;
+    run with Python 3.2 or later, or install the backport.
+
+    https://pypi.org/project/futures/
+    """)
     sys.exit(1)
 
 import csv
