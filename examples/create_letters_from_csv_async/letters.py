@@ -19,10 +19,11 @@ import csv
 import datetime
 import os
 
+# Load lob-python root directory into the import path so you can use the lob package without having to install it through pip.
+sys.path.insert(0, os.path.abspath(__file__+'../../..'))
 import lob
 
 MAX_CONCURRENCY = 5
-sys.path.insert(0, os.path.abspath(__file__+'../../..'))
 
 ###########################################################
 # TODO: Provide your API Key, keep this secure

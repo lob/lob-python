@@ -87,7 +87,10 @@ class PostcardFunctions(unittest.TestCase):
                 'address_line2': 'Suite 1510',
                 'address_city': 'San Francisco',
                 'address_zip': '94107',
-                'address_state': 'CA'
+                'address_state': 'CA',
+                'metadata': {
+                    'department': 'marketing'
+                }
             },
             from_address={
                 'name': 'Lob2',

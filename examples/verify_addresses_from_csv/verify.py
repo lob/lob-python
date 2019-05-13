@@ -4,11 +4,12 @@
 
 import csv
 import datetime
-import lob
 import os
 import sys
 
+# Load lob-python root directory into the import path so you can use the lob package without having to install it through pip.
 sys.path.insert(0, os.path.abspath(__file__+'../../../..'))
+import lob
 
 # TODO: Provide your API key, keep this secure
 lob.api_key = 'YOUR_API_KEY'

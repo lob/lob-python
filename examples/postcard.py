@@ -1,7 +1,9 @@
 import sys
 import os
-import lob
+
+# Load lob-python root directory into the import path so you can use the lob package without having to install it through pip.
 sys.path.insert(0, os.path.abspath(__file__+'../../..'))
+import lob
 
 # Replace this API key with your own.
 lob.api_key = 'YOUR_API_KEY'
@@ -21,15 +23,15 @@ example_address = lob.Address.create(
     address_zip='12345'
 )
 
-print "\n"
-print "Address Response"
-print "\n"
-print "======================================================="
-print "\n"
-print example_address
-print "\n"
-print "======================================================="
-print "\n"
+print("\n")
+print("Address Response")
+print("\n")
+print("=======================================================")
+print("\n")
+print(example_address)
+print("\n")
+print("=======================================================")
+print("\n")
 
 # Creating a Postcard
 
@@ -58,11 +60,11 @@ example_postcard = lob.Postcard.create(
     back="<h1>Welcome to the club!</h1>"
 )
 
-print "Postcard Response"
-print "\n"
-print "======================================================="
-print "\n"
-print example_postcard
-print "\n"
-print "======================================================="
-print "\n"
+print("Postcard Response")
+print("\n")
+print("=======================================================")
+print("\n")
+print(example_postcard)
+print("\n")
+print("=======================================================")
+print("\n")
