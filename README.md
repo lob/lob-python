@@ -169,6 +169,17 @@ $ git push origin head
 $ git push origin --tags
 ```
 
+Finally, create the distribution and push it to PyPI using [twine](https://pypi.org/project/twine/).
+
+```shell
+$ python setup.py sdist
+...
+Writing lob-4.0.0/setup.cfg
+Creating tar archive
+removing 'lob-4.0.0' (and everything under it)
+$ twine upload dist/lob-4.0.0.tar.gz
+```
+
 ---
 
 Copyright &copy; 2013-2019 Lob.com

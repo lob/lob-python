@@ -12,5 +12,7 @@ nose = "*"
 coverage = "*"
 coveralls = "*"
 bumpversion = "*"
+setuptools = "*"
+twine = "*"
 
 [requires]

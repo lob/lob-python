@@ -1,7 +1,6 @@
-try:
-    from setuptools import setup
-except ImportError:
-    from disutils.core import setup
+from setuptools import setup
+
+README = open('README.md').read()
 
 setup(
     name='lob',
@@ -10,11 +9,13 @@ setup(
     author_email='support@lob.com',
     packages=['lob'],
     description='Lob Python Bindings',
+    long_description=README,
+    long_description_content_type="text/markdown",
     url='https://github.com/lob/lob-python',
     license='MIT',
     install_requires=[
         'requests'
-        ],
+    ],
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "License :: OSI Approved :: MIT License",
