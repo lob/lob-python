@@ -5,12 +5,12 @@ except ImportError:
 
 setup(
     name='lob',
-    version='3.4.0',
+    version='4.0.0',
     author='Lob',
     author_email='support@lob.com',
     packages=['lob'],
     description='Lob Python Bindings',
-    url='https://www.lob.com',
+    url='https://github.com/lob/lob-python',
     license='MIT',
     install_requires=[
         'requests'

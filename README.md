@@ -149,7 +149,27 @@ You can run all tests with the command `LOB_API_KEY=YOUR_TEST_API_KEY nosetests`
 $ nosetests
 ```
 
-=======================
+## Making Releases
+
+lob-python includes [bumpversion](https://pypi.org/project/bumpversion/) as a development dependency. This
+tool should be used when changing the version number, as it will ensure that it's updated correctly and
+consistently.
+
+Running bumpversion will increment the specified version part (`major`, `minor`, `patch`), commit the change,
+and tag it.
+
+```shell
+$ bumpversion <part>
+```
+
+After the version has been bumped, you can push the change and tag.
+
+```shell
+$ git push origin head
+$ git push origin --tags
+```
+
+---
 
 Copyright &copy; 2013-2019 Lob.com
 

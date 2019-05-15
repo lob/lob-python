@@ -11,5 +11,6 @@ nose = "*"
 "flake8" = "*"
 coverage = "*"
 coveralls = "*"
+bumpversion = "*"
 
 [requires]
