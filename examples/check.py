@@ -1,7 +1,11 @@
+from __future__ import print_function
+
 import sys
 import os
-import lob
+
+# Load lob-python root directory into the import path so you can use the lob package without having to install it through pip.
 sys.path.insert(0, os.path.abspath(__file__+'../../..'))
+import lob
 
 # Replace this API key with your own.
 lob.api_key = 'YOUR_API_KEY'
@@ -21,15 +25,15 @@ example_address = lob.Address.create(
     address_zip='12345'
 )
 
-print "\n"
-print "Address Response"
-print "\n"
-print "======================================================="
-print "\n"
-print example_address
-print "\n"
-print "======================================================="
-print "\n"
+print("\n")
+print("Address Response")
+print("\n")
+print("=======================================================")
+print("\n")
+print(example_address)
+print("\n")
+print("=======================================================")
+print("\n")
 
 # Creating a Bank Account using the previously created account_address
 
@@ -41,14 +45,14 @@ example_bank_account = lob.BankAccount.create(
     signatory='John Doe'
 )
 
-print "Bank Account Response"
-print "\n"
-print "======================================================="
-print "\n"
-print example_bank_account
-print "\n"
-print "======================================================="
-print "\n"
+print("Bank Account Response")
+print("\n")
+print("=======================================================")
+print("\n")
+print(example_bank_account)
+print("\n")
+print("=======================================================")
+print("\n")
 
 # Verifying a Bank Account with the microdeposit amounts
 
@@ -57,14 +61,14 @@ example_bank_account = lob.BankAccount.verify(
     amounts=[23, 77]
 )
 
-print "Bank Account Verify Response"
-print "\n"
-print "======================================================="
-print "\n"
-print example_bank_account
-print "\n"
-print "======================================================="
-print "\n"
+print("Bank Account Verify Response")
+print("\n")
+print("=======================================================")
+print("\n")
+print(example_bank_account)
+print("\n")
+print("=======================================================")
+print("\n")
 
 # Creating a Check using the previously created and verified bank account
 
@@ -104,11 +108,11 @@ example_check = lob.Check.create(
     logo='https://s3-us-west-2.amazonaws.com/public.lob.com/assets/check_logo.png'
 )
 
-print "Check Response"
-print "\n"
-print "======================================================="
-print "\n"
-print example_check
-print "\n"
-print "======================================================="
-print "\n"
+print("Check Response")
+print("\n")
+print("=======================================================")
+print("\n")
+print(example_check)
+print("\n")
+print("=======================================================")
+print("\n")

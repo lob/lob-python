@@ -24,7 +24,10 @@ class LetterFunctions(unittest.TestCase):
                 'address_line1': '1859 Kinney St',
                 'address_city': 'Agawam',
                 'address_zip': '01001',
-                'address_state': 'MA'
+                'address_state': 'MA',
+                'metadata': {
+                    'department': 'marketing'
+                }
             },
             to_address=self.addr.id,
             file='<h1>{{name}}</h1>',
