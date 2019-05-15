@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 # usage:
 #   python letters.py input.csv
 #   logs to csv's in the output directory

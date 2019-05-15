@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 # usage:
 #     python verify.py input.csv
 #     logs output in csv directory
