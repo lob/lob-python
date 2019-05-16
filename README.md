@@ -6,7 +6,15 @@
 
 This is the python wrapper for the Lob.com API. See full Lob.com documentation [here](https://lob.com/docs/python). For best results, be sure that you're using [the latest version](https://lob.com/docs/python#version) of the Lob API and the latest version of the python wrapper.
 
-This wrapper supports Python 2.7, 3.4, 3.5, 3.6, 3.7, pypy, and pypy3 and works in the object oriented style. That is, to make calls you have to call the method on a class and the return types are python objects. To get a `dict` on any object, you can call the `to_dict()` method of the object.
+This library supports active Python releases (i.e., versions which have not reached their end of life), as well as PyPy and PyPy 3.
+The currently supported versions include:
+
+* Python 2.7
+* Python 3.5
+* Python 3.6
+* Python 3.7
+* PyPy
+* PyPy 3
 
 ## Table of Contents
 
@@ -19,6 +27,8 @@ This wrapper supports Python 2.7, 3.4, 3.5, 3.6, 3.7, pypy, and pypy3 and works 
 - [Testing](#testing)
 
 ## Getting Started
+
+Lob Python wrapper works in the object oriented style. That is, to make calls you have to call the method on a class and the return types are python objects. To get a `dict` on any object, you can call the `to_dict()` method of the object.
 
 Here's a general overview of the Lob services available, click through to read more.
 
@@ -37,11 +47,10 @@ Once you have created an account, you can access your API Keys from the [Setting
 
 ### Installation
 
-You can use `pip` or `easy_install` for installing the package.
+You can use `pip` to install the package.
 
 ```
 pip install lob
-easy_install lob
 ```
 
 To initialize the wrapper, import `lob` and set the `api_key`
