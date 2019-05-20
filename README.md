@@ -155,7 +155,7 @@ $ pipenv shell
 You can run all tests with the command `LOB_API_KEY=YOUR_TEST_API_KEY nosetests` in the main directory.
 
 ```shell
-$ nosetests
+$ LOB_API_KEY=YOUR_TEST_API_KEY nosetests
 ```
 
 ## Making Releases
