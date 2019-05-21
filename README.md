@@ -6,7 +6,15 @@
 
 This is the python wrapper for the Lob.com API. See full Lob.com documentation [here](https://lob.com/docs/python). For best results, be sure that you're using [the latest version](https://lob.com/docs/python#version) of the Lob API and the latest version of the python wrapper.
 
-This wrapper supports Python 2.7, 3.4, 3.5, 3.6, pypy, and pypy3 and works in the object oriented style. That is, to make calls you have to call the method on a class and the return types are python objects. To get a `dict` on any object, you can call the `to_dict()` method of the object.
+This library supports active Python releases (i.e., versions which have not reached their end of life), as well as PyPy and PyPy 3.
+The currently supported versions include:
+
+* Python 2.7
+* Python 3.5
+* Python 3.6
+* Python 3.7
+* PyPy
+* PyPy 3
 
 ## Table of Contents
 
@@ -19,6 +27,8 @@ This wrapper supports Python 2.7, 3.4, 3.5, 3.6, pypy, and pypy3 and works in th
 - [Testing](#testing)
 
 ## Getting Started
+
+Lob Python wrapper works in the object oriented style. That is, to make calls you have to call the method on a class and the return types are python objects. To get a `dict` on any object, you can call the `to_dict()` method of the object.
 
 Here's a general overview of the Lob services available, click through to read more.
 
@@ -37,11 +47,10 @@ Once you have created an account, you can access your API Keys from the [Setting
 
 ### Installation
 
-You can use `pip` or `easy_install` for installing the package.
+You can use `pip` to install the package.
 
 ```
 pip install lob
-easy_install lob
 ```
 
 To initialize the wrapper, import `lob` and set the `api_key`
@@ -134,12 +143,54 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
 
 ## Testing
 
-Install all requirements with `pip install -r requirements.txt`.
+lob-python uses [Pipenv](https://docs.pipenv.org/) to manage development environments and dependencies.
+
+You install all the development requirements by running
+
+```shell
+$ pipenv install --dev
+$ pipenv shell
+```
 
 You can run all tests with the command `LOB_API_KEY=YOUR_TEST_API_KEY nosetests` in the main directory.
 
-=======================
+```shell
+$ LOB_API_KEY=YOUR_TEST_API_KEY nosetests
+```
 
-Copyright &copy; 2013 Lob.com
+## Making Releases
+
+lob-python includes [bumpversion](https://pypi.org/project/bumpversion/) as a development dependency. This
+tool should be used when changing the version number, as it will ensure that it's updated correctly and
+consistently.
+
+Running bumpversion will increment the specified version part (`major`, `minor`, `patch`), commit the change,
+and tag it.
+
+```shell
+$ bumpversion <part>
+```
+
+After the version has been bumped, you can push the change and tag.
+
+```shell
+$ git push origin head
+$ git push origin --tags
+```
+
+Finally, create the distribution and push it to PyPI using [twine](https://pypi.org/project/twine/).
+
+```shell
+$ python setup.py sdist
+...
+Writing lob-4.0.0/setup.cfg
+Creating tar archive
+removing 'lob-4.0.0' (and everything under it)
+$ twine upload dist/lob-4.0.0.tar.gz
+```
+
+---
+
+Copyright &copy; 2013-2019 Lob.com
 
 Released under the MIT License, which can be found in the repository in `LICENSE.txt`.
