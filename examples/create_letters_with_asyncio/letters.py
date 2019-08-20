@@ -7,9 +7,12 @@ Python 3.7 or later.
 
 To customize:
 
-* set API_KEY and API_BASE as needed
+* set API_KEY and API_BASE as needed; these may be set in the Python
+  code or via environment variables
 * update getPayload to map an input row to the letter create payload
-* update fromAddress
+* update from_address as needed
+
+These customziation points are marked with `TODO` comments in the code.
 
 """
 
@@ -26,8 +29,8 @@ import lob
 
 
 # TODO: set your API key
-API_KEY = lob.api_key = ''
-API_BASE = lob.api_base = 'https://api.lob.com/v1'
+API_KEY = lob.api_key = os.getenv('API_KEY')
+API_BASE = lob.api_base = os.getenv('API_BASE', 'https://api.lob.com/v1')
 
 DEBUG = False
 
@@ -70,6 +73,7 @@ def logFiles():
 
     return (success_filename, errors_filename)
 
+
 async def logSuccess(successLog, letter):
     """Logs a successful letter send to successLog.
 
@@ -91,9 +95,14 @@ async def logSuccess(successLog, letter):
 
 
 async def logError(errorLog, resp):
-    errorLog.writerow(
-        {'error': await resp.json(), 'status': resp.status}
-    )
+    if isinstance(resp, Exception):
+        errorLog.writerow(
+            {'error': resp},
+        )
+    else:
+        errorLog.writerow(
+            {'error': await resp.json(), 'status': resp.status},
+        )
 
     sys.stdout.write('E')
     sys.stdout.flush()
@@ -135,12 +144,15 @@ def getPayload(row):
     return payload
 
 
-async def sendWorker(session, queue, underRateLimit, successLog, errorLog):
+async def sendWorker(session, queue, getPayload, underRateLimit, successLog, errorLog):
     """asyncio worker for processing letters from the queue.
 
     session is the aiohttp session used to send requests.
 
     queue is an asyncio.Queue, from which letters are read.
+
+    getPayload is a function which takes a row from the queue and returns
+    the create letter payload.
 
     underRateLimit is an asyncio Event object, which is triggered when it's
     safe to send.
@@ -158,44 +170,48 @@ async def sendWorker(session, queue, underRateLimit, successLog, errorLog):
         await underRateLimit.wait()
 
         # send the request
-        async with session.post(url, json=getPayload(row)) as resp:
-            if resp.status == 200:
-                # if successful, mark the task done and wait for another letter
-                letter = await resp.json()
-                await logSuccess(successLog, letter)
-                queue.task_done()
+        payload = None
+        try:
+            payload = getPayload(row)
+        except Exception as e:
+            await logError(errorLog, e)
 
-            elif resp.status == 429:
-                # if rate limited, set flag, sleep for delay, clear flag, repeat the loop
-                resetTime = float(resp.headers.get('X-Rate-Limit-Reset'))
-                delay = abs(resetTime - time.time())
-                sys.stdout.write('W')
-                sys.stdout.flush()
+        if payload is not None:
+            async with session.post(url, json=payload) as resp:
+                if resp.status == 200:
+                    # if successful, mark the task done and wait for another letter
+                    letter = await resp.json()
+                    await logSuccess(successLog, letter)
 
-                # block work by other workers, wait, and then set the "all clear" flag
-                underRateLimit.clear()
-                await asyncio.sleep(delay)
-                underRateLimit.set()
+                elif resp.status == 429:
+                    # if rate limited, set flag, sleep for delay, clear flag, repeat the loop
+                    resetTime = float(resp.headers.get('X-Rate-Limit-Reset'))
+                    delay = abs(resetTime - time.time())
+                    sys.stdout.write('W')
+                    sys.stdout.flush()
 
-                # continue without fetching another letter to work on
-                continue
+                    # block work by other workers, wait, and then set the "all clear" flag
+                    underRateLimit.clear()
+                    await asyncio.sleep(delay)
+                    underRateLimit.set()
 
-            else:
-                # report an error and mark the task as done
-                await logError(errorLog, resp)
-                queue.task_done()
+                    # continue without fetching another letter to work on
+                    continue
 
+                else:
+                    # report an error and mark the task as done
+                    await logError(errorLog, resp)
+
+        queue.task_done()
         row = await queue.get()
 
 
-async def main(inputFilename, fromAddress, template):
+async def send_letters(inputCSV, *, getPayload=getPayload, extraData=None):
+    extraData = extraData or {}
     successes, errors = logFiles()
 
-    with open(inputFilename, 'r') as inputFile, \
-        open(successes, 'w') as success, \
+    with open(successes, 'w') as success, \
         open(errors, 'w') as error:
-
-        input_csv = csv.DictReader(inputFile)
 
         # Print mode to screen
         mode = API_KEY.split('_')[0]
@@ -222,18 +238,13 @@ async def main(inputFilename, fromAddress, template):
             for i in range(WORKERS):
                 tasks.append(
                     asyncio.create_task(
-                        sendWorker(session, letters, underRateLimit, success_csv, errors_csv)
+                        sendWorker(session, letters, getPayload, underRateLimit, success_csv, errors_csv)
                     )
                 )
 
             # add the letters to the queue
-            for letter in input_csv:
-                letter['metadata'] = {
-                    'csv':      inputFilename
-                }
-                letter['from_address'] = fromAddress
-                letter['file'] = template
-
+            for letter in inputCSV:
+                letter.update(extraData)
                 await letters.put(letter)
 
             # wait for all letters to complete
@@ -268,4 +279,17 @@ if __name__ == '__main__':
     with open('letter.html', 'r') as html_file:
         letter_html = html_file.read()
 
-    asyncio.run(main(sys.argv[-1], from_address.id, letter_html), debug=DEBUG)
+    with open(sys.argv[-1], 'r') as inputFile:
+        # TODO: customize `extraData` if you need additional information to
+        # generate the create letter payload in `getPayload`
+        #
+        # extraData is added to every row from the input CSV, providing a channel
+        # to pass additional values into getPayload
+        extraData = dict(
+            metadata=dict(csv=sys.argv[-1]),
+            from_address=from_address.id,
+            file=letter_html,
+        )
+
+        input_csv = csv.DictReader(inputFile)
+        asyncio.run(send_letters(input_csv, extraData=extraData), debug=DEBUG)
