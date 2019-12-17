@@ -8,7 +8,7 @@ class TestIntlVerificationFunctions(unittest.TestCase):
         lob.api_key = os.environ.get('LOB_API_KEY')
 
     def test_intl_verification(self):
-        lob.IntlVerification.create(
+        addr = lob.IntlVerification.create(
             primary_line='deliverable',
             country='CA'
         )
