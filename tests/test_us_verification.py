@@ -24,7 +24,7 @@ class TestUSVerificationFunctions(unittest.TestCase):
             city='San Francisco',
             state='CA',
             zip_code='94107',
-            lob_version='2018-03-30'
+            lob_version='2020-02-11'
         )
 
         self.assertEqual(addr.deliverability, 'deliverable')

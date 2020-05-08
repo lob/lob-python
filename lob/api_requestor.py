@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 import requests
+import json
 
 import lob
 from lob import error
@@ -72,7 +73,9 @@ class APIRequestor(object):
                 del params['query']
 
             for k, v in params.items():
-                if isinstance(v, dict) and not isinstance(v, lob.resource.LobObject):
+                if k == 'merge_variables':
+                    explodedParams[k] = json.dumps(v)
+                elif isinstance(v, dict) and not isinstance(v, lob.resource.LobObject):
                     for k2, v2 in v.items():
                         explodedParams[k + '[' + k2 + ']'] = v2
                 else:
