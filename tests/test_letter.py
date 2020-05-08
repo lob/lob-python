@@ -39,6 +39,30 @@ class LetterFunctions(unittest.TestCase):
         self.assertEqual(letter.to_address.id, self.addr.id)
         self.assertTrue(isinstance(letter, lob.Letter))
 
+    def test_create_letter_with_merge_variable_object(self):
+        letter = lob.Letter.create(
+            from_address={
+                'name': 'Keanu Reeves',
+                'address_line1': '1234 Fake St',
+                'address_city': 'Zion',
+                'address_zip': '12345',
+                'address_state': 'CA',
+                'metadata': {
+                    'matrix': 'is_real'
+                }
+            },
+            to_address=self.addr.id,
+            file='<html>{{data.name}}</html>',
+            merge_variables={
+                'data': {
+                    'name': 'Delbert'
+                }
+            },
+            color=True
+        )
+        self.assertEqual(letter.to_address.id, self.addr.id)
+        self.assertTrue(isinstance(letter, lob.Letter))
+
     def test_delete_letter(self):
         letter = lob.Letter.create(
             from_address={

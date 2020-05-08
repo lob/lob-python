@@ -75,6 +75,26 @@ class CheckFunctions(unittest.TestCase):
         self.assertEqual(check.to_address.name, 'LOB')
         self.assertEqual(check.from_address.name, 'LOB')
 
+    def test_create_check_with_merge_variable_conditional(self):
+        check = lob.Check.create(
+            description='Test Check',
+            bank_account=self.ba.id,
+            to_address=self.addr.id,
+            from_address=self.addr.id,
+            amount=1000,
+            memo='Test Check',
+            attachment="<html>{{#is_awesome}}You are awesome!{{/is_awesome}}</html>",
+            check_bottom="<html>{{#is_awesome}}You are awesome!{{/is_awesome}}</html>",
+            merge_variables={
+                'is_awesome': True
+            }
+        )
+
+        self.assertTrue(isinstance(check, lob.Check))
+        self.assertEqual(check.bank_account.id, self.ba.id)
+        self.assertEqual(check.to_address.id, self.addr.id)
+        self.assertEqual(check.from_address.id, self.addr.id)
+
     def test_delete_postcard(self):
         check = lob.Check.create(
             description='Test Check',

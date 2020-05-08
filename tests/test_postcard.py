@@ -120,6 +120,23 @@ class PostcardFunctions(unittest.TestCase):
         )
         self.assertTrue(isinstance(postcard, lob.Postcard))
 
+    def test_create_postcard_with_merge_variable_list(self):
+        postcard = lob.Postcard.create(
+            to_address=self.addr.id,
+            from_address=self.addr.id,
+            front='<html>{{#list}} {{name}} {{/list}}</html>',
+            back='<html>{{#list}} {{name}} {{/list}}</html>',
+            merge_variables={
+                'list': [
+                    { 'name': 'Larissa' },
+                    { 'name': 'Larry' }
+                ]
+            }
+        )
+        self.assertEqual(postcard.to_address.id, self.addr.id)
+        self.assertEqual(postcard.from_address.id, self.addr.id)
+        self.assertTrue(isinstance(postcard, lob.Postcard))
+
     def test_delete_postcard(self):
         postcard = lob.Postcard.create(
             to_address=self.addr.id,
