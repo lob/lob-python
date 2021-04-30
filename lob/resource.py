@@ -12,7 +12,8 @@ def lob_format(resp):
         'bank_account': BankAccount,
         'check': Check,
         'letter': Letter,
-        'postcard': Postcard
+        'postcard': Postcard,
+        'self_mailer': SelfMailer
     }
 
     # Change Keys for To/From
@@ -181,6 +182,20 @@ class Postcard(ListableAPIResource, CreateableAPIResource, DeleteableAPIResource
                 params['to'] = params['to_address']
                 params.pop('to_address')
         return super(Postcard, cls).create(**params)
+
+class SelfMailer(ListableAPIResource, CreateableAPIResource, DeleteableAPIResource):
+    endpoint = '/self_mailers'
+
+    @classmethod
+    def create(cls, **params):
+        if isinstance(params, dict):
+            if 'from_address' in params:
+                params['from'] = params['from_address']
+                params.pop('from_address')
+            if 'to_address' in params:
+                params['to'] = params['to_address']
+                params.pop('to_address')
+        return super(SelfMailer, cls).create(**params)
 
 
 class USAutocompletion(CreateableAPIResource):

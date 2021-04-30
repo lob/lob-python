@@ -68,3 +68,9 @@ python letter.py
 ```
 python postcard.py
 ```
+
+### Create a self mailer
+```
+python self_mailer.py
+```
+

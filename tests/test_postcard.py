@@ -115,8 +115,8 @@ class PostcardFunctions(unittest.TestCase):
         postcard = lob.Postcard.create(
             to_address=self.addr.id,
             from_address=self.addr.id,
-            front=open('tests/pc.pdf', 'rb'),
-            back=open('tests/pc.pdf', 'rb')
+            front=open('tests/pdfs/pc.pdf', 'rb'),
+            back=open('tests/pdfs/pc.pdf', 'rb')
         )
         self.assertTrue(isinstance(postcard, lob.Postcard))
 
@@ -141,8 +141,8 @@ class PostcardFunctions(unittest.TestCase):
         postcard = lob.Postcard.create(
             to_address=self.addr.id,
             from_address=self.addr.id,
-            front=open('tests/pc.pdf', 'rb'),
-            back=open('tests/pc.pdf', 'rb')
+            front=open('tests/pdfs/pc.pdf', 'rb'),
+            back=open('tests/pdfs/pc.pdf', 'rb')
         )
         deleted_response = lob.Postcard.delete(postcard.id)
         self.assertTrue(deleted_response.deleted)

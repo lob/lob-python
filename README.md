@@ -133,6 +133,13 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
     - [Delete a Bank Account](https://lob.com/docs/python#bankaccounts_delete)
     - [Verify a Bank Account](https://lob.com/docs/python#bankaccounts_verify)
     - [List all Bank Accounts](https://lob.com/docs/python#bankaccounts_list)
+- **Self Mailers API**
+  - [Self Mailers](https://lob.com/docs/python#self_mailers)
+    - [The Self Mailer Object](https://lob.com/docs/python#self_mailers_object)
+    - [Create a Self Mailer](https://lob.com/docs/python#self_mailers_create)
+    - [Retrieve a Self Mailer](https://lob.com/docs/python#self_mailers_retrieve)
+    - [Cancel a Self Mailer](https://lob.com/docs/python#self_mailers_delete)
+    - [List all Self Mailers](https://lob.com/docs/python#self_mailers_list)
 - **Appendix**
   - [API Changelog](https://lob.com/docs/python#changelog)
   - [The Tracking Event Object](https://lob.com/docs/python#tracking_event_object)
