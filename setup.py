@@ -4,7 +4,7 @@ README = open('README.md').read()
 
 setup(
     name='lob',
-    version='4.0.2',
+    version='4.1.0',
     author='Lob',
     author_email='support@lob.com',
     packages=['lob'],
