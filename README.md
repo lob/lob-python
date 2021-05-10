@@ -6,14 +6,13 @@
 
 This is the python wrapper for the Lob.com API. See full Lob.com documentation [here](https://lob.com/docs/python). For best results, be sure that you're using [the latest version](https://lob.com/docs/python#version) of the Lob API and the latest version of the python wrapper.
 
-This library supports active Python releases (i.e., versions which have not reached their end of life), as well as PyPy and PyPy 3.
+This library supports active Python releases (i.e., versions which have not reached their end of life), as well as PyPy 3.
 The currently supported versions include:
 
-* Python 2.7
-* Python 3.5
 * Python 3.6
 * Python 3.7
-* PyPy
+* Python 3.8
+* Python 3.9
 * PyPy 3
 
 ## Table of Contents
