@@ -99,7 +99,7 @@ class SelfMailerFunctions(unittest.TestCase):
             }
         )
         self.assertEqual(self_mailer.to_address.name, 'LOB1')
-        self.assertEqual(self_mailer.from_address.name, 'Lob2')
+        self.assertEqual(self_mailer.from_address.name, 'LOB2')
         self.assertTrue(isinstance(self_mailer, lob.SelfMailer))
 
     def test_create_self_mailer_local_file(self):
