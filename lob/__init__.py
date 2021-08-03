@@ -1,5 +1,5 @@
 # Resources
-from lob.resource import (Address, BankAccount, Check, Letter, Postcard, SelfMailer,
+from lob.resource import (Address, BankAccount, BulkUSVerification, BulkIntlVerification, Check, Letter, Postcard, SelfMailer,
                           USAutocompletion, USVerification, USZipLookup,
                           IntlVerification)
 
