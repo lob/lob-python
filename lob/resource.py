@@ -138,6 +138,11 @@ class Address(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource)
 class BankAccount(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource, VerifiableAPIResource):
     endpoint = '/bank_accounts'
 
+class BulkIntlVerification(CreateableAPIResource):
+    endpoint = '/bulk/intl_verifications'
+
+class BulkUSVerification(CreateableAPIResource):
+    endpoint = '/bulk/us_verifications'
 
 class Check(ListableAPIResource, CreateableAPIResource, DeleteableAPIResource):
     endpoint = '/checks'

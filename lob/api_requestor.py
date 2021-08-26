@@ -73,7 +73,7 @@ class APIRequestor(object):
                 del params['query']
 
             for k, v in params.items():
-                if k == 'merge_variables':
+                if k == 'merge_variables' or k == 'addresses':
                     explodedParams[k] = json.dumps(v)
                 elif isinstance(v, dict) and not isinstance(v, lob.resource.LobObject):
                     for k2, v2 in v.items():
