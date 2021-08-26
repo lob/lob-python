@@ -95,6 +95,7 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
   - [US Verification API](https://lob.com/docs/python#us_verifications)
     - [The US Verification Object](https://lob.com/docs/python#us_verifications_object)
     - [Verify a US Address](https://lob.com/docs/python#us_verifications_create)
+    - [Bulk Verify US Addresses](https://lob.com/docs/python#bulk_us_verifications_create)
     - [The US ZIP Lookup Object](https://lob.com/docs/python#us_zip_lookups_object)
     - [Lookup a US ZIP Code](https://lob.com/docs/python#us_zip_lookups_create)
   - [US Autocompletion API](https://lob.com/docs/python#us_autocompletions)
@@ -104,6 +105,7 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
 - **Int'l Verification API**
   - [International Verifications](https://lob.com/docs/python#intl_verifications)
     - [Verify an International Address](https://lob.com/docs/python#intl_verifications_create)
+    - [Bulk Verify International Addresses](https://lob.com/docs/python#bulk_intl_verifications_create)
 - **Postcards API**
   - [Postcards](https://lob.com/docs/python#postcards)
     - [The Postcard Object](https://lob.com/docs/python#postcards_object)
