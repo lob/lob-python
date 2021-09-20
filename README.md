@@ -98,6 +98,7 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
     - [Bulk Verify US Addresses](https://lob.com/docs/python#bulk_us_verifications_create)
     - [The US ZIP Lookup Object](https://lob.com/docs/python#us_zip_lookups_object)
     - [Lookup a US ZIP Code](https://lob.com/docs/python#us_zip_lookups_create)
+    - [Reverse Lookup a Geocode Location](https://docs.lob.com/#tag/Reverse-geocodes)
   - [US Autocompletion API](https://lob.com/docs/python#us_autocompletions)
     - [The US Autocompletion Object](https://lob.com/docs/python#us_autocompletions_object)
     - [Autocomplete a US Address](https://lob.com/docs/python#us_autocompletions_create)
