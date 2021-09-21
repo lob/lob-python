@@ -1,6 +1,6 @@
 # Resources
 from lob.resource import (Address, BankAccount, BulkUSVerification, BulkIntlVerification, Check, Letter, Postcard, SelfMailer,
-                          USAutocompletion, USVerification, USZipLookup,
+                          USAutocompletion, USReverseGeocodeLookup, USVerification, USZipLookup,
                           IntlVerification)
 
 from lob.version import VERSION
