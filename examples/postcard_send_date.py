@@ -7,6 +7,9 @@ import os
 sys.path.insert(0, os.path.abspath(__file__+'../../..'))
 import lob
 
+import datetime
+from dateutil import relativedelta
+
 # Replace this API key with your own.
 lob.api_key = 'test_efce9e9b96019137d711f4ce642ea11305b'
 
@@ -27,6 +30,7 @@ example_address = lob.Address.create(
 
 # Creating a Postcard
 
+date = datetime.date.today() + relativedelta.relativedelta(months=1)
 example_postcard = lob.Postcard.create(
     description='Test Postcard',
     metadata={
@@ -49,7 +53,8 @@ example_postcard = lob.Postcard.create(
     merge_variables={
         'name': example_address.name
     },
-    back="<h1>Welcome to the club!</h1>"
+    back="<h1>Welcome to the club!</h1>",
+    send_date = date
 )
 
 print("Postcard Response")

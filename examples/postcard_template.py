@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.abspath(__file__+'../../..'))
 import lob
 
 # Replace this API key with your own.
-lob.api_key = 'test_efce9e9b96019137d711f4ce642ea11305b'
+lob.api_key = 'test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc'
 
 # Creating an Address Object
 
@@ -34,22 +34,11 @@ example_postcard = lob.Postcard.create(
     },
     to_address=example_address,
     from_address=example_address,
-    front="""
-      <html>
-        <head>
-          <style>
-            @font-face {
-              font-family: 'Loved by the King';
-              src: url('https://s3-us-west-2.amazonaws.com/public.lob.com/fonts/lovedByTheKing/LovedbytheKing.ttf');
-            }
-          </style>
-        </head>
-        <body><h1>Hi {{name}}</h1></body>
-      </html>""",
     merge_variables={
         'name': example_address.name
     },
-    back="<h1>Welcome to the club!</h1>"
+    front='tmpl_b846a20859ae11a',
+    back='tmpl_01b0d396a10c268'
 )
 
 print("Postcard Response")
