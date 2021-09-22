@@ -17,6 +17,7 @@ The currently supported versions include:
 
 ## Table of Contents
 
+- [Table of Contents](#table-of-contents)
 - [Getting Started](#getting-started)
   - [Registration](#registration)
   - [Installation](#installation)
@@ -24,6 +25,7 @@ The currently supported versions include:
 - [Examples](#examples)
 - [API Documentation](#api-documentation)
 - [Testing](#testing)
+- [Making Releases](#making-releases)
 
 ## Getting Started
 
@@ -74,80 +76,7 @@ There are simple scripts to demonstrate how to create all the core Lob objects (
 
 ## API Documentation
 
-- [Introduction](https://lob.com/docs/python#introduction)
-- [Versioning](https://lob.com/docs/python#version)
-- [Errors](https://lob.com/docs/python#errors)
-- [Rate Limiting](https://lob.com/docs/python#rate-limits)
-- [Webhooks](https://lob.com/docs/python#webhooks)
-- [Cancellation Windows](https://lob.com/docs/python#cancellation)
-- [Scheduled Mailings](https://lob.com/docs/python#scheduled)
-- [Metadata](https://lob.com/docs/python#metadata)
-- [HTML Templates](https://lob.com/docs/python#templates)
-- [Asset URLs](https://lob.com/docs/python#urls)
-- **Addresses**
-  - [Address Book](https://lob.com/docs/python#addresses)
-    - [The Address Object](https://lob.com/docs/python#addresses_object)
-    - [Create an Address](https://lob.com/docs/python#addresses_create)
-    - [Retrieve an Address](https://lob.com/docs/python#addresses_retrieve)
-    - [Delete an Address](https://lob.com/docs/python#addresses_delete)
-    - [List all Addresses](https://lob.com/docs/python#addresses_list)
-- **US Verification API**
-  - [US Verification API](https://lob.com/docs/python#us_verifications)
-    - [The US Verification Object](https://lob.com/docs/python#us_verifications_object)
-    - [Verify a US Address](https://lob.com/docs/python#us_verifications_create)
-    - [Bulk Verify US Addresses](https://lob.com/docs/python#bulk_us_verifications_create)
-    - [The US ZIP Lookup Object](https://lob.com/docs/python#us_zip_lookups_object)
-    - [Lookup a US ZIP Code](https://lob.com/docs/python#us_zip_lookups_create)
-  - [US Autocompletion API](https://lob.com/docs/python#us_autocompletions)
-    - [The US Autocompletion Object](https://lob.com/docs/python#us_autocompletions_object)
-    - [Autocomplete a US Address](https://lob.com/docs/python#us_autocompletions_create)
-    - [The US Autocompletion Test Environment](https://lob.com/docs/python#us-autocompletions-test-environment)
-- **Int'l Verification API**
-  - [International Verifications](https://lob.com/docs/python#intl_verifications)
-    - [Verify an International Address](https://lob.com/docs/python#intl_verifications_create)
-    - [Bulk Verify International Addresses](https://lob.com/docs/python#bulk_intl_verifications_create)
-- **Postcards API**
-  - [Postcards](https://lob.com/docs/python#postcards)
-    - [The Postcard Object](https://lob.com/docs/python#postcards_object)
-    - [Create a Postcard](https://lob.com/docs/python#postcards_create)
-    - [Retrieve a Postcard](https://lob.com/docs/python#postcards_retrieve)
-    - [Cancel a Postcard](https://lob.com/docs/python#postcards_delete)
-    - [List all Postcards](https://lob.com/docs/python#postcards_list)
-- **Self Mailers API**
-  - [Self Mailers](https://lob.com/docs/python#self_mailers)
-    - [The Self Mailer Object](https://lob.com/docs/python#self_mailers_object)
-    - [Create a Self Mailer](https://lob.com/docs/python#self_mailers_create)
-    - [Retrieve a Self Mailer](https://lob.com/docs/python#self_mailers_retrieve)
-    - [Cancel a Self Mailer](https://lob.com/docs/python#self_mailers_delete)
-    - [List all Self Mailers](https://lob.com/docs/python#self_mailers_list)
-- **Letters API**
-  - [Letters](https://lob.com/docs/python#letters)
-    - [The Letter Object](https://lob.com/docs/python#letters_object)
-    - [Create a Letter](https://lob.com/docs/python#letters_create)
-    - [Retrieve a Letter](https://lob.com/docs/python#letters_retrieve)
-    - [Cancel a Letter](https://lob.com/docs/python#letters_delete)
-    - [List all Letters](https://lob.com/docs/python#letters_list)
-- **Checks API**
-  - [Checks](https://lob.com/docs/python#checks)
-    - [The Check Object](https://lob.com/docs/python#checks_object)
-    - [Create a Check](https://lob.com/docs/python#checks_create)
-    - [Retrieve a Check](https://lob.com/docs/python#checks_retrieve)
-    - [Cancel a Check](https://lob.com/docs/python#checks_delete)
-    - [List all Checks](https://lob.com/docs/python#checks_list)
-  - [Bank Accounts](https://lob.com/docs/python#bank-accounts)
-    - [The Bank Account Object](https://lob.com/docs/python#bankaccounts_object)
-    - [Create a Bank Account](https://lob.com/docs/python#bankaccounts_create)
-    - [Retrieve a Bank Account](https://lob.com/docs/python#bankaccounts_retrieve)
-    - [Delete a Bank Account](https://lob.com/docs/python#bankaccounts_delete)
-    - [Verify a Bank Account](https://lob.com/docs/python#bankaccounts_verify)
-    - [List all Bank Accounts](https://lob.com/docs/python#bankaccounts_list)
-- **Appendix**
-  - [API Changelog](https://lob.com/docs/python#changelog)
-  - [The Tracking Event Object](https://lob.com/docs/python#tracking_event_object)
-  - [Events](https://lob.com/docs/python#events)
-  - [HTML Examples](https://lob.com/docs/python#html-examples)
-  - [Image Prepping](https://lob.com/docs/python#prepping)
-  - [US Verification Details](https://lob.com/docs/python#us_verification_details)
+The full and comprehensive documentation of Lob's APIs is available [here](https://docs.lob.com/).
 
 ## Testing
 
