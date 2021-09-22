@@ -27,6 +27,16 @@ example_address = lob.Address.create(
 
 # Creating a Postcard
 
+# const file = fs.readFileSync(`${__dirname}/html/card.html`).toString();
+
+def readHtmlFile():
+  script_dir = os.path.dirname(__file__)
+  path = 'html/card.html'
+  abs_path = os.path.join(script_dir, path)
+
+  with open(abs_path) as f:
+      return f.read()
+
 example_postcard = lob.Postcard.create(
     description='Test Postcard',
     metadata={
@@ -34,22 +44,11 @@ example_postcard = lob.Postcard.create(
     },
     to_address=example_address,
     from_address=example_address,
-    front="""
-      <html>
-        <head>
-          <style>
-            @font-face {
-              font-family: 'Loved by the King';
-              src: url('https://s3-us-west-2.amazonaws.com/public.lob.com/fonts/lovedByTheKing/LovedbytheKing.ttf');
-            }
-          </style>
-        </head>
-        <body><h1>Hi {{name}}</h1></body>
-      </html>""",
+    front=readHtmlFile(),
+    back=readHtmlFile(),
     merge_variables={
         'name': example_address.name
-    },
-    back="<h1>Welcome to the club!</h1>"
+    }
 )
 
 print("Postcard Response")

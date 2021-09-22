@@ -8,11 +8,11 @@ sys.path.insert(0, os.path.abspath(__file__+'../../..'))
 import lob
 
 # Replace this API key with your own.
-lob.api_key = 'test_efce9e9b96019137d711f4ce642ea11305b'
+lob.api_key = 'YOUR_API_KEY'
 
 # Creating an Address Object
 
-example_address = lob.Address.create(
+from_address = lob.Address.create(
     name='Joe Smith',
     description='Joe - Home',
     metadata={
@@ -25,6 +25,15 @@ example_address = lob.Address.create(
     address_zip='12345'
 )
 
+to_address = lob.Address.create(
+    name='Freya Jones',
+    description='British Museum',
+    address_line1='Great Russell Street',
+    address_city='London',
+    address_country='GB',
+    address_zip='WC1B 3DG'
+)
+
 # Creating a Postcard
 
 example_postcard = lob.Postcard.create(
@@ -32,8 +41,8 @@ example_postcard = lob.Postcard.create(
     metadata={
         'campaign': 'Member welcome'
     },
-    to_address=example_address,
-    from_address=example_address,
+    to_address=to_address,
+    from_address=from_address,
     front="""
       <html>
         <head>
@@ -47,7 +56,7 @@ example_postcard = lob.Postcard.create(
         <body><h1>Hi {{name}}</h1></body>
       </html>""",
     merge_variables={
-        'name': example_address.name
+        'name': to_address.name
     },
     back="<h1>Welcome to the club!</h1>"
 )

@@ -13,16 +13,16 @@ lob.api_key = 'test_efce9e9b96019137d711f4ce642ea11305b'
 # Creating an Address Object
 
 example_address = lob.Address.create(
-    name='Joe Smith',
-    description='Joe - Home',
-    metadata={
-        'group': 'Members'
-    },
-    address_line1='104, Printing Boulevard',
-    address_city='Boston',
-    address_state='MA',
-    address_country='US',
-    address_zip='12345'
+      name='Joe Smith',
+      description='Joe - Home',
+      metadata={
+          'group': 'Members'
+      },
+      address_line1='104, Printing Boulevard',
+      address_city='Boston',
+      address_state='MA',
+      address_country='US',
+      address_zip='12345'
 )
 
 # Creating a Postcard
@@ -49,7 +49,10 @@ example_postcard = lob.Postcard.create(
     merge_variables={
         'name': example_address.name
     },
-    back="<h1>Welcome to the club!</h1>"
+    back="<h1>Welcome to the club!</h1>",
+    headers={
+      'Idempotency-Key': '026e7634-24d7-486c-a0bb-4a17fd0eebc5'
+    }
 )
 
 print("Postcard Response")
