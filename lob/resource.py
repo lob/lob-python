@@ -206,6 +206,8 @@ class SelfMailer(ListableAPIResource, CreateableAPIResource, DeleteableAPIResour
 class USAutocompletion(CreateableAPIResource):
     endpoint = '/us_autocompletions'
 
+class USReverseGeocodeLookup(CreateableAPIResource):
+    endpoint = '/us_reverse_geocode_lookups'
 
 class USVerification(CreateableAPIResource):
     endpoint = '/us_verifications'
