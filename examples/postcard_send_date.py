@@ -11,7 +11,7 @@ import datetime
 from dateutil import relativedelta
 
 # Replace this API key with your own.
-lob.api_key = 'test_efce9e9b96019137d711f4ce642ea11305b'
+lob.api_key = 'YOUR_API_KEY'
 
 # Creating an Address Object
 
