@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.abspath(__file__+'../../..'))
 import lob
 
 # Replace this API key with your own.
-lob.api_key = 'test_efce9e9b96019137d711f4ce642ea11305b'
+lob.api_key = 'YOUR_API_KEY'
 
 # Creating an Address Object
 
@@ -26,8 +26,6 @@ example_address = lob.Address.create(
 )
 
 # Creating a Postcard
-
-# const file = fs.readFileSync(`${__dirname}/html/card.html`).toString();
 
 def readHtmlFile():
   script_dir = os.path.dirname(__file__)

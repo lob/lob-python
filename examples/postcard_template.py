@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.abspath(__file__+'../../..'))
 import lob
 
 # Replace this API key with your own.
-lob.api_key = 'test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc'
+lob.api_key = 'YOUR_API_KEY'
 
 # Creating an Address Object
 

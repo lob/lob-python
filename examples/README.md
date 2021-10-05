@@ -74,3 +74,12 @@ python postcard.py
 python self_mailer.py
 ```
 
+### Create a card
+```
+python create_card.py
+```
+
+### Create a card order
+```
+python create_card_order.py
+```

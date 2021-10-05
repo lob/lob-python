@@ -10,6 +10,8 @@ def lob_format(resp):
     types = {
         'address': Address,
         'bank_account': BankAccount,
+        'card': Card,
+        'card_order': CardOrder,
         'check': Check,
         'letter': Letter,
         'postcard': Postcard,
@@ -143,6 +145,33 @@ class BulkIntlVerification(CreateableAPIResource):
 
 class BulkUSVerification(CreateableAPIResource):
     endpoint = '/bulk/us_verifications'
+
+class Card(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
+    endpoint = '/cards'
+
+class CardOrder(ListableAPIResource, CreateableAPIResource):
+    endpoint = '/cards/%s/orders'
+
+    @classmethod
+    def create(cls, card_id, **params):
+        requestor = api_requestor.APIRequestor()
+        response = requestor.request('post', cls.endpoint % card_id, params)
+        return lob_format(response)
+
+    @classmethod
+    def list(cls, card_id, **params):
+        for key, value in params.copy().items():
+            if isinstance(params[key], dict):
+                for subKey in value:
+                    params[str(key) + '[' + subKey + ']'] = value[subKey]
+                del params[key]
+            elif isinstance(params[key], list):
+                params[str(key) + '[]'] = params[key]
+                del params[key]
+        requestor = api_requestor.APIRequestor()
+        response = requestor.request('get', cls.endpoint % card_id, params)
+        return lob_format(response)
+
 
 class Check(ListableAPIResource, CreateableAPIResource, DeleteableAPIResource):
     endpoint = '/checks'
