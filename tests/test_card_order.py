@@ -17,7 +17,7 @@ class CardOrderFunctions(unittest.TestCase):
 
     def test_create_card_order(self):        
         cardOrder = lob.CardOrder.create(CardOrderFunctions.card.get('id'),
-            quantity_ordered='10000'
+            quantity='10000'
         )
         self.assertTrue(isinstance(cardOrder, lob.CardOrder))
 

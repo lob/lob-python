@@ -15,7 +15,7 @@ card_id = 'YOUR_CARD_ID'
 
 # The minimum order size is 10,000 cards
 example_card_order = lob.CardOrder.create(card_id,
-  quantity_ordered="10000"
+  quantity="10000"
 )
 
 print("Card Response")
