@@ -20,8 +20,7 @@ class CardFunctions(unittest.TestCase):
         card = lob.Card.create(
             front=open('tests/pdfs/card.pdf', 'rb'),
             back=open('tests/pdfs/card.pdf', 'rb'),
-            description='Card with a blank PDF file',
-            size='2.125x3.375'
+            description='Card with a blank PDF file'
         )
         self.assertTrue(isinstance(card, lob.Card))
 
@@ -29,8 +28,16 @@ class CardFunctions(unittest.TestCase):
         card = lob.Card.create(
             front=open('tests/pdfs/card.pdf', 'rb'),
             back=open('tests/pdfs/card.pdf', 'rb'),
-            description='Card with a blank PDF file',
-            size='2.125x3.375'
+            description='Card with a blank PDF file'
         )
         deleted_response = lob.Card.delete(card.id)
         self.assertTrue(deleted_response.deleted)
+
+    def test_update_card(self):
+        card = lob.Card.create(
+            front=open('tests/pdfs/card.pdf', 'rb'),
+            back=open('tests/pdfs/card.pdf', 'rb'),
+            description='Card with a blank PDF file'
+        )
+        updatedCard = lob.Card.update(card.id, description='updated description')
+        self.assertEqual(updatedCard.description, 'updated description')

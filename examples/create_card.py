@@ -34,3 +34,9 @@ print(example_card)
 print("\n")
 print("=======================================================")
 print("\n")
+
+# Updating a card
+# updatedCard = lob.Card.update(example_card.id, description='This is a new description')
+
+# Deleting a card
+# deletedCard = lob.Card.delete(example_card.id)
