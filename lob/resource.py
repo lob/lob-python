@@ -149,6 +149,13 @@ class BulkUSVerification(CreateableAPIResource):
 class Card(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
     endpoint = '/cards'
 
+    @classmethod
+    def update(cls, card_id, **params):
+        requestor = api_requestor.APIRequestor()
+        response = requestor.request('post', '%s/%s' % (cls.endpoint, card_id), params)
+        return lob_format(response)
+
+
 class CardOrder(ListableAPIResource, CreateableAPIResource):
     endpoint = '/cards/%s/orders'
 
