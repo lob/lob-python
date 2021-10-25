@@ -48,3 +48,6 @@ examples/**/verified.csv
 
 # macOS
 .DS_Store
+
+# dotenv file
+.env
