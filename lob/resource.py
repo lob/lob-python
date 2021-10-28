@@ -4,6 +4,7 @@ import json
 
 from lob import api_requestor
 from lob.compat import string_type
+from lob.constants import TIMEOUT_DEFAULT
 
 
 def lob_format(resp):
@@ -86,16 +87,16 @@ class LobObject(dict):
 
 class APIResource(LobObject):
     @classmethod
-    def retrieve(cls, id, **params):
+    def retrieve(cls, id, timeout=TIMEOUT_DEFAULT, **params):
         requestor = api_requestor.APIRequestor()
-        response = requestor.request('get', '%s/%s' % (cls.endpoint, id), params)
+        response = requestor.request('get', '%s/%s' % (cls.endpoint, id), params, timeout=timeout)
         return lob_format(response)
 
 
 # API Operations
 class ListableAPIResource(APIResource):
     @classmethod
-    def list(cls, **params):
+    def list(cls, timeout=TIMEOUT_DEFAULT, **params):
         for key, value in params.copy().items():
             if isinstance(params[key], dict):
                 for subKey in value:
@@ -105,31 +106,31 @@ class ListableAPIResource(APIResource):
                 params[str(key) + '[]'] = params[key]
                 del params[key]
         requestor = api_requestor.APIRequestor()
-        response = requestor.request('get', cls.endpoint, params)
+        response = requestor.request('get', cls.endpoint, params, timeout=timeout)
         return lob_format(response)
 
 
 class DeleteableAPIResource(APIResource):
     @classmethod
-    def delete(cls, id):
+    def delete(cls, id, timeout=TIMEOUT_DEFAULT):
         requestor = api_requestor.APIRequestor()
-        response = requestor.request('delete', '%s/%s' % (cls.endpoint, id))
+        response = requestor.request('delete', '%s/%s' % (cls.endpoint, id), timeout=timeout)
         return lob_format(response)
 
 
 class CreateableAPIResource(APIResource):
     @classmethod
-    def create(cls, **params):
+    def create(cls, timeout=TIMEOUT_DEFAULT, **params):
         requestor = api_requestor.APIRequestor()
-        response = requestor.request('post', cls.endpoint, params)
+        response = requestor.request('post', cls.endpoint, params, timeout=timeout)
         return lob_format(response)
 
 
 class VerifiableAPIResource(APIResource):
     @classmethod
-    def verify(cls, id, **params):
+    def verify(cls, id, timeout=TIMEOUT_DEFAULT, **params):
         requestor = api_requestor.APIRequestor()
-        response = requestor.request('post', '%s/%s/verify' % (cls.endpoint, id), params)
+        response = requestor.request('post', '%s/%s/verify' % (cls.endpoint, id), params, timeout=timeout)
         return lob_format(response)
 
 
@@ -150,9 +151,9 @@ class Card(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
     endpoint = '/cards'
 
     @classmethod
-    def update(cls, card_id, **params):
+    def update(cls, card_id, timeout=TIMEOUT_DEFAULT, **params):
         requestor = api_requestor.APIRequestor()
-        response = requestor.request('post', '%s/%s' % (cls.endpoint, card_id), params)
+        response = requestor.request('post', '%s/%s' % (cls.endpoint, card_id), params, timeout=timeout)
         return lob_format(response)
 
 
@@ -160,13 +161,13 @@ class CardOrder(ListableAPIResource, CreateableAPIResource):
     endpoint = '/cards/%s/orders'
 
     @classmethod
-    def create(cls, card_id, **params):
+    def create(cls, card_id, timeout=TIMEOUT_DEFAULT, **params):
         requestor = api_requestor.APIRequestor()
-        response = requestor.request('post', cls.endpoint % card_id, params)
+        response = requestor.request('post', cls.endpoint % card_id, params, timeout=timeout)
         return lob_format(response)
 
     @classmethod
-    def list(cls, card_id, **params):
+    def list(cls, card_id, timeout=TIMEOUT_DEFAULT, **params):
         for key, value in params.copy().items():
             if isinstance(params[key], dict):
                 for subKey in value:
@@ -176,7 +177,7 @@ class CardOrder(ListableAPIResource, CreateableAPIResource):
                 params[str(key) + '[]'] = params[key]
                 del params[key]
         requestor = api_requestor.APIRequestor()
-        response = requestor.request('get', cls.endpoint % card_id, params)
+        response = requestor.request('get', cls.endpoint % card_id, params, timeout=timeout)
         return lob_format(response)
 
 
@@ -184,7 +185,7 @@ class Check(ListableAPIResource, CreateableAPIResource, DeleteableAPIResource):
     endpoint = '/checks'
 
     @classmethod
-    def create(cls, **params):
+    def create(cls, timeout=TIMEOUT_DEFAULT, **params):
         if isinstance(params, dict):
             if 'to_address' in params:
                 params['to'] = params['to_address']
@@ -192,14 +193,14 @@ class Check(ListableAPIResource, CreateableAPIResource, DeleteableAPIResource):
             if 'from_address' in params:
                 params['from'] = params['from_address']
                 params.pop('from_address')
-        return super(Check, cls).create(**params)
+        return super(Check, cls).create(timeout=timeout, **params)
 
 
 class Letter(ListableAPIResource, CreateableAPIResource, DeleteableAPIResource):
     endpoint = '/letters'
 
     @classmethod
-    def create(cls, **params):
+    def create(cls, timeout=TIMEOUT_DEFAULT, **params):
         if isinstance(params, dict):
             if 'from_address' in params:
                 params['from'] = params['from_address']
@@ -207,14 +208,14 @@ class Letter(ListableAPIResource, CreateableAPIResource, DeleteableAPIResource):
             if 'to_address' in params:
                 params['to'] = params['to_address']
                 params.pop('to_address')
-        return super(Letter, cls).create(**params)
+        return super(Letter, cls).create(timeout=timeout, **params)
 
 
 class Postcard(ListableAPIResource, CreateableAPIResource, DeleteableAPIResource):
     endpoint = '/postcards'
 
     @classmethod
-    def create(cls, **params):
+    def create(cls, timeout=TIMEOUT_DEFAULT, **params):
         if isinstance(params, dict):
             if 'from_address' in params:
                 params['from'] = params['from_address']
@@ -222,13 +223,13 @@ class Postcard(ListableAPIResource, CreateableAPIResource, DeleteableAPIResource
             if 'to_address' in params:
                 params['to'] = params['to_address']
                 params.pop('to_address')
-        return super(Postcard, cls).create(**params)
+        return super(Postcard, cls).create(timeout=timeout, **params)
 
 class SelfMailer(ListableAPIResource, CreateableAPIResource, DeleteableAPIResource):
     endpoint = '/self_mailers'
 
     @classmethod
-    def create(cls, **params):
+    def create(cls, timeout=TIMEOUT_DEFAULT, **params):
         if isinstance(params, dict):
             if 'from_address' in params:
                 params['from'] = params['from_address']
@@ -236,7 +237,7 @@ class SelfMailer(ListableAPIResource, CreateableAPIResource, DeleteableAPIResour
             if 'to_address' in params:
                 params['to'] = params['to_address']
                 params.pop('to_address')
-        return super(SelfMailer, cls).create(**params)
+        return super(SelfMailer, cls).create(timeout=timeout, **params)
 
 
 class USAutocompletion(CreateableAPIResource):
