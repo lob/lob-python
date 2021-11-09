@@ -89,10 +89,16 @@ $ pipenv install --dev
 $ pipenv shell
 ```
 
-You can run all tests with the command `LOB_API_KEY=YOUR_TEST_API_KEY nosetests` in the main directory.
+You can run all tests with the command `LOB_API_KEY=YOUR_TEST_API_KEY pytest` in the main directory.
 
 ```shell
-$ LOB_API_KEY=YOUR_TEST_API_KEY nosetests
+$ LOB_API_KEY=YOUR_TEST_API_KEY pytest
+```
+
+Alternatively you can add the `LOB_API_KEY` to a `.env` file in the project root directory and use the `pipenv run tests` script.
+
+```shell
+pipenv run tests
 ```
 
 ## Making Releases

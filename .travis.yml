@@ -12,7 +12,7 @@ before_install:
 install:
   - pipenv install --dev
 script:
-  - pipenv run nosetests  --with-coverage --cover-package=lob
+  - pipenv run tests
 after_success:
   - coveralls
 notifications:

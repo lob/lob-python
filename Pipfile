@@ -7,12 +7,15 @@ name = "pypi"
 requests = "*"
 
 [dev-packages]
-nose = "*"
 "flake8" = "*"
 coverage = "*"
 coveralls = "*"
 bumpversion = "*"
 setuptools = "*"
 twine = "*"
+pytest = "*"
+pytest-cov = "*"
 
-[requires]
+[scripts]
+# these commands can be invoked with `pipenv run <script_name>`
+tests = "pytest --cov=lob"
