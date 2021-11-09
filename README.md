@@ -95,7 +95,7 @@ You can run all tests with the command `LOB_API_KEY=YOUR_TEST_API_KEY pytest` in
 $ LOB_API_KEY=YOUR_TEST_API_KEY pytest
 ```
 
-Alternatively you can create add the `LOB_API_KEY` to a `.env` file in the project root directory and use the `pipenv` script.
+Alternatively you can add the `LOB_API_KEY` to a `.env` file in the project root directory and use the `pipenv run tests` script.
 
 ```shell
 pipenv run tests
