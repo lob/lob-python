@@ -1,6 +1,7 @@
 import unittest
 import os
 import lob
+import pytest
 
 
 class BankAccountFunctions(unittest.TestCase):
@@ -19,7 +20,9 @@ class BankAccountFunctions(unittest.TestCase):
         self.assertEqual(len(bankAccounts.data), 2)
 
     def test_list_bankAccounts_fail(self):
-        self.assertRaises(lob.error.InvalidRequestError, lob.BankAccount.list, limit=1000)
+        with pytest.raises(lob.error.InvalidRequestError):
+            lob.BankAccount.list(foobar=1000)
+        # self.assertRaises(lob.error.InvalidRequestError, lob.BankAccount.list, limit=1000)
 
     def test_create_bankAccount_fail(self):
         self.assertRaises(lob.error.InvalidRequestError, lob.BankAccount.create)
