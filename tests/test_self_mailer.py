@@ -1,7 +1,7 @@
 import unittest
 import os
 import lob
-
+import pytest
 
 class SelfMailerFunctions(unittest.TestCase):
     def setUp(self):
@@ -24,7 +24,8 @@ class SelfMailerFunctions(unittest.TestCase):
         self.assertTrue(len(self_mailers.data) > 0)
 
     def test_list_self_mailers_fail(self):
-        self.assertRaises(lob.error.InvalidRequestError, lob.SelfMailer.list, limit=1000)
+        with pytest.raises(lob.error.InvalidRequestError):
+            lob.SelfMailer.list(foobar=333)
 
     def test_create_self_mailer(self):
         self_mailer = lob.SelfMailer.create(

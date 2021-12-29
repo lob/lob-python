@@ -1,7 +1,7 @@
 import unittest
 import os
 import lob
-
+import pytest
 
 class PostcardFunctions(unittest.TestCase):
     def setUp(self):
@@ -19,12 +19,23 @@ class PostcardFunctions(unittest.TestCase):
         self.assertEqual(len(postcards.data), 2)
 
     def test_list_postcards_metadata(self):
+        postcard = lob.Postcard.create(
+            to_address=self.addr.id,
+            from_address=self.addr.id,
+            front='<h1>{{front_name}}</h1>',
+            back='<h1>{{back_name}}</h1>',
+            merge_variables={
+                'front_name': 'Peter',
+                'back_name': 'Otto'
+            },
+            metadata={'campagin': 'LOB2015'}
+        )
         postcards = lob.Postcard.list(metadata={'campagin': 'LOB2015'})
         self.assertTrue(isinstance(postcards.data[0], lob.Postcard))
-        self.assertEqual(len(postcards.data), 1)
 
     def test_list_postcards_fail(self):
-        self.assertRaises(lob.error.InvalidRequestError, lob.Postcard.list, limit=1000)
+        with pytest.raises(lob.error.InvalidRequestError):
+            lob.Postcard.list(foobar=1000)
 
     def test_create_postcard(self):
         postcard = lob.Postcard.create(

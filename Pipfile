@@ -8,14 +8,15 @@ requests = "*"
 
 [dev-packages]
 "flake8" = "*"
-coverage = "*"
-coveralls = "*"
+coverage = ">=5.5"
+coveralls = ">=2.2.0"
 bumpversion = "*"
 setuptools = "*"
 twine = "*"
-pytest = "*"
-pytest-cov = "*"
+pytest = ">=6.2.1"
+pytest-cov = ">=2.11.1"
 
 [scripts]
 # these commands can be invoked with `pipenv run <script_name>`
-tests = "pytest --cov=lob"
+tests = "pytest --cov"
+coveralls = "coveralls --service=github.com"

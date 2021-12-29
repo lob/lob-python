@@ -1,11 +1,27 @@
 import unittest
 import os
 import lob
+import pytest
 
 
 class TestAddressFunctions(unittest.TestCase):
     def setUp(self):
         lob.api_key = os.environ.get('LOB_API_KEY')
+
+
+    def test_create_address(self):
+        address = lob.Address.create(
+            name='Lob',
+            address_line1='185 Berry Street',
+            address_line2='Suite 1510',
+            address_city='San Francisco',
+            address_zip='94017',
+            address_state='CA',
+            address_country='US'
+        )
+
+        self.assertTrue(isinstance(address, lob.Address))
+        self.assertEqual(address.name, 'LOB')
 
     def test_list_addresses(self):
         addresses = lob.Address.list()
@@ -24,21 +40,8 @@ class TestAddressFunctions(unittest.TestCase):
         self.assertEqual(len(addresses.data), 2)
 
     def test_list_address_fail(self):
-        self.assertRaises(lob.error.InvalidRequestError, lob.Address.list, limit=1000)
-
-    def test_create_address(self):
-        address = lob.Address.create(
-            name='Lob',
-            address_line1='185 Berry Street',
-            address_line2='Suite 1510',
-            address_city='San Francisco',
-            address_zip='94017',
-            address_state='CA',
-            address_country='US'
-        )
-
-        self.assertTrue(isinstance(address, lob.Address))
-        self.assertEqual(address.name, 'LOB')
+        with pytest.raises(lob.error.InvalidRequestError):
+            lob.Address.list(foobar=1000)
 
     def test_create_addresss_fail(self):
         self.assertRaises(lob.error.InvalidRequestError, lob.Address.create)
@@ -51,6 +54,15 @@ class TestAddressFunctions(unittest.TestCase):
         self.assertRaises(lob.error.InvalidRequestError, lob.Address.retrieve, id='test')
 
     def test_delete_address(self):
-        addr = lob.Address.list().data[0].id
-        delAddr = lob.Address.delete(id=addr)
-        self.assertEqual(addr, delAddr.id)
+        address = lob.Address.create(
+            name='Lob',
+            address_line1='185 Berry Street',
+            address_line2='Suite 1510',
+            address_city='San Francisco',
+            address_zip='94017',
+            address_state='CA',
+            address_country='US'
+        )
+        
+        delAddr = lob.Address.delete(id=address.id)
+        self.assertEqual(address.id, delAddr.id)

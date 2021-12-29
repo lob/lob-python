@@ -1,7 +1,7 @@
 import lob
 import os
 import unittest
-
+import pytest
 
 class CheckFunctions(unittest.TestCase):
     def setUp(self):
@@ -26,7 +26,8 @@ class CheckFunctions(unittest.TestCase):
         self.assertEqual(len(checks.data), 2)
 
     def test_list_checks_fail(self):
-        self.assertRaises(lob.error.InvalidRequestError, lob.Check.list, limit=1000)
+        with pytest.raises(lob.error.InvalidRequestError):
+            lob.Check.list(foobar=1000)
 
     def test_create_check(self):
         check = lob.Check.create(
