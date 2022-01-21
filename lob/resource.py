@@ -86,8 +86,8 @@ class LobObject(dict):
 
 class APIResource(LobObject):
     @classmethod
-    def retrieve(cls, id, **params):
-        requestor = api_requestor.APIRequestor()
+    def retrieve(cls, id, api_key=None, **params):
+        requestor = api_requestor.APIRequestor(api_key)
         response = requestor.request('get', '%s/%s' % (cls.endpoint, id), params)
         return lob_format(response)
 
@@ -95,7 +95,7 @@ class APIResource(LobObject):
 # API Operations
 class ListableAPIResource(APIResource):
     @classmethod
-    def list(cls, **params):
+    def list(cls, api_key=None, **params):
         for key, value in params.copy().items():
             if isinstance(params[key], dict):
                 for subKey in value:
@@ -104,31 +104,31 @@ class ListableAPIResource(APIResource):
             elif isinstance(params[key], list):
                 params[str(key) + '[]'] = params[key]
                 del params[key]
-        requestor = api_requestor.APIRequestor()
+        requestor = api_requestor.APIRequestor(api_key)
         response = requestor.request('get', cls.endpoint, params)
         return lob_format(response)
 
 
 class DeleteableAPIResource(APIResource):
     @classmethod
-    def delete(cls, id):
-        requestor = api_requestor.APIRequestor()
+    def delete(cls, id, api_key=None):
+        requestor = api_requestor.APIRequestor(api_key)
         response = requestor.request('delete', '%s/%s' % (cls.endpoint, id))
         return lob_format(response)
 
 
 class CreateableAPIResource(APIResource):
     @classmethod
-    def create(cls, **params):
-        requestor = api_requestor.APIRequestor()
+    def create(cls, api_key=None, **params):
+        requestor = api_requestor.APIRequestor(api_key)
         response = requestor.request('post', cls.endpoint, params)
         return lob_format(response)
 
 
 class VerifiableAPIResource(APIResource):
     @classmethod
-    def verify(cls, id, **params):
-        requestor = api_requestor.APIRequestor()
+    def verify(cls, id, api_key=None, **params):
+        requestor = api_requestor.APIRequestor(api_key)
         response = requestor.request('post', '%s/%s/verify' % (cls.endpoint, id), params)
         return lob_format(response)
 
