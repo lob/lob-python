@@ -86,16 +86,16 @@ class LobObject(dict):
 
 class APIResource(LobObject):
     @classmethod
-    def retrieve(cls, id, **params):
-        requestor = api_requestor.APIRequestor()
-        response = requestor.request('get', '%s/%s' % (cls.endpoint, id), params)
+    def retrieve(cls, id, timeout=TIMEOUT_DEFAULT, api_key=None, **params):
+        requestor = api_requestor.APIRequestor(key=api_key)
+        response = requestor.request('get', '%s/%s' % (cls.endpoint, id), params, timeout=timeout)
         return lob_format(response)
 
 
 # API Operations
 class ListableAPIResource(APIResource):
     @classmethod
-    def list(cls, **params):
+    def list(cls, timeout=TIMEOUT_DEFAULT, api_key=None, **params):
         for key, value in params.copy().items():
             if isinstance(params[key], dict):
                 for subKey in value:
@@ -104,32 +104,32 @@ class ListableAPIResource(APIResource):
             elif isinstance(params[key], list):
                 params[str(key) + '[]'] = params[key]
                 del params[key]
-        requestor = api_requestor.APIRequestor()
-        response = requestor.request('get', cls.endpoint, params)
+        requestor = api_requestor.APIRequestor(key=api_key)
+        response = requestor.request('get', cls.endpoint, params, timeout=timeout)
         return lob_format(response)
 
 
 class DeleteableAPIResource(APIResource):
     @classmethod
-    def delete(cls, id):
-        requestor = api_requestor.APIRequestor()
-        response = requestor.request('delete', '%s/%s' % (cls.endpoint, id))
+    def delete(cls, id, timeout=TIMEOUT_DEFAULT, api_key=None):
+        requestor = api_requestor.APIRequestor(key=api_key)
+        response = requestor.request('delete', '%s/%s' % (cls.endpoint, id), timeout=timeout)
         return lob_format(response)
 
 
 class CreateableAPIResource(APIResource):
     @classmethod
-    def create(cls, **params):
-        requestor = api_requestor.APIRequestor()
-        response = requestor.request('post', cls.endpoint, params)
+    def create(cls, timeout=TIMEOUT_DEFAULT, api_key=None, **params):
+        requestor = api_requestor.APIRequestor(key=api_key)
+        response = requestor.request('post', cls.endpoint, params, timeout=timeout)
         return lob_format(response)
 
 
 class VerifiableAPIResource(APIResource):
     @classmethod
-    def verify(cls, id, **params):
-        requestor = api_requestor.APIRequestor()
-        response = requestor.request('post', '%s/%s/verify' % (cls.endpoint, id), params)
+    def verify(cls, id, timeout=TIMEOUT_DEFAULT, api_key=None, **params):
+        requestor = api_requestor.APIRequestor(key=api_key)
+        response = requestor.request('post', '%s/%s/verify' % (cls.endpoint, id), params, timeout=timeout)
         return lob_format(response)
 
 
