@@ -87,7 +87,7 @@ class LobObject(dict):
 
 class APIResource(LobObject):
     @classmethod
-    def retrieve(cls, id, timeout=TIMEOUT_DEFAULT, api_key=None **params):
+    def retrieve(cls, id, timeout=TIMEOUT_DEFAULT, api_key=None, **params):
         requestor = api_requestor.APIRequestor(api_key)
         response = requestor.request('get', '%s/%s' % (cls.endpoint, id), params, timeout=timeout)
         return lob_format(response)

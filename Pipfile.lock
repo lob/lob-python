@@ -1,11 +1,7 @@
 {
     "_meta": {
         "hash": {
-<<<<<<< HEAD
             "sha256": "c46403f5224e9c709d3828c374d193f1beebd0f7cbd0a5119745b71b0bf65149"
-=======
-            "sha256": "7957d580b700850fe593a497d595d42ea090909d6aaf7aae135069d0f9dfbafb"
->>>>>>> origin/master
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -48,7 +44,6 @@
             ],
             "index": "pypi",
             "version": "==2.27.1"
-<<<<<<< HEAD
         },
         "requests-mock": {
             "hashes": [
@@ -65,8 +60,6 @@
             ],
             "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
             "version": "==1.16.0"
-=======
->>>>>>> origin/master
         },
         "urllib3": {
             "hashes": [
