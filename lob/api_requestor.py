@@ -6,6 +6,7 @@ import json
 import lob
 from lob import error
 from lob.version import VERSION
+from lob.constants import TIMEOUT_DEFAULT
 
 
 def _is_file_like(obj):
@@ -39,7 +40,7 @@ class APIRequestor(object):
         else:  # pragma: no cover
             raise error.APIError(payload['error']['message'], resp.content, resp.status_code, resp)
 
-    def request(self, method, url, params=None):
+    def request(self, method, url, params=None, timeout=TIMEOUT_DEFAULT):
         headers = {
             'User-Agent': 'Lob/v1 PythonBindings/%s' % VERSION
         }
@@ -55,13 +56,19 @@ class APIRequestor(object):
             del params['headers']
 
         if method == 'get':
-            return self.parse_response(
-                requests.get(lob.api_base + url, auth=(self.api_key, ''), params=params, headers=headers)
-            )
+            resp = requests.get(
+                lob.api_base + url, 
+                auth=(self.api_key, ''),
+                params=params,
+                headers=headers,
+                timeout=timeout
+                )
+            return self.parse_response(resp)
+           
         elif method == 'delete':
-            return self.parse_response(
-                requests.delete(lob.api_base + url, auth=(self.api_key, ''), headers=headers)
-            )
+            resp = requests.delete(lob.api_base + url, auth=(self.api_key, ''), headers=headers, timeout=timeout)
+            return self.parse_response(resp)
+            
         elif method == 'post':
             query = {}
             data = {}
@@ -93,7 +100,5 @@ class APIRequestor(object):
                                 data[k + '[' + k2 + ']'] = v2
                         else:
                             data[k] = v
-
-            return self.parse_response(
-                requests.post(lob.api_base + url, auth=(self.api_key, ''), params=query, data=data, files=files, headers=headers)
-            )
+            resp = requests.post(lob.api_base + url, auth=(self.api_key, ''), params=query, data=data, files=files, headers=headers, timeout=timeout)
+            return self.parse_response(resp)

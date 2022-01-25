@@ -15,6 +15,7 @@ setuptools = "*"
 twine = "*"
 pytest = ">=6.2.1"
 pytest-cov = ">=2.11.1"
+requests-mock = ">=1.9.3"
 
 [scripts]
 # these commands can be invoked with `pipenv run <script_name>`
