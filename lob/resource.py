@@ -143,6 +143,12 @@ class BankAccount(ListableAPIResource, DeleteableAPIResource, CreateableAPIResou
     endpoint = '/bank_accounts'
 
 
+# Billing Group API is only supported for enabled accounts.
+# Contact your Lob representative to enable billing groups.
+class BillingGroup(ListableAPIResource, CreateableAPIResource):
+    endpoint = '/billing_groups'
+    
+
 class BulkIntlVerification(CreateableAPIResource):
     endpoint = '/bulk/intl_verifications'
 
@@ -243,12 +249,6 @@ class SelfMailer(ListableAPIResource, CreateableAPIResource, DeleteableAPIResour
                 params['to'] = params['to_address']
                 params.pop('to_address')
         return super(SelfMailer, cls).create(timeout=timeout, **params)
-
-
-# Billing Group API is only supported for enabled accounts.
-# Contact your Lob representative to enable billing groups.
-class BillingGroup(ListableAPIResource, CreateableAPIResource, DeleteableAPIResource):
-    endpoint = '/billing_groups'
 
 
 class USAutocompletion(CreateableAPIResource):

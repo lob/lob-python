@@ -2,6 +2,7 @@
 from lob.resource import (
     Address,
     BankAccount,
+    BillingGroup,
     BulkUSVerification,
     BulkIntlVerification,
     Card,
