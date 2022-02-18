@@ -11,6 +11,7 @@ def lob_format(resp):
     types = {
         'address': Address,
         'bank_account': BankAccount,
+        'billing_group': BillingGroup,
         'card': Card,
         'card_order': CardOrder,
         'check': Check,
@@ -141,11 +142,14 @@ class Address(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource)
 class BankAccount(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource, VerifiableAPIResource):
     endpoint = '/bank_accounts'
 
+
 class BulkIntlVerification(CreateableAPIResource):
     endpoint = '/bulk/intl_verifications'
 
+
 class BulkUSVerification(CreateableAPIResource):
     endpoint = '/bulk/us_verifications'
+
 
 class Card(ListableAPIResource, DeleteableAPIResource, CreateableAPIResource):
     endpoint = '/cards'
@@ -225,6 +229,7 @@ class Postcard(ListableAPIResource, CreateableAPIResource, DeleteableAPIResource
                 params.pop('to_address')
         return super(Postcard, cls).create(timeout=timeout, **params)
 
+
 class SelfMailer(ListableAPIResource, CreateableAPIResource, DeleteableAPIResource):
     endpoint = '/self_mailers'
 
@@ -240,11 +245,19 @@ class SelfMailer(ListableAPIResource, CreateableAPIResource, DeleteableAPIResour
         return super(SelfMailer, cls).create(timeout=timeout, **params)
 
 
+# Billing Group API is only supported for enabled accounts.
+# Contact your Lob representative to enable billing groups.
+class BillingGroup(ListableAPIResource, CreateableAPIResource, DeleteableAPIResource):
+    endpoint = '/billing_groups'
+
+
 class USAutocompletion(CreateableAPIResource):
     endpoint = '/us_autocompletions'
 
+
 class USReverseGeocodeLookup(CreateableAPIResource):
     endpoint = '/us_reverse_geocode_lookups'
+
 
 class USVerification(CreateableAPIResource):
     endpoint = '/us_verifications'
