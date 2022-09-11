@@ -4,7 +4,7 @@
 [![PyPI version](https://badge.fury.io/py/lob.svg)](http://badge.fury.io/py/lob)
 [![Coverage Status](https://coveralls.io/repos/lob/lob-python/badge.svg?branch=master)](https://coveralls.io/r/lob/lob-python?branch=master)
 
-This is the python wrapper for the Lob.com API. See full Lob.com documentation [here](https://lob.com/docs/python). For best results, be sure that you're using [the latest version](https://lob.com/docs/python#version) of the Lob API and the latest version of the python wrapper.
+This is the python wrapper for the Lob.com API. The documentation for the legacy Python SDK no longer exists, but documentation for the new Python SDK can be found [here](https://docs.lob.com/). For best results, be sure that you're using [the latest version](https://lob.com/docs/python#version) of the Lob API and the latest version of the python wrapper.
 
 This library supports active Python releases (i.e., versions which have not reached their end of life), as well as PyPy 3.
 The currently supported versions include:
