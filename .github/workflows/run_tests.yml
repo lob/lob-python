@@ -1,0 +1,37 @@
+name: Run Tests
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  python_tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.7", "3.8", "3.9"]
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+            python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install python-dotenv
+          python -m pip install unittest-data-provider
+          pip install -r requirements.txt
+      - name: Run Integration Tests
+        run:
+          python -m unittest test/Integration/test_*.py
+        env:
+          LOB_API_TEST_KEY: ${{ secrets.LOB_API_TEST_KEY }}
+          LOB_API_LIVE_KEY: ${{ secrets.LOB_API_LIVE_KEY }}
+      - name: Run Unit Tests
+        run:
+          python -m unittest test/Unit/test_*.py
+        env:
+          LOB_API_TEST_KEY: ${{ secrets.LOB_API_TEST_KEY }}
+          LOB_API_LIVE_KEY: ${{ secrets.LOB_API_LIVE_KEY }}
