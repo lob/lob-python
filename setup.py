@@ -11,8 +11,8 @@
 
 from setuptools import setup, find_packages  # noqa: H301
 
-NAME = "lob-python-sdk"
-VERSION = "1.0.0"
+NAME = "lob-python"
+VERSION = "5.0.0"
 # To install the library, run the following
 #
 # python setup.py install
@@ -31,7 +31,7 @@ setup(
     description="Lob",
     author="Lob Developer Experience",
     author_email="lob-openapi@lob.com",
-    url="https://github.com/lob/lob-python-sdk",
+    url="https://github.com/lob/lob-python",
     keywords=["OpenAPI", "OpenAPI-Generator", "Lob"],
     python_requires="",
     install_requires=REQUIRES,
