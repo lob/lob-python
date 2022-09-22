@@ -15,17 +15,24 @@ The currently supported versions include:
 * Python 3.9
 * PyPy 3
 
+******
+If you're starting a new project, we recommend using <a href="https://github.com/lob/lob-python"><strong>Version 5.x.x</strong></a>!
+
+Moving your existing project from version 4.x.x to 5.x.x? <a href="https://github.com/lob/lob-python/blob/main/MIGRATION.md">Checkout this migration guide.</a>
+******
+
 ## Table of Contents
 
-- [Table of Contents](#table-of-contents)
-- [Getting Started](#getting-started)
-  - [Registration](#registration)
-  - [Installation](#installation)
-  - [Usage](#usage)
-- [Examples](#examples)
-- [API Documentation](#api-documentation)
-- [Testing](#testing)
-- [Making Releases](#making-releases)
+- [lob-python](#lob-python)
+  - [Table of Contents](#table-of-contents)
+  - [Getting Started](#getting-started)
+    - [Registration](#registration)
+    - [Installation](#installation)
+    - [Usage](#usage)
+  - [Examples](#examples)
+  - [API Documentation](#api-documentation)
+  - [Testing](#testing)
+  - [Making Releases](#making-releases)
 
 ## Getting Started
 
