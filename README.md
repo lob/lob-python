@@ -28,6 +28,12 @@ If the python package is hosted on a repository, you can install directly using:
 ```sh
 pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git
 ```
+
+Alternatively you can pull directly from pypi using:
+
+```sh 
+pip install lob-python
+```
 (you may need to run `pip` with root permission: `sudo pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git`)
 
 Then import the package:
