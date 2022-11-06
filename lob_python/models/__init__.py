@@ -110,6 +110,7 @@ from lob_python.model.letter_deletion import LetterDeletion
 from lob_python.model.letter_details_returned import LetterDetailsReturned
 from lob_python.model.letter_details_writable import LetterDetailsWritable
 from lob_python.model.letter_editable import LetterEditable
+from lob_python.model.letter_editable_custom_envelope import LetterEditableCustomEnvelope
 from lob_python.model.letter_list import LetterList
 from lob_python.model.lob_confidence_score import LobConfidenceScore
 from lob_python.model.lob_error import LobError
