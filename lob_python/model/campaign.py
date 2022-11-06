@@ -29,11 +29,13 @@ from lob_python.model_utils import (  # noqa: F401
 )
 from lob_python.exceptions import ApiAttributeError
 
+from lob_python.model.campaign_creative import CampaignCreative
 from lob_python.model.cmp_id import CmpId
 from lob_python.model.cmp_schedule_type import CmpScheduleType
 from lob_python.model.cmp_use_type import CmpUseType
 from lob_python.model.metadata_model import MetadataModel
 from lob_python.model.resource_description import ResourceDescription
+globals()['CampaignCreative'] = CampaignCreative
 globals()['CmpId'] = CmpId
 globals()['CmpScheduleType'] = CmpScheduleType
 globals()['CmpUseType'] = CmpUseType
@@ -273,7 +275,7 @@ class Campaign(ModelNormal):
             schedule_type (CmpScheduleType):
             auto_cancel_if_ncoa (bool): Whether or not a mail piece should be automatically canceled and not sent if the address is updated via NCOA.
             id (CmpId):
-            creatives (list): An array of creatives that have been associated with this campaign.
+            creatives ([CampaignCreative]): An array of creatives that have been associated with this campaign.
             date_created (datetime): A timestamp in ISO 8601 format of the date the resource was created.
             date_modified (datetime): A timestamp in ISO 8601 format of the date the resource was last modified.
 
