@@ -18,7 +18,7 @@ import os
 from lob_python.api.billing_groups_api import BillingGroupsApi  # noqa: E501
 from lob_python.model.billing_group_editable import BillingGroupEditable
 from lob_python.model.include_model import IncludeModel
-from lob_python.model.sort_by5 import SortBy5
+from lob_python.model.sort_by3 import SortBy3
 from lob_python.exceptions import UnauthorizedException, NotFoundException, ApiException
 from unittest.mock import Mock, MagicMock
 
@@ -162,7 +162,7 @@ class TestBillingGroupsApi(unittest.TestCase):
     def test_billing_groups_list_with_sort_by_param(self):
         """Test case for listing billing groups with sort_by parameter"""
         self.mock_api.billing_groups_list = self.mock_list_of_billing_groups
-        billing_groups = self.mock_api.billing_groups_list(sort_by=SortBy5(date_created = 'asc'))
+        billing_groups = self.mock_api.billing_groups_list(sort_by=SortBy3(date_created = 'asc'))
         self.assertIsNotNone(billing_groups)
         self.assertEqual(len(billing_groups["data"]), 2)
 

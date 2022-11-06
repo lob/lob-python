@@ -36,6 +36,7 @@ from lob_python.model.mail_type import MailType
 from lob_python.model.merge_variables import MergeVariables
 from lob_python.model.metadata_model import MetadataModel
 from lob_python.model.resource_description import ResourceDescription
+from lob_python.model.signed_link import SignedLink
 from lob_python.model.thumbnail import Thumbnail
 from lob_python.model.tmpl_id import TmplId
 from lob_python.model.tracking_event_normal import TrackingEventNormal
@@ -47,6 +48,7 @@ globals()['MailType'] = MailType
 globals()['MergeVariables'] = MergeVariables
 globals()['MetadataModel'] = MetadataModel
 globals()['ResourceDescription'] = ResourceDescription
+globals()['SignedLink'] = SignedLink
 globals()['Thumbnail'] = Thumbnail
 globals()['TmplId'] = TmplId
 globals()['TrackingEventNormal'] = TrackingEventNormal
@@ -134,6 +136,7 @@ class Letter(ModelNormal):
             'deleted': (bool, type(None)),  # noqa: E501
             'template_id': (str, type(None)),  # noqa: E501
             'template_version_id': (str, type(None)),  # noqa: E501
+            'url': (str, type(None)),  # noqa: E501
             'description': (str, type(None)),  # noqa: E501
             'metadata': (MetadataModel, type(None)),  # noqa: E501
             'merge_variables': (MergeVariables, type(None)),  # noqa: E501
@@ -169,6 +172,7 @@ class Letter(ModelNormal):
         'deleted': 'deleted',  # noqa: E501
         'template_id': 'template_id',  # noqa: E501
         'template_version_id': 'template_version_id',  # noqa: E501
+        'url': 'url',  # noqa: E501
         'description': 'description',  # noqa: E501
         'metadata': 'metadata',  # noqa: E501
         'merge_variables': 'merge_variables',  # noqa: E501
@@ -241,6 +245,7 @@ class Letter(ModelNormal):
             deleted (bool, type(None)): Only returned if the resource has been successfully deleted.. [optional] # noqa: E501
             template_id (str, type(None)): [optional] # noqa: E501
             template_version_id (str, type(None)): [optional] # noqa: E501
+            url (str, type(None)): [optional] # noqa: E501
             description (str, type(None)): [optional] # noqa: E501
             metadata (MetadataModel, type(None)): [optional] # noqa: E501
             merge_variables (MergeVariables, type(None)): [optional] # noqa: E501
@@ -359,6 +364,7 @@ class Letter(ModelNormal):
             deleted (bool, type(None)): Only returned if the resource has been successfully deleted.. [optional] # noqa: E501
             template_id (str, type(None)): [optional] # noqa: E501
             template_version_id (str, type(None)): [optional] # noqa: E501
+            url (str, type(None)): [optional] # noqa: E501
             description (str, type(None)): [optional] # noqa: E501
             metadata (MetadataModel, type(None)): [optional] # noqa: E501
             merge_variables (MergeVariables, type(None)): [optional] # noqa: E501

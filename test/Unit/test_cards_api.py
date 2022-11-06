@@ -16,7 +16,7 @@ import lob_python
 from lob_python.api.cards_api import CardsApi  # noqa: E501
 from lob_python.model.card_editable import CardEditable
 from lob_python.model.card_updatable import CardUpdatable
-from lob_python.model.sort_by5 import SortBy5
+from lob_python.model.sort_by3 import SortBy3
 from lob_python.exceptions import UnauthorizedException, NotFoundException, ApiException
 from unittest.mock import Mock, MagicMock
 
@@ -147,7 +147,7 @@ class TestCardsApi(unittest.TestCase):
     def test_cards_list_with_sortby_param(self):
         """Test case for listing card with sort_by parameter"""
         self.mock_api.cards_list = self.mock_list_of_cards
-        cards = self.mock_api.cards_list(sort_by=SortBy5(date_created = 'asc'))
+        cards = self.mock_api.cards_list(sort_by=SortBy3(date_created = 'asc'))
         self.assertIsNotNone(cards)
         self.assertIsNotNone(cards["data"], 2)
 

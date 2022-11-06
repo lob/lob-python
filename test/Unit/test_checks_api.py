@@ -16,7 +16,7 @@ import lob_python
 from lob_python.api.checks_api import ChecksApi  # noqa: E501
 from lob_python.model.check_editable import CheckEditable
 from lob_python.model.mail_type import MailType
-from lob_python.model.sort_by5 import SortBy5
+from lob_python.model.sort_by3 import SortBy3
 from lob_python.model.include_model import IncludeModel
 from lob_python.model.metadata_model import MetadataModel
 from lob_python.exceptions import UnauthorizedException, NotFoundException, ApiException
@@ -196,7 +196,7 @@ class TestChecksApi(unittest.TestCase):
     def test_checks_list_with_sort_by_param(self):
         """Test case for listing check with sort_by parameter"""
         self.mock_api.checks_list = self.mock_list_of_checks
-        checks = self.mock_api.checks_list(sort_by=SortBy5(date_created = 'asc'))
+        checks = self.mock_api.checks_list(sort_by=SortBy3(date_created = 'asc'))
 
         self.assertIsNotNone(checks)
         self.assertEqual(len(checks["data"]), 2)

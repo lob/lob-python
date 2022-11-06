@@ -16,7 +16,7 @@ import lob_python
 from lob_python.api.postcards_api import PostcardsApi  # noqa: E501
 from lob_python.model.postcard_editable import PostcardEditable
 from lob_python.model.mail_type import MailType
-from lob_python.model.sort_by5 import SortBy5
+from lob_python.model.sort_by3 import SortBy3
 from lob_python.model.metadata_model import MetadataModel
 from lob_python.model.include_model import IncludeModel
 from lob_python.model.postcard_size import PostcardSize
@@ -169,7 +169,7 @@ class TestPostcardsApi(unittest.TestCase):
     def test_postcards_list_with_sort_by_param(self):
         """Test case for listing postcard with sort_by parameter"""
         self.mock_api.postcards_list = self.mock_list_of_postcards
-        postcards = self.mock_api.postcards_list(sort_by=SortBy5(date_created = 'asc'))
+        postcards = self.mock_api.postcards_list(sort_by=SortBy3(date_created = 'asc'))
 
         self.assertIsNotNone(postcards)
         self.assertEqual(len(postcards["data"]), 2)
