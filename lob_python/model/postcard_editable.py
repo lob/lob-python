@@ -33,11 +33,13 @@ from lob_python.model.mail_type import MailType
 from lob_python.model.merge_variables import MergeVariables
 from lob_python.model.metadata_model import MetadataModel
 from lob_python.model.postcard_size import PostcardSize
+from lob_python.model.qr_code import QrCode
 from lob_python.model.resource_description import ResourceDescription
 globals()['MailType'] = MailType
 globals()['MergeVariables'] = MergeVariables
 globals()['MetadataModel'] = MetadataModel
 globals()['PostcardSize'] = PostcardSize
+globals()['QrCode'] = QrCode
 globals()['ResourceDescription'] = ResourceDescription
 
 
@@ -104,6 +106,7 @@ class PostcardEditable(ModelNormal):
             'merge_variables': (MergeVariables, type(None)),  # noqa: E501
             'send_date': (datetime, type(None)),  # noqa: E501
             'billing_group_id': (str, type(None)),  # noqa: E501
+            'qr_code': (QrCode, type(None)),  # noqa: E501
         }
 
     @cached_property
@@ -123,6 +126,7 @@ class PostcardEditable(ModelNormal):
         'merge_variables': 'merge_variables',  # noqa: E501
         'send_date': 'send_date',  # noqa: E501
         'billing_group_id': 'billing_group_id',  # noqa: E501
+        'qr_code': 'qr_code',  # noqa: E501
     }
 
     read_only_vars = {
@@ -179,6 +183,7 @@ class PostcardEditable(ModelNormal):
             merge_variables (MergeVariables, type(None)): [optional] # noqa: E501
             send_date (datetime, type(None)): A timestamp in ISO 8601 format which specifies a date after the current time and up to 180 days in the future to send the letter off for production. Setting a send date overrides the default [cancellation window](#section/Cancellation-Windows) applied to the mailpiece. Until the `send_date` has passed, the mailpiece can be canceled. If a date in the format `2017-11-01` is passed, it will evaluate to midnight UTC of that date (`2017-11-01T00:00:00.000Z`). If a datetime is passed, that exact time will be used. A `send_date` passed with no time zone will default to UTC, while a `send_date` passed with a time zone will be converted to UTC.. [optional] # noqa: E501
             billing_group_id (str, type(None)): An optional string with the billing group ID to tag your usage with. Is used for billing purposes. Requires special activation to use. See [Billing Group API](https://lob.github.io/lob-openapi/#tag/Billing-Groups) for more information.. [optional] # noqa: E501
+            qr_code (QrCode, type(None)): [optional] # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -276,6 +281,7 @@ class PostcardEditable(ModelNormal):
             merge_variables (MergeVariables, type(None)): [optional] # noqa: E501
             send_date (datetime, type(None)): A timestamp in ISO 8601 format which specifies a date after the current time and up to 180 days in the future to send the letter off for production. Setting a send date overrides the default [cancellation window](#section/Cancellation-Windows) applied to the mailpiece. Until the `send_date` has passed, the mailpiece can be canceled. If a date in the format `2017-11-01` is passed, it will evaluate to midnight UTC of that date (`2017-11-01T00:00:00.000Z`). If a datetime is passed, that exact time will be used. A `send_date` passed with no time zone will default to UTC, while a `send_date` passed with a time zone will be converted to UTC.. [optional] # noqa: E501
             billing_group_id (str, type(None)): An optional string with the billing group ID to tag your usage with. Is used for billing purposes. Requires special activation to use. See [Billing Group API](https://lob.github.io/lob-openapi/#tag/Billing-Groups) for more information.. [optional] # noqa: E501
+            qr_code (QrCode, type(None)): [optional] # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

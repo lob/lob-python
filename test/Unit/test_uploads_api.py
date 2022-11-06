@@ -17,7 +17,7 @@
 # from lob_python.model.upload_writable import UploadWritable
 # from lob_python.model.upload_updatable import UploadUpdatable
 # from unittest.mock import Mock, MagicMock
-# from lob_python.model.sort_by5 import SortBy5
+# from lob_python.model.sort_by3 import SortBy3
 # from lob_python.exceptions import UnauthorizedException, NotFoundException, ApiException
 
 
@@ -139,7 +139,7 @@
 #     def test_uploads_list_with_sortby_param(self):
 #         """Test case for listing upload with sort_by parameter"""
 #         self.mock_api.uploads_list = self.mock_list_of_uploads
-#         uploads = self.mock_api.uploads_list(sort_by=SortBy5(date_created = 'asc'))
+#         uploads = self.mock_api.uploads_list(sort_by=SortBy3(date_created = 'asc'))
 #         self.assertIsNotNone(uploads)
 #         self.assertIsNotNone(uploads["data"], 2)
 

@@ -17,7 +17,7 @@ from lob_python.api.letters_api import LettersApi  # noqa: E501
 from lob_python.model.letter_editable import LetterEditable
 from lob_python.model.address_editable import AddressEditable
 from lob_python.model.mail_type import MailType
-from lob_python.model.sort_by5 import SortBy5
+from lob_python.model.sort_by3 import SortBy3
 from lob_python.model.metadata_model import MetadataModel
 from lob_python.model.include_model import IncludeModel
 from lob_python.exceptions import UnauthorizedException, NotFoundException, ApiException
@@ -169,7 +169,7 @@ class TestLettersApi(unittest.TestCase):
     def test_letters_list_with_sort_by_param(self):
         """Test case for listing letter with sort_by parameter"""
         self.mock_api.letters_list = self.mock_list_of_letters
-        letters = self.mock_api.letters_list(sort_by=SortBy5(date_created = 'asc'))
+        letters = self.mock_api.letters_list(sort_by=SortBy3(date_created = 'asc'))
 
         self.assertIsNotNone(letters)
         self.assertEqual(len(letters["data"]), 2)

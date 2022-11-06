@@ -33,11 +33,13 @@ from lob_python.model.card_id import CardId
 from lob_python.model.mail_type import MailType
 from lob_python.model.merge_variables import MergeVariables
 from lob_python.model.metadata_model import MetadataModel
+from lob_python.model.qr_code import QrCode
 from lob_python.model.resource_description import ResourceDescription
 globals()['CardId'] = CardId
 globals()['MailType'] = MailType
 globals()['MergeVariables'] = MergeVariables
 globals()['MetadataModel'] = MetadataModel
+globals()['QrCode'] = QrCode
 globals()['ResourceDescription'] = ResourceDescription
 
 
@@ -127,6 +129,7 @@ class LetterEditable(ModelNormal):
             'extra_service': (str, type(None)),  # noqa: E501
             'cards': (list, type(None)),  # noqa: E501
             'billing_group_id': (str, type(None)),  # noqa: E501
+            'qr_code': (QrCode, type(None)),  # noqa: E501
         }
 
     @cached_property
@@ -152,6 +155,7 @@ class LetterEditable(ModelNormal):
         'extra_service': 'extra_service',  # noqa: E501
         'cards': 'cards',  # noqa: E501
         'billing_group_id': 'billing_group_id',  # noqa: E501
+        'qr_code': 'qr_code',  # noqa: E501
     }
 
     read_only_vars = {
@@ -214,6 +218,7 @@ class LetterEditable(ModelNormal):
             extra_service (str, type(None)): Add an extra service to your letter:   * `certified` - track and confirm delivery for domestic destinations. An extra sheet (1 PDF page single-sided or 2 PDF pages double-sided) is added to the beginning of your letter for address and barcode information. See here for templates: [#10 envelope](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_certified_template.pdf) and [flat envelope](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_certified_flat_template.pdf) (used for letters over 6 pages single-sided or 12 pages double-sided). You will not be charged for this extra sheet.   * `certified_return_receipt` - request an electronic copy of the recipient's signature to prove delivery of your certified letter   * `registered` - provides tracking and confirmation for international addresses . [optional] # noqa: E501
             cards (list, type(None)): A single-element array containing an existing card id in a string format. See [cards](#tag/Cards) for more information.. [optional] # noqa: E501
             billing_group_id (str, type(None)): An optional string with the billing group ID to tag your usage with. Is used for billing purposes. Requires special activation to use. See [Billing Group API](https://lob.github.io/lob-openapi/#tag/Billing-Groups) for more information.. [optional] # noqa: E501
+            qr_code (QrCode, type(None)): [optional] # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -318,6 +323,7 @@ class LetterEditable(ModelNormal):
             extra_service (str, type(None)): Add an extra service to your letter:   * `certified` - track and confirm delivery for domestic destinations. An extra sheet (1 PDF page single-sided or 2 PDF pages double-sided) is added to the beginning of your letter for address and barcode information. See here for templates: [#10 envelope](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_certified_template.pdf) and [flat envelope](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_certified_flat_template.pdf) (used for letters over 6 pages single-sided or 12 pages double-sided). You will not be charged for this extra sheet.   * `certified_return_receipt` - request an electronic copy of the recipient's signature to prove delivery of your certified letter   * `registered` - provides tracking and confirmation for international addresses . [optional] # noqa: E501
             cards (list, type(None)): A single-element array containing an existing card id in a string format. See [cards](#tag/Cards) for more information.. [optional] # noqa: E501
             billing_group_id (str, type(None)): An optional string with the billing group ID to tag your usage with. Is used for billing purposes. Requires special activation to use. See [Billing Group API](https://lob.github.io/lob-openapi/#tag/Billing-Groups) for more information.. [optional] # noqa: E501
+            qr_code (QrCode, type(None)): [optional] # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
