@@ -914,16 +914,22 @@ def check_validations(
     current_validations = validations[input_variable_path]
     if (is_json_validation_enabled('multipleOf', configuration) and
             'multiple_of' in current_validations and
-            isinstance(input_values, (int, float)) and
-            not (float(input_values) / current_validations['multiple_of']).is_integer()):
-        # Note 'multipleOf' will be as good as the floating point arithmetic.
-        raise ApiValueError(
-            "Invalid value for `%s`, value must be a multiple of "
-            "`%s`" % (
-                input_variable_path[0],
-                current_validations['multiple_of']
-            )
-        )
+            isinstance(input_values, (int, float))):
+        # since floating point arithmetic can be imprecise, we'll convert input_values to string
+        # and determine whether the decimal place is in a value position (within 3 spots of the end of the string)
+        try:
+            decimal_index = str(input_values).index('.')
+            if decimal_index < len(str(input_values)) - 3:
+                raise ApiValueError(
+                    "Invalid value for `%s`, value must be a multiple of "
+                    "`%s`" % (
+                        input_variable_path[0],
+                        current_validations['multiple_of']
+                    )
+                )
+        except:
+            # if no decimal, then it's a multiple of 0.01
+            print("whole dollar amount")
 
     if (is_json_validation_enabled('maxLength', configuration) and
             'max_length' in current_validations and
