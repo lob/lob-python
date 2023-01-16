@@ -19,6 +19,7 @@ from lob_python.model.metadata_model import MetadataModel
 from lob_python.model.include_model import IncludeModel
 from lob_python.model.self_mailer_size import SelfMailerSize
 from lob_python.model.mail_type import MailType
+from lob_python.model.sfm_use_type import SfmUseType
 from lob_python.model.sort_by3 import SortBy3
 from lob_python.exceptions import UnauthorizedException, NotFoundException, ApiException
 from unittest.mock import Mock, MagicMock
@@ -39,6 +40,7 @@ class TestSelfMailersApi(unittest.TestCase):
           _from = "adr_fakeId2",
           inside = "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/templates/self_mailers/6x18_sfm_inside.pdf",
           outside = "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/templates/self_mailers/6x18_sfm_inside.pdf",
+          use_type = SfmUseType("marketing")
         )
 
         self.mock_list_of_self_mailers =  MagicMock(return_value={

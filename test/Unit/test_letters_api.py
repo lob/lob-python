@@ -16,6 +16,7 @@ import lob_python
 from lob_python.api.letters_api import LettersApi  # noqa: E501
 from lob_python.model.letter_editable import LetterEditable
 from lob_python.model.address_editable import AddressEditable
+from lob_python.model.ltr_use_type import LtrUseType
 from lob_python.model.mail_type import MailType
 from lob_python.model.sort_by3 import SortBy3
 from lob_python.model.metadata_model import MetadataModel
@@ -43,6 +44,7 @@ class TestLettersApi(unittest.TestCase):
             _from = "adr_fakeId2",
             file = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/us_letter_1pg.pdf",
             color = True,
+            use_type = LtrUseType("marketing")
         )
 
     def test_letter_retrieve_error_handle(self):

@@ -45,7 +45,7 @@ class TestIntlAutocompletionsApi(unittest.TestCase):
             primary_line = "340 WATERSTONE PL SE",
             city = "AIRDRIE",
             state = "AB",
-            country = CountryExtendedExpanded("CANADA"),
+            country = CountryExtended("CA"),
             zip_code = "T4B 2G7",
         )
 

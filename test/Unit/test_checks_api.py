@@ -15,6 +15,7 @@ import warnings
 import lob_python
 from lob_python.api.checks_api import ChecksApi  # noqa: E501
 from lob_python.model.check_editable import CheckEditable
+from lob_python.model.chk_use_type import ChkUseType
 from lob_python.model.mail_type import MailType
 from lob_python.model.sort_by3 import SortBy3
 from lob_python.model.include_model import IncludeModel
@@ -39,6 +40,7 @@ class TestChecksApi(unittest.TestCase):
             to = "adr_fakeId2",
             bank_account = "bank_fakeId",
             amount = 100.0,
+            use_type = ChkUseType("marketing")
         )
 
         self.mock_list_of_checks = MagicMock(return_value={

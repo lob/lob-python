@@ -16,6 +16,7 @@ import lob_python
 from lob_python.api.postcards_api import PostcardsApi  # noqa: E501
 from lob_python.model.postcard_editable import PostcardEditable
 from lob_python.model.mail_type import MailType
+from lob_python.model.psc_use_type import PscUseType
 from lob_python.model.sort_by3 import SortBy3
 from lob_python.model.metadata_model import MetadataModel
 from lob_python.model.include_model import IncludeModel
@@ -43,6 +44,7 @@ class TestPostcardsApi(unittest.TestCase):
             _from = "adr_fakeId2",
             front = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf",
             back = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf",
+            use_type = PscUseType("marketing")
         )
 
     def test_postcard_retrieve_error_handle(self):
