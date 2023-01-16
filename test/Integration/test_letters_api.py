@@ -12,6 +12,7 @@
 from email.headerregistry import Address
 import string
 import unittest
+from lob_python.model.ltr_use_type import LtrUseType
 from unittest_data_provider import data_provider
 import warnings
 import datetime as dt
@@ -91,7 +92,8 @@ class TestLettersApi(unittest.TestCase):
             to = self.to_address,
             _from = self.to2,
             file = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/us_letter_1pg.pdf",
-            color = True
+            color = True,
+            use_type = LtrUseType("marketing")
         )
 
         # some fields, like billing_group and address_placement,
@@ -112,6 +114,7 @@ class TestLettersApi(unittest.TestCase):
             return_envelope = True,
             perforated_page = 1,
             custom_envelope = None,
+            use_type = LtrUseType("marketing")
         )
 
         self.certified_letter = LetterEditable(
@@ -119,7 +122,8 @@ class TestLettersApi(unittest.TestCase):
             _from = self.to2,
             file = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/us_letter_1pg.pdf",
             color = True,
-            extra_service = "certified"
+            extra_service = "certified",
+            use_type = LtrUseType("marketing")
         )
 
         self.registered_letter = LetterEditable(
@@ -127,7 +131,8 @@ class TestLettersApi(unittest.TestCase):
             _from = self.to2,
             file = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/us_letter_1pg.pdf",
             color = True,
-            extra_service = "registered"
+            extra_service = "registered",
+            use_type = LtrUseType("marketing")
         )
 
     @classmethod
@@ -210,6 +215,7 @@ class TestLettersApi(unittest.TestCase):
             perforated_page = 2,
             return_envelope = True,
             color = True,
+            use_type = LtrUseType("marketing")
         )
         with self.assertRaises(Exception) as context:
             self.api.create(invalid_letter)
@@ -226,6 +232,7 @@ class TestLettersApi(unittest.TestCase):
             file = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/us_letter_1pg.pdf",
             perforated_page = 1,
             color = True,
+            use_type = LtrUseType("marketing")
         )
         with self.assertRaises(Exception) as context:
             self.api.create(invalid_letter)
@@ -241,6 +248,7 @@ class TestLettersApi(unittest.TestCase):
             _from = self.intl_addr,
             file = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/us_letter_1pg.pdf",
             color = True,
+            use_type = LtrUseType("marketing")
         )
         with self.assertRaises(Exception) as context:
             self.api.create(invalid_letter)
@@ -257,7 +265,8 @@ class TestLettersApi(unittest.TestCase):
             file = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/us_letter_1pg.pdf",
             color = True,
             extra_service = "certified",
-            custom_envelope = "env_fakeId"
+            custom_envelope = "env_fakeId",
+            use_type = LtrUseType("marketing")
         )
         with self.assertRaises(Exception) as context:
             self.api.create(invalid_certified_letter)
@@ -273,7 +282,8 @@ class TestLettersApi(unittest.TestCase):
             _from = self.to2,
             file = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/us_letter_1pg.pdf",
             color = True,
-            extra_service = "certified"
+            extra_service = "certified",
+            use_type = LtrUseType("marketing")
         )
         with self.assertRaises(Exception) as context:
             self.api.create(invalid_certified_letter)

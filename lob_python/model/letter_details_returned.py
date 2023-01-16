@@ -89,7 +89,6 @@ class LetterDetailsReturned(ModelNormal):
 
     @cached_property
     def openapi_types():
-        from lob_python.model.return_envelope import ReturnEnvelope
         """
         This must be a method because a model may have properties that are
         of type self, this must run after the class is loaded
@@ -106,7 +105,7 @@ class LetterDetailsReturned(ModelNormal):
             'double_sided': (bool, type(None)),  # noqa: E501
             'extra_service': (str, type(None)),  # noqa: E501
             'mail_type': (MailType, type(None)),  # noqa: E501
-            'return_envelope': (bool, ReturnEnvelope, type(None)),  # noqa: E501
+            'return_envelope': (, bool, type(None)),  # noqa: E501
             'bleed': (bool, type(None)),  # noqa: E501
             'file_original_url': (str, type(None)),  # noqa: E501
         }
@@ -179,7 +178,7 @@ class LetterDetailsReturned(ModelNormal):
             double_sided (bool, type(None)): Set this attribute to `true` for double sided printing,  `false` for for single sided printing.. [optional] if omitted the server will use the default value of True # noqa: E501
             extra_service (str, type(None)): Add an extra service to your letter.. [optional] # noqa: E501
             mail_type (MailType, type(None)): [optional] # noqa: E501
-            return_envelope (bool, ReturnEnvelope, type(None)): [optional]  # noqa: E501
+            return_envelope (, bool, type(None)): [optional]  # noqa: E501
             bleed (bool, type(None)): Allows for letter bleed. Enabled only with specific feature flags.. [optional] if omitted the server will use the default value of False # noqa: E501
             file_original_url (str, type(None)): [optional] # noqa: E501
         """
@@ -274,7 +273,7 @@ class LetterDetailsReturned(ModelNormal):
             double_sided (bool, type(None)): Set this attribute to `true` for double sided printing,  `false` for for single sided printing.. [optional] if omitted the server will use the default value of True # noqa: E501
             extra_service (str, type(None)): Add an extra service to your letter.. [optional] # noqa: E501
             mail_type (MailType, type(None)): [optional] # noqa: E501
-            return_envelope (bool, ReturnEnvelope, type(None)): [optional]  # noqa: E501
+            return_envelope (, bool, type(None)): [optional]  # noqa: E501
             bleed (bool, type(None)): Allows for letter bleed. Enabled only with specific feature flags.. [optional] if omitted the server will use the default value of False # noqa: E501
             file_original_url (str, type(None)): [optional] # noqa: E501
         """

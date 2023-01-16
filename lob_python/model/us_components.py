@@ -113,7 +113,7 @@ class UsComponents(ModelNormal):
     validations = {
         ('zip_code',): {
             'regex': {
-                'pattern': r'^\d{5}$',  # noqa: E501
+                'pattern': r'(^$)|(^\d{5}$)',  # noqa: E501
             },
         },
     }

@@ -63,6 +63,7 @@ from lob_python.model.check_deletion import CheckDeletion
 from lob_python.model.check_editable import CheckEditable
 from lob_python.model.check_list import CheckList
 from lob_python.model.chk_id import ChkId
+from lob_python.model.chk_use_type import ChkUseType
 from lob_python.model.city import City
 from lob_python.model.cmp_id import CmpId
 from lob_python.model.cmp_schedule_type import CmpScheduleType
@@ -110,13 +111,13 @@ from lob_python.model.letter_deletion import LetterDeletion
 from lob_python.model.letter_details_returned import LetterDetailsReturned
 from lob_python.model.letter_details_writable import LetterDetailsWritable
 from lob_python.model.letter_editable import LetterEditable
-from lob_python.model.letter_editable_custom_envelope import LetterEditableCustomEnvelope
 from lob_python.model.letter_list import LetterList
 from lob_python.model.lob_confidence_score import LobConfidenceScore
 from lob_python.model.lob_error import LobError
 from lob_python.model.location import Location
 from lob_python.model.location_analysis import LocationAnalysis
 from lob_python.model.ltr_id import LtrId
+from lob_python.model.ltr_use_type import LtrUseType
 from lob_python.model.mail_type import MailType
 from lob_python.model.merge_variables import MergeVariables
 from lob_python.model.metadata_model import MetadataModel
@@ -125,6 +126,7 @@ from lob_python.model.multiple_components import MultipleComponents
 from lob_python.model.multiple_components_intl import MultipleComponentsIntl
 from lob_python.model.multiple_components_list import MultipleComponentsList
 from lob_python.model.name import Name
+from lob_python.model.optional_address_column_mapping import OptionalAddressColumnMapping
 from lob_python.model.placeholder_model import PlaceholderModel
 from lob_python.model.postal_code import PostalCode
 from lob_python.model.postcard import Postcard
@@ -136,8 +138,10 @@ from lob_python.model.postcard_list import PostcardList
 from lob_python.model.postcard_size import PostcardSize
 from lob_python.model.primary_line_us import PrimaryLineUs
 from lob_python.model.psc_id import PscId
+from lob_python.model.psc_use_type import PscUseType
 from lob_python.model.qr_code import QrCode
 from lob_python.model.recipient import Recipient
+from lob_python.model.required_address_column_mapping import RequiredAddressColumnMapping
 from lob_python.model.resource_description import ResourceDescription
 from lob_python.model.return_envelope import ReturnEnvelope
 from lob_python.model.reverse_geocode import ReverseGeocode
@@ -149,6 +153,7 @@ from lob_python.model.self_mailer_editable import SelfMailerEditable
 from lob_python.model.self_mailer_list import SelfMailerList
 from lob_python.model.self_mailer_size import SelfMailerSize
 from lob_python.model.sfm_id import SfmId
+from lob_python.model.sfm_use_type import SfmUseType
 from lob_python.model.signed_link import SignedLink
 from lob_python.model.sort_by import SortBy
 from lob_python.model.sort_by1 import SortBy1
@@ -181,6 +186,7 @@ from lob_python.model.upload_list import UploadList
 from lob_python.model.upload_state import UploadState
 from lob_python.model.upload_updatable import UploadUpdatable
 from lob_python.model.upload_writable import UploadWritable
+from lob_python.model.uploads_metadata import UploadsMetadata
 from lob_python.model.urbanization import Urbanization
 from lob_python.model.us_auto_id import UsAutoId
 from lob_python.model.us_autocompletions import UsAutocompletions

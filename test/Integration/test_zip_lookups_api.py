@@ -74,7 +74,6 @@ class TestZipLookupsApi(unittest.TestCase):
 
         with self.assertRaises(Exception) as context:
             self.api.lookup(zip)
-        print(context.exception.__str__())
         self.assertTrue("invalid zip code" in context.exception.__str__())
 
 

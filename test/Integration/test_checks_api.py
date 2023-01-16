@@ -13,6 +13,7 @@ from email.headerregistry import Address
 import string
 import unittest
 import warnings
+from lob_python.model.chk_use_type import ChkUseType
 from unittest_data_provider import data_provider
 import datetime as dt
 
@@ -103,7 +104,8 @@ class TestChecksApi(unittest.TestCase):
             message = "Test Check 1",
             bank_account = self.bank_ids[0],
             _from = self.to2,
-            amount = 100.0
+            amount = 100.0,
+            use_type = ChkUseType("marketing")
         )
 
         self.full_editable = CheckEditable(
@@ -121,7 +123,8 @@ class TestChecksApi(unittest.TestCase):
             check_number = 2,
             logo = "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/check_logo.png",
             check_bottom = "https://s3.us-west-2.amazonaws.com/public.lob.com/lobcom/template_gallery/gtmpl_6a8930ca92bc81_Rebate_Check.html",
-            attachment = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/check_attachment_template.pdf"
+            attachment = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/check_attachment_template.pdf",
+            use_type = ChkUseType("marketing")
         )
 
         self.check_editable2 = CheckEditable(
@@ -129,7 +132,8 @@ class TestChecksApi(unittest.TestCase):
             message = "Test Check 2",
             bank_account = self.bank_ids[0],
             _from = self.to2,
-            amount = 100.0
+            amount = 100.0,
+            use_type = ChkUseType("marketing")
         )
 
         self.check_editable3 = CheckEditable(
@@ -137,7 +141,8 @@ class TestChecksApi(unittest.TestCase):
             message = "Test Check 3",
             bank_account = self.bank_ids[0],
             _from = self.to2,
-            amount = 100.0
+            amount = 100.0,
+            use_type = ChkUseType("marketing")
         )
 
     @classmethod
@@ -185,7 +190,8 @@ class TestChecksApi(unittest.TestCase):
             message = "Test Check 1",
             bank_account = verified_bank_acc.id,
             _from = self.to2,
-            amount = 100.0
+            amount = 100.0,
+            use_type = ChkUseType("marketing")
         )
         with self.assertRaises(Exception) as context:
             created_check = self.api.create(invalid_check_editable)
@@ -209,7 +215,8 @@ class TestChecksApi(unittest.TestCase):
             message = "Test Check 1",
             bank_account = self.bank_ids[0],
             _from = self.to2,
-            amount = 100.0
+            amount = 100.0,
+            use_type = ChkUseType("marketing")
         )
         with self.assertRaises(Exception) as context:
             created_check = self.api.create(invalid_check_editable)
@@ -225,7 +232,8 @@ class TestChecksApi(unittest.TestCase):
             message = "Test Check 1",
             bank_account = self.bank_ids[1],
             _from = self.to2,
-            amount = 100.0
+            amount = 100.0,
+            use_type = ChkUseType("marketing")
         )
         with self.assertRaises(Exception) as context:
             created_check = self.api.create(invalid_check_editable)

@@ -35,6 +35,7 @@ from lob_python.model.metadata_model import MetadataModel
 from lob_python.model.resource_description import ResourceDescription
 from lob_python.model.self_mailer_size import SelfMailerSize
 from lob_python.model.sfm_id import SfmId
+from lob_python.model.sfm_use_type import SfmUseType
 from lob_python.model.signed_link import SignedLink
 from lob_python.model.tracking_event_certified import TrackingEventCertified
 globals()['MailType'] = MailType
@@ -43,6 +44,7 @@ globals()['MetadataModel'] = MetadataModel
 globals()['ResourceDescription'] = ResourceDescription
 globals()['SelfMailerSize'] = SelfMailerSize
 globals()['SfmId'] = SfmId
+globals()['SfmUseType'] = SfmUseType
 globals()['SignedLink'] = SignedLink
 globals()['TrackingEventCertified'] = TrackingEventCertified
 
@@ -126,6 +128,7 @@ class SelfMailer(ModelNormal):
             'id': (str,),  # noqa: E501
             'to': (str, Address),  # noqa: E501
             'url': (str,),  # noqa: E501
+            'use_type': (SfmUseType,),  # noqa: E501
             '_from': (str, AddressDomesticExpanded, type(None)),  # noqa: E501
             'size': (SelfMailerSize, type(None)),  # noqa: E501
             'description': (str, type(None)),  # noqa: E501
@@ -150,6 +153,7 @@ class SelfMailer(ModelNormal):
         'id': 'id',  # noqa: E501
         'to': 'to',  # noqa: E501
         'url': 'url',  # noqa: E501
+        'use_type': 'use_type',  # noqa: E501
         '_from': 'from',  # noqa: E501
         'size': 'size',  # noqa: E501
         'description': 'description',  # noqa: E501
@@ -172,13 +176,14 @@ class SelfMailer(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, to, url, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, to, url, use_type, *args, **kwargs):  # noqa: E501
         """SelfMailer - a model defined in OpenAPI
 
         Args:
             id (str):
             to (str, Address):
             url (str):
+            use_type (SfmUseType):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -254,6 +259,7 @@ class SelfMailer(ModelNormal):
         self.id = id
         self.to = to
         self.url = url
+        self.use_type = use_type
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -274,13 +280,14 @@ class SelfMailer(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, to, url, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, to, url, use_type, *args, **kwargs):  # noqa: E501
         """SelfMailer - a model defined in OpenAPI
 
         Args:
             id (SfmId):
             to (bool, date, datetime, dict, float, int, list, str, none_type):
             url (SignedLink):
+            use_type (SfmUseType):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -354,6 +361,7 @@ class SelfMailer(ModelNormal):
         self.id = id
         self.to = to
         self.url = url
+        self.use_type = use_type
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

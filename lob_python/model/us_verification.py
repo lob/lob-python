@@ -115,6 +115,7 @@ class UsVerification(ModelNormal):
             'urbanization': (str, type(None)),  # noqa: E501
             'last_line': (str, type(None)),  # noqa: E501
             'deliverability': (str, type(None)),  # noqa: E501
+            'valid_address': (bool, type(None)),  # noqa: E501
             'components': (UsComponents, type(None)),  # noqa: E501
             'deliverability_analysis': (DeliverabilityAnalysis, type(None)),  # noqa: E501
             'lob_confidence_score': (LobConfidenceScore, type(None)),  # noqa: E501
@@ -134,6 +135,7 @@ class UsVerification(ModelNormal):
         'urbanization': 'urbanization',  # noqa: E501
         'last_line': 'last_line',  # noqa: E501
         'deliverability': 'deliverability',  # noqa: E501
+        'valid_address': 'valid_address',  # noqa: E501
         'components': 'components',  # noqa: E501
         'deliverability_analysis': 'deliverability_analysis',  # noqa: E501
         'lob_confidence_score': 'lob_confidence_score',  # noqa: E501
@@ -188,6 +190,7 @@ class UsVerification(ModelNormal):
             urbanization (str, type(None)): [optional] # noqa: E501
             last_line (str, type(None)): Combination of the following applicable `components`: * City (`city`) * State (`state`) * ZIP code (`zip_code`) * ZIP+4 (`zip_code_plus_4`) . [optional] # noqa: E501
             deliverability (str, type(None)): Summarizes the deliverability of the `us_verification` object. For full details, see the `deliverability_analysis` field. Possible values are: * `deliverable` – The address is deliverable by the USPS. * `deliverable_unnecessary_unit` – The address is deliverable, but the secondary unit information is unnecessary. * `deliverable_incorrect_unit` – The address is deliverable to the building's default address but the secondary unit provided may not exist. There is a chance the mail will not reach the intended recipient. * `deliverable_missing_unit` – The address is deliverable to the building's default address but is missing secondary unit information. There is a chance the mail will not reach the intended recipient. * `undeliverable` – The address is not deliverable according to the USPS. . [optional] # noqa: E501
+            valid_address (bool, type(None)): This field indicates whether an address was found in a more comprehensive address dataset that includes sources from the USPS, open source mapping data, and our proprietary mail delivery data. This field can be interpreted as a representation of whether an address is a real location or not. Additionally a valid address may contradict the deliverability field since an address can be a real valid location but the USPS may not deliver to that address. . [optional] # noqa: E501
             components (UsComponents, type(None)): [optional] # noqa: E501
             deliverability_analysis (DeliverabilityAnalysis, type(None)): [optional] # noqa: E501
             lob_confidence_score (LobConfidenceScore, type(None)): [optional] # noqa: E501
@@ -280,6 +283,7 @@ class UsVerification(ModelNormal):
             urbanization (str, type(None)): [optional] # noqa: E501
             last_line (str, type(None)): Combination of the following applicable `components`: * City (`city`) * State (`state`) * ZIP code (`zip_code`) * ZIP+4 (`zip_code_plus_4`) . [optional] # noqa: E501
             deliverability (str, type(None)): Summarizes the deliverability of the `us_verification` object. For full details, see the `deliverability_analysis` field. Possible values are: * `deliverable` – The address is deliverable by the USPS. * `deliverable_unnecessary_unit` – The address is deliverable, but the secondary unit information is unnecessary. * `deliverable_incorrect_unit` – The address is deliverable to the building's default address but the secondary unit provided may not exist. There is a chance the mail will not reach the intended recipient. * `deliverable_missing_unit` – The address is deliverable to the building's default address but is missing secondary unit information. There is a chance the mail will not reach the intended recipient. * `undeliverable` – The address is not deliverable according to the USPS. . [optional] # noqa: E501
+            valid_address (bool, type(None)): This field indicates whether an address was found in a more comprehensive address dataset that includes sources from the USPS, open source mapping data, and our proprietary mail delivery data. This field can be interpreted as a representation of whether an address is a real location or not. Additionally a valid address may contradict the deliverability field since an address can be a real valid location but the USPS may not deliver to that address. . [optional] # noqa: E501
             components (UsComponents, type(None)): [optional] # noqa: E501
             deliverability_analysis (DeliverabilityAnalysis, type(None)): [optional] # noqa: E501
             lob_confidence_score (LobConfidenceScore, type(None)): [optional] # noqa: E501

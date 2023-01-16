@@ -84,7 +84,7 @@ class BankAccount(ModelNormal):
         },
         ('signature_url',): {
             'regex': {
-                'pattern': r'^https:\/\/lob-assets.com\/(letters|postcards|bank-accounts|checks|self-mailers|cards)\/[a-z]{3,4}_[a-z0-9]{15,16}(''|_signature)(.pdf|_thumb_[a-z]+_[0-9]+.png|.png)\?(version=[a-z0-9]*&)expires=[0-9]{10}&signature=[a-zA-Z0-9-_]+',  # noqa: E501
+                'pattern': r'^https:\/\/lob-assets\.com\/(letters|postcards|bank-accounts|checks|self-mailers|cards)\/[a-z]{3,4}_[a-z0-9]{15,16}(\.pdf|_thumb_[a-z]+_[0-9]+\.png)\?(version=[a-z0-9-]*&)?expires=[0-9]{10}&signature=[a-zA-Z0-9-_]+$',  # noqa: E501
             },
         },
     }

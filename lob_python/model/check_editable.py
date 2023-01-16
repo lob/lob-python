@@ -29,9 +29,11 @@ from lob_python.model_utils import (  # noqa: F401
 )
 from lob_python.exceptions import ApiAttributeError
 
+from lob_python.model.chk_use_type import ChkUseType
 from lob_python.model.merge_variables import MergeVariables
 from lob_python.model.metadata_model import MetadataModel
 from lob_python.model.resource_description import ResourceDescription
+globals()['ChkUseType'] = ChkUseType
 globals()['MergeVariables'] = MergeVariables
 globals()['MetadataModel'] = MetadataModel
 globals()['ResourceDescription'] = ResourceDescription
@@ -109,6 +111,7 @@ class CheckEditable(ModelNormal):
             'to': (str, AddressDomestic),  # noqa: E501
             'bank_account': (str,),  # noqa: E501
             'amount': (float,),  # noqa: E501
+            'use_type': (ChkUseType,),  # noqa: E501
             'logo': (str, type(None)),  # noqa: E501
             'check_bottom': (str, type(None)),  # noqa: E501
             'attachment': (str, type(None)),  # noqa: E501
@@ -133,6 +136,7 @@ class CheckEditable(ModelNormal):
         'to': 'to',  # noqa: E501
         'bank_account': 'bank_account',  # noqa: E501
         'amount': 'amount',  # noqa: E501
+        'use_type': 'use_type',  # noqa: E501
         'logo': 'logo',  # noqa: E501
         'check_bottom': 'check_bottom',  # noqa: E501
         'attachment': 'attachment',  # noqa: E501
@@ -154,7 +158,7 @@ class CheckEditable(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, _from, to, bank_account, amount, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, _from, to, bank_account, amount, use_type, *args, **kwargs):  # noqa: E501
         """CheckEditable - a model defined in OpenAPI
 
         Args:
@@ -162,6 +166,7 @@ class CheckEditable(ModelNormal):
             to (str, AddressDomestic): Must either be an address ID or an inline object with correct address parameters..
             bank_account (str):
             amount (float): The payment amount to be sent in US dollars.
+            use_type (ChkUseType):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -237,6 +242,7 @@ class CheckEditable(ModelNormal):
         self.to = to
         self.bank_account = bank_account
         self.amount = amount
+        self.use_type = use_type
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -257,14 +263,15 @@ class CheckEditable(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, _from, to, bank_account, amount, *args, **kwargs):  # noqa: E501
+    def __init__(self, _from, to, bank_account, amount, use_type, *args, **kwargs):  # noqa: E501
         """CheckEditable - a model defined in OpenAPI
 
         Args:
-            _from (str): Must either be an address ID or an inline object with correct address parameters.
-            to (str): Must either be an address ID or an inline object with correct address parameters.
+            _from (bool, date, datetime, dict, float, int, list, str, none_type): Must either be an address ID or an inline object with correct address parameters.
+            to (bool, date, datetime, dict, float, int, list, str, none_type): Must either be an address ID or an inline object with correct address parameters.
             bank_account (str, none_type):
             amount (float): The payment amount to be sent in US dollars.
+            use_type (ChkUseType):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -338,6 +345,7 @@ class CheckEditable(ModelNormal):
         self.to = to
         self.bank_account = bank_account
         self.amount = amount
+        self.use_type = use_type
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

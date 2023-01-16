@@ -114,9 +114,9 @@ class CmpUseType(ModelSimple):
         Note that value can be passed either in args or in kwargs, but not in both.
 
         Args:
-            args[0] (str): The usage type of this campaign. Can be one of `marketing` or `operational`.., must be one of ["marketing", "operational", "null", ]  # noqa: E501
+            args[0] (str): The use type for each mailpiece. Can be one of marketing, operational, or null. Null use_type is only allowed if an account default use_type is selected in Account Settings. For more information on use_type, see our  [Help Center article](https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings/declaring-mail-use-type).., must be one of ["marketing", "operational", "null", ]  # noqa: E501
         Keyword Args:
-            value (): The usage type of this campaign. Can be one of `marketing` or `operational`.., must be one of ["marketing", "operational", "null", ]  # noqa: E501
+            value (): The use type for each mailpiece. Can be one of marketing, operational, or null. Null use_type is only allowed if an account default use_type is selected in Account Settings. For more information on use_type, see our  [Help Center article](https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings/declaring-mail-use-type).., must be one of ["marketing", "operational", "null", ]  # noqa: E501
 
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
@@ -204,7 +204,7 @@ class CmpUseType(ModelSimple):
         Note that value can be passed either in args or in kwargs, but not in both.
 
         Args:
-            args[0] (str): The usage type of this campaign. Can be one of `marketing` or `operational`.., must be one of ["marketing", "operational", "null", ]  # noqa: E501
+            args[0] (str): The use type for each mailpiece. Can be one of marketing, operational, or null. Null use_type is only allowed if an account default use_type is selected in Account Settings. For more information on use_type, see our  [Help Center article](https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings/declaring-mail-use-type).., must be one of ["marketing", "operational", "null", ]  # noqa: E501
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

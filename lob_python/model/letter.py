@@ -32,6 +32,7 @@ from lob_python.exceptions import ApiAttributeError
 from lob_python.model.address import Address
 from lob_python.model.letter_custom_envelope import LetterCustomEnvelope
 from lob_python.model.ltr_id import LtrId
+from lob_python.model.ltr_use_type import LtrUseType
 from lob_python.model.mail_type import MailType
 from lob_python.model.merge_variables import MergeVariables
 from lob_python.model.metadata_model import MetadataModel
@@ -44,6 +45,7 @@ from lob_python.model.vrsn_id import VrsnId
 globals()['Address'] = Address
 globals()['LetterCustomEnvelope'] = LetterCustomEnvelope
 globals()['LtrId'] = LtrId
+globals()['LtrUseType'] = LtrUseType
 globals()['MailType'] = MailType
 globals()['MergeVariables'] = MergeVariables
 globals()['MetadataModel'] = MetadataModel
@@ -130,6 +132,7 @@ class Letter(ModelNormal):
             'id': (str,),  # noqa: E501
             'object': (str,),  # noqa: E501
             'return_envelope': (bool, ReturnEnvelope),  # noqa: E501
+            'use_type': (LtrUseType,),  # noqa: E501
             'carrier': (str, type(None)),  # noqa: E501
             'thumbnails': (list, type(None)),  # noqa: E501
             'expected_delivery_date': (date, type(None)),  # noqa: E501
@@ -151,6 +154,7 @@ class Letter(ModelNormal):
             'address_placement': (str, type(None)),  # noqa: E501
             'perforated_page': (int, type(None)),  # noqa: E501
             'custom_envelope': (LetterCustomEnvelope, type(None)),  # noqa: E501
+            'campaign_id': (str, type(None)),  # noqa: E501
         }
 
     @cached_property
@@ -166,6 +170,7 @@ class Letter(ModelNormal):
         'id': 'id',  # noqa: E501
         'object': 'object',  # noqa: E501
         'return_envelope': 'return_envelope',  # noqa: E501
+        'use_type': 'use_type',  # noqa: E501
         'carrier': 'carrier',  # noqa: E501
         'thumbnails': 'thumbnails',  # noqa: E501
         'expected_delivery_date': 'expected_delivery_date',  # noqa: E501
@@ -187,6 +192,7 @@ class Letter(ModelNormal):
         'address_placement': 'address_placement',  # noqa: E501
         'perforated_page': 'perforated_page',  # noqa: E501
         'custom_envelope': 'custom_envelope',  # noqa: E501
+        'campaign_id': 'campaign_id',  # noqa: E501
     }
 
     read_only_vars = {
@@ -196,7 +202,7 @@ class Letter(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, to, _from, date_created, date_modified, id, return_envelope, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, to, _from, date_created, date_modified, id, return_envelope, use_type, *args, **kwargs):  # noqa: E501
         """Letter - a model defined in OpenAPI
 
         Args:
@@ -206,6 +212,7 @@ class Letter(ModelNormal):
             date_modified (datetime): A timestamp in ISO 8601 format of the date the resource was last modified.
             id (str):
             return_envelope (bool, ReturnEnvelope):
+            use_type (LtrUseType):
 
         Keyword Args:
             object (str): defaults to "letter", must be one of ["letter", ]  # noqa: E501
@@ -260,6 +267,7 @@ class Letter(ModelNormal):
             address_placement (str, type(None)): Specifies the location of the address information that will show through the double-window envelope. . [optional] if omitted the server will use the default value of "top_first_page" # noqa: E501
             perforated_page (int, type(None)): Required if `return_envelope` is `true`. The number of the page that should be perforated for use with the return envelope. Must be greater than or equal to `1`. The blank page added by `address_placement=insert_blank_page` will be ignored when considering the perforated page number. To see how perforation will impact your letter design, view our [perforation guide](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_perf_template.pdf).. [optional] # noqa: E501
             custom_envelope (LetterCustomEnvelope, type(None)): [optional] # noqa: E501
+            campaign_id (str, type(None)): The unique ID of the associated campaign if the resource was generated from a campaign.. [optional] # noqa: E501
         """
 
         object = kwargs.get('object', "letter")
@@ -295,6 +303,7 @@ class Letter(ModelNormal):
         self.id = id
         self.object = object
         self.return_envelope = return_envelope
+        self.use_type = use_type
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -315,7 +324,7 @@ class Letter(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, to, _from, date_created, date_modified, id, return_envelope, *args, **kwargs):  # noqa: E501
+    def __init__(self, to, _from, date_created, date_modified, id, return_envelope, use_type, *args, **kwargs):  # noqa: E501
         """Letter - a model defined in OpenAPI
 
         Args:
@@ -325,6 +334,7 @@ class Letter(ModelNormal):
             date_modified (datetime): A timestamp in ISO 8601 format of the date the resource was last modified.
             id (LtrId):
             return_envelope (bool, date, datetime, dict, float, int, list, str, none_type):
+            use_type (LtrUseType):
 
         Keyword Args:
             object (str): defaults to "letter", must be one of ["letter", ]  # noqa: E501
@@ -379,6 +389,7 @@ class Letter(ModelNormal):
             address_placement (str, type(None)): Specifies the location of the address information that will show through the double-window envelope. . [optional] if omitted the server will use the default value of "top_first_page" # noqa: E501
             perforated_page (int, type(None)): Required if `return_envelope` is `true`. The number of the page that should be perforated for use with the return envelope. Must be greater than or equal to `1`. The blank page added by `address_placement=insert_blank_page` will be ignored when considering the perforated page number. To see how perforation will impact your letter design, view our [perforation guide](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_perf_template.pdf).. [optional] # noqa: E501
             custom_envelope (LetterCustomEnvelope, type(None)): [optional] # noqa: E501
+            campaign_id (str, type(None)): The unique ID of the associated campaign if the resource was generated from a campaign.. [optional] # noqa: E501
         """
 
         object = kwargs.get('object', "letter")
@@ -412,6 +423,7 @@ class Letter(ModelNormal):
         self.id = id
         self.object = object
         self.return_envelope = return_envelope
+        self.use_type = use_type
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

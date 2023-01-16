@@ -104,6 +104,7 @@ class Campaign(ModelNormal):
         return {
             'name': (str,),  # noqa: E501
             'schedule_type': (CmpScheduleType,),  # noqa: E501
+            'use_type': (CmpUseType,),  # noqa: E501
             'auto_cancel_if_ncoa': (bool,),  # noqa: E501
             'id': (str,),  # noqa: E501
             'is_draft': (bool,),  # noqa: E501
@@ -117,7 +118,6 @@ class Campaign(ModelNormal):
             'send_date': (datetime, type(None)),  # noqa: E501
             'cancel_window_campaign_minutes': (int, type(None)),  # noqa: E501
             'metadata': (MetadataModel, type(None)),  # noqa: E501
-            'use_type': (CmpUseType, type(None)),  # noqa: E501
             'account_id': (str, type(None)),  # noqa: E501
             'deleted': (bool, type(None)),  # noqa: E501
         }
@@ -130,6 +130,7 @@ class Campaign(ModelNormal):
     attribute_map = {
         'name': 'name',  # noqa: E501
         'schedule_type': 'schedule_type',  # noqa: E501
+        'use_type': 'use_type',  # noqa: E501
         'auto_cancel_if_ncoa': 'auto_cancel_if_ncoa',  # noqa: E501
         'id': 'id',  # noqa: E501
         'is_draft': 'is_draft',  # noqa: E501
@@ -143,7 +144,6 @@ class Campaign(ModelNormal):
         'send_date': 'send_date',  # noqa: E501
         'cancel_window_campaign_minutes': 'cancel_window_campaign_minutes',  # noqa: E501
         'metadata': 'metadata',  # noqa: E501
-        'use_type': 'use_type',  # noqa: E501
         'account_id': 'account_id',  # noqa: E501
         'deleted': 'deleted',  # noqa: E501
     }
@@ -155,12 +155,13 @@ class Campaign(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, name, schedule_type, auto_cancel_if_ncoa, id, creatives, date_created, date_modified, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, name, schedule_type, use_type, auto_cancel_if_ncoa, id, creatives, date_created, date_modified, *args, **kwargs):  # noqa: E501
         """Campaign - a model defined in OpenAPI
 
         Args:
             name (str): Name of the campaign.
             schedule_type (CmpScheduleType):
+            use_type (CmpUseType):
             auto_cancel_if_ncoa (bool): Whether or not a mail piece should be automatically canceled and not sent if the address is updated via NCOA.
             id (str):
             creatives (list): An array of creatives that have been associated with this campaign.
@@ -206,7 +207,6 @@ class Campaign(ModelNormal):
             send_date (datetime, type(None)): If `schedule_type` is `scheduled_send_date`, provide a date to send this campaign.. [optional] # noqa: E501
             cancel_window_campaign_minutes (int, type(None)): A window, in minutes, within which the campaign can be canceled.. [optional] # noqa: E501
             metadata (MetadataModel, type(None)): [optional] # noqa: E501
-            use_type (CmpUseType, type(None)): [optional] # noqa: E501
             account_id (str, type(None)): Account ID that this campaign is associated with.. [optional] # noqa: E501
             deleted (bool, type(None)): Only returned if the resource has been successfully deleted.. [optional] # noqa: E501
         """
@@ -240,6 +240,7 @@ class Campaign(ModelNormal):
 
         self.name = name
         self.schedule_type = schedule_type
+        self.use_type = use_type
         self.auto_cancel_if_ncoa = auto_cancel_if_ncoa
         self.id = id
         self.is_draft = is_draft
@@ -267,12 +268,13 @@ class Campaign(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, name, schedule_type, auto_cancel_if_ncoa, id, creatives, date_created, date_modified, *args, **kwargs):  # noqa: E501
+    def __init__(self, name, schedule_type, use_type, auto_cancel_if_ncoa, id, creatives, date_created, date_modified, *args, **kwargs):  # noqa: E501
         """Campaign - a model defined in OpenAPI
 
         Args:
             name (str): Name of the campaign.
             schedule_type (CmpScheduleType):
+            use_type (CmpUseType):
             auto_cancel_if_ncoa (bool): Whether or not a mail piece should be automatically canceled and not sent if the address is updated via NCOA.
             id (CmpId):
             creatives ([CampaignCreative]): An array of creatives that have been associated with this campaign.
@@ -318,7 +320,6 @@ class Campaign(ModelNormal):
             send_date (datetime, type(None)): If `schedule_type` is `scheduled_send_date`, provide a date to send this campaign.. [optional] # noqa: E501
             cancel_window_campaign_minutes (int, type(None)): A window, in minutes, within which the campaign can be canceled.. [optional] # noqa: E501
             metadata (MetadataModel, type(None)): [optional] # noqa: E501
-            use_type (CmpUseType, type(None)): [optional] # noqa: E501
             account_id (str, type(None)): Account ID that this campaign is associated with.. [optional] # noqa: E501
             deleted (bool, type(None)): Only returned if the resource has been successfully deleted.. [optional] # noqa: E501
         """
@@ -350,6 +351,7 @@ class Campaign(ModelNormal):
 
         self.name = name
         self.schedule_type = schedule_type
+        self.use_type = use_type
         self.auto_cancel_if_ncoa = auto_cancel_if_ncoa
         self.id = id
         self.is_draft = is_draft

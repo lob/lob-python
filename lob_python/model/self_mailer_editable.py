@@ -34,11 +34,13 @@ from lob_python.model.merge_variables import MergeVariables
 from lob_python.model.metadata_model import MetadataModel
 from lob_python.model.resource_description import ResourceDescription
 from lob_python.model.self_mailer_size import SelfMailerSize
+from lob_python.model.sfm_use_type import SfmUseType
 globals()['MailType'] = MailType
 globals()['MergeVariables'] = MergeVariables
 globals()['MetadataModel'] = MetadataModel
 globals()['ResourceDescription'] = ResourceDescription
 globals()['SelfMailerSize'] = SelfMailerSize
+globals()['SfmUseType'] = SfmUseType
 
 
 class SelfMailerEditable(ModelNormal):
@@ -96,6 +98,7 @@ class SelfMailerEditable(ModelNormal):
             'to': (str, AddressEditable),  # noqa: E501
             'inside': (str,),  # noqa: E501
             'outside': (str,),  # noqa: E501
+            'use_type': (SfmUseType,),  # noqa: E501
             '_from': (str, AddressEditable, type(None)),  # noqa: E501
             'size': (SelfMailerSize, type(None)),  # noqa: E501
             'description': (str, type(None)),  # noqa: E501
@@ -115,6 +118,7 @@ class SelfMailerEditable(ModelNormal):
         'to': 'to',  # noqa: E501
         'inside': 'inside',  # noqa: E501
         'outside': 'outside',  # noqa: E501
+        'use_type': 'use_type',  # noqa: E501
         '_from': 'from',  # noqa: E501
         'size': 'size',  # noqa: E501
         'description': 'description',  # noqa: E501
@@ -132,13 +136,14 @@ class SelfMailerEditable(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, to, inside, outside, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, to, inside, outside, use_type, *args, **kwargs):  # noqa: E501
         """SelfMailerEditable - a model defined in OpenAPI
 
         Args:
             to (str, AddressEditable): Must either be an address ID or an inline object with correct address parameters..
             inside (str): The artwork to use as the inside of your self mailer. 
             outside (str): The artwork to use as the outside of your self mailer. 
+            use_type (SfmUseType):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -209,6 +214,7 @@ class SelfMailerEditable(ModelNormal):
         self.to = to
         self.inside = inside
         self.outside = outside
+        self.use_type = use_type
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -229,13 +235,14 @@ class SelfMailerEditable(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, to, inside, outside, *args, **kwargs):  # noqa: E501
+    def __init__(self, to, inside, outside, use_type, *args, **kwargs):  # noqa: E501
         """SelfMailerEditable - a model defined in OpenAPI
 
         Args:
-            to (str): Must either be an address ID or an inline object with correct address parameters.
+            to (bool, date, datetime, dict, float, int, list, str, none_type): Must either be an address ID or an inline object with correct address parameters.
             inside (str): The artwork to use as the inside of your self mailer. 
             outside (str): The artwork to use as the outside of your self mailer. 
+            use_type (SfmUseType):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -304,6 +311,7 @@ class SelfMailerEditable(ModelNormal):
         self.to = to
         self.inside = inside
         self.outside = outside
+        self.use_type = use_type
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

@@ -30,12 +30,14 @@ from lob_python.model_utils import (  # noqa: F401
 from lob_python.exceptions import ApiAttributeError
 
 from lob_python.model.card_id import CardId
+from lob_python.model.ltr_use_type import LtrUseType
 from lob_python.model.mail_type import MailType
 from lob_python.model.merge_variables import MergeVariables
 from lob_python.model.metadata_model import MetadataModel
 from lob_python.model.qr_code import QrCode
 from lob_python.model.resource_description import ResourceDescription
 globals()['CardId'] = CardId
+globals()['LtrUseType'] = LtrUseType
 globals()['MailType'] = MailType
 globals()['MergeVariables'] = MergeVariables
 globals()['MetadataModel'] = MetadataModel
@@ -116,6 +118,7 @@ class LetterEditable(ModelNormal):
             'to': (str, AddressEditable),  # noqa: E501
             '_from': (str, AddressEditable),  # noqa: E501
             'file': (str,),  # noqa: E501
+            'use_type': (LtrUseType,),  # noqa: E501
             'description': (str, type(None)),  # noqa: E501
             'metadata': (MetadataModel, type(None)),  # noqa: E501
             'mail_type': (MailType, type(None)),  # noqa: E501
@@ -142,6 +145,7 @@ class LetterEditable(ModelNormal):
         'to': 'to',  # noqa: E501
         '_from': 'from',  # noqa: E501
         'file': 'file',  # noqa: E501
+        'use_type': 'use_type',  # noqa: E501
         'description': 'description',  # noqa: E501
         'metadata': 'metadata',  # noqa: E501
         'mail_type': 'mail_type',  # noqa: E501
@@ -165,7 +169,7 @@ class LetterEditable(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, color, to, _from, file, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, color, to, _from, file, use_type, *args, **kwargs):  # noqa: E501
         """LetterEditable - a model defined in OpenAPI
 
         Args:
@@ -173,6 +177,7 @@ class LetterEditable(ModelNormal):
             to (str, AddressEditable): Must either be an address ID or an inline object with correct address parameters..
             _from (str, AddressEditable): Must either be an address ID or an inline object with correct address parameters..
             file (str): PDF file containing the letter's formatting.
+            use_type (LtrUseType):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -250,6 +255,7 @@ class LetterEditable(ModelNormal):
         self.to = to
         self._from = _from
         self.file = file
+        self.use_type = use_type
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -270,14 +276,15 @@ class LetterEditable(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, color, to, _from, file, *args, **kwargs):  # noqa: E501
+    def __init__(self, color, to, _from, file, use_type, *args, **kwargs):  # noqa: E501
         """LetterEditable - a model defined in OpenAPI
 
         Args:
             color (bool): Set this key to `true` if you would like to print in color. Set to `false` if you would like to print in black and white.
-            to (str): Must either be an address ID or an inline object with correct address parameters.
-            _from (str): Must either be an address ID or an inline object with correct address parameters.
+            to (bool, date, datetime, dict, float, int, list, str, none_type): Must either be an address ID or an inline object with correct address parameters.
+            _from (bool, date, datetime, dict, float, int, list, str, none_type): Must either be an address ID or an inline object with correct address parameters.
             file (str): PDF file containing the letter's formatting.
+            use_type (LtrUseType):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -353,6 +360,7 @@ class LetterEditable(ModelNormal):
         self.to = to
         self._from = _from
         self.file = file
+        self.use_type = use_type
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

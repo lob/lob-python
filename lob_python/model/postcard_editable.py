@@ -33,12 +33,14 @@ from lob_python.model.mail_type import MailType
 from lob_python.model.merge_variables import MergeVariables
 from lob_python.model.metadata_model import MetadataModel
 from lob_python.model.postcard_size import PostcardSize
+from lob_python.model.psc_use_type import PscUseType
 from lob_python.model.qr_code import QrCode
 from lob_python.model.resource_description import ResourceDescription
 globals()['MailType'] = MailType
 globals()['MergeVariables'] = MergeVariables
 globals()['MetadataModel'] = MetadataModel
 globals()['PostcardSize'] = PostcardSize
+globals()['PscUseType'] = PscUseType
 globals()['QrCode'] = QrCode
 globals()['ResourceDescription'] = ResourceDescription
 
@@ -98,6 +100,7 @@ class PostcardEditable(ModelNormal):
             'to': (str, AddressEditable),  # noqa: E501
             'front': (str,),  # noqa: E501
             'back': (str,),  # noqa: E501
+            'use_type': (PscUseType,),  # noqa: E501
             '_from': (str, AddressEditable, type(None)),  # noqa: E501
             'size': (PostcardSize, type(None)),  # noqa: E501
             'description': (str, type(None)),  # noqa: E501
@@ -118,6 +121,7 @@ class PostcardEditable(ModelNormal):
         'to': 'to',  # noqa: E501
         'front': 'front',  # noqa: E501
         'back': 'back',  # noqa: E501
+        'use_type': 'use_type',  # noqa: E501
         '_from': 'from',  # noqa: E501
         'size': 'size',  # noqa: E501
         'description': 'description',  # noqa: E501
@@ -136,13 +140,14 @@ class PostcardEditable(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, to, front, back, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, to, front, back, use_type, *args, **kwargs):  # noqa: E501
         """PostcardEditable - a model defined in OpenAPI
 
         Args:
             to (str, AddressEditable): Must either be an address ID or an inline object with correct address parameters..
             front (str): The artwork to use as the front of your postcard. 
             back (str): The artwork to use as the back of your postcard. 
+            use_type (PscUseType):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -214,6 +219,7 @@ class PostcardEditable(ModelNormal):
         self.to = to
         self.front = front
         self.back = back
+        self.use_type = use_type
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -234,13 +240,14 @@ class PostcardEditable(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, to, front, back, *args, **kwargs):  # noqa: E501
+    def __init__(self, to, front, back, use_type, *args, **kwargs):  # noqa: E501
         """PostcardEditable - a model defined in OpenAPI
 
         Args:
-            to (str): Must either be an address ID or an inline object with correct address parameters.
+            to (bool, date, datetime, dict, float, int, list, str, none_type): Must either be an address ID or an inline object with correct address parameters.
             front (str): The artwork to use as the front of your postcard. 
             back (str): The artwork to use as the back of your postcard. 
+            use_type (PscUseType):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -310,6 +317,7 @@ class PostcardEditable(ModelNormal):
         self.to = to
         self.front = front
         self.back = back
+        self.use_type = use_type
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

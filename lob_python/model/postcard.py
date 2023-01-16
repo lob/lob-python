@@ -36,6 +36,7 @@ from lob_python.model.merge_variables import MergeVariables
 from lob_python.model.metadata_model import MetadataModel
 from lob_python.model.postcard_size import PostcardSize
 from lob_python.model.psc_id import PscId
+from lob_python.model.psc_use_type import PscUseType
 from lob_python.model.resource_description import ResourceDescription
 from lob_python.model.signed_link import SignedLink
 from lob_python.model.thumbnail import Thumbnail
@@ -47,6 +48,7 @@ globals()['MergeVariables'] = MergeVariables
 globals()['MetadataModel'] = MetadataModel
 globals()['PostcardSize'] = PostcardSize
 globals()['PscId'] = PscId
+globals()['PscUseType'] = PscUseType
 globals()['ResourceDescription'] = ResourceDescription
 globals()['SignedLink'] = SignedLink
 globals()['Thumbnail'] = Thumbnail
@@ -152,6 +154,7 @@ class Postcard(ModelNormal):
             'mail_type': (MailType, type(None)),  # noqa: E501
             'merge_variables': (MergeVariables, type(None)),  # noqa: E501
             'send_date': (datetime, type(None)),  # noqa: E501
+            'use_type': (PscUseType, type(None)),  # noqa: E501
         }
 
     @cached_property
@@ -182,6 +185,7 @@ class Postcard(ModelNormal):
         'mail_type': 'mail_type',  # noqa: E501
         'merge_variables': 'merge_variables',  # noqa: E501
         'send_date': 'send_date',  # noqa: E501
+        'use_type': 'use_type',  # noqa: E501
     }
 
     read_only_vars = {
@@ -249,6 +253,7 @@ class Postcard(ModelNormal):
             mail_type (MailType, type(None)): [optional] # noqa: E501
             merge_variables (MergeVariables, type(None)): [optional] # noqa: E501
             send_date (datetime, type(None)): A timestamp in ISO 8601 format which specifies a date after the current time and up to 180 days in the future to send the letter off for production. Setting a send date overrides the default [cancellation window](#section/Cancellation-Windows) applied to the mailpiece. Until the `send_date` has passed, the mailpiece can be canceled. If a date in the format `2017-11-01` is passed, it will evaluate to midnight UTC of that date (`2017-11-01T00:00:00.000Z`). If a datetime is passed, that exact time will be used. A `send_date` passed with no time zone will default to UTC, while a `send_date` passed with a time zone will be converted to UTC.. [optional] # noqa: E501
+            use_type (PscUseType, type(None)): [optional] # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -356,6 +361,7 @@ class Postcard(ModelNormal):
             mail_type (MailType, type(None)): [optional] # noqa: E501
             merge_variables (MergeVariables, type(None)): [optional] # noqa: E501
             send_date (datetime, type(None)): A timestamp in ISO 8601 format which specifies a date after the current time and up to 180 days in the future to send the letter off for production. Setting a send date overrides the default [cancellation window](#section/Cancellation-Windows) applied to the mailpiece. Until the `send_date` has passed, the mailpiece can be canceled. If a date in the format `2017-11-01` is passed, it will evaluate to midnight UTC of that date (`2017-11-01T00:00:00.000Z`). If a datetime is passed, that exact time will be used. A `send_date` passed with no time zone will default to UTC, while a `send_date` passed with a time zone will be converted to UTC.. [optional] # noqa: E501
+            use_type (PscUseType, type(None)): [optional] # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

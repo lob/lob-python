@@ -168,7 +168,7 @@ class CampaignUpdatable(ModelNormal):
             send_date (datetime, type(None)): If `schedule_type` is `scheduled_send_date`, provide a date to send this campaign.. [optional] # noqa: E501
             cancel_window_campaign_minutes (int, type(None)): A window, in minutes, within which the campaign can be canceled.. [optional] # noqa: E501
             metadata (MetadataModel, type(None)): [optional] # noqa: E501
-            is_draft (bool, type(None)): Whether or not the campaign is still a draft.. [optional] if omitted the server will use the default value of True # noqa: E501
+            is_draft (bool, type(None)): Whether or not the campaign is still a draft.. [optional] # noqa: E501
             use_type (CmpUseType, type(None)): [optional] # noqa: E501
             auto_cancel_if_ncoa (bool, type(None)): Whether or not a mail piece should be automatically canceled and not sent if the address is updated via NCOA.. [optional] # noqa: E501
         """
@@ -259,7 +259,7 @@ class CampaignUpdatable(ModelNormal):
             send_date (datetime, type(None)): If `schedule_type` is `scheduled_send_date`, provide a date to send this campaign.. [optional] # noqa: E501
             cancel_window_campaign_minutes (int, type(None)): A window, in minutes, within which the campaign can be canceled.. [optional] # noqa: E501
             metadata (MetadataModel, type(None)): [optional] # noqa: E501
-            is_draft (bool, type(None)): Whether or not the campaign is still a draft.. [optional] if omitted the server will use the default value of True # noqa: E501
+            is_draft (bool, type(None)): Whether or not the campaign is still a draft.. [optional] # noqa: E501
             use_type (CmpUseType, type(None)): [optional] # noqa: E501
             auto_cancel_if_ncoa (bool, type(None)): Whether or not a mail piece should be automatically canceled and not sent if the address is updated via NCOA.. [optional] # noqa: E501
         """

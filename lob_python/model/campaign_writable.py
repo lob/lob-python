@@ -97,13 +97,13 @@ class CampaignWritable(ModelNormal):
         return {
             'name': (str,),  # noqa: E501
             'schedule_type': (CmpScheduleType,),  # noqa: E501
+            'use_type': (CmpUseType,),  # noqa: E501
             'billing_group_id': (str, type(None)),  # noqa: E501
             'description': (str, type(None)),  # noqa: E501
             'target_delivery_date': (datetime, type(None)),  # noqa: E501
             'send_date': (datetime, type(None)),  # noqa: E501
             'cancel_window_campaign_minutes': (int, type(None)),  # noqa: E501
             'metadata': (MetadataModel, type(None)),  # noqa: E501
-            'use_type': (CmpUseType, type(None)),  # noqa: E501
             'auto_cancel_if_ncoa': (bool, type(None)),  # noqa: E501
         }
 
@@ -115,13 +115,13 @@ class CampaignWritable(ModelNormal):
     attribute_map = {
         'name': 'name',  # noqa: E501
         'schedule_type': 'schedule_type',  # noqa: E501
+        'use_type': 'use_type',  # noqa: E501
         'billing_group_id': 'billing_group_id',  # noqa: E501
         'description': 'description',  # noqa: E501
         'target_delivery_date': 'target_delivery_date',  # noqa: E501
         'send_date': 'send_date',  # noqa: E501
         'cancel_window_campaign_minutes': 'cancel_window_campaign_minutes',  # noqa: E501
         'metadata': 'metadata',  # noqa: E501
-        'use_type': 'use_type',  # noqa: E501
         'auto_cancel_if_ncoa': 'auto_cancel_if_ncoa',  # noqa: E501
     }
 
@@ -132,12 +132,13 @@ class CampaignWritable(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, name, schedule_type, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, name, schedule_type, use_type, *args, **kwargs):  # noqa: E501
         """CampaignWritable - a model defined in OpenAPI
 
         Args:
             name (str): Name of the campaign.
             schedule_type (CmpScheduleType):
+            use_type (CmpUseType):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -176,7 +177,6 @@ class CampaignWritable(ModelNormal):
             send_date (datetime, type(None)): If `schedule_type` is `scheduled_send_date`, provide a date to send this campaign.. [optional] # noqa: E501
             cancel_window_campaign_minutes (int, type(None)): A window, in minutes, within which the campaign can be canceled.. [optional] # noqa: E501
             metadata (MetadataModel, type(None)): [optional] # noqa: E501
-            use_type (CmpUseType, type(None)): [optional] # noqa: E501
             auto_cancel_if_ncoa (bool, type(None)): Whether or not a mail piece should be automatically canceled and not sent if the address is updated via NCOA.. [optional] # noqa: E501
         """
 
@@ -207,6 +207,7 @@ class CampaignWritable(ModelNormal):
 
         self.name = name
         self.schedule_type = schedule_type
+        self.use_type = use_type
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -227,12 +228,13 @@ class CampaignWritable(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, name, schedule_type, *args, **kwargs):  # noqa: E501
+    def __init__(self, name, schedule_type, use_type, *args, **kwargs):  # noqa: E501
         """CampaignWritable - a model defined in OpenAPI
 
         Args:
             name (str): Name of the campaign.
             schedule_type (CmpScheduleType):
+            use_type (CmpUseType):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -271,7 +273,6 @@ class CampaignWritable(ModelNormal):
             send_date (datetime, type(None)): If `schedule_type` is `scheduled_send_date`, provide a date to send this campaign.. [optional] # noqa: E501
             cancel_window_campaign_minutes (int, type(None)): A window, in minutes, within which the campaign can be canceled.. [optional] # noqa: E501
             metadata (MetadataModel, type(None)): [optional] # noqa: E501
-            use_type (CmpUseType, type(None)): [optional] # noqa: E501
             auto_cancel_if_ncoa (bool, type(None)): Whether or not a mail piece should be automatically canceled and not sent if the address is updated via NCOA.. [optional] # noqa: E501
         """
 
@@ -300,6 +301,7 @@ class CampaignWritable(ModelNormal):
 
         self.name = name
         self.schedule_type = schedule_type
+        self.use_type = use_type
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

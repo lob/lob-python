@@ -12,6 +12,7 @@
 from email.headerregistry import Address
 import string
 import unittest
+from lob_python.model.psc_use_type import PscUseType
 from unittest_data_provider import data_provider
 import warnings
 import datetime as dt
@@ -73,7 +74,8 @@ class TestPostcardsApi(unittest.TestCase):
         self.postcard_editable = PostcardEditable(
             to = self.to_address,
             front = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf",
-            back = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf"
+            back = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf",
+            use_type= PscUseType("marketing")
         )
         self.to2 = AddressEditable(
             name = "FESTER",
@@ -109,19 +111,22 @@ class TestPostcardsApi(unittest.TestCase):
             merge_variables=MergeVariables(),
             send_date=now + dt.timedelta(days=30),
             front = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf",
-            back = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf"
+            back = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf",
+            use_type= PscUseType("marketing")
         )
 
         self.editable_postcard2 = PostcardEditable(
             to = self.to2,
             front = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf",
-            back = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf"
+            back = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf",
+            use_type= PscUseType("marketing")
         )
 
         self.editable_postcard3 = PostcardEditable(
             to = to3,
             front = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf",
-            back = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf"
+            back = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf",
+            use_type= PscUseType("marketing")
         )
 
     @classmethod
@@ -190,7 +195,8 @@ class TestPostcardsApi(unittest.TestCase):
             to = self.to_address,
             _from = intl_addr,
             front = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf",
-            back = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf"
+            back = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf",
+            use_type = PscUseType("marketing")
         )
 
         with self.assertRaises(Exception) as context:
@@ -205,7 +211,8 @@ class TestPostcardsApi(unittest.TestCase):
         invalid_postcard_editable = PostcardEditable(
             to = self.deleted_addr_id,
             front = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf",
-            back = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf"
+            back = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf",
+            use_type = PscUseType("marketing")
         )
 
         with self.assertRaises(Exception) as context:

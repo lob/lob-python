@@ -90,7 +90,6 @@ class CreativeResponse(ModelNormal):
     def openapi_types():
         from lob_python.model.address_editable import AddressEditable
         from lob_python.model.postcard_details_writable import PostcardDetailsWritable
-        from lob_python.model.letter_details_writable import LetterDetailsWritable
         """
         This must be a method because a model may have properties that are
         of type self, this must run after the class is loaded
@@ -104,7 +103,7 @@ class CreativeResponse(ModelNormal):
             'description': (str, type(None)),  # noqa: E501
             '_from': (str, AddressEditable, type(None)),  # noqa: E501
             'resource_type': (str, type(None)),  # noqa: E501
-            'details': (PostcardDetailsWritable, LetterDetailsWritable, type(None)),  # noqa: E501
+            'details': (, PostcardDetailsWritable, type(None)),  # noqa: E501
             'metadata': (MetadataModel, type(None)),  # noqa: E501
             'template_preview_urls': (dict, type(None)),  # noqa: E501
             'template_previews': (list, type(None)),  # noqa: E501
@@ -181,7 +180,7 @@ class CreativeResponse(ModelNormal):
             description (str, type(None)): [optional] # noqa: E501
             _from (str, AddressEditable, type(None)): Must either be an address ID or an inline object with correct address parameters.. [optional]  # noqa: E501
             resource_type (str, type(None)): Mailpiece type for the creative. [optional] # noqa: E501
-            details (PostcardDetailsWritable, LetterDetailsWritable, type(None)): Either PostcardDetailsReturned or LetterDetailsReturned. [optional]  # noqa: E501
+            details (, PostcardDetailsWritable, type(None)): Either PostcardDetailsReturned or LetterDetailsReturned. [optional]  # noqa: E501
             metadata (MetadataModel, type(None)): [optional] # noqa: E501
             template_preview_urls (dict, type(None)): Preview URLs associated with a creative's artwork asset(s) if the creative uses HTML templates as assets.. [optional] # noqa: E501
             template_previews (list, type(None)): A list of template preview objects if the creative uses HTML template(s) as artwork asset(s).. [optional] # noqa: E501
@@ -275,7 +274,7 @@ class CreativeResponse(ModelNormal):
             description (str, type(None)): [optional] # noqa: E501
             _from (str, AddressEditable, type(None)): Must either be an address ID or an inline object with correct address parameters.. [optional]  # noqa: E501
             resource_type (str, type(None)): Mailpiece type for the creative. [optional] # noqa: E501
-            details (PostcardDetailsWritable, LetterDetailsWritable, type(None)): Either PostcardDetailsReturned or LetterDetailsReturned. [optional]  # noqa: E501
+            details (, PostcardDetailsWritable, type(None)): Either PostcardDetailsReturned or LetterDetailsReturned. [optional]  # noqa: E501
             metadata (MetadataModel, type(None)): [optional] # noqa: E501
             template_preview_urls (dict, type(None)): Preview URLs associated with a creative's artwork asset(s) if the creative uses HTML templates as assets.. [optional] # noqa: E501
             template_previews (list, type(None)): A list of template preview objects if the creative uses HTML template(s) as artwork asset(s).. [optional] # noqa: E501

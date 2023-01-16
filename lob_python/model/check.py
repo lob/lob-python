@@ -32,6 +32,7 @@ from lob_python.exceptions import ApiAttributeError
 from lob_python.model.address import Address
 from lob_python.model.bank_account import BankAccount
 from lob_python.model.chk_id import ChkId
+from lob_python.model.chk_use_type import ChkUseType
 from lob_python.model.merge_variables import MergeVariables
 from lob_python.model.metadata_model import MetadataModel
 from lob_python.model.resource_description import ResourceDescription
@@ -43,6 +44,7 @@ from lob_python.model.vrsn_id import VrsnId
 globals()['Address'] = Address
 globals()['BankAccount'] = BankAccount
 globals()['ChkId'] = ChkId
+globals()['ChkUseType'] = ChkUseType
 globals()['MergeVariables'] = MergeVariables
 globals()['MetadataModel'] = MetadataModel
 globals()['ResourceDescription'] = ResourceDescription
@@ -136,6 +138,7 @@ class Check(ModelNormal):
             'object': (str,),  # noqa: E501
             'date_created': (datetime,),  # noqa: E501
             'date_modified': (datetime,),  # noqa: E501
+            'use_type': (ChkUseType,),  # noqa: E501
             '_from': (Address, type(None)),  # noqa: E501
             'description': (str, type(None)),  # noqa: E501
             'metadata': (MetadataModel, type(None)),  # noqa: E501
@@ -170,6 +173,7 @@ class Check(ModelNormal):
         'object': 'object',  # noqa: E501
         'date_created': 'date_created',  # noqa: E501
         'date_modified': 'date_modified',  # noqa: E501
+        'use_type': 'use_type',  # noqa: E501
         '_from': 'from',  # noqa: E501
         'description': 'description',  # noqa: E501
         'metadata': 'metadata',  # noqa: E501
@@ -196,7 +200,7 @@ class Check(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, to, amount, bank_account, url, date_created, date_modified, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, to, amount, bank_account, url, date_created, date_modified, use_type, *args, **kwargs):  # noqa: E501
         """Check - a model defined in OpenAPI
 
         Args:
@@ -207,6 +211,7 @@ class Check(ModelNormal):
             url (str):
             date_created (datetime): A timestamp in ISO 8601 format of the date the resource was created.
             date_modified (datetime): A timestamp in ISO 8601 format of the date the resource was last modified.
+            use_type (ChkUseType):
 
         Keyword Args:
             carrier (str): defaults to "USPS", must be one of ["USPS", ]  # noqa: E501
@@ -296,6 +301,7 @@ class Check(ModelNormal):
         self.object = object
         self.date_created = date_created
         self.date_modified = date_modified
+        self.use_type = use_type
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -316,7 +322,7 @@ class Check(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, to, amount, bank_account, url, date_created, date_modified, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, to, amount, bank_account, url, date_created, date_modified, use_type, *args, **kwargs):  # noqa: E501
         """Check - a model defined in OpenAPI
 
         Args:
@@ -327,6 +333,7 @@ class Check(ModelNormal):
             url (SignedLink):
             date_created (datetime): A timestamp in ISO 8601 format of the date the resource was created.
             date_modified (datetime): A timestamp in ISO 8601 format of the date the resource was last modified.
+            use_type (ChkUseType):
 
         Keyword Args:
             carrier (str): defaults to "USPS", must be one of ["USPS", ]  # noqa: E501
@@ -414,6 +421,7 @@ class Check(ModelNormal):
         self.object = object
         self.date_created = date_created
         self.date_modified = date_modified
+        self.use_type = use_type
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

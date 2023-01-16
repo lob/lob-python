@@ -30,9 +30,9 @@ from lob_python.model_utils import (  # noqa: F401
 from lob_python.exceptions import ApiAttributeError
 
 from lob_python.model.city import City
-from lob_python.model.country_extended_expanded import CountryExtendedExpanded
+from lob_python.model.country_extended import CountryExtended
 globals()['City'] = City
-globals()['CountryExtendedExpanded'] = CountryExtendedExpanded
+globals()['CountryExtended'] = CountryExtended
 
 
 class IntlSuggestions(ModelNormal):
@@ -93,7 +93,7 @@ class IntlSuggestions(ModelNormal):
             'primary_line': (str,),  # noqa: E501
             'city': (str,),  # noqa: E501
             'state': (str,),  # noqa: E501
-            'country': (CountryExtendedExpanded,),  # noqa: E501
+            'country': (CountryExtended,),  # noqa: E501
             'zip_code': (str,),  # noqa: E501
             'object': (str, type(None)),  # noqa: E501
         }
@@ -128,7 +128,7 @@ class IntlSuggestions(ModelNormal):
             primary_line (str): The primary delivery line (usually the street address) of the address. Combination of the following applicable `components` (primary number & secondary information may be missing or inaccurate): * `primary_number` * `street_predirection` * `street_name` * `street_suffix` * `street_postdirection` * `secondary_designator` * `secondary_number` * `pmb_designator` * `pmb_number` 
             city (str):
             state (str): The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state. 
-            country (CountryExtendedExpanded):
+            country (CountryExtended):
             zip_code (str): A 5-digit zip code. Left empty if a test key is used.
 
         Keyword Args:
@@ -224,7 +224,7 @@ class IntlSuggestions(ModelNormal):
             primary_line (str): The primary delivery line (usually the street address) of the address. Combination of the following applicable `components` (primary number & secondary information may be missing or inaccurate): * `primary_number` * `street_predirection` * `street_name` * `street_suffix` * `street_postdirection` * `secondary_designator` * `secondary_number` * `pmb_designator` * `pmb_number` 
             city (City):
             state (str): The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) two letter code for the state. 
-            country (CountryExtendedExpanded):
+            country (CountryExtended):
             zip_code (str): A 5-digit zip code. Left empty if a test key is used.
 
         Keyword Args:

@@ -12,6 +12,7 @@
 from email.headerregistry import Address
 import string
 import unittest
+from lob_python.model.sfm_use_type import SfmUseType
 from unittest_data_provider import data_provider
 import warnings
 import datetime as dt
@@ -75,7 +76,8 @@ class TestSelfMailersApi(unittest.TestCase):
         self.self_mailer_editable = SelfMailerEditable(
             to = self.to_address,
             inside = "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/templates/self_mailers/6x18_sfm_inside.pdf",
-            outside = "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/templates/self_mailers/6x18_sfm_inside.pdf"
+            outside = "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/templates/self_mailers/6x18_sfm_inside.pdf",
+            use_type= SfmUseType("marketing")
         )
         self.to2 = AddressEditable(
             name = "FESTER",
@@ -100,13 +102,15 @@ class TestSelfMailersApi(unittest.TestCase):
             send_date=now + dt.timedelta(days=30),
             inside = "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/templates/self_mailers/6x18_sfm_inside.pdf",
             outside = "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/templates/self_mailers/6x18_sfm_inside.pdf",
-            billing_group_id = "bg_5c79d158d8f69e3e0"
+            billing_group_id = "bg_5c79d158d8f69e3e0",
+            use_type= SfmUseType("marketing")
         )
 
         self.editable_self_mailer2 = SelfMailerEditable(
             to = self.to2,
             inside = "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/templates/self_mailers/6x18_sfm_inside.pdf",
-            outside = "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/templates/self_mailers/6x18_sfm_inside.pdf"
+            outside = "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/templates/self_mailers/6x18_sfm_inside.pdf",
+            use_type= SfmUseType("marketing")
         )
 
         self.to3 = AddressEditable(
@@ -122,7 +126,8 @@ class TestSelfMailersApi(unittest.TestCase):
         self.editable_self_mailer3 = SelfMailerEditable(
             to = self.to3,
             inside = "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/templates/self_mailers/6x18_sfm_inside.pdf",
-            outside = "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/templates/self_mailers/6x18_sfm_inside.pdf"
+            outside = "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/templates/self_mailers/6x18_sfm_inside.pdf",
+            use_type= SfmUseType("marketing")
         )
 
         with lob_python.ApiClient(self.configuration) as api_client:
@@ -181,7 +186,8 @@ class TestSelfMailersApi(unittest.TestCase):
         self_mailer_editable_html = SelfMailerEditable(
             to = self.to_address,
             inside = "<html style='padding: 1in; font-size: 50;'>Inside HTML </html>",
-            outside = "<html style='padding: 1in; font-size: 50;'>Outside HTML </html>"
+            outside = "<html style='padding: 1in; font-size: 50;'>Outside HTML </html>",
+            use_type= SfmUseType("marketing")
         )
         created_self_mailer = self.api.create(self_mailer_editable_html)
         self.sfm_ids.append(created_self_mailer.id)
@@ -211,7 +217,8 @@ class TestSelfMailersApi(unittest.TestCase):
             to = self.to_address,
             _from = intl_addr,
             inside = "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/templates/self_mailers/6x18_sfm_inside.pdf",
-            outside = "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/templates/self_mailers/6x18_sfm_inside.pdf"
+            outside = "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/templates/self_mailers/6x18_sfm_inside.pdf",
+            use_type= SfmUseType("marketing")
         )
 
         with self.assertRaises(Exception) as context:
@@ -225,7 +232,8 @@ class TestSelfMailersApi(unittest.TestCase):
         invalid_self_mailer_editable = SelfMailerEditable(
             to = self.deleted_addr_id,
             inside = "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/templates/self_mailers/6x18_sfm_inside.pdf",
-            outside = "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/templates/self_mailers/6x18_sfm_inside.pdf"
+            outside = "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/templates/self_mailers/6x18_sfm_inside.pdf",
+            use_type= SfmUseType("marketing")
         )
 
         with self.assertRaises(Exception) as context:
