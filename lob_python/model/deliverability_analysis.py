@@ -80,6 +80,35 @@ class DeliverabilityAnalysis(ModelNormal):
             'N': "N",
             'EMPTY': "",
         },
+        ('dpv_inactive_reason',): {
+            '01': "01",
+            '02': "02",
+            '03': "03",
+            '04': "04",
+            '05': "05",
+            '06': "06",
+            'EMPTY': "",
+        },
+        ('dpv_throwback',): {
+            'Y': "Y",
+            'N': "N",
+            'EMPTY': "",
+        },
+        ('dpv_non_delivery_day_flag',): {
+            'Y': "Y",
+            'N': "N",
+            'EMPTY': "",
+        },
+        ('dpv_no_secure_location',): {
+            'Y': "Y",
+            'N': "N",
+            'EMPTY': "",
+        },
+        ('dpv_door_not_accessible',): {
+            'Y': "Y",
+            'N': "N",
+            'EMPTY': "",
+        },
         ('lacs_indicator',): {
             'Y': "Y",
             'N': "N",
@@ -120,6 +149,12 @@ class DeliverabilityAnalysis(ModelNormal):
             'dpv_cmra': (str,),  # noqa: E501
             'dpv_vacant': (str,),  # noqa: E501
             'dpv_active': (str,),  # noqa: E501
+            'dpv_inactive_reason': (str,),  # noqa: E501
+            'dpv_throwback': (str,),  # noqa: E501
+            'dpv_non_delivery_day_flag': (str,),  # noqa: E501
+            'dpv_non_delivery_day_values': (str,),  # noqa: E501
+            'dpv_no_secure_location': (str,),  # noqa: E501
+            'dpv_door_not_accessible': (str,),  # noqa: E501
             'dpv_footnotes': (list,),  # noqa: E501
             'ews_match': (bool,),  # noqa: E501
             'lacs_indicator': (str,),  # noqa: E501
@@ -137,6 +172,12 @@ class DeliverabilityAnalysis(ModelNormal):
         'dpv_cmra': 'dpv_cmra',  # noqa: E501
         'dpv_vacant': 'dpv_vacant',  # noqa: E501
         'dpv_active': 'dpv_active',  # noqa: E501
+        'dpv_inactive_reason': 'dpv_inactive_reason',  # noqa: E501
+        'dpv_throwback': 'dpv_throwback',  # noqa: E501
+        'dpv_non_delivery_day_flag': 'dpv_non_delivery_day_flag',  # noqa: E501
+        'dpv_non_delivery_day_values': 'dpv_non_delivery_day_values',  # noqa: E501
+        'dpv_no_secure_location': 'dpv_no_secure_location',  # noqa: E501
+        'dpv_door_not_accessible': 'dpv_door_not_accessible',  # noqa: E501
         'dpv_footnotes': 'dpv_footnotes',  # noqa: E501
         'ews_match': 'ews_match',  # noqa: E501
         'lacs_indicator': 'lacs_indicator',  # noqa: E501
@@ -151,7 +192,7 @@ class DeliverabilityAnalysis(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, dpv_confirmation, dpv_cmra, dpv_vacant, dpv_active, dpv_footnotes, ews_match, lacs_indicator, lacs_return_code, suite_return_code, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, dpv_confirmation, dpv_cmra, dpv_vacant, dpv_active, dpv_inactive_reason, dpv_throwback, dpv_non_delivery_day_flag, dpv_non_delivery_day_values, dpv_no_secure_location, dpv_door_not_accessible, dpv_footnotes, ews_match, lacs_indicator, lacs_return_code, suite_return_code, *args, **kwargs):  # noqa: E501
         """DeliverabilityAnalysis - a model defined in OpenAPI
 
         Args:
@@ -159,6 +200,12 @@ class DeliverabilityAnalysis(ModelNormal):
             dpv_cmra (str): indicates whether or not the address is [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency). Possible values are: * `Y` –– Address is CMRA-authorized. * `N` –– Address is not CMRA-authorized. * `''` –– A DPV match is not made (`deliverability_analysis[dpv_confirmation]` is `N` or an empty string). 
             dpv_vacant (str): indicates that an address was once deliverable, but has become vacant and is no longer receiving deliveries. Possible values are: * `Y` –– Address is vacant. * `N` –– Address is not vacant. * `''` –– A DPV match is not made (`deliverability_analysis[dpv_confirmation]` is `N` or an empty string). 
             dpv_active (str): Corresponds to the USPS field `dpv_no_stat`. Indicates that an address has been vacated in the recent past, and is no longer receiving deliveries. If it's been unoccupied for 90+ days, or temporarily vacant, this will be flagged. Possible values are: * `Y` –– Address is active. * `N` –– Address is not active. * `''` –– A DPV match is not made (`deliverability_analysis[dpv_confirmation]` is `N` or an empty string). 
+            dpv_inactive_reason (str): Indicates the reason why an address is vacant or no longer receiving deliveries. Possible values are: * `01` –– Address does not receive mail from the USPS directly, but is serviced by a drop address. * `02` –– Address not yet deliverable. * `03` –– A DPV match is not made (`deliverability_analysis[dpv_confirmation]` is `N` or an empty string). * `04` –– Address is a College, Military Zone, or other type. * `05` –– Address no longer receives deliveries. * `06` –– Address is missing required secondary information. * `''` –– A DPV match is not made or the address is active. 
+            dpv_throwback (str): Indicates a street address for which mail is delivered to a PO Box. Possible values are: * `Y` –– Address is a PO Box throwback delivery point. * `N` –– Address is not a PO Box throwback delivery point. * `''` –– A DPV match is not made (`deliverability_analysis[dpv_confirmation]` is `N` or an empty string). 
+            dpv_non_delivery_day_flag (str): Indicates whether deliveries are not performed on one or more days of the week at an address. Possible values are: * `Y` –– Mail delivery does not occur on some days of the week. * `N` –– Mail delivery occurs every day of the week. * `''` –– A DPV match is not made (`deliverability_analysis[dpv_confirmation]` is `N` or an empty string). 
+            dpv_non_delivery_day_values (str): Indicates days of the week (starting on Sunday) deliveries are not performed at an address. For example: * `YNNNNNN` –– Mail delivery does not occur on Sunday's. * `NYNNNYN` –– Mail delivery does not occur on Monday's or Friday's. * `''` –– A DPV match is not made (`deliverability_analysis[dpv_confirmation]` is `N` or an empty string) or address receives mail every day of the week (`deliverability_analysis[dpv_non_delivery_day_flag]` is `N` or an empty string). 
+            dpv_no_secure_location (str): Indicates packages to this address will not be left due to security concerns. Possible values are: * `Y` –– Address does not have a secure mailbox. * `N` –– Address has a secure mailbox. * `''` –– A DPV match is not made (`deliverability_analysis[dpv_confirmation]` is `N` or an empty string). 
+            dpv_door_not_accessible (str): Indicates the door of the address is not accessible for mail delivery. Possible values are: * `Y` –– Door is not accessible. * `N` –– Door is accessible. * `''` –– A DPV match is not made (`deliverability_analysis[dpv_confirmation]` is `N` or an empty string). 
             dpv_footnotes (list): An array of 2-character strings that gives more insight into how `deliverability_analysis[dpv_confirmation]` was determined. Will always include at least 1 string, and can include up to 3. For details, see [US Verification Details](#tag/US-Verification-Types). 
             ews_match (bool): indicates whether or not an address has been flagged in the [Early Warning System](https://docs.informatica.com/data-engineering/data-engineering-quality/10-4-0/address-validator-port-reference/postal-carrier-certification-data-ports/early-warning-system-return-code.html), meaning the address is under development and not yet ready to receive mail. However, it should become available in a few months. 
             lacs_indicator (str): indicates whether this address has been converted by [LACS<sup>Link</sup>](https://postalpro.usps.com/address-quality/lacslink). LACS<sup>Link</sup> corrects outdated addresses into their modern counterparts. Possible values are: * `Y` –– New address produced with a matching record in LACS<sup>Link</sup>. * `N` –– New address could not be produced with a matching record in LACS<sup>Link</sup>. * `''` –– A DPV match is not made (`deliverability_analysis[dpv_confirmation]` is `N` or an empty string). 
@@ -227,6 +274,12 @@ class DeliverabilityAnalysis(ModelNormal):
         self.dpv_cmra = dpv_cmra
         self.dpv_vacant = dpv_vacant
         self.dpv_active = dpv_active
+        self.dpv_inactive_reason = dpv_inactive_reason
+        self.dpv_throwback = dpv_throwback
+        self.dpv_non_delivery_day_flag = dpv_non_delivery_day_flag
+        self.dpv_non_delivery_day_values = dpv_non_delivery_day_values
+        self.dpv_no_secure_location = dpv_no_secure_location
+        self.dpv_door_not_accessible = dpv_door_not_accessible
         self.dpv_footnotes = dpv_footnotes
         self.ews_match = ews_match
         self.lacs_indicator = lacs_indicator
@@ -252,7 +305,7 @@ class DeliverabilityAnalysis(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, dpv_confirmation, dpv_cmra, dpv_vacant, dpv_active, dpv_footnotes, ews_match, lacs_indicator, lacs_return_code, suite_return_code, *args, **kwargs):  # noqa: E501
+    def __init__(self, dpv_confirmation, dpv_cmra, dpv_vacant, dpv_active, dpv_inactive_reason, dpv_throwback, dpv_non_delivery_day_flag, dpv_non_delivery_day_values, dpv_no_secure_location, dpv_door_not_accessible, dpv_footnotes, ews_match, lacs_indicator, lacs_return_code, suite_return_code, *args, **kwargs):  # noqa: E501
         """DeliverabilityAnalysis - a model defined in OpenAPI
 
         Args:
@@ -260,6 +313,12 @@ class DeliverabilityAnalysis(ModelNormal):
             dpv_cmra (str): indicates whether or not the address is [CMRA-authorized](https://en.wikipedia.org/wiki/Commercial_mail_receiving_agency). Possible values are: * `Y` –– Address is CMRA-authorized. * `N` –– Address is not CMRA-authorized. * `''` –– A DPV match is not made (`deliverability_analysis[dpv_confirmation]` is `N` or an empty string). 
             dpv_vacant (str): indicates that an address was once deliverable, but has become vacant and is no longer receiving deliveries. Possible values are: * `Y` –– Address is vacant. * `N` –– Address is not vacant. * `''` –– A DPV match is not made (`deliverability_analysis[dpv_confirmation]` is `N` or an empty string). 
             dpv_active (str): Corresponds to the USPS field `dpv_no_stat`. Indicates that an address has been vacated in the recent past, and is no longer receiving deliveries. If it's been unoccupied for 90+ days, or temporarily vacant, this will be flagged. Possible values are: * `Y` –– Address is active. * `N` –– Address is not active. * `''` –– A DPV match is not made (`deliverability_analysis[dpv_confirmation]` is `N` or an empty string). 
+            dpv_inactive_reason (str): Indicates the reason why an address is vacant or no longer receiving deliveries. Possible values are: * `01` –– Address does not receive mail from the USPS directly, but is serviced by a drop address. * `02` –– Address not yet deliverable. * `03` –– A DPV match is not made (`deliverability_analysis[dpv_confirmation]` is `N` or an empty string). * `04` –– Address is a College, Military Zone, or other type. * `05` –– Address no longer receives deliveries. * `06` –– Address is missing required secondary information. * `''` –– A DPV match is not made or the address is active. 
+            dpv_throwback (str): Indicates a street address for which mail is delivered to a PO Box. Possible values are: * `Y` –– Address is a PO Box throwback delivery point. * `N` –– Address is not a PO Box throwback delivery point. * `''` –– A DPV match is not made (`deliverability_analysis[dpv_confirmation]` is `N` or an empty string). 
+            dpv_non_delivery_day_flag (str): Indicates whether deliveries are not performed on one or more days of the week at an address. Possible values are: * `Y` –– Mail delivery does not occur on some days of the week. * `N` –– Mail delivery occurs every day of the week. * `''` –– A DPV match is not made (`deliverability_analysis[dpv_confirmation]` is `N` or an empty string). 
+            dpv_non_delivery_day_values (str): Indicates days of the week (starting on Sunday) deliveries are not performed at an address. For example: * `YNNNNNN` –– Mail delivery does not occur on Sunday's. * `NYNNNYN` –– Mail delivery does not occur on Monday's or Friday's. * `''` –– A DPV match is not made (`deliverability_analysis[dpv_confirmation]` is `N` or an empty string) or address receives mail every day of the week (`deliverability_analysis[dpv_non_delivery_day_flag]` is `N` or an empty string). 
+            dpv_no_secure_location (str): Indicates packages to this address will not be left due to security concerns. Possible values are: * `Y` –– Address does not have a secure mailbox. * `N` –– Address has a secure mailbox. * `''` –– A DPV match is not made (`deliverability_analysis[dpv_confirmation]` is `N` or an empty string). 
+            dpv_door_not_accessible (str): Indicates the door of the address is not accessible for mail delivery. Possible values are: * `Y` –– Door is not accessible. * `N` –– Door is accessible. * `''` –– A DPV match is not made (`deliverability_analysis[dpv_confirmation]` is `N` or an empty string). 
             dpv_footnotes ([DpvFootnote]): An array of 2-character strings that gives more insight into how `deliverability_analysis[dpv_confirmation]` was determined. Will always include at least 1 string, and can include up to 3. For details, see [US Verification Details](#tag/US-Verification-Types). 
             ews_match (bool): indicates whether or not an address has been flagged in the [Early Warning System](https://docs.informatica.com/data-engineering/data-engineering-quality/10-4-0/address-validator-port-reference/postal-carrier-certification-data-ports/early-warning-system-return-code.html), meaning the address is under development and not yet ready to receive mail. However, it should become available in a few months. 
             lacs_indicator (str): indicates whether this address has been converted by [LACS<sup>Link</sup>](https://postalpro.usps.com/address-quality/lacslink). LACS<sup>Link</sup> corrects outdated addresses into their modern counterparts. Possible values are: * `Y` –– New address produced with a matching record in LACS<sup>Link</sup>. * `N` –– New address could not be produced with a matching record in LACS<sup>Link</sup>. * `''` –– A DPV match is not made (`deliverability_analysis[dpv_confirmation]` is `N` or an empty string). 
@@ -326,6 +385,12 @@ class DeliverabilityAnalysis(ModelNormal):
         self.dpv_cmra = dpv_cmra
         self.dpv_vacant = dpv_vacant
         self.dpv_active = dpv_active
+        self.dpv_inactive_reason = dpv_inactive_reason
+        self.dpv_throwback = dpv_throwback
+        self.dpv_non_delivery_day_flag = dpv_non_delivery_day_flag
+        self.dpv_non_delivery_day_values = dpv_non_delivery_day_values
+        self.dpv_no_secure_location = dpv_no_secure_location
+        self.dpv_door_not_accessible = dpv_door_not_accessible
         self.dpv_footnotes = dpv_footnotes
         self.ews_match = ews_match
         self.lacs_indicator = lacs_indicator
