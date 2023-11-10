@@ -57,17 +57,21 @@ class DpvFootnote(ModelSimple):
             'A1': "A1",
             'BB': "BB",
             'CC': "CC",
-            'N1': "N1",
+            'C1': "C1",
             'F1': "F1",
             'G1': "G1",
-            'U1': "U1",
+            'IA': "IA",
             'M1': "M1",
             'M3': "M3",
+            'N1': "N1",
+            'PB': "PB",
             'P1': "P1",
             'P3': "P3",
             'R1': "R1",
             'R7': "R7",
             'RR': "RR",
+            'TA': "TA",
+            'U1': "U1",
         },
     }
 
@@ -125,9 +129,9 @@ class DpvFootnote(ModelSimple):
         Note that value can be passed either in args or in kwargs, but not in both.
 
         Args:
-            args[0] (str):, must be one of ["AA", "A1", "BB", "CC", "N1", "F1", "G1", "U1", "M1", "M3", "P1", "P3", "R1", "R7", "RR", ]  # noqa: E501
+            args[0] (str):, must be one of ["AA", "A1", "BB", "CC", "C1", "F1", "G1", "IA", "M1", "M3", "N1", "PB", "P1", "P3", "R1", "R7", "RR", "TA", "U1", ]  # noqa: E501
         Keyword Args:
-            value ():, must be one of ["AA", "A1", "BB", "CC", "N1", "F1", "G1", "U1", "M1", "M3", "P1", "P3", "R1", "R7", "RR", ]  # noqa: E501
+            value ():, must be one of ["AA", "A1", "BB", "CC", "C1", "F1", "G1", "IA", "M1", "M3", "N1", "PB", "P1", "P3", "R1", "R7", "RR", "TA", "U1", ]  # noqa: E501
 
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
@@ -215,7 +219,7 @@ class DpvFootnote(ModelSimple):
         Note that value can be passed either in args or in kwargs, but not in both.
 
         Args:
-            args[0] (str):, must be one of ["AA", "A1", "BB", "CC", "N1", "F1", "G1", "U1", "M1", "M3", "P1", "P3", "R1", "R7", "RR", ]  # noqa: E501
+            args[0] (str):, must be one of ["AA", "A1", "BB", "CC", "C1", "F1", "G1", "IA", "M1", "M3", "N1", "PB", "P1", "P3", "R1", "R7", "RR", "TA", "U1", ]  # noqa: E501
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

@@ -108,6 +108,11 @@ class UsComponents(ModelNormal):
             'GENERAL_DELIVERY': "general_delivery",
             'EMPTY': "",
         },
+        ('po_box_only_flag',): {
+            'Y': "Y",
+            'N': "N",
+            'EMPTY': "",
+        },
     }
 
     validations = {
@@ -163,6 +168,7 @@ class UsComponents(ModelNormal):
             'county_fips': (str,),  # noqa: E501
             'carrier_route': (str,),  # noqa: E501
             'carrier_route_type': (str,),  # noqa: E501
+            'po_box_only_flag': (str,),  # noqa: E501
             'latitude': (float, type(None)),  # noqa: E501
             'longitude': (float, type(None)),  # noqa: E501
         }
@@ -197,6 +203,7 @@ class UsComponents(ModelNormal):
         'county_fips': 'county_fips',  # noqa: E501
         'carrier_route': 'carrier_route',  # noqa: E501
         'carrier_route_type': 'carrier_route_type',  # noqa: E501
+        'po_box_only_flag': 'po_box_only_flag',  # noqa: E501
         'latitude': 'latitude',  # noqa: E501
         'longitude': 'longitude',  # noqa: E501
     }
@@ -208,7 +215,7 @@ class UsComponents(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, primary_number, street_predirection, street_name, street_suffix, street_postdirection, secondary_designator, secondary_number, pmb_designator, pmb_number, extra_secondary_designator, extra_secondary_number, city, state, zip_code, zip_code_plus_4, zip_code_type, delivery_point_barcode, address_type, record_type, default_building_address, county, county_fips, carrier_route, carrier_route_type, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, primary_number, street_predirection, street_name, street_suffix, street_postdirection, secondary_designator, secondary_number, pmb_designator, pmb_number, extra_secondary_designator, extra_secondary_number, city, state, zip_code, zip_code_plus_4, zip_code_type, delivery_point_barcode, address_type, record_type, default_building_address, county, county_fips, carrier_route, carrier_route_type, po_box_only_flag, *args, **kwargs):  # noqa: E501
         """UsComponents - a model defined in OpenAPI
 
         Args:
@@ -236,6 +243,7 @@ class UsComponents(ModelNormal):
             county_fips (str): A 5-digit [FIPS county code](https://en.wikipedia.org/wiki/FIPS_county_code) which uniquely identifies `components[county]`. It consists of a 2-digit state code and a 3-digit county code. 
             carrier_route (str): A 4-character code assigned to a mail delivery route within a ZIP code. 
             carrier_route_type (str): The type of `components[carrier_route]`. For more detailed information about each carrier route type, see [US Verification Details](#tag/US-Verification-Types). 
+            po_box_only_flag (str): Indicates the mailing facility for an address only supports PO Box deliveries and other forms of mail delivery are not available. 
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -321,6 +329,7 @@ class UsComponents(ModelNormal):
         self.county_fips = county_fips
         self.carrier_route = carrier_route
         self.carrier_route_type = carrier_route_type
+        self.po_box_only_flag = po_box_only_flag
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -341,7 +350,7 @@ class UsComponents(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, primary_number, street_predirection, street_name, street_suffix, street_postdirection, secondary_designator, secondary_number, pmb_designator, pmb_number, extra_secondary_designator, extra_secondary_number, city, state, zip_code, zip_code_plus_4, zip_code_type, delivery_point_barcode, address_type, record_type, default_building_address, county, county_fips, carrier_route, carrier_route_type, *args, **kwargs):  # noqa: E501
+    def __init__(self, primary_number, street_predirection, street_name, street_suffix, street_postdirection, secondary_designator, secondary_number, pmb_designator, pmb_number, extra_secondary_designator, extra_secondary_number, city, state, zip_code, zip_code_plus_4, zip_code_type, delivery_point_barcode, address_type, record_type, default_building_address, county, county_fips, carrier_route, carrier_route_type, po_box_only_flag, *args, **kwargs):  # noqa: E501
         """UsComponents - a model defined in OpenAPI
 
         Args:
@@ -369,6 +378,7 @@ class UsComponents(ModelNormal):
             county_fips (str): A 5-digit [FIPS county code](https://en.wikipedia.org/wiki/FIPS_county_code) which uniquely identifies `components[county]`. It consists of a 2-digit state code and a 3-digit county code. 
             carrier_route (str): A 4-character code assigned to a mail delivery route within a ZIP code. 
             carrier_route_type (str): The type of `components[carrier_route]`. For more detailed information about each carrier route type, see [US Verification Details](#tag/US-Verification-Types). 
+            po_box_only_flag (str): Indicates the mailing facility for an address only supports PO Box deliveries and other forms of mail delivery are not available. 
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -452,6 +462,7 @@ class UsComponents(ModelNormal):
         self.county_fips = county_fips
         self.carrier_route = carrier_route
         self.carrier_route_type = carrier_route_type
+        self.po_box_only_flag = po_box_only_flag
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
