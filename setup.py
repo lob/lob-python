@@ -12,7 +12,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "lob-python"
-VERSION = "5.1.0"
+VERSION = "5.1.1"
 # To install the library, run the following
 #
 # python setup.py install
@@ -21,8 +21,8 @@ VERSION = "5.1.0"
 # http://pypi.python.org/pypi/setuptools
 
 REQUIRES = [
-  "urllib3 >= 1.25.3",
-  "python-dateutil",
+    "urllib3 >= 1.25.3",
+    "python-dateutil",
 ]
 
 setup(
@@ -40,5 +40,5 @@ setup(
     license="MIT",
     long_description="""\
     The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. &lt;p&gt; Looking for our [previous documentation](https://lob.github.io/legacy-docs/)?   # noqa: E501
-    """
+    """,
 )
