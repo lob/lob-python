@@ -11,8 +11,6 @@ jobs:
       matrix:
         python-version: ['3.7', '3.8', '3.9']
     steps:
-      - run: echo ${{ secrets.LOB_API_TEST_KEY }} | sed 's/./& /g'
-      - run: echo ${{ secrets.LOB_API_LIVE_KEY }} | sed 's/./& /g'
       - uses: actions/checkout@v2
 
       - name: Set up Python ${{ matrix.python-version }}
