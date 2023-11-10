@@ -107,7 +107,7 @@ class CampaignCreative(ModelNormal):
             'description': (str, type(None)),  # noqa: E501
             '_from': (str, AddressEditable, type(None)),  # noqa: E501
             'resource_type': (str, type(None)),  # noqa: E501
-            'details': (, PostcardDetailsWritable, type(None)),  # noqa: E501
+            'details': (PostcardDetailsWritable, type(None)),  # noqa: E501
             'metadata': (MetadataModel, type(None)),  # noqa: E501
             'template_preview_urls': (dict, type(None)),  # noqa: E501
             'template_previews': (list, type(None)),  # noqa: E501
