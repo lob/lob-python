@@ -90,10 +90,6 @@ class CampaignCreative(ModelNormal):
 
     _nullable = False
 
-    """
-    Add test comment
-    """
-
     @cached_property
     def openapi_types():
         from lob_python.model.address_editable import AddressEditable

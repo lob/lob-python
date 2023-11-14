@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ['3.7', '3.8', '3.9']
+        python-version: ["3.7", "3.8", "3.9"]
     steps:
       - uses: actions/checkout@v2
 
@@ -24,12 +24,14 @@ jobs:
           python -m pip install unittest-data-provider
           pip install -r requirements.txt
       - name: Run Integration Tests
-        run: python -m unittest test/Integration/test_*.py
+        run:
+          python -m unittest test/Integration/test_*.py
         env:
           LOB_API_TEST_KEY: ${{ secrets.LOB_API_TEST_KEY }}
           LOB_API_LIVE_KEY: ${{ secrets.LOB_API_LIVE_KEY }}
       - name: Run Unit Tests
-        run: python -m unittest test/Unit/test_*.py
+        run:
+          python -m unittest test/Unit/test_*.py
         env:
           LOB_API_TEST_KEY: ${{ secrets.LOB_API_TEST_KEY }}
           LOB_API_LIVE_KEY: ${{ secrets.LOB_API_LIVE_KEY }}
