@@ -99,7 +99,7 @@ class CreativeWritable(ModelNormal):
             'campaign_id': (str,),  # noqa: E501
             'description': (str, type(None)),  # noqa: E501
             'metadata': (MetadataModel, type(None)),  # noqa: E501
-            'details': (, PostcardDetailsWritable, type(None)),  # noqa: E501
+            'details': (PostcardDetailsWritable, type(None)),  # noqa: E501
             'file': (str, type(None)),  # noqa: E501
             'front': (str, type(None)),  # noqa: E501
             'back': (str, type(None)),  # noqa: E501
@@ -170,7 +170,7 @@ class CreativeWritable(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             description (str, type(None)): [optional] # noqa: E501
             metadata (MetadataModel, type(None)): [optional] # noqa: E501
-            details (, PostcardDetailsWritable, type(None)): Either PostcardDetailsWritable or LetterDetailsWritable. [optional]  # noqa: E501
+            details (PostcardDetailsWritable, type(None)): Either PostcardDetailsWritable or LetterDetailsWritable. [optional]  # noqa: E501
             file (str, type(None)): PDF file containing the letter's formatting. Do not include for resource_type = postcard.. [optional] # noqa: E501
             front (str, type(None)): The artwork to use as the front of your postcard. Do not include for resource_type = letter. . [optional] # noqa: E501
             back (str, type(None)): The artwork to use as the back of your postcard. Do not include for resource_type = letter. . [optional] # noqa: E501
@@ -265,7 +265,7 @@ class CreativeWritable(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             description (str, type(None)): [optional] # noqa: E501
             metadata (MetadataModel, type(None)): [optional] # noqa: E501
-            details (, PostcardDetailsWritable, type(None)): Either PostcardDetailsWritable or LetterDetailsWritable. [optional]  # noqa: E501
+            details (PostcardDetailsWritable, type(None)): Either PostcardDetailsWritable or LetterDetailsWritable. [optional]  # noqa: E501
             file (str, type(None)): PDF file containing the letter's formatting. Do not include for resource_type = postcard.. [optional] # noqa: E501
             front (str, type(None)): The artwork to use as the front of your postcard. Do not include for resource_type = letter. . [optional] # noqa: E501
             back (str, type(None)): The artwork to use as the back of your postcard. Do not include for resource_type = letter. . [optional] # noqa: E501
