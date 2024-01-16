@@ -1567,7 +1567,7 @@ with ApiClient(configuration) as api_client:
   api = UsVerificationsApi(api_client)
 
 verification_data_0 = MultipleComponents(
-  primary_line = "2261 Market Street,
+  primary_line = "2261 Market Street",
   city = "San Francisco",
   state = "CA",
   zip_code = "94114",
