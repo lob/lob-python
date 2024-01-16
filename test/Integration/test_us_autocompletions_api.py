@@ -32,7 +32,7 @@ class TestUsAutocompletionsApi(unittest.TestCase):
         with lob_python.ApiClient(self.configuration) as self.api_client:
             self.api = UsAutocompletionsApi(self.api_client)  # noqa: E501
         self.valid_address = UsAutocompletionsWritable(
-            address_prefix = "2261 MARKET",
+            address_prefix = "2261 MARKET ST",
             city = "SAN FRANCISCO",
         )
 
@@ -81,7 +81,7 @@ class TestUsAutocompletionsApi(unittest.TestCase):
         autocomplete  # noqa: E501
         """
         error_address = UsAutocompletionsWritable(
-            address_prefix = "2261 MARKET",
+            address_prefix = "2261 MARKET ST",
             city = "SAN FRANCISCO",
             state = "CA",
             zip_code = "94114",
