@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**address** | **str** | The entire address in one string (e.g., \&quot;210 King Street 94107\&quot;). _Does not support a recipient and will error when other payload parameters are provided._  | [optional] 
+**address** | **str** | The entire address in one string (e.g., \&quot;2261 Market Street 94114\&quot;). _Does not support a recipient and will error when other payload parameters are provided._  | [optional] 
 **recipient** | [**Recipient**](Recipient.md) |  | [optional] 
 **primary_line** | [**PrimaryLineUs**](PrimaryLineUs.md) |  | [optional] 
 **secondary_line** | [**SecondaryLine**](SecondaryLine.md) |  | [optional] 
