@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **deliverability_analysis** | [**DeliverabilityAnalysis**](DeliverabilityAnalysis.md) |  | [optional] 
 **lob_confidence_score** | [**LobConfidenceScore**](LobConfidenceScore.md) |  | [optional] 
 **object** | **str** |  | [optional]  if omitted the server will use the default value of "us_verification"
+**transient_id** | **str** | ID that is returned in the response body for the verification  | [optional] 
 **error** | [**BulkError**](BulkError.md) |  | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 

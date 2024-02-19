@@ -108,6 +108,7 @@ class UsVerificationsWritable(ModelNormal):
             'city': (str, type(None)),  # noqa: E501
             'state': (str, type(None)),  # noqa: E501
             'zip_code': (str, type(None)),  # noqa: E501
+            'transient_id': (str, type(None)),  # noqa: E501
         }
 
     @cached_property
@@ -124,6 +125,7 @@ class UsVerificationsWritable(ModelNormal):
         'city': 'city',  # noqa: E501
         'state': 'state',  # noqa: E501
         'zip_code': 'zip_code',  # noqa: E501
+        'transient_id': 'transient_id',  # noqa: E501
     }
 
     read_only_vars = {
@@ -175,6 +177,7 @@ class UsVerificationsWritable(ModelNormal):
             city (str, type(None)): [optional] # noqa: E501
             state (str, type(None)): The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2:US) two letter code or subdivision name for the state. `city` and `state` are required if no `zip_code` is passed.. [optional] # noqa: E501
             zip_code (str, type(None)): [optional] # noqa: E501
+            transient_id (str, type(None)): ID that is returned in the response body for the verification . [optional] # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -264,6 +267,7 @@ class UsVerificationsWritable(ModelNormal):
             city (str, type(None)): [optional] # noqa: E501
             state (str, type(None)): The [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2:US) two letter code or subdivision name for the state. `city` and `state` are required if no `zip_code` is passed.. [optional] # noqa: E501
             zip_code (str, type(None)): [optional] # noqa: E501
+            transient_id (str, type(None)): ID that is returned in the response body for the verification . [optional] # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

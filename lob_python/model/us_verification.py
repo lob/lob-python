@@ -120,6 +120,7 @@ class UsVerification(ModelNormal):
             'deliverability_analysis': (DeliverabilityAnalysis, type(None)),  # noqa: E501
             'lob_confidence_score': (LobConfidenceScore, type(None)),  # noqa: E501
             'object': (str, type(None)),  # noqa: E501
+            'transient_id': (str, type(None)),  # noqa: E501
         }
 
     @cached_property
@@ -140,6 +141,7 @@ class UsVerification(ModelNormal):
         'deliverability_analysis': 'deliverability_analysis',  # noqa: E501
         'lob_confidence_score': 'lob_confidence_score',  # noqa: E501
         'object': 'object',  # noqa: E501
+        'transient_id': 'transient_id',  # noqa: E501
     }
 
     read_only_vars = {
@@ -195,6 +197,7 @@ class UsVerification(ModelNormal):
             deliverability_analysis (DeliverabilityAnalysis, type(None)): [optional] # noqa: E501
             lob_confidence_score (LobConfidenceScore, type(None)): [optional] # noqa: E501
             object (str, type(None)): [optional] if omitted the server will use the default value of "us_verification" # noqa: E501
+            transient_id (str, type(None)): ID that is returned in the response body for the verification . [optional] # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -288,6 +291,7 @@ class UsVerification(ModelNormal):
             deliverability_analysis (DeliverabilityAnalysis, type(None)): [optional] # noqa: E501
             lob_confidence_score (LobConfidenceScore, type(None)): [optional] # noqa: E501
             object (str, type(None)): [optional] if omitted the server will use the default value of "us_verification" # noqa: E501
+            transient_id (str, type(None)): ID that is returned in the response body for the verification . [optional] # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
