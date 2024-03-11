@@ -96,11 +96,7 @@ class Letter(ModelNormal):
         },
     }
 
-    validations = {
-        ('tracking_events',): {
-            'max_items': 0,
-        },
-    }
+    validations = {}
 
     @cached_property
     def additional_properties_type():
