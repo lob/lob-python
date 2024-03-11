@@ -96,7 +96,18 @@ class Letter(ModelNormal):
         },
     }
 
-    validations = {}
+    validations = {
+        ('file_template_id',): {
+            'regex': {
+                'pattern': r'^tmpl_[a-zA-Z0-9]+$',  # noqa: E501
+            },
+        },
+        ('file_template_version_id',): {
+            'regex': {
+                'pattern': r'^vrsn_[a-zA-Z0-9]+$',  # noqa: E501
+            },
+        },
+    }
 
     @cached_property
     def additional_properties_type():
