@@ -97,8 +97,15 @@ class Letter(ModelNormal):
     }
 
     validations = {
-        ('tracking_events',): {
-            'max_items': 0,
+        ('template_id',): {
+            'regex': {
+                'pattern': r'^tmpl_[a-zA-Z0-9]+$',  # noqa: E501
+            },
+        },
+        ('template_version_id',): {
+            'regex': {
+                'pattern': r'^vrsn_[a-zA-Z0-9]+$',  # noqa: E501
+            },
         },
     }
 
