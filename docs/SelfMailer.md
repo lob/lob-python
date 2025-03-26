@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **id** | [**SfmId**](SfmId.md) |  | 
 **to** | **bool, date, datetime, dict, float, int, list, str, none_type** |  | 
 **url** | [**SignedLink**](SignedLink.md) |  | 
+**use_type** | [**SfmUseType**](SfmUseType.md) |  | 
 **_from** | **bool, date, datetime, dict, float, int, list, str, none_type** |  | [optional] 
 **size** | [**SelfMailerSize**](SelfMailerSize.md) |  | [optional] 
 **description** | [**ResourceDescription**](ResourceDescription.md) |  | [optional] 

@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **url** | [**SignedLink**](SignedLink.md) |  | 
 **date_created** | **datetime** | A timestamp in ISO 8601 format of the date the resource was created. | 
 **date_modified** | **datetime** | A timestamp in ISO 8601 format of the date the resource was last modified. | 
+**use_type** | [**ChkUseType**](ChkUseType.md) |  | 
 **carrier** | **str** |  | defaults to "USPS"
 **object** | **str** |  | defaults to "check"
 **_from** | [**Address**](Address.md) |  | [optional] 

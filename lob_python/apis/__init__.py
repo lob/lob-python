@@ -31,6 +31,7 @@ from lob_python.api.letters_api import LettersApi
 from lob_python.api.postcards_api import PostcardsApi
 from lob_python.api.reverse_geocode_lookups_api import ReverseGeocodeLookupsApi
 from lob_python.api.self_mailers_api import SelfMailersApi
+from lob_python.api.snap_packs_api import SnapPacksApi
 from lob_python.api.template_versions_api import TemplateVersionsApi
 from lob_python.api.templates_api import TemplatesApi
 from lob_python.api.uploads_api import UploadsApi

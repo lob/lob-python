@@ -97,16 +97,6 @@ class Letter(ModelNormal):
     }
 
     validations = {
-        ('template_id',): {
-            'regex': {
-                'pattern': r'^tmpl_[a-zA-Z0-9]+$',  # noqa: E501
-            },
-        },
-        ('template_version_id',): {
-            'regex': {
-                'pattern': r'^vrsn_[a-zA-Z0-9]+$',  # noqa: E501
-            },
-        },
     }
 
     @cached_property

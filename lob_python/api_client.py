@@ -77,7 +77,7 @@ class ApiClient(object):
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'OpenAPI-Generator/1.0.0/python'
+        self.user_agent = 'lob-python/1.0.0'
 
     def __enter__(self):
         return self
@@ -143,6 +143,8 @@ class ApiClient(object):
         header_params.update(self.default_headers)
         if self.cookie:
             header_params['Cookie'] = self.cookie
+        if self.user_agent:
+            header_params['User-Agent'] = self.user_agent
         if header_params:
             header_params = self.sanitize_for_serialization(header_params)
             header_params = dict(self.parameters_to_tuples(header_params,

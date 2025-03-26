@@ -5,9 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **color** | **bool** | Set this key to &#x60;true&#x60; if you would like to print in color. Set to &#x60;false&#x60; if you would like to print in black and white. | 
-**to** | **str** | Must either be an address ID or an inline object with correct address parameters. | 
-**_from** | **str** | Must either be an address ID or an inline object with correct address parameters. | 
+**to** | **bool, date, datetime, dict, float, int, list, str, none_type** | Must either be an address ID or an inline object with correct address parameters. | 
+**_from** | **bool, date, datetime, dict, float, int, list, str, none_type** | Must either be an address ID or an inline object with correct address parameters. | 
 **file** | **str** | PDF file containing the letter&#39;s formatting. | 
+**use_type** | [**LtrUseType**](LtrUseType.md) |  | 
 **description** | [**ResourceDescription**](ResourceDescription.md) |  | [optional] 
 **metadata** | [**MetadataModel**](MetadataModel.md) |  | [optional] 
 **mail_type** | [**MailType**](MailType.md) |  | [optional] 
@@ -21,6 +22,7 @@ Name | Type | Description | Notes
 **extra_service** | **str, none_type** | Add an extra service to your letter:   * &#x60;certified&#x60; - track and confirm delivery for domestic destinations. An extra sheet (1 PDF page single-sided or 2 PDF pages double-sided) is added to the beginning of your letter for address and barcode information. See here for templates: [#10 envelope](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_certified_template.pdf) and [flat envelope](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_certified_flat_template.pdf) (used for letters over 6 pages single-sided or 12 pages double-sided). You will not be charged for this extra sheet.   * &#x60;certified_return_receipt&#x60; - request an electronic copy of the recipient&#39;s signature to prove delivery of your certified letter   * &#x60;registered&#x60; - provides tracking and confirmation for international addresses  | [optional] 
 **cards** | [**[CardId], none_type**](CardId.md) | A single-element array containing an existing card id in a string format. See [cards](#tag/Cards) for more information. | [optional] 
 **billing_group_id** | **str** | An optional string with the billing group ID to tag your usage with. Is used for billing purposes. Requires special activation to use. See [Billing Group API](https://lob.github.io/lob-openapi/#tag/Billing-Groups) for more information. | [optional] 
+**qr_code** | [**QrCode**](QrCode.md) |  | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

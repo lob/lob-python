@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **date_modified** | **datetime** | A timestamp in ISO 8601 format of the date the resource was last modified. | 
 **id** | [**LtrId**](LtrId.md) |  | 
 **return_envelope** | **bool, date, datetime, dict, float, int, list, str, none_type** |  | 
+**use_type** | [**LtrUseType**](LtrUseType.md) |  | 
 **object** | **str** |  | defaults to "letter"
 **carrier** | **str** |  | [optional]  if omitted the server will use the default value of "USPS"
 **thumbnails** | [**[Thumbnail]**](Thumbnail.md) |  | [optional] 
@@ -17,6 +18,7 @@ Name | Type | Description | Notes
 **deleted** | **bool** | Only returned if the resource has been successfully deleted. | [optional] 
 **template_id** | [**TmplId**](TmplId.md) |  | [optional] 
 **template_version_id** | [**VrsnId**](VrsnId.md) |  | [optional] 
+**url** | [**SignedLink**](SignedLink.md) |  | [optional] 
 **description** | [**ResourceDescription**](ResourceDescription.md) |  | [optional] 
 **metadata** | [**MetadataModel**](MetadataModel.md) |  | [optional] 
 **merge_variables** | [**MergeVariables**](MergeVariables.md) |  | [optional] 
@@ -24,13 +26,14 @@ Name | Type | Description | Notes
 **extra_service** | **str** | Add an extra service to your letter. See [pricing](https://www.lob.com/pricing/print-mail#compare) for extra costs incurred. | [optional] 
 **tracking_number** | **str, none_type** | The tracking number, if applicable, will appear here when it becomes available. Dummy tracking numbers are not created in test mode. | [optional] 
 **tracking_events** | [**[TrackingEventNormal]**](TrackingEventNormal.md) | An array of tracking_event objects ordered by ascending &#x60;time&#x60;. Will not be populated for letters created in test mode. | [optional] 
-**return_address** | **str** | Specifies the address the return envelope will be sent back to. This is an optional argument that is available if an account is signed up for the return envelope tracking beta, and has &#x60;return_envelope&#x60;, and &#x60;perforated_page&#x60; fields populated in the API request. | [optional] 
+**return_address** | **bool, date, datetime, dict, float, int, list, str, none_type** | Specifies the address the return envelope will be sent back to. This is an optional argument that is available if an account is signed up for the return envelope tracking beta, and has &#x60;return_envelope&#x60;, and &#x60;perforated_page&#x60; fields populated in the API request. | [optional] 
 **mail_type** | [**MailType**](MailType.md) |  | [optional] 
 **color** | **bool** | Set this key to &#x60;true&#x60; if you would like to print in color. Set to &#x60;false&#x60; if you would like to print in black and white. | [optional] 
 **double_sided** | **bool** | Set this attribute to &#x60;true&#x60; for double sided printing, or &#x60;false&#x60; for for single sided printing. Defaults to &#x60;true&#x60;. | [optional]  if omitted the server will use the default value of True
 **address_placement** | **str** | Specifies the location of the address information that will show through the double-window envelope.  | [optional]  if omitted the server will use the default value of "top_first_page"
 **perforated_page** | **int, none_type** | Required if &#x60;return_envelope&#x60; is &#x60;true&#x60;. The number of the page that should be perforated for use with the return envelope. Must be greater than or equal to &#x60;1&#x60;. The blank page added by &#x60;address_placement&#x3D;insert_blank_page&#x60; will be ignored when considering the perforated page number. To see how perforation will impact your letter design, view our [perforation guide](https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_perf_template.pdf). | [optional] 
 **custom_envelope** | [**LetterCustomEnvelope**](LetterCustomEnvelope.md) |  | [optional] 
+**campaign_id** | **str, none_type** | The unique ID of the associated campaign if the resource was generated from a campaign. | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

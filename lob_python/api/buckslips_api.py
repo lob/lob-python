@@ -30,6 +30,7 @@ from lob_python.model.buckslip_updatable import BuckslipUpdatable
 from lob_python.model.buckslips_list import BuckslipsList
 from lob_python.model.include_model import IncludeModel
 from lob_python.model.lob_error import LobError
+from lob_python.model.str_bool_date_datetime_dict_float_int_list_str_none_type import StrBoolDateDatetimeDictFloatIntListStrNoneType
 
 
 class BuckslipsApi(object):
@@ -57,6 +58,7 @@ class BuckslipsApi(object):
             params_map={
                 'all': [
                     'buckslip_editable',
+                    'front',
                 ],
                 'required': [
                     'buckslip_editable',
@@ -76,11 +78,15 @@ class BuckslipsApi(object):
                 'openapi_types': {
                     'buckslip_editable':
                         (BuckslipEditable,),
+                    'front':
+                        ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),
                 },
                 'attribute_map': {
+                    'front': 'front',
                 },
                 'location_map': {
                     'buckslip_editable': 'body',
+                    'front': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -348,6 +354,7 @@ class BuckslipsApi(object):
             buckslip_editable (BuckslipEditable):
 
         Keyword Args:
+            front ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): An optional file upload as either a byte array or file type. . [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object

@@ -99,6 +99,7 @@ class Upload(ModelNormal):
             'id': (str,),  # noqa: E501
             'account_id': (str,),  # noqa: E501
             'mode': (str,),  # noqa: E501
+            'campaign_id': (str,),  # noqa: E501
             'state': (UploadState,),  # noqa: E501
             'total_mailpieces': (int,),  # noqa: E501
             'failed_mailpieces': (int,),  # noqa: E501
@@ -123,6 +124,7 @@ class Upload(ModelNormal):
         'id': 'id',  # noqa: E501
         'account_id': 'accountId',  # noqa: E501
         'mode': 'mode',  # noqa: E501
+        'campaign_id': 'campaignId',  # noqa: E501
         'state': 'state',  # noqa: E501
         'total_mailpieces': 'totalMailpieces',  # noqa: E501
         'failed_mailpieces': 'failedMailpieces',  # noqa: E501
@@ -145,13 +147,14 @@ class Upload(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, account_id, mode, state, total_mailpieces, failed_mailpieces, validated_mailpieces, bytes_processed, date_created, date_modified, required_address_column_mapping, optional_address_column_mapping, metadata, merge_variable_column_mapping, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, account_id, mode, campaign_id, state, total_mailpieces, failed_mailpieces, validated_mailpieces, bytes_processed, date_created, date_modified, required_address_column_mapping, optional_address_column_mapping, metadata, merge_variable_column_mapping, *args, **kwargs):  # noqa: E501
         """Upload - a model defined in OpenAPI
 
         Args:
             id (str):
             account_id (str): Account ID that made the request
             mode (str): The environment in which the mailpieces were created. Today, will only be `live`.
+            campaign_id (str): Campaign ID associated with the upload
             state (UploadState):
             total_mailpieces (int): Total number of recipients for the campaign
             failed_mailpieces (int): Number of mailpieces that failed to create
@@ -227,6 +230,7 @@ class Upload(ModelNormal):
         self.id = id
         self.account_id = account_id
         self.mode = mode
+        self.campaign_id = campaign_id
         self.state = state
         self.total_mailpieces = total_mailpieces
         self.failed_mailpieces = failed_mailpieces
@@ -258,13 +262,14 @@ class Upload(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, account_id, mode, state, total_mailpieces, failed_mailpieces, validated_mailpieces, bytes_processed, date_created, date_modified, required_address_column_mapping, optional_address_column_mapping, metadata, merge_variable_column_mapping, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, account_id, mode, campaign_id, state, total_mailpieces, failed_mailpieces, validated_mailpieces, bytes_processed, date_created, date_modified, required_address_column_mapping, optional_address_column_mapping, metadata, merge_variable_column_mapping, *args, **kwargs):  # noqa: E501
         """Upload - a model defined in OpenAPI
 
         Args:
             id (UplId):
             account_id (str): Account ID that made the request
             mode (str): The environment in which the mailpieces were created. Today, will only be `live`.
+            campaign_id (str): Campaign ID associated with the upload
             state (UploadState):
             total_mailpieces (int): Total number of recipients for the campaign
             failed_mailpieces (int): Number of mailpieces that failed to create
@@ -338,6 +343,7 @@ class Upload(ModelNormal):
         self.id = id
         self.account_id = account_id
         self.mode = mode
+        self.campaign_id = campaign_id
         self.state = state
         self.total_mailpieces = total_mailpieces
         self.failed_mailpieces = failed_mailpieces

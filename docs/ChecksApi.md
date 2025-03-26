@@ -132,8 +132,8 @@ with lob_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = checks_api.ChecksApi(api_client)
     check_editable = CheckEditable(
-        _from="_from_example",
-        to="to_example",
+        _from=None,
+        to=None,
         bank_account="bank_account_example",
         amount=3.14,
         logo="logo_example",
@@ -150,6 +150,7 @@ with lob_python.ApiClient(configuration) as api_client:
         check_number=1,
         message="message_example",
         billing_group_id="billing_group_id_example",
+        use_type=ChkUseType("marketing"),
     ) # CheckEditable | 
     idempotency_key = "Idempotency-Key_example" # str | A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request).  (optional)
 
@@ -298,8 +299,8 @@ Returns a list of your checks. The checks are returned sorted by creation date, 
 import time
 import lob_python
 from lob_python.api import checks_api
-from lob_python.model.sort_by5 import SortBy5
 from lob_python.model.include_model import IncludeModel
+from lob_python.model.sort_by4 import SortBy4
 from lob_python.model.check_list import CheckList
 from lob_python.model.metadata_model import MetadataModel
 from lob_python.model.lob_error import LobError
@@ -346,7 +347,7 @@ with lob_python.ApiClient(configuration) as api_client:
     sort_by = {
         date_created="asc",
         send_date="asc",
-    } # SortBy5 | Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both.  (optional)
+    } # SortBy4 | Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both.  (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values
@@ -372,7 +373,7 @@ Name | Type | Description  | Notes
  **scheduled** | **bool**| * &#x60;true&#x60; - only return orders (past or future) where &#x60;send_date&#x60; is greater than &#x60;date_created&#x60; * &#x60;false&#x60; - only return orders where &#x60;send_date&#x60; is equal to &#x60;date_created&#x60;  | [optional]
  **send_date** | **{str: (str,)}**| Filter by date sent. | [optional]
  **mail_type** | **MailType**| A string designating the mail postage type: * &#x60;usps_first_class&#x60; - (default) * &#x60;usps_standard&#x60; - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. &#x60;usps_standard&#x60; cannot be used with &#x60;4x6&#x60; postcards or for any postcards sent outside of the United States.  | [optional]
- **sort_by** | **SortBy5**| Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  | [optional]
+ **sort_by** | **SortBy4**| Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  | [optional]
 
 ### Return type
 

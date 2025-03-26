@@ -52,7 +52,7 @@ with lob_python.ApiClient(configuration) as api_client:
         city="city_example",
         state="state_example",
         zip_code="zip_code_example",
-        country=CountryExtended("AD"),
+        country=CountryExtended(""),
     ) # IntlAutocompletionsWritable | 
     x_lang_output = "native" # str | * `native` - Translate response to the native language of the country in the request * `match` - match the response to the language in the request  Default response is in English.  (optional)
 

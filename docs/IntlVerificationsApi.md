@@ -57,7 +57,7 @@ with lob_python.ApiClient(configuration) as api_client:
                 city=City("city_example"),
                 state="state_example",
                 postal_code=PostalCode("postal_code_example"),
-                country=CountryExtended("AD"),
+                country=CountryExtended(""),
             ),
         ],
     ) # IntlVerificationsPayload | 
@@ -148,7 +148,7 @@ with lob_python.ApiClient(configuration) as api_client:
         city=City("city_example"),
         state="state_example",
         postal_code=PostalCode("postal_code_example"),
-        country=CountryExtended("AD"),
+        country=CountryExtended(""),
         address="address_example",
     ) # IntlVerificationWritable | 
     x_lang_output = "native" # str | * `native` - Translate response to the native language of the country in the request * `match` - match the response to the language in the request  Default response is in English.  (optional)

@@ -6,9 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Name of the campaign. | 
 **schedule_type** | [**CmpScheduleType**](CmpScheduleType.md) |  | 
+**use_type** | [**CmpUseType**](CmpUseType.md) |  | 
 **auto_cancel_if_ncoa** | **bool** | Whether or not a mail piece should be automatically canceled and not sent if the address is updated via NCOA. | 
 **id** | [**CmpId**](CmpId.md) |  | 
-**creatives** | **list** | An array of creatives that have been associated with this campaign. | 
+**creatives** | [**[CampaignCreative]**](CampaignCreative.md) | An array of creatives that have been associated with this campaign. | 
 **date_created** | **datetime** | A timestamp in ISO 8601 format of the date the resource was created. | 
 **date_modified** | **datetime** | A timestamp in ISO 8601 format of the date the resource was last modified. | 
 **is_draft** | **bool** | Whether or not the campaign is still a draft. | defaults to True
@@ -19,7 +20,6 @@ Name | Type | Description | Notes
 **send_date** | **datetime, none_type** | If &#x60;schedule_type&#x60; is &#x60;scheduled_send_date&#x60;, provide a date to send this campaign. | [optional] 
 **cancel_window_campaign_minutes** | **int, none_type** | A window, in minutes, within which the campaign can be canceled. | [optional] 
 **metadata** | [**MetadataModel**](MetadataModel.md) |  | [optional] 
-**use_type** | [**CmpUseType**](CmpUseType.md) |  | [optional] 
 **account_id** | **str** | Account ID that this campaign is associated with. | [optional] 
 **deleted** | **bool** | Only returned if the resource has been successfully deleted. | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]

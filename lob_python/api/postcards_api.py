@@ -32,7 +32,7 @@ from lob_python.model.postcard_editable import PostcardEditable
 from lob_python.model.postcard_list import PostcardList
 from lob_python.model.postcard_size import PostcardSize
 from lob_python.model.psc_id import PscId
-from lob_python.model.sort_by3 import SortBy3
+from lob_python.model.sort_by4 import SortBy4
 
 
 class PostcardsApi(object):
@@ -277,7 +277,7 @@ class PostcardsApi(object):
                     'mail_type':
                         (MailType,),
                     'sort_by':
-                        (SortBy3,),
+                        (SortBy4,),
                 },
                 'attribute_map': {
                     'limit': 'limit',
@@ -578,7 +578,7 @@ class PostcardsApi(object):
             scheduled (bool): * `true` - only return orders (past or future) where `send_date` is greater than `date_created` * `false` - only return orders where `send_date` is equal to `date_created` . [optional]
             send_date ({str: (str,)}): Filter by date sent.. [optional]
             mail_type (MailType): A string designating the mail postage type: * `usps_first_class` - (default) * `usps_standard` - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. `usps_standard` cannot be used with `4x6` postcards or for any postcards sent outside of the United States. . [optional]
-            sort_by (SortBy3): Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both. . [optional]
+            sort_by (SortBy4): Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both. . [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object

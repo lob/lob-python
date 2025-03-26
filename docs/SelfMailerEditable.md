@@ -4,10 +4,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**to** | **str** | Must either be an address ID or an inline object with correct address parameters. | 
+**to** | **bool, date, datetime, dict, float, int, list, str, none_type** | Must either be an address ID or an inline object with correct address parameters. | 
 **inside** | **str** | The artwork to use as the inside of your self mailer.  | 
 **outside** | **str** | The artwork to use as the outside of your self mailer.  | 
-**_from** | **str** | Must either be an address ID or an inline object with correct address parameters. | [optional] 
+**use_type** | [**SfmUseType**](SfmUseType.md) |  | 
+**_from** | **bool, date, datetime, dict, float, int, list, str, none_type** | Must either be an address ID or an inline object with correct address parameters. | [optional] 
 **size** | [**SelfMailerSize**](SelfMailerSize.md) |  | [optional] 
 **description** | [**ResourceDescription**](ResourceDescription.md) |  | [optional] 
 **metadata** | [**MetadataModel**](MetadataModel.md) |  | [optional] 

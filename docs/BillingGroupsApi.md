@@ -277,7 +277,7 @@ Returns a list of your billing_groups. The billing_groups are returned sorted by
 import time
 import lob_python
 from lob_python.api import billing_groups_api
-from lob_python.model.sort_by5 import SortBy5
+from lob_python.model.sort_by_date_modified import SortByDateModified
 from lob_python.model.include_model import IncludeModel
 from lob_python.model.billing_group_list import BillingGroupList
 from lob_python.model.lob_error import LobError
@@ -314,16 +314,16 @@ with lob_python.ApiClient(configuration) as api_client:
     date_modified = {
         "key": "key_example",
     } # {str: (str,)} | Filter by date modified. (optional)
-    sort_by = {
+    sort_by_date_modified = {
         date_created="asc",
-        send_date="asc",
-    } # SortBy5 | Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both.  (optional)
+        date_modified="asc",
+    } # SortByDateModified | Sorts items by ascending or descending dates. Use either `date_created` or `date_modfied`, not both.  (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
         # list
-        api_response = api_instance.list(limit=limit, offset=offset, include=include, date_created=date_created, date_modified=date_modified, sort_by=sort_by)
+        api_response = api_instance.list(limit=limit, offset=offset, include=include, date_created=date_created, date_modified=date_modified, sort_by_date_modified=sort_by_date_modified)
         pprint(api_response)
     except lob_python.ApiException as e:
         print("Exception when calling BillingGroupsApi->list: %s\n" % e)
@@ -339,7 +339,7 @@ Name | Type | Description  | Notes
  **include** | **IncludeModel**| Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  | [optional]
  **date_created** | **{str: (datetime,)}**| Filter by date created. | [optional]
  **date_modified** | **{str: (str,)}**| Filter by date modified. | [optional]
- **sort_by** | **SortBy5**| Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  | [optional]
+ **sort_by_date_modified** | **SortByDateModified**| Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;date_modfied&#x60;, not both.  | [optional]
 
 ### Return type
 

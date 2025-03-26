@@ -2,25 +2,6 @@
 
 ## Address Api
 
-### Retrieve
-```bash
-curl https://api.lob.com/v1/addresses/adr_fa85158b26c3eb7c \
-  -u test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc:
-```
-
-```python
-with ApiClient(configuration) as api_client:
-  api = AddressesApi(api_client)
-
-try:
-  address = api.get("adr_fa85158b26c3eb7c")
-except ApiException as e:
-  print(e)
-```
-
-
-
-
 
 
 
@@ -56,7 +37,7 @@ address_editable = AddressEditable(
   email = "harry@lob.com",
   phone = "5555555555",
   address_line1 = "2261 Market Street",
-  address_line2 = "Ste 5668",
+  address_line2 = "STE 5668",
   address_city = "San Francisco",
   address_state = "CA",
   address_zip = "94114",
@@ -93,6 +74,21 @@ except ApiException as e:
 ```
 
 
+### Retrieve
+```bash
+curl https://api.lob.com/v1/addresses/adr_fa85158b26c3eb7c \
+  -u test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc:
+```
+
+```python
+with ApiClient(configuration) as api_client:
+  api = AddressesApi(api_client)
+
+try:
+  address = api.get("adr_fa85158b26c3eb7c")
+except ApiException as e:
+  print(e)
+```
 
 
 
@@ -119,6 +115,29 @@ except ApiException as e:
 
 
 
+
+
+
+
+
+
+
+
+### Retrieve
+```bash
+curl https://api.lob.com/v1/addresses/adr_fa85158b26c3eb7c \
+  -u test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc:
+```
+
+```python
+with ApiClient(configuration) as api_client:
+  api = AddressesApi(api_client)
+
+try:
+  address = api.get("adr_fa85158b26c3eb7c")
+except ApiException as e:
+  print(e)
+```
 
 
 
@@ -190,7 +209,7 @@ postcard_editable = PostcardEditable(
   to = AddressEditable(
     name = "Harry Zhang",
     address_line1 = "2261 Market Street",
-    address_line2 = "Ste 5668",
+    address_line2 = "STE 5668",
     address_city = "San Francisco",
     address_state = "CA",
     address_zip = "94114",
@@ -287,7 +306,7 @@ self_mailer_editable = SelfMailerEditable(
   to = AddressEditable(
     name = "Harry Zhang",
     address_line1 = "2261 Market Street",
-    address_line2 = "Ste 5668",
+    address_line2 = "STE 5668",
     address_city = "San Francisco",
     address_state = "CA",
     address_zip = "94114",
@@ -384,7 +403,7 @@ letter_editable = LetterEditable(
   to = AddressEditable(
     name = "Harry Zhang",
     address_line1 = "2261 Market Street",
-    address_line2 = "Ste 5668",
+    address_line2 = "STE 5668",
     address_city = "San Francisco",
     address_state = "CA",
     address_zip = "94114",
@@ -487,7 +506,7 @@ check_editable = CheckEditable(
   to = AddressDomestic(
     name = "Harry Zhang",
     address_line1 = "2261 Market Street",
-    address_line2 = "Ste 5668",
+    address_line2 = "STE 5668",
     address_city = "San Francisco",
     address_state = "CA",
     address_zip = "94114",
@@ -1134,6 +1153,26 @@ except ApiException as e:
 
 
 
+### Delete
+```bash
+curl -X DELETE "https://api.lob.com/v1/campaigns/cmp_e05ee61ff80764b" \
+  -u test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc:
+```
+
+```python
+with ApiClient(configuration) as api_client:
+  api = CampaignsApi(api_client)
+
+try:
+  deleted_resource = api.delete("cmp_e05ee61ff80764b")
+except ApiException as e:
+  print(e)
+```
+
+
+
+
+
 
 ### Update
 ```bash
@@ -1200,26 +1239,6 @@ except ApiException as e:
   print(e)
 ```
 
-
-
-
-
-
-### Delete
-```bash
-curl -X DELETE "https://api.lob.com/v1/campaigns/cmp_e05ee61ff80764b" \
-  -u test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc:
-```
-
-```python
-with ApiClient(configuration) as api_client:
-  api = CampaignsApi(api_client)
-
-try:
-  deleted_resource = api.delete("cmp_e05ee61ff80764b")
-except ApiException as e:
-  print(e)
-```
 
 
 ## Creatives Api
@@ -1411,12 +1430,17 @@ except ApiException as e:
 ```bash
 curl -X PATCH https://api.lob.com/v1/upl_71be866e430b11e9 \
   -u test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc: \
-  -d "state=Ready for Validation" \
 ```
 
 ```python
 upload_updatable = UploadUpdatable(
-  state = UploadState("Ready for Validation"),
+  required_address_column_mapping = RequiredAddressColumnMapping(
+    name = "recipient",
+    address_line1 = "primary line",
+    address_city = "city",
+    address_state = "state",
+    address_zip = "zip_code",
+  ),
 )
 
 with ApiClient(configuration) as api_client:
@@ -1439,7 +1463,6 @@ curl --location --request POST https://api.lob.com/v1/uploads \
 ```python
 upload_writable = UploadWritable(
   campaign_id = "cmp_e05ee61ff80764b",
-  column_mapping = { "firstName": "first name" },
 )
 
 with ApiClient(configuration) as api_client:

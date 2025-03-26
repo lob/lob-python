@@ -117,7 +117,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete**
-> dict delete(cmp_id)
+> CampaignDeletion delete(cmp_id)
 
 delete
 
@@ -131,6 +131,7 @@ Delete an existing campaign. You need only supply the unique identifier that was
 import time
 import lob_python
 from lob_python.api import campaigns_api
+from lob_python.model.campaign_deletion import CampaignDeletion
 from lob_python.model.cmp_id import CmpId
 from lob_python.model.lob_error import LobError
 from pprint import pprint
@@ -175,7 +176,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**dict**
+[**CampaignDeletion**](CampaignDeletion.md)
 
 ### Authorization
 

@@ -58,6 +58,7 @@ with lob_python.ApiClient(configuration) as api_client:
                 city=City("city_example"),
                 state="state_example",
                 zip_code=ZipCode("04807"),
+                transient_id="transient_id_example",
             ),
         ],
     ) # MultipleComponentsList | 
@@ -161,6 +162,7 @@ with lob_python.ApiClient(configuration) as api_client:
         city=City("city_example"),
         state="state_example",
         zip_code=ZipCode("04807"),
+        transient_id="transient_id_example",
     ) # UsVerificationsWritable | 
     case = "upper" # str | Casing of the verified address. Possible values are `upper` and `proper` for uppercased (e.g. \"PO BOX\") and proper-cased (e.g. \"PO Box\"), respectively. (optional) if omitted the server will use the default value of "upper"
 

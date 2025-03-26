@@ -5,12 +5,13 @@ All URIs are relative to *https://api.lob.com/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_export**](UploadsApi.md#get_export) | **GET** /uploads/{upl_id}/exports/{ex_id} | get_export
-[**create_upload**](UploadsApi.md#create_upload) | **POST** /uploads | create_upload
-[**delete_upload**](UploadsApi.md#delete_upload) | **DELETE** /uploads/{upl_id} | delete_upload
+[**get**](UploadsApi.md#get) | **GET** /uploads/{upl_id} | get
+[**create**](UploadsApi.md#create) | **POST** /uploads | create
+[**delete**](UploadsApi.md#delete) | **DELETE** /uploads/{upl_id} | delete
 [**create_export**](UploadsApi.md#create_export) | **POST** /uploads/{upl_id}/exports | create_export
-[**get_upload**](UploadsApi.md#get_upload) | **GET** /uploads/{upl_id} | get_upload
-[**update_upload**](UploadsApi.md#update_upload) | **PATCH** /uploads/{upl_id} | update_upload
-[**list_upload**](UploadsApi.md#list_upload) | **GET** /uploads | list_upload
+[**upload_file**](UploadsApi.md#upload_file) | **POST** /uploads/{upl_id}/file | upload_file
+[**update**](UploadsApi.md#update) | **PATCH** /uploads/{upl_id} | update
+[**list**](UploadsApi.md#list) | **GET** /uploads | list
 
 
 # **get_export**
@@ -95,10 +96,91 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **create_upload**
-> Upload create_upload(upload_writable)
+# **get**
+> Upload get(upl_id)
 
-create_upload
+get
+
+Retrieves the details of an existing upload. You need only supply the unique upload identifier that was returned upon upload creation.
+
+### Example
+
+* Basic Authentication (basicAuth):
+
+```python
+import time
+import lob_python
+from lob_python.api import uploads_api
+from lob_python.model.upload import Upload
+from lob_python.model.upl_id import UplId
+from lob_python.model.lob_error import LobError
+from pprint import pprint
+# Defining the host is optional and defaults to https://api.lob.com/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lob_python.Configuration(
+    host = "https://api.lob.com/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure HTTP basic authorization: basicAuth
+configuration = lob_python.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with lob_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = uploads_api.UploadsApi(api_client)
+    upl_id = UplId("upl_C") # UplId | id of the upload
+
+    # example passing only required values which don't have defaults set
+    try:
+        # get
+        api_response = api_instance.get(upl_id)
+        pprint(api_response)
+    except lob_python.ApiException as e:
+        print("Exception when calling UploadsApi->get: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **upl_id** | **UplId**| id of the upload |
+
+### Return type
+
+[**Upload**](Upload.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Returns an upload object |  -  |
+**0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create**
+> Upload create(upload_writable)
+
+create
 
 Creates a new upload with the provided properties.
 
@@ -136,17 +218,32 @@ with lob_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = uploads_api.UploadsApi(api_client)
     upload_writable = UploadWritable(
-        campaign_id=CmpId("cmp_C"),
-        column_mapping={},
+        campaign_id=,
+        required_address_column_mapping=RequiredAddressColumnMapping(
+            name="null",
+            address_line1="null",
+            address_city="null",
+            address_state="null",
+            address_zip="null",
+        ),
+        optional_address_column_mapping=OptionalAddressColumnMapping(
+            address_line2="null",
+            company="null",
+            address_country="null",
+        ),
+        metadata=UploadsMetadata(
+            columns=[],
+        ),
+        merge_variable_column_mapping={},
     ) # UploadWritable | 
 
     # example passing only required values which don't have defaults set
     try:
-        # create_upload
-        api_response = api_instance.create_upload(upload_writable)
+        # create
+        api_response = api_instance.create(upload_writable)
         pprint(api_response)
     except lob_python.ApiException as e:
-        print("Exception when calling UploadsApi->create_upload: %s\n" % e)
+        print("Exception when calling UploadsApi->create: %s\n" % e)
 ```
 
 
@@ -179,10 +276,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_upload**
-> delete_upload(upl_id)
+# **delete**
+> delete(upl_id)
 
-delete_upload
+delete
 
 Delete an existing upload. You need only supply the unique identifier that was returned upon upload creation.
 
@@ -222,10 +319,10 @@ with lob_python.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # delete_upload
-        api_instance.delete_upload(upl_id)
+        # delete
+        api_instance.delete(upl_id)
     except lob_python.ApiException as e:
-        print("Exception when calling UploadsApi->delete_upload: %s\n" % e)
+        print("Exception when calling UploadsApi->delete: %s\n" % e)
 ```
 
 
@@ -344,12 +441,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_upload**
-> Upload get_upload(upl_id)
+# **upload_file**
+> UploadFile upload_file(upl_id, file)
 
-get_upload
+upload_file
 
-Retrieves the details of an existing upload. You need only supply the unique upload identifier that was returned upon upload creation.
+Upload an [audience file](https://help.lob.com/best-practices/campaign-audience-guide) and associate it with an upload.
 
 ### Example
 
@@ -359,9 +456,9 @@ Retrieves the details of an existing upload. You need only supply the unique upl
 import time
 import lob_python
 from lob_python.api import uploads_api
-from lob_python.model.upload import Upload
+from lob_python.model.upload_file import UploadFile
+from lob_python.model.http_validation_error import HTTPValidationError
 from lob_python.model.upl_id import UplId
-from lob_python.model.lob_error import LobError
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.lob.com/v1
 # See configuration.py for a list of all supported configuration parameters.
@@ -384,15 +481,16 @@ configuration = lob_python.Configuration(
 with lob_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = uploads_api.UploadsApi(api_client)
-    upl_id = UplId("upl_C") # UplId | id of the upload
+    upl_id = UplId("upl_C") # UplId | ID of the upload
+    file = None # bool, date, datetime, dict, float, int, list, str, none_type | 
 
     # example passing only required values which don't have defaults set
     try:
-        # get_upload
-        api_response = api_instance.get_upload(upl_id)
+        # upload_file
+        api_response = api_instance.upload_file(upl_id, file)
         pprint(api_response)
     except lob_python.ApiException as e:
-        print("Exception when calling UploadsApi->get_upload: %s\n" % e)
+        print("Exception when calling UploadsApi->upload_file: %s\n" % e)
 ```
 
 
@@ -400,11 +498,12 @@ with lob_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **upl_id** | **UplId**| id of the upload |
+ **upl_id** | **UplId**| ID of the upload |
+ **file** | **bool, date, datetime, dict, float, int, list, str, none_type**|  |
 
 ### Return type
 
-[**Upload**](Upload.md)
+[**UploadFile**](UploadFile.md)
 
 ### Authorization
 
@@ -412,7 +511,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 
@@ -420,15 +519,15 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Returns an upload object |  -  |
-**0** | Lob uses RESTful HTTP response codes to indicate success or failure of an API request. |  -  |
+**202** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_upload**
-> Upload update_upload(upl_id, upload_updatable)
+# **update**
+> Upload update(upl_id, upload_updatable)
 
-update_upload
+update
 
 Update the details of an existing upload. You need only supply the unique identifier that was returned upon upload creation.
 
@@ -468,19 +567,32 @@ with lob_python.ApiClient(configuration) as api_client:
     api_instance = uploads_api.UploadsApi(api_client)
     upl_id = UplId("upl_C") # UplId | id of the upload
     upload_updatable = UploadUpdatable(
-        column_mapping={},
-        state=UploadState("Draft"),
         original_filename="original_filename_example",
-        overwrite_column_mapping=True,
+        required_address_column_mapping=RequiredAddressColumnMapping(
+            name="null",
+            address_line1="null",
+            address_city="null",
+            address_state="null",
+            address_zip="null",
+        ),
+        optional_address_column_mapping=OptionalAddressColumnMapping(
+            address_line2="null",
+            company="null",
+            address_country="null",
+        ),
+        metadata=UploadsMetadata(
+            columns=[],
+        ),
+        merge_variable_column_mapping={},
     ) # UploadUpdatable | 
 
     # example passing only required values which don't have defaults set
     try:
-        # update_upload
-        api_response = api_instance.update_upload(upl_id, upload_updatable)
+        # update
+        api_response = api_instance.update(upl_id, upload_updatable)
         pprint(api_response)
     except lob_python.ApiException as e:
-        print("Exception when calling UploadsApi->update_upload: %s\n" % e)
+        print("Exception when calling UploadsApi->update: %s\n" % e)
 ```
 
 
@@ -514,10 +626,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_upload**
-> UploadList list_upload()
+# **list**
+> UploadList list()
 
-list_upload
+list
 
 Returns a list of your uploads. Optionally, filter uploads by campaign.
 
@@ -558,11 +670,11 @@ with lob_python.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        # list_upload
-        api_response = api_instance.list_upload(campaign_id=campaign_id)
+        # list
+        api_response = api_instance.list(campaign_id=campaign_id)
         pprint(api_response)
     except lob_python.ApiException as e:
-        print("Exception when calling UploadsApi->list_upload: %s\n" % e)
+        print("Exception when calling UploadsApi->list: %s\n" % e)
 ```
 
 

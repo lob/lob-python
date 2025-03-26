@@ -56,7 +56,7 @@ with lob_python.ApiClient(configuration) as api_client:
         address_city="address_city_example",
         address_state="address_state_example",
         address_zip="address_zip_example",
-        address_country=CountryExtended("AD"),
+        address_country=CountryExtended(""),
         description=ResourceDescription("description_example"),
         name="name_example",
         company=Company("company_example"),

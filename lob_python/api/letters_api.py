@@ -31,7 +31,8 @@ from lob_python.model.lob_error import LobError
 from lob_python.model.ltr_id import LtrId
 from lob_python.model.mail_type import MailType
 from lob_python.model.metadata_model import MetadataModel
-from lob_python.model.sort_by3 import SortBy3
+from lob_python.model.sort_by4 import SortBy4
+from lob_python.model.str_bool_date_datetime_dict_float_int_list_str_none_type import StrBoolDateDatetimeDictFloatIntListStrNoneType
 
 
 class LettersApi(object):
@@ -111,6 +112,7 @@ class LettersApi(object):
                 'all': [
                     'letter_editable',
                     'idempotency_key',
+                    'file',
                 ],
                 'required': [
                     'letter_editable',
@@ -136,13 +138,17 @@ class LettersApi(object):
                         (LetterEditable,),
                     'idempotency_key':
                         (str,),
+                    'file':
+                        ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),
                 },
                 'attribute_map': {
                     'idempotency_key': 'Idempotency-Key',
+                    'file': 'file',
                 },
                 'location_map': {
                     'letter_editable': 'body',
                     'idempotency_key': 'header',
+                    'file': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -276,7 +282,7 @@ class LettersApi(object):
                     'mail_type':
                         (MailType,),
                     'sort_by':
-                        (SortBy3,),
+                        (SortBy4,),
                 },
                 'attribute_map': {
                     'limit': 'limit',
@@ -413,6 +419,7 @@ class LettersApi(object):
 
         Keyword Args:
             idempotency_key (str): A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our [implementation guide](https://www.lob.com/guides#idempotent_request). . [optional]
+            file ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): An optional file upload as either a byte array or file type. . [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -576,7 +583,7 @@ class LettersApi(object):
             scheduled (bool): * `true` - only return orders (past or future) where `send_date` is greater than `date_created` * `false` - only return orders where `send_date` is equal to `date_created` . [optional]
             send_date ({str: (str,)}): Filter by date sent.. [optional]
             mail_type (MailType): A string designating the mail postage type: * `usps_first_class` - (default) * `usps_standard` - a [cheaper option](https://lob.com/pricing/print-mail#compare) which is less predictable and takes longer to deliver. `usps_standard` cannot be used with `4x6` postcards or for any postcards sent outside of the United States. . [optional]
-            sort_by (SortBy3): Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both. . [optional]
+            sort_by (SortBy4): Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both. . [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object

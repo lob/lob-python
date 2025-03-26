@@ -362,7 +362,7 @@ Returns a list of your cards. The cards are returned sorted by creation date, wi
 import time
 import lob_python
 from lob_python.api import cards_api
-from lob_python.model.sort_by5 import SortBy5
+from lob_python.model.include_model import IncludeModel
 from lob_python.model.card_list import CardList
 from lob_python.model.lob_error import LobError
 from pprint import pprint
@@ -390,16 +390,15 @@ with lob_python.ApiClient(configuration) as api_client:
     limit = 10 # int | How many results to return. (optional) if omitted the server will use the default value of 10
     before = "before_example" # str | A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the `previous_url` field in the return response.  (optional)
     after = "after_example" # str | A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the `next_url` field in the return response.  (optional)
-    sort_by = {
-        date_created="asc",
-        send_date="asc",
-    } # SortBy5 | Sorts items by ascending or descending dates. Use either `date_created` or `send_date`, not both.  (optional)
+    include = IncludeModel([
+        "include_example",
+    ]) # IncludeModel | Request that the response include the total count by specifying `include[]=total_count`.  (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
         # list
-        api_response = api_instance.list(limit=limit, before=before, after=after, sort_by=sort_by)
+        api_response = api_instance.list(limit=limit, before=before, after=after, include=include)
         pprint(api_response)
     except lob_python.ApiException as e:
         print("Exception when calling CardsApi->list: %s\n" % e)
@@ -413,7 +412,7 @@ Name | Type | Description  | Notes
  **limit** | **int**| How many results to return. | [optional] if omitted the server will use the default value of 10
  **before** | **str**| A reference to a list entry used for paginating to the previous set of entries. This field is pre-populated in the &#x60;previous_url&#x60; field in the return response.  | [optional]
  **after** | **str**| A reference to a list entry used for paginating to the next set of entries. This field is pre-populated in the &#x60;next_url&#x60; field in the return response.  | [optional]
- **sort_by** | **SortBy5**| Sorts items by ascending or descending dates. Use either &#x60;date_created&#x60; or &#x60;send_date&#x60;, not both.  | [optional]
+ **include** | **IncludeModel**| Request that the response include the total count by specifying &#x60;include[]&#x3D;total_count&#x60;.  | [optional]
 
 ### Return type
 
