@@ -14,6 +14,7 @@ import sys  # noqa: F401
 
 from lob_python.model_utils import (  # noqa: F401
     ApiTypeError,
+    ApiValueError,
     ModelComposed,
     ModelNormal,
     ModelSimple,
@@ -65,6 +66,11 @@ class BankAccountVerify(ModelNormal):
             'max_items': 2,
             'min_items': 2,
         },
+        ('descriptor_code',): {
+            'regex': {
+                'pattern': r'^SM[a-zA-Z0-9]{4}$',
+            },
+        },
     }
 
     @cached_property
@@ -89,6 +95,7 @@ class BankAccountVerify(ModelNormal):
         """
         return {
             'amounts': (list,),  # noqa: E501
+            'descriptor_code': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -98,6 +105,7 @@ class BankAccountVerify(ModelNormal):
 
     attribute_map = {
         'amounts': 'amounts',  # noqa: E501
+        'descriptor_code': 'descriptor_code',  # noqa: E501
     }
 
     read_only_vars = {
@@ -107,13 +115,12 @@ class BankAccountVerify(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, amounts, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
         """BankAccountVerify - a model defined in OpenAPI
 
-        Args:
-            amounts (list): In live mode, an array containing the two micro deposits (in cents) placed in the bank account. In test mode, no micro deposits will be placed, so any two integers between `1` and `100` will work.
-
         Keyword Args:
+            amounts (list): In live mode, an array containing the two micro deposits (in cents) placed in the bank account. In test mode, no micro deposits will be placed, so any two integers between `1` and `100` will work. [optional]  # noqa: E501
+            descriptor_code (str): The 6-character code (beginning with SM) from the bank statement descriptor of the single $0.01 microdeposit. Required when microdeposit_type is descriptor_code. [optional]  # noqa: E501
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.
@@ -171,7 +178,6 @@ class BankAccountVerify(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.amounts = amounts
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -192,13 +198,12 @@ class BankAccountVerify(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, amounts, *args, **kwargs):  # noqa: E501
+    def __init__(self, *args, **kwargs):  # noqa: E501
         """BankAccountVerify - a model defined in OpenAPI
 
-        Args:
-            amounts ([Cents]): In live mode, an array containing the two micro deposits (in cents) placed in the bank account. In test mode, no micro deposits will be placed, so any two integers between `1` and `100` will work.
-
         Keyword Args:
+            amounts ([Cents]): In live mode, an array containing the two micro deposits (in cents) placed in the bank account. In test mode, no micro deposits will be placed, so any two integers between `1` and `100` will work. [optional]  # noqa: E501
+            descriptor_code (str): The 6-character code (beginning with SM) from the bank statement descriptor of the single $0.01 microdeposit. Required when microdeposit_type is descriptor_code. [optional]  # noqa: E501
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.
@@ -254,7 +259,18 @@ class BankAccountVerify(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.amounts = amounts
+        has_amounts = 'amounts' in kwargs
+        has_descriptor_code = 'descriptor_code' in kwargs
+
+        if not has_amounts and not has_descriptor_code:
+            raise ApiValueError(
+                "one of `amounts` or `descriptor_code` must be provided"
+            )
+        if has_amounts and has_descriptor_code:
+            raise ApiValueError(
+                "only one of `amounts` or `descriptor_code` may be provided"
+            )
+
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
