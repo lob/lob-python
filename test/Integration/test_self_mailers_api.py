@@ -101,7 +101,6 @@ class TestSelfMailersApi(unittest.TestCase):
             merge_variables=MergeVariables(),
             inside = "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/templates/self_mailers/6x18_sfm_inside.pdf",
             outside = "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/templates/self_mailers/6x18_sfm_inside.pdf",
-            billing_group_id = "bg_5c79d158d8f69e3e0",
             use_type= SfmUseType("marketing")
         )
 
