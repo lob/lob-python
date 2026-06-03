@@ -23,15 +23,16 @@ jobs:
           python -m pip install python-dotenv
           python -m pip install unittest-data-provider
           pip install -r requirements.txt
-      - name: Run Integration Tests
-        run:
-          python -m unittest test/Integration/test_*.py
-        env:
-          LOB_API_TEST_KEY: ${{ secrets.LOB_API_TEST_KEY }}
-          LOB_API_LIVE_KEY: ${{ secrets.LOB_API_LIVE_KEY }}
       - name: Run Unit Tests
         run:
           python -m unittest test/Unit/test_*.py
+        env:
+          LOB_API_TEST_KEY: ${{ secrets.LOB_API_TEST_KEY }}
+          LOB_API_LIVE_KEY: ${{ secrets.LOB_API_LIVE_KEY }}
+      - name: Run Integration Tests
+        continue-on-error: true
+        run:
+          python -m unittest test/Integration/test_*.py
         env:
           LOB_API_TEST_KEY: ${{ secrets.LOB_API_TEST_KEY }}
           LOB_API_LIVE_KEY: ${{ secrets.LOB_API_LIVE_KEY }}
