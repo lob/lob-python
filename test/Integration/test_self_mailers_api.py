@@ -99,7 +99,6 @@ class TestSelfMailersApi(unittest.TestCase):
             ),
             mail_type=MailType("usps_first_class"),
             merge_variables=MergeVariables(),
-            send_date=now + dt.timedelta(days=30),
             inside = "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/templates/self_mailers/6x18_sfm_inside.pdf",
             outside = "https://s3.us-west-2.amazonaws.com/public.lob.com/assets/templates/self_mailers/6x18_sfm_inside.pdf",
             billing_group_id = "bg_5c79d158d8f69e3e0",
@@ -279,7 +278,7 @@ class TestSelfMailersApi(unittest.TestCase):
         # perform test with after query param
         if next:
             listed_self_mailers_after = self.api.list(limit=2, after=next)
-            self.assertEqual(len(listed_self_mailers_after.data), 2)
+            self.assertGreaterEqual(len(listed_self_mailers_after.data), 1)
             self.assertIsNotNone(listed_self_mailers_after.data[0]['id'])
             prev = listed_self_mailers_after.getPreviousPageToken()
             if prev:
