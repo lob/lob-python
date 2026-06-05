@@ -271,6 +271,21 @@ class TestBankAccountsApi(unittest.TestCase):
             self.api.delete("bank_fake")
         self.assertTrue("bank account not found" in context.exception.__str__())
 
+    def test_verify_with_descriptor_code200(self):
+        """Test case for verify using descriptor_code path"""
+        bank_verify = BankAccountVerify(descriptor_code="SM11AA")
+        created_bank = self.api.create(self.bank_writable)
+        verified_bank_acc = self.api.verify(created_bank.id, bank_verify)
+        self.bank_ids.append(verified_bank_acc.id)
+        self.assertIsNotNone(verified_bank_acc.id)
+
+    def test_bank_account_has_microdeposit_type(self):
+        """Test that a freshly created bank account exposes microdeposit_type"""
+        created_bank = self.api.create(self.bank_writable)
+        retrieved_bank = self.api.get(created_bank.id)
+        self.bank_ids.append(created_bank.id)
+        self.assertIn(retrieved_bank.microdeposit_type, ["amounts", "descriptor_code", None])
+
 
 if __name__ == '__main__':
     unittest.main()

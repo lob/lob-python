@@ -57,9 +57,9 @@ class TestIntlVerificationsApi(unittest.TestCase):
             country = CountryExtended("GB")
         )
         self.mc2 = MultipleComponentsIntl(
-            primary_line = "10 DOWNING ST",
+            primary_line = "1 FAKE POTATO LANE",
             city = "LONDON",
-            postal_code = "SW1A 2AB",
+            postal_code = "ZC4Z 46Z",
             country = CountryExtended("GB")
         )
         self.address_list = IntlVerificationsPayload(
@@ -95,7 +95,7 @@ class TestIntlVerificationsApi(unittest.TestCase):
         verified_list = self.api.verifyBulk(self.address_list)
         self.assertEqual(len(verified_list.addresses), 2)
         self.assertEqual(verified_list.addresses[0]['deliverability'], "deliverable")
-        self.assertEqual(verified_list.addresses[1]['deliverability'], "deliverable_missing_info")
+        self.assertEqual(verified_list.addresses[1]['deliverability'], "undeliverable")
 
     def test_verifyBulk422(self):
         """Test case for verifyBulk

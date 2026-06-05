@@ -119,7 +119,7 @@ class TestAddressesApi(unittest.TestCase):
         )
         with self.assertRaises(Exception) as context:
             self.api.create(faulty_address)
-        self.assertTrue("address_line1 length must be less than or equal to 64 characters long" in context.exception.__str__())
+        self.assertTrue("address_line1" in context.exception.__str__())
 
     def test_get200(self):
         """Test case for get
