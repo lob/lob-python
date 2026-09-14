@@ -124,6 +124,7 @@ class BankAccount(ModelNormal):
             'bank_name': (str, type(None)),  # noqa: E501
             'verified': (bool, type(None)),  # noqa: E501
             'deleted': (bool, type(None)),  # noqa: E501
+            'microdeposit_type': (str, type(None)),  # noqa: E501
         }
 
     @cached_property
@@ -146,6 +147,7 @@ class BankAccount(ModelNormal):
         'bank_name': 'bank_name',  # noqa: E501
         'verified': 'verified',  # noqa: E501
         'deleted': 'deleted',  # noqa: E501
+        'microdeposit_type': 'microdeposit_type',  # noqa: E501
     }
 
     read_only_vars = {

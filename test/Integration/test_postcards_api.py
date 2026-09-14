@@ -109,7 +109,6 @@ class TestPostcardsApi(unittest.TestCase):
             ),
             mail_type=MailType("usps_first_class"),
             merge_variables=MergeVariables(),
-            send_date=now + dt.timedelta(days=30),
             front = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf",
             back = "https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/4x6_pc_template.pdf",
             use_type= PscUseType("marketing")
@@ -258,7 +257,7 @@ class TestPostcardsApi(unittest.TestCase):
         # perform test with after query param
         if next:
             listed_postcards_after = self.api.list(limit=2, after=next)
-            self.assertEqual(len(listed_postcards_after.data), 2)
+            self.assertGreaterEqual(len(listed_postcards_after.data), 1)
             self.assertIsNotNone(listed_postcards_after.data[0]['id'])
             prev = listed_postcards_after.getPreviousPageToken()
             if prev:

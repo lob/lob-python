@@ -15,6 +15,7 @@ import warnings
 
 import lob_python
 import os
+from lob_python.model.bank_account import BankAccount
 from lob_python.model.bank_account_verify import BankAccountVerify
 from lob_python.model.bank_type_enum import BankTypeEnum
 from lob_python.api.bank_accounts_api import BankAccountsApi  # noqa: E501
@@ -22,6 +23,7 @@ from lob_python.model.bank_account_writable import BankAccountWritable  # noqa: 
 from lob_python.model.metadata_model import MetadataModel
 from lob_python.model.include_model import IncludeModel
 from lob_python.exceptions import UnauthorizedException, NotFoundException, ApiException
+from lob_python.model_utils import ApiValueError
 from unittest.mock import Mock, MagicMock
 
 class TestBankAccountsApi(unittest.TestCase):
@@ -42,9 +44,7 @@ class TestBankAccountsApi(unittest.TestCase):
             signatory = "fake signatory",
         )
 
-        self.bank_account_verify = BankAccountVerify(
-          amounts = [1, 2]
-        )
+        self.bank_account_verify = BankAccountVerify(amounts=[1, 2])
 
         self.mock_list_of_bank_accounts =  MagicMock(return_value={
             "data": [{ "id": "fake 1" }, { "id": "fake 2" }]
@@ -216,6 +216,67 @@ class TestBankAccountsApi(unittest.TestCase):
         with self.assertRaises(Exception) as context:
             self.mock_api.bank_account_delete("bank_fakeId")
         self.assertTrue("Not Found" in context.exception.__str__())
+
+    def test_bank_account_verify_with_descriptor_code(self):
+        """Test case for creating BankAccountVerify with descriptor_code"""
+        verify = BankAccountVerify(descriptor_code="SM11AA")
+        self.assertIsNotNone(verify)
+
+    def test_bank_account_verify_fails_with_both_amounts_and_descriptor_code(self):
+        """Test that providing both amounts and descriptor_code raises ApiValueError"""
+        with self.assertRaises(ApiValueError) as context:
+            BankAccountVerify(amounts=[1, 2], descriptor_code="SM11AA")
+        self.assertIn("only one of", str(context.exception))
+
+    def test_bank_account_verify_fails_with_neither(self):
+        """Test that providing neither amounts nor descriptor_code raises ApiValueError"""
+        with self.assertRaises(ApiValueError) as context:
+            BankAccountVerify()
+        self.assertIn("one of `amounts` or `descriptor_code` must be provided", str(context.exception))
+
+    def test_bank_account_verify_fails_with_invalid_descriptor_code_pattern(self):
+        """Test that an invalid descriptor_code pattern raises a validation error"""
+        with self.assertRaises(Exception):
+            BankAccountVerify(descriptor_code="INVALID")
+
+    def test_bank_account_has_microdeposit_type(self):
+        """Test that BankAccount accepts and returns microdeposit_type"""
+        import datetime
+        account = BankAccount(
+            routing_number="322271627",
+            account_number="123456789",
+            account_type="individual",
+            signatory="Test User",
+            id="bank_fakeId",
+            date_created=datetime.datetime.now(),
+            date_modified=datetime.datetime.now(),
+            microdeposit_type="amounts",
+        )
+        self.assertEqual(account.microdeposit_type, "amounts")
+
+        account2 = BankAccount(
+            routing_number="322271627",
+            account_number="123456789",
+            account_type="individual",
+            signatory="Test User",
+            id="bank_fakeId2",
+            date_created=datetime.datetime.now(),
+            date_modified=datetime.datetime.now(),
+            microdeposit_type="descriptor_code",
+        )
+        self.assertEqual(account2.microdeposit_type, "descriptor_code")
+
+        account3 = BankAccount(
+            routing_number="322271627",
+            account_number="123456789",
+            account_type="individual",
+            signatory="Test User",
+            id="bank_fakeId3",
+            date_created=datetime.datetime.now(),
+            date_modified=datetime.datetime.now(),
+        )
+        self.assertFalse(hasattr(account3, 'microdeposit_type') and account3.microdeposit_type is not None)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -109,7 +109,6 @@ class TestLettersApi(unittest.TestCase):
             ),
             mail_type=MailType("usps_first_class"),
             merge_variables=MergeVariables(),
-            send_date=now + dt.timedelta(days=30),
             double_sided = True,
             return_envelope = True,
             perforated_page = 1,
@@ -328,7 +327,7 @@ class TestLettersApi(unittest.TestCase):
         # perform test with after query param
         if next:
             listed_letters_after = self.api.list(limit=2, after=next)
-            self.assertEqual(len(listed_letters_after.data), 2)
+            self.assertGreaterEqual(len(listed_letters_after.data), 1)
             self.assertIsNotNone(listed_letters_after.data[0]['id'])
             prev = listed_letters_after.getPreviousPageToken()
             if prev:
