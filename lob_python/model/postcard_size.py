@@ -114,9 +114,9 @@ class PostcardSize(ModelSimple):
         Note that value can be passed either in args or in kwargs, but not in both.
 
         Args:
-            args[0] (str): Specifies the size of the postcard. Only `4x6` postcards can be sent to international destinations. . if omitted defaults to "4x6", must be one of ["4x6", "6x9", "6x11", ]  # noqa: E501
+            args[0] (str): Specifies the size of the postcard. Only `4x6` postcards can be sent to international destinations. . if omitted defaults to "4x6", must be one of ["4x6", "5x7", "6x9", "6x11", ]  # noqa: E501
         Keyword Args:
-            value (): Specifies the size of the postcard. Only `4x6` postcards can be sent to international destinations. . if omitted defaults to "4x6", must be one of ["4x6", "6x9", "6x11", ]  # noqa: E501
+            value (): Specifies the size of the postcard. Only `4x6` postcards can be sent to international destinations. . if omitted defaults to "4x6", must be one of ["4x6", "5x7", "6x9", "6x11", ]  # noqa: E501
 
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
@@ -200,10 +200,10 @@ class PostcardSize(ModelSimple):
         Note that value can be passed either in args or in kwargs, but not in both.
 
         Args:
-            args[0] (str): Specifies the size of the postcard. Only `4x6` postcards can be sent to international destinations. . if omitted defaults to "4x6", must be one of ["4x6", "6x9", "6x11", ]  # noqa: E501
+            args[0] (str): Specifies the size of the postcard. Only `4x6` postcards can be sent to international destinations. . if omitted defaults to "4x6", must be one of ["4x6", "5x7", "6x9", "6x11", ]  # noqa: E501
 
         Keyword Args:
-                postcard_size (): Specifies the size of the postcard. Only `4x6` postcards can be sent to international destinations. . defaults to "4x6", must be one of ["4x6", "6x9", "6x11", ]  # noqa: E501
+                postcard_size (): Specifies the size of the postcard. Only `4x6` postcards can be sent to international destinations. . defaults to "4x6", must be one of ["4x6", "5x7", "6x9", "6x11", ]  # noqa: E501
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.
