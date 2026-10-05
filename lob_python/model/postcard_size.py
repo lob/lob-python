@@ -54,6 +54,7 @@ class PostcardSize(ModelSimple):
     allowed_values = {
         ('value',): {
             '4X6': "4x6",
+            '5X7': "5x7",
             '6X9': "6x9",
             '6X11': "6x11",
         },
