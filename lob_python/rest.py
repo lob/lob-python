@@ -155,7 +155,7 @@ class RESTClientObject(object):
                     connect=_request_timeout[0], read=_request_timeout[1])
 
         try:
-            query_params = self.restructure_query_params_helper(query_params)
+            query_params = self.restructure_query_params_helper(query_params or [])
             # For `POST`, `PUT`, `PATCH`, `OPTIONS`, `DELETE`
             if method in ['POST', 'PUT', 'PATCH', 'OPTIONS', 'DELETE']:
                 # Only set a default Content-Type for POST, PUT, PATCH and OPTIONS requests
