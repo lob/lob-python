@@ -7,6 +7,7 @@ generated model rejected with ApiValueError.
 
 import unittest
 
+from lob_python.exceptions import ApiValueError
 from lob_python.model.deliverability_analysis import DeliverabilityAnalysis
 
 
@@ -42,7 +43,7 @@ class TestDeliverabilityAnalysis(unittest.TestCase):
             self.assertEqual(analysis(dpv_inactive_reason=value).dpv_inactive_reason, value)
 
     def test_rejects_unknown_inactive_reason(self):
-        with self.assertRaises(Exception):
+        with self.assertRaises(ApiValueError):
             analysis(dpv_inactive_reason="99")
 
     def test_deserializes_response_with_00(self):
